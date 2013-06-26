@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://zushenyan.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://andrewyan.github.io
+title: Andrew Yan's Blog
+subtitle: wooo so many memos!
+author: andrewyan
 simple_search: http://google.com/search
 description:
 
