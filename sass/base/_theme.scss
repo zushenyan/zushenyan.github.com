@@ -12,10 +12,10 @@ $main-bg: #f8f8f8 !default;
 $page-bg: #252525 !default;
 $article-border: #eeeeee !default;
 
-$header-bg: #333 !default;
-$header-border: lighten($header-bg, 15) !default;
-$title-color: #f2f2f2 !default;
-$subtitle-color: #aaa !default;
+$header-bg: image-url('Beach_small.jpg') !default;
+$header-border: lighten(#333, 15) !default;
+$title-color: #4b4b4b !default;
+$subtitle-color: #4b4b4b !default;
 
 $text-color: #222 !default;
 $text-color-light: #aaa !default;
@@ -71,7 +71,7 @@ a {
 }
 
 html {
-  background: $page-bg image-url('line-tile.png') top left;
+  background: $page-bg image-url('retina_wood.png') top left;
 }
 body {
   > div {
