@@ -3,7 +3,6 @@ layout: post
 title: "JavaScript Module Pattern"
 date: 2013-09-02 23:57
 comments: true
-categories: [javascript, post]
 ---
 
 Just a simple code and note here.

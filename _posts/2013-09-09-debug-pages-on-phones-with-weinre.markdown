@@ -3,7 +3,6 @@ layout: post
 title: "Debug Pages On Phones With Weinre"
 date: 2013-09-09 13:29
 comments: true
-categories: [web, javascript, debug, html, weinre]
 ---
 
 [Weinre](http://people.apache.org/~pmuellr/weinre/docs/latest/) stands for WEb INspector REmote. There are already numerous tutorials about this tool on the internet, but I still want to note it for myself or everyone else just want to get it work without getting details.

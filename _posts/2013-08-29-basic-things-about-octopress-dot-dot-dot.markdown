@@ -3,7 +3,6 @@ layout: post
 title: "Basic Things About Octopress..."
 date: 2013-08-29 21:35
 comments: true
-categories: [octopress, post]
 ---
 
 # Deploy relative

@@ -3,7 +3,6 @@ layout: post
 title: "Differences Between sync & async, blocking & non-blocing and event-driven"
 date: 2013-09-07 22:34
 comments: true
-categories: [network, os]
 ---
 
 I always thought I understood the concept between blocking & non-blocking, synchronous & asynchronous and could tell the differences, but after I found this [post](http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing), a chaotic storm exploded in my brain! These were totally different two things in my mind!
@@ -40,15 +39,15 @@ Definitions in server & disk(socket):
 
 * Synchronous
 
-	* Blocking 
+	* Blocking
 
 		process will send a recvform system call to kernal, and then kernal will start preparing data process needs, and finally kernal return with result back to process. During the data preparation the process is blocked.
 
-	* Non-blocking 
+	* Non-blocking
 
 		process will keep sending recvform to kernal. If is not ready, kernal will send a EWOULDBLOCK back to process, or will start data preparation.
 
-	* Event-driven 
+	* Event-driven
 
 		also named select/poll. It's similar to the blocking IO, but use select & poll system call to achive non-blocking.
 

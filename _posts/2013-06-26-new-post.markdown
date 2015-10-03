@@ -3,7 +3,6 @@ layout: post
 title: "new post"
 date: 2013-06-26 17:41
 comments: true
-categories: [post, javascript]
 ---
 **WoW**
 
