@@ -14,6 +14,10 @@ layout: default
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
+
+        <span class="post-meta">
+          <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread">0 comments</a>
+        </span>
       </li>
     {% endfor %}
   </ul>
@@ -21,3 +25,5 @@ layout: default
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+
+{% include comment_count.html %}
