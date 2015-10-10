@@ -35,43 +35,45 @@ When server responses, it returns a 3-digit number back which tells client some 
 
 * 1xx - Pure information to inform client.
   * 100 - Continue.
-	* 101 - Switch protocol.
+  * 101 - Switch protocol.
 * 2xx - Success.
   * 200 - Ok.
-	* 201 - Resource is created or request is completed.
+  * 201 - Resource is created or request is completed.
 * 3xx - Redirection.
   * 301 - Moved permanently. Request URI has moved to an new URL.
-	* 307 - Moved temporary.Request URI has temporary moved to an new URL.
+  * 307 - Moved temporary.Request URI has temporary moved to an new URL.
 * 4xx - Client error.
   * 403 - Forbidden. Requested page was forbidden to access.
-	* 404 - Not found.
+  * 404 - Not found.
 * 5xx - Server error.
   * 500 - Internal error. Server met unexpected problem.
-	* 503 - Service unavailable. Server temporary down.
+  * 503 - Service unavailable. Server temporary down.
 
 # HTTP Methods
 HTTP defines methods to indicate what action should be performed on server side.
 
-* GET			- Retrieves data from server with given URI.
-* POST		- Sends data to server. For example, sending forms, upload files.
-* PUT			- Creates(if doesn't exist) or updates target resource with new uploaded one.
-* DELETE	- Removes target resource with given URI.
-* HEAD		- Identical to GET, but only interested in head content.
+* GET      - Retrieves data from server with given URI.
+* POST    - Sends data to server. For example, sending forms, upload files.
+* PUT      - Creates(if doesn't exist) or updates target resource with new uploaded one.
+* DELETE  - Removes target resource with given URI.
+* HEAD    - Identical to GET, but only interested in head content.
 * CONNECT - Converts request into a TCP/IP tunnel.
 * OPTIONS - Describes communication options with server.
-* TRACE		- Echoes received request so that client can see if there are any modification from intermediate servers.
-* PATCH		- Updates partial modification to a resource.
+* TRACE    - Echoes received request so that client can see if there are any modification from intermediate servers.
+* PATCH    - Updates partial modification to a resource.
 
 Here are some examples:
 
 #### GET
 Our server looks like:
-``` js
+```js
 var http = require("http");
+
 http.createServer(function(request, response){
   response.writeHeader(200, {"Content-Type": "text/plain"});
   response.end("Hello World!");
 }).listen(3000);
+
 console.log("server is running...");
 ```
 With `curl -v http://localhost:3000`, you will get:
@@ -98,18 +100,20 @@ Hello World!%
 Server:
 ``` js
 var http = require("http");
+
 http.createServer(function(request, response){
   request.on("data", function(chunks){
     console.log(chunks.toString());
     response.end();
   });
 }).listen(3000);
+
 console.log("server is running...");
 ```
 With `curl -X POST -d @style.css -v http://localhost:3000`, server side console prints:
 ``` plain
 server is running...
-div {	color: red;}
+div {  color: red;}
 ```
 Our style.css on disk looks like:
 ``` css
@@ -124,19 +128,19 @@ There are tons of headers http protocol has. Here only list some popular headers
 In general, there are three types of header:
 
 * General header - Works with both request and response.
-  * Connection				- Indicates what type of method should be used for communication.
-  * Date							- The time this message was sent.
-  * Cache-Control 		- Indicates the conditions to cache or not, which I will cover in practice later.
-  * Upgrade 					- Tells what additional protocols it supports and would like to switch if client/server available these protocols.
+  * Connection        - Indicates what type of method should be used for communication.
+  * Date              - The time this message was sent.
+  * Cache-Control     - Indicates the conditions to cache or not, which I will cover in practice later.
+  * Upgrade           - Tells what additional protocols it supports and would like to switch if client/server available these protocols.
 * Request header - only works with request.
-  * Accept						- What Content-Type it accepts.
-  * Accept-Encoding		- What Content-Encoding it accepts.
-  * Cookie						- By using cookie header field, client can send cookie to server.
-  * User-Agent				- Client's identity. For example, Mozilla/4.0, IE/10.0...
+  * Accept            - What Content-Type it accepts.
+  * Accept-Encoding    - What Content-Encoding it accepts.
+  * Cookie            - By using cookie header field, client can send cookie to server.
+  * User-Agent        - Client's identity. For example, Mozilla/4.0, IE/10.0...
 * Response header - only works with response.
-  * Content-Encoding	- Tells what type of encoding has been applied to the entity body([explanation](entity-message-1)).
-  * Etag							- Used to tag version or identity for a file.
-  * Expires						- Gives a date after which the response is considered stale.
+  * Content-Encoding  - Tells what type of encoding has been applied to the entity body([explanation](entity-message-1)).
+  * Etag              - Used to tag version or identity for a file.
+  * Expires            - Gives a date after which the response is considered stale.
 
 # HTTP Headers in Practice
 
@@ -169,6 +173,7 @@ http.createServer(function(request, response){
     response.end(buff);
   });
 }).listen(3000);
+
 console.log("server is running...");
 ```
 Send request by using Chrome
