@@ -6,9 +6,315 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Oct 2015 23:50:20 +0800</pubDate>
-    <lastBuildDate>Sat, 10 Oct 2015 23:50:20 +0800</lastBuildDate>
+    <pubDate>Mon, 12 Oct 2015 23:22:06 +0800</pubDate>
+    <lastBuildDate>Mon, 12 Oct 2015 23:22:06 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Frontend Fundamental - HTTPS</title>
+        <description>&lt;h1 id=&quot;what-is-https&quot;&gt;What is HTTPS?&lt;/h1&gt;
+&lt;p&gt;HTTPS stands for HTTP Secure(or HTTP over TLS, SSL). The purpose is to establish a encrypted connection which provides more protection as opposed to HTTP that only creates transparent connections that are under the risk of being eavesdropping or intercepted by man-in-the-middle.&lt;/p&gt;
+
+&lt;p&gt;HTTPS differs from HTTP at some points -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTTPS uses port 443 as default, while HTTP uses port 80.&lt;/li&gt;
+  &lt;li&gt;HTTPS still uses HTTP as its essential communication method. You can take SSL/TLS as an “upgraded connection” as opposed to “normal connection” which HTTP uses with.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;what-is-tlsssl&quot;&gt;What is TLS/SSL?&lt;/h1&gt;
+&lt;p&gt;SSL stands for Secure Sockets Layer, and TLS stands for Transport Layer Security. They are both cryptographic protocol making network communication more secure.&lt;/p&gt;
+
+&lt;p&gt;SSL is the predecessor to TSL. SSL was started by Netscape, and was upgraded to TSL in 1999 because Netscape was no more and thus no further maintenance from then on.&lt;/p&gt;
+
+&lt;p&gt;Today we still refer to TSL as SSL, because historically they are the same thing, only name changed.&lt;/p&gt;
+
+&lt;h1 id=&quot;how-does-it-work&quot;&gt;How does it work?&lt;/h1&gt;
+&lt;p&gt;Generally, TLS/SSL works with &lt;strong&gt;private key&lt;/strong&gt; ,&lt;strong&gt;public key&lt;/strong&gt; and &lt;strong&gt;certificate&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Client and server have its own &lt;strong&gt;private keys&lt;/strong&gt;. &lt;strong&gt;Public key&lt;/strong&gt; is the same on both client and server.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Certificate&lt;/strong&gt; carries &lt;strong&gt;public key&lt;/strong&gt; and other necessary informations.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Certificate&lt;/strong&gt; can exist on both client and server.&lt;/li&gt;
+  &lt;li&gt;Who sends &lt;strong&gt;certificate&lt;/strong&gt; depends on method.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to use HTTPS, website owner should do the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Generate &lt;strong&gt;Certificate Signing Request (CSR)&lt;/strong&gt;. By doing this, your computer will generate a &lt;strong&gt;private key&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Go to a trusted third party &lt;strong&gt;Certificate Authority (CA)&lt;/strong&gt;, and validate with your &lt;strong&gt;CSR&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;When validation ends, &lt;strong&gt;CA&lt;/strong&gt; will give you a new &lt;strong&gt;public key&lt;/strong&gt; encrypted with &lt;strong&gt;CA’s private key&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Install this &lt;strong&gt;CSR&lt;/strong&gt; on your server machine.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Client and server establish connection by using a handshaking procedure:&lt;/p&gt;
+
+&lt;h4 id=&quot;tldr-version&quot;&gt;tl;dr Version&lt;/h4&gt;
+
+&lt;p&gt;In case you are impatient like me…&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Server sends &lt;strong&gt;server’s public key (certificate)&lt;/strong&gt; to client.&lt;/li&gt;
+  &lt;li&gt;Client checks if it’s &lt;strong&gt;expired&lt;/strong&gt; or &lt;strong&gt;not listed on the browser’s certificates authority list&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;If this certificate is trusted, client will send back its &lt;strong&gt;client’s public key&lt;/strong&gt; to server.&lt;/li&gt;
+  &lt;li&gt;Server creates an unique hash and encrypts it with &lt;strong&gt;client’s public key&lt;/strong&gt; and &lt;strong&gt;server’s private key&lt;/strong&gt; and send it to client.&lt;/li&gt;
+  &lt;li&gt;Client decrypts the hash with &lt;strong&gt;client’s private key&lt;/strong&gt; and &lt;strong&gt;server’s public key&lt;/strong&gt;, and verifies it.&lt;/li&gt;
+  &lt;li&gt;Server and client start to communicate in cryptographic communication.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;basic-tls-handshaking&quot;&gt;Basic TLS Handshaking&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First, client and server must agree on both using TLS/SSL protocol (HTTPS).&lt;/li&gt;
+  &lt;li&gt;Client sends a &lt;strong&gt;Client Hello&lt;/strong&gt; message. In this step, client also sends informations like &lt;em&gt;the highest TLS version it supports&lt;/em&gt;, &lt;em&gt;cipher suites&lt;/em&gt; and &lt;em&gt;suggest compression methods&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Server responds with a &lt;strong&gt;Server Hello&lt;/strong&gt; message, containing &lt;em&gt;the chosen TLS version&lt;/em&gt;, &lt;em&gt;a random number&lt;/em&gt;, &lt;em&gt;the choices of cipher suites and compression method&lt;/em&gt; which client offered.&lt;/li&gt;
+  &lt;li&gt;Server sends a &lt;strong&gt;Certificate&lt;/strong&gt; to client.&lt;/li&gt;
+  &lt;li&gt;Server sends a &lt;strong&gt;Server Key Exchange&lt;/strong&gt; message to client.&lt;/li&gt;
+  &lt;li&gt;Server sends a &lt;strong&gt;Server Hello Done&lt;/strong&gt; message to client.&lt;/li&gt;
+  &lt;li&gt;Client responds with &lt;strong&gt;Client Key Exchange&lt;/strong&gt;, which may contains with &lt;em&gt;PreMasterSecret&lt;/em&gt;, &lt;em&gt;public key&lt;/em&gt; or &lt;em&gt;nothing&lt;/em&gt;(depends on cipher suites choice).&lt;/li&gt;
+  &lt;li&gt;The client and server will now use &lt;em&gt;random number&lt;/em&gt; and &lt;em&gt;PreMasterSecret&lt;/em&gt; to generate a &lt;em&gt;MasterSecret&lt;/em&gt;, which will be used by the following key data.&lt;/li&gt;
+  &lt;li&gt;Client sends a &lt;strong&gt;Change Cipher Spec&lt;/strong&gt; message back to server. That means, “Everything I tell you now on will be authenticated.”&lt;/li&gt;
+  &lt;li&gt;Client sends a encrpted &lt;strong&gt;Finished&lt;/strong&gt; message. Server will attempt to decrpt the &lt;strong&gt;Finished&lt;/strong&gt; message. If it fails, the connection will torn down.&lt;/li&gt;
+  &lt;li&gt;Server sends a &lt;strong&gt;Change Cipher Spec&lt;/strong&gt; message to client, telling “Everything I tell you now on will be authenticated.”&lt;/li&gt;
+  &lt;li&gt;Server will do the same thing like what client does in step 9.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;client-authenticated-tls-handshaking&quot;&gt;Client-Authenticated TLS Handshaking&lt;/h4&gt;
+
+&lt;p&gt;The procedure is mostly identical to basic TLS handshaking, but with some changes from step 4:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Server sends its own &lt;strong&gt;Certificate&lt;/strong&gt; to client.&lt;/li&gt;
+  &lt;li&gt;Server sends &lt;strong&gt;Server Key Exchange&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Server requests client’s &lt;strong&gt;Certificate&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Server sends &lt;strong&gt;Server Hello Done&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Client responds with its &lt;strong&gt;Certificate&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Client sends &lt;strong&gt;Client Key Exchange&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Client sends a &lt;strong&gt;Certificate Verify&lt;/strong&gt; message, which is a signature over the previous message using &lt;strong&gt;client’s private key&lt;/strong&gt;. Later will be verified by server with &lt;strong&gt;client’s public key&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;After this step is identical to step 9 of basic TLS handshaking.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;cipher-suites&quot;&gt;Cipher Suites&lt;/h4&gt;
+
+&lt;p&gt;You may wonder what is &lt;strong&gt;cipher suites&lt;/strong&gt;, right? Here’s what it defines:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Key&lt;/strong&gt; exchange algorithm - how client and server authenticate during connection.
+    &lt;ul&gt;
+      &lt;li&gt;RSA, Diffie-Hellman, ECDH, SRP, PSK.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Encryption&lt;/strong&gt; algorithm - the method to encrypt message stream.
+    &lt;ul&gt;
+      &lt;li&gt;RC4, Triple DES, AES, IDEA, DES…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Message authentication code(MAC, some refer to hash) - the way to create a cryptographic hash.
+    &lt;ul&gt;
+      &lt;li&gt;For TLS: HMAC-MD5, HMAC-SHA.&lt;/li&gt;
+      &lt;li&gt;For SSL: SHA, MD5, MD4, MD2….&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;pros-and-cons&quot;&gt;Pros and Cons&lt;/h1&gt;
+&lt;p&gt;Pros&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Security, security and security! No one will risk exposing their password, right?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cons&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Complex handshaking means more bandwidth overhead.&lt;/li&gt;
+  &lt;li&gt;Since it costs more bandwidth, you may not want to use HTTPS on every page of your site, and by separating our protocol into two may lead more complexity to our system architecture.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;acquiring-certificates&quot;&gt;Acquiring Certificates&lt;/h1&gt;
+&lt;p&gt;Acquiring a valid certificate means you need to purchase it issued by 3rd party Certificate Authority.&lt;/p&gt;
+
+&lt;p&gt;There are tons of CA on the Web, and since this article is not about getting your best deal SSL certificate, I will use &lt;code&gt;openssl&lt;/code&gt; to generate a self-signed certificate for the following demonstration, and remember &lt;strong&gt;self-signed certificate is for testing/development purpose&lt;/strong&gt;. Don’t ever use it in production, or you will scare customers away.&lt;/p&gt;
+
+&lt;h4 id=&quot;generate-a-private-key&quot;&gt;Generate a Private Key&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;openssl req -nodes -new -x509 -keyout server.key -out server.cert&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I use &lt;code&gt;req&lt;/code&gt; command to generate a certificate and a private key under current directory.&lt;/p&gt;
+
+&lt;p&gt;By doing this, the following form will prompt out. Type whatever it requests, and remember to leave &lt;code&gt;challenge password&lt;/code&gt; empty.&lt;/p&gt;
+
+&lt;figure class=&quot;code-highlight-figure&quot;&gt;&lt;div class=&quot;code-highlight&quot;&gt;&lt;pre class=&quot;code-highlight-pre&quot;&gt;&lt;div data-line=&quot;1&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;Country Name (2 letter code) [AU]:TW
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;2&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;State or Province Name (full name) [Some-State]:Taiwan
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;3&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;Locality Name (eg, city) []:Taipei
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;4&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;Organization Name (eg, company) [Internet Widgits Pty Ltd]:meow
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;5&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;...&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;https-in-practice&quot;&gt;HTTPS In Practice&lt;/h1&gt;
+
+&lt;p&gt;Server&lt;/p&gt;
+
+&lt;figure class=&quot;code-highlight-figure&quot;&gt;&lt;div class=&quot;code-highlight&quot;&gt;&lt;pre class=&quot;code-highlight-pre&quot;&gt;&lt;div data-line=&quot;1&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;https&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;2&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;fs&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;3&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;4&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;5&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFileSync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;./server.key&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;6&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;cert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFileSync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;./server.cert&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;7&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;p&quot;&gt;&amp;#x7d;;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;8&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;9&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&amp;#x7b;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;10&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;11&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;    &lt;span class=&quot;s2&quot;&gt;&amp;quot;content-type&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;text/plain&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;12&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;p&quot;&gt;&amp;#x7d;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;13&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;14&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;p&quot;&gt;&amp;#x7d;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;15&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;16&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Server is running...&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
+
+&lt;p&gt;Let’s proceed with Chrome…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/https-big.png&quot; alt=&quot;https-big&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Of course, our certificate is not issued by authorized 3rd party CA, and thus not trusted.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/https-small.png&quot; alt=&quot;https-small&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At least, it works with our Node.js, yay~&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https on wikipedia&quot;&gt;https on wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;TLS on wikipedia&quot;&gt;TLS on wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;Public-key cryptography&quot;&gt;Public-key cryptography&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https and certification for dummies on Stackoverflow&quot;&gt;https and certification for dummies on Stackoverflow&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;The First Few Milliseconds of an HTTPS Connection&quot;&gt;The First Few Milliseconds of an HTTPS Connection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;How SSL Works&quot;&gt;How SSL Works&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;Creating a Self-Signed SSL Certificate&quot;&gt;Creating a Self-Signed SSL Certificate&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;How SSL works tutorial - with HTTPS example&quot;&gt;How SSL works tutorial - with HTTPS example&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;What is HTTPS?&quot;&gt;What is HTTPS?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;Is it possible to generate RSA key without pass phrase?&quot;&gt;Is it possible to generate RSA key without pass phrase?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 11 Oct 2015 15:30:50 +0800</pubDate>
+        <link>http://yourdomain.com/2015/10/11/frontend-fundamental-https.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/10/11/frontend-fundamental-https.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Frontend Fundamental - HTTP 2.0</title>
+        <description>&lt;h1 id=&quot;what-is-http-20&quot;&gt;What is HTTP 2.0?&lt;/h1&gt;
+&lt;p&gt;Since HTTP protocol was released, Web world has developed rapidly, and compared to the time in which HTTP was born, today’s Web content is way more richer, and due to the heavy request loading Web has evolved, HTTP 1.1 is not capable sooner or later. In order to handle the job, HTTP have to be updated.&lt;/p&gt;
+
+&lt;p&gt;HTTP 2.0 is based on SPDY(pronounced speedy) which is an experiment networking protocol developed by Google. SPDY aims to improve performance and security. In Feb. 2015, Google announced that SPDY will soon be deprecated since there is already a standard - HTTP 2.0.&lt;/p&gt;
+
+&lt;h1 id=&quot;http-20-features-differences-to-http-11&quot;&gt;HTTP 2.0 Features (differences to HTTP 1.1)&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Communicate in binary, not textual.&lt;/li&gt;
+  &lt;li&gt;Multiplex&lt;/li&gt;
+  &lt;li&gt;Header compression&lt;/li&gt;
+  &lt;li&gt;Server push&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;binary-communication&quot;&gt;Binary Communication&lt;/h4&gt;
+&lt;p&gt;In HTTP 1.1 textual way, there are &lt;a href=&quot;http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.4&quot;&gt;4 ways to parse message&lt;/a&gt; when in HTTP 2 there is only one way to parse, and hence its more efficient.&lt;/p&gt;
+
+&lt;h4 id=&quot;multiplex&quot;&gt;Multiplex&lt;/h4&gt;
+&lt;p&gt;With HTTP 1.1, Most browsers create 6 to 8 connections to download resources from server in parallel; In HTTP 2.0, only one connection is needed. Not like HTTP 1.1, HTTP 2.0 is non-blocking. Client can send requests at once and get responses out of order, while HTTP 1.1 can only send request by request in a connection. It’s like a car driving through a tunnel, but only one at a time.&lt;/p&gt;
+
+&lt;h4 id=&quot;header-compression&quot;&gt;Header compression&lt;/h4&gt;
+&lt;p&gt;Even though there are already performance optimizations to compress our content, say &lt;strong&gt;image sprite, in-lining, resource bundle&lt;/strong&gt;, headers still take space(say cookies, referer…), and for environment like mobile with limited bandwidth, it’s more crucial. That’s why we need header compression.&lt;/p&gt;
+
+&lt;h4 id=&quot;server-push&quot;&gt;Server Push&lt;/h4&gt;
+&lt;p&gt;Server can send response without any request from client.&lt;/p&gt;
+
+&lt;p&gt;Traditional scenario:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Client: Hey server, I want index.html!&lt;/p&gt;
+
+  &lt;p&gt;Server: (Gives index.html)&lt;/p&gt;
+
+  &lt;p&gt;Client: Hey server, I want style.css!&lt;/p&gt;
+
+  &lt;p&gt;Server: (Gives style.css)&lt;/p&gt;
+
+  &lt;p&gt;Client: Thanks!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With server push:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Client: Hey server, I want index.html!&lt;/p&gt;
+
+  &lt;p&gt;Server: (Gives index.html, style.css and lots of resources client didn’t ask for but do need.)&lt;/p&gt;
+
+  &lt;p&gt;Client: Err…these are what I want! thanks!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;platforms-support&quot;&gt;Platforms Support&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;http://caniuse.com/#search=http2&quot;&gt;Can I use http2?&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Currently, except for some mobile browsers and old IE, most modern browsers support HTTP 2.0.&lt;/p&gt;
+
+&lt;h1 id=&quot;http-20-in-practice&quot;&gt;HTTP 2.0 In Practice&lt;/h1&gt;
+&lt;p&gt;First install &lt;code&gt;node-http2&lt;/code&gt; for Nodejs.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;npm install node-http2&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And from the &lt;a href=&quot;HTTP/2 Frequently Asked Questions&quot;&gt;HTTP/2 FAQ&lt;/a&gt;, it says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h1 id=&quot;does-http2-require-encryption&quot;&gt;Does HTTP/2 require encryption?&lt;/h1&gt;
+  &lt;p&gt;No. After extensive discussion, the Working Group did not have consensus to require the use of encryption (e.g., TLS) for the new protocol.&lt;/p&gt;
+
+  &lt;p&gt;However, some implementations have stated that they will only support HTTP/2 when it is used over an encrypted connection, and currently no browser supports HTTP/2 unencrypted.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So prepare your certificate and private key, we still need them.&lt;/p&gt;
+
+&lt;p&gt;Server:&lt;/p&gt;
+&lt;figure class=&quot;code-highlight-figure&quot;&gt;&lt;div class=&quot;code-highlight&quot;&gt;&lt;pre class=&quot;code-highlight-pre&quot;&gt;&lt;div data-line=&quot;1&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;http2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;http2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;2&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;fs&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;3&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;4&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;5&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFileSync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;./server.key&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;6&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;cert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFileSync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;./server.cert&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;7&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;p&quot;&gt;&amp;#x7d;;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;8&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;9&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;nx&quot;&gt;http2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&amp;#x7b;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;10&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeHead&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;11&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;    &lt;span class=&quot;s2&quot;&gt;&amp;quot;content-type&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;text/plain&amp;quot;&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;12&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;p&quot;&gt;&amp;#x7d;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;13&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;we are using http2 weeeeeeeee&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;14&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;p&quot;&gt;&amp;#x7d;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;15&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;16&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Server is running...&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
+
+&lt;p&gt;Run it in &lt;code&gt;https&lt;/code&gt; protocol with Chrome&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/http2.png&quot; alt=&quot;http2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the protocol field, “h2” means we are using HTTP2 protocol.&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;wikipedia-spdy&quot;&gt;wikipedia-spdy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;HTTP/2 Frequently Asked Questions&quot;&gt;HTTP/2 Frequently Asked Questions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http2.akamai.com/&quot;&gt;http2.akamai.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http2-demo&quot;&gt;http2-demo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;max-parallel-http-connections-in-a-browser&quot;&gt;max-parallel-http-connections-in-a-browser&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http2-and-java-current-status&quot;&gt;http2-and-java-current-status&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;innovating-with-http-2.0-server-push&quot;&gt;innovating-with-http-2.0-server-push&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/28630108/http2-is-minifying-js-concatenate-js-css-and-using-sprites-no-longer-needed&quot;&gt;http2-is-minifying-js-concatenate-js-css-and-using-spritewith-spdys(with-spdy)-no-longer-needed&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;difference-between-http-pipeling-and-http-multiplexing-with-spdy&quot;&gt;difference-between-http-pipeling-and-http-multiplexing-with-spdy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 11 Oct 2015 10:48:37 +0800</pubDate>
+        <link>http://yourdomain.com/2015/10/11/frontend-fundamental-http-2-0.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/10/11/frontend-fundamental-http-2-0.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Frontend Fundamental - HTTP 1.1</title>
@@ -729,26 +1035,6 @@ In this article, I will cover topics from basic features, headers to useful prac
         <pubDate>Thu, 29 Aug 2013 21:35:00 +0800</pubDate>
         <link>http://yourdomain.com/2013/08/29/basic-things-about-octopress-dot-dot-dot.html</link>
         <guid isPermaLink="true">http://yourdomain.com/2013/08/29/basic-things-about-octopress-dot-dot-dot.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>new post</title>
-        <description>&lt;p&gt;&lt;strong&gt;WoW&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is a sentance.&lt;/p&gt;
-
-&lt;p&gt;Here is another!&lt;/p&gt;
-
-&lt;p&gt;wow why here are so many sentance and this one it’s toooooooooooooooooooooooooooooo long!&lt;/p&gt;
-
-&lt;figure class=&quot;code-highlight-figure&quot;&gt;&lt;figcaption class=&quot;code-highlight-caption&quot;&gt;&lt;span class=&quot;code-highlight-caption-title&quot;&gt;code snippet!&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&quot;code-highlight&quot;&gt;&lt;pre class=&quot;code-highlight-pre&quot;&gt;&lt;div data-line=&quot;1&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arrayLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&quot;2&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elementN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Wed, 26 Jun 2013 17:41:00 +0800</pubDate>
-        <link>http://yourdomain.com/2013/06/26/new-post.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2013/06/26/new-post.html</guid>
         
         
       </item>
