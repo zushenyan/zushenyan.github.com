@@ -14,7 +14,7 @@ Since SOP forbids this way, then why do we still need to access data from other 
 # AJAX
 One way to access cross domain resource without violating SOP is to use current server which sends pages to our browser as a proxy.
 
-By doing this, fetching cross domain resources is our server's job now since **SOP only works on client side, not server side**.
+By doing this, fetching cross domain resources is our server's job now since **SOP only works on browser, not server**.
 
 > client's request <---> our server as proxy <---> another server
 

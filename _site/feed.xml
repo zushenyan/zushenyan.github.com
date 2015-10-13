@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 13 Oct 2015 18:23:26 +0800</pubDate>
-    <lastBuildDate>Tue, 13 Oct 2015 18:23:26 +0800</lastBuildDate>
+    <pubDate>Tue, 13 Oct 2015 18:27:45 +0800</pubDate>
+    <lastBuildDate>Tue, 13 Oct 2015 18:27:45 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -22,7 +22,7 @@
 &lt;h1 id=&quot;ajax&quot;&gt;AJAX&lt;/h1&gt;
 &lt;p&gt;One way to access cross domain resource without violating SOP is to use current server which sends pages to our browser as a proxy.&lt;/p&gt;
 
-&lt;p&gt;By doing this, fetching cross domain resources is our server’s job now since &lt;strong&gt;SOP only works on client side, not server side&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;By doing this, fetching cross domain resources is our server’s job now since &lt;strong&gt;SOP only works on browser, not server&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;client’s request &amp;lt;—&amp;gt; our server as proxy &amp;lt;—&amp;gt; another server&lt;/p&gt;
