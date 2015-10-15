@@ -4,7 +4,7 @@ title: "Frontend Fundamental - AJAX, JSONP and CORS"
 date: 2015-10-12T23:42:01+08:00
 ---
 
-Sometimes frontend noob like me will run into Same-Origin-Policy when deal with Ajax things. This article is a note to myself to get clear of what is it and how to deal with it when encounter.
+Sometimes frontend noob like me will run into Same-Origin-Policy when dealing with ajax things. This article is a note for myself to get clear of what is it and how to deal with it when encounter.
 
 # Same-Origin-Policy
 Same-Origin-Policy is a concept of preventing malicious script from getting sensitive data through [CCRF](Cross-site request forgery) and [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Under this policy, browser permits script in one page to access data in the other only if they are under the same domain.
