@@ -77,10 +77,12 @@ In some applications like stock market, online games and friends status, you nee
 The difference between traditional polling and long-polling is that long-polling sends a request, and **waits** until server responds and closes connection and finally, opens another one. When repeatedly doing this, we call it **keep-alive** connection.
 
 The Pros are:
+
 * Server side code remains unmodified in most case. Only need to change client side code.
 * Our data updates in a fancy manner, which leads our customers happy, profit!
 
 The Cons are:
+
 * Opening and closing connections repeatedly means unnecessary bandwidth cost.
 * Client sometimes gets unexpected results because long-polling fires requests regularly on a fixed time, however server might respond in longer or shorter time than what client expected.
 
