@@ -4,7 +4,7 @@ title: "Frontend Fundamental - Communication Techniques"
 date: 2015-10-13T18:38:11+08:00
 ---
 
-Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can't even explain to someone else what the heck are them clearly, and that's why I come up and write it down.
+Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can't even explain to someone else what the heck are they clearly, and that's why I come up and write it down.
 
 I will use Nodejs as backend with below demonstrations.
 
