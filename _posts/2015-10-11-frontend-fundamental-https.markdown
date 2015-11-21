@@ -15,9 +15,9 @@ HTTPS differs from HTTP at some points -
 # What is TLS/SSL?
 SSL stands for Secure Sockets Layer, and TLS stands for Transport Layer Security. They are both cryptographic protocol making network communication more secure.
 
-SSL is the predecessor to TSL. SSL was started by Netscape, and was upgraded to TSL in 1999 because Netscape was no more and thus no further maintenance from then on.
+SSL is the predecessor to TLS. SSL was started by Netscape, and was upgraded to TLS in 1999 because Netscape was no more and thus no further maintenance from then on.
 
-Today we still refer to TSL as SSL, because historically they are the same thing, only name changed.
+Today we still refer to TLS as SSL, because historically they are the same thing, only name changed.
 
 # How does it work?
 Generally, TLS/SSL works with **private key** ,**public key** and **certificate**.
