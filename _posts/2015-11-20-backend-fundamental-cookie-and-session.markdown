@@ -10,7 +10,7 @@ Currently I am working on a website with user account written with Node. I did h
 To engrave these concepts into my brain more deeper, I have to write it down, and this time, it will go advance rather than simply explaining "Cookie is this and Session is that. Done!"
 
 # Why Use Cookie & Session?
-HTTP is a stateless protocol, which means it forgets anything about information it carries last time. In order to maintain a persistent communication between client and server, cookie and session are invented.
+HTTP is a stateless protocol, which means it forgets anything about information it carried last time. In order to maintain a persistent communication between client and server, cookie and session were invented.
 
 # Cookie
 Cookie is a traditional way to save **non-sensitive** user informations in browsers. To sum up the feature of Cookie:
