@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 21 Nov 2015 23:36:56 +0800</pubDate>
-    <lastBuildDate>Sat, 21 Nov 2015 23:36:56 +0800</lastBuildDate>
+    <pubDate>Thu, 10 Dec 2015 03:31:49 +0800</pubDate>
+    <lastBuildDate>Thu, 10 Dec 2015 03:31:49 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -18,7 +18,7 @@
 &lt;p&gt;To engrave these concepts into my brain more deeper, I have to write it down, and this time, it will go advance rather than simply explaining “Cookie is this and Session is that. Done!”&lt;/p&gt;
 
 &lt;h1 id=&quot;why-use-cookie--session&quot;&gt;Why Use Cookie &amp;amp; Session?&lt;/h1&gt;
-&lt;p&gt;HTTP is a stateless protocol, which means it forgets anything about information it carries last time. In order to maintain a persistent communication between client and server, cookie and session are invented.&lt;/p&gt;
+&lt;p&gt;HTTP is a stateless protocol, which means it forgets anything about information it carried last time. In order to maintain a persistent communication between client and server, cookie and session were invented.&lt;/p&gt;
 
 &lt;h1 id=&quot;cookie&quot;&gt;Cookie&lt;/h1&gt;
 &lt;p&gt;Cookie is a traditional way to save &lt;strong&gt;non-sensitive&lt;/strong&gt; user informations in browsers. To sum up the feature of Cookie:&lt;/p&gt;
