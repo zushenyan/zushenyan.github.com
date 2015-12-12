@@ -11,5 +11,4 @@ Contact Me
 
 - [Github](https://github.com/zushenyan)
 - [Linkedin](tw.linkedin.com/in/zushenyan)
-- [Twitter](https://twitter.com/zushenyan)
 - zushenyan@gmail.com
