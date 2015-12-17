@@ -4,15 +4,15 @@ title: "Frontend Fundamental - AJAX, JSONP and CORS"
 date: 2015-10-12T23:42:01+08:00
 ---
 
-Sometimes frontend noob like me will run into Same-Origin-Policy when dealing with ajax things. This article is a note for myself to get clear of what is it and how to deal with it when encounter.
+Sometimes front-end noob like me will run into Same-Origin-Policy when dealing with ajax things. This article is a note for myself to get clear of what is it and how to deal with it when encounter.
 
 # Same-Origin-Policy
-Same-Origin-Policy is a concept of preventing malicious script from getting sensitive data through [CCRF](Cross-site request forgery) and [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Under this policy, browser permits script in one page to access data in the other only if they are under the same domain.
+Same-Origin-Policy is a concept of preventing malicious script from getting sensitive data through [CCRF](Cross-site request forgery) and [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Under this policy, browser can access resources only if current document and target server are under the same domain.
 
-Since SOP forbids this way, then why do we still need to access data from other domain? The reason is that in web development, sometimes we store resources like html, css and js on different server/domain in order to reduce the burden of server. Another reason is that today's web  is RESTful, which means we operate another server from different domain in browser with public API they provide.
+The question is, why do we need to access data from other domain? The reason is that in web development, sometimes we store resources like html, css and js on different server/domain in order to reduce the burden of server. Another reason is that today's web is RESTful, which means client sends request to server to get operation on resources.
 
 # AJAX
-One way to access cross domain resource without violating SOP is to use current server which sends pages to our browser as a proxy.
+One way to access cross domain resource without violating SOP is using current server that sends resources to us as a proxy.
 
 By doing this, fetching cross domain resources is our server's job now since **SOP only works on browser, not server**.
 

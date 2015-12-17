@@ -12,7 +12,7 @@ Before moving on, knowing what exactly is Asynchronous is essential.
 
 Synchronous, contrary to Asynchronous, means blocking. That means computer can only run a task at one time. Before finishing this one, another will not start.
 
-When we mention about Asynchronous, we are referring to non-blocking, which means, computer can run a tasks without "blocking" other tasks.
+When we mention about Asynchronous, we are referring to non-blocking, which means, computer runs a tasks without "blocking" other tasks.
 
 And don't confuse Asynchronous with words Concurrency or Parallel, they are different things.
 
@@ -23,12 +23,11 @@ Concurrent is a concept of having a group of tasks sharing an execution thread w
 # How does it work in JavaScript?
 JavaScript is an event-driven language and it uses an event-loop to get codes run in asynchronous. JavaScript is also called single-threaded language because it can only run a piece of code at a time.
 
-So, does that mean JavaScript is really a single-threaded language? Hmm, not accurate. No matter JavaScript is on either client side(browsers) or server side(Node.js), there is actually a thread pool underneath it.
+So, does that mean JavaScript is really a single-threaded language? Hmm, not accurate. No matter what platform JavaScript is on, either client side(browsers) or server side(Node.js), there is actually a thread pool underneath it.
 
-After digging here and there on the web, I realized to explicitly explain how does it work is a huge thing, and it really hurts people
-s head. For the sake of simplicity, here is my simple version:
+After digging here and there on the web, I realized to explicitly explain how does it work is a huge thing, and it really hurts your head. For the sake of simplicity, here is my simple version:
 
-JavaScript on both client side and server side use one thread for code execution, another one for taking care of event loop, and all of others for handling events and triggering handlers. Whenever interpreter runs into async code like `button.click()`(UI events) or `fs.readFile()` (I/O events), it pushes callbacks into an event queue, and after all things in main function are done, it pops callbacks in queue to get these executed.
+JavaScript on both client and server side use one thread for code execution, another one for taking care of event loop, and all of others for handling events and triggering handlers. Whenever interpreter runs into async code like `button.click()`(UI events) or `fs.readFile()` (I/O events), it pushes callbacks into an event queue, and after all things in main function are done, it pops callbacks in queue to get these executed.
 
 And...that's it. :P
 
