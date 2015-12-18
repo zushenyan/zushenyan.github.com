@@ -121,10 +121,10 @@ As for session ID security topic I'd recommend [here](http://security.stackexcha
 #### Signed Cookie
 In web development world, you will accidentally bump into a word - **Signed Cookie**. What is it? Basically, a signed cookie stores a value by appending a signature after it. According to frameworks, they claimed that by singing values, server can determine if this value is tampered, however there are some debates on this topic:
 
-* (Why is it insecure to store the session ID in a cookie directly?)[http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly]
-* (Why sign the cookie?)[https://github.com/expressjs/session/issues/68]
-* (Why doesn't this module store the raw session ID in the cookie directly?)[https://github.com/expressjs/session/issues/176]
-* (Signed session cookies. A good idea?)[http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea]
+* [Why is it insecure to store the session ID in a cookie directly?](http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly)
+* [Why sign the cookie?](https://github.com/expressjs/session/issues/68)
+* [Why doesn't this module store the raw session ID in the cookie directly?](https://github.com/expressjs/session/issues/176)
+* [Signed session cookies. A good idea?](http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea)
 
 I am not an expert at security so can't do any assertion. I will just leave it here.
 

@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Dec 2015 01:05:17 +0800</pubDate>
-    <lastBuildDate>Fri, 18 Dec 2015 01:05:17 +0800</lastBuildDate>
+    <pubDate>Sat, 19 Dec 2015 02:04:37 +0800</pubDate>
+    <lastBuildDate>Sat, 19 Dec 2015 02:04:37 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -1275,10 +1275,10 @@ X-Frame-Options&lt;/p&gt;
 &lt;p&gt;In web development world, you will accidentally bump into a word - &lt;strong&gt;Signed Cookie&lt;/strong&gt;. What is it? Basically, a signed cookie stores a value by appending a signature after it. According to frameworks, they claimed that by singing values, server can determine if this value is tampered, however there are some debates on this topic:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;(Why is it insecure to store the session ID in a cookie directly?)[http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly]&lt;/li&gt;
-  &lt;li&gt;(Why sign the cookie?)[https://github.com/expressjs/session/issues/68]&lt;/li&gt;
-  &lt;li&gt;(Why doesn’t this module store the raw session ID in the cookie directly?)[https://github.com/expressjs/session/issues/176]&lt;/li&gt;
-  &lt;li&gt;(Signed session cookies. A good idea?)[http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly&quot;&gt;Why is it insecure to store the session ID in a cookie directly?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/expressjs/session/issues/68&quot;&gt;Why sign the cookie?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/expressjs/session/issues/176&quot;&gt;Why doesn’t this module store the raw session ID in the cookie directly?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea&quot;&gt;Signed session cookies. A good idea?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;I am not an expert at security so can’t do any assertion. I will just leave it here.&lt;/p&gt;
