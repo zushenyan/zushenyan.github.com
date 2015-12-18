@@ -5,7 +5,7 @@ date: 2015-10-26T22:24:59+08:00
 ---
 
 # Purpose
-Just a learning note here. There are already tons of glorious posts talking about this topic, so don't expect to see something super edge, extreme frontier technology show here.
+Just a learning note here. There are already tons of glorious posts talking about this topic, so don't expect to see something super edge, extreme frontier technology here.
 
 # What is asynchronous?
 Before moving on, knowing what exactly is Asynchronous is essential.
