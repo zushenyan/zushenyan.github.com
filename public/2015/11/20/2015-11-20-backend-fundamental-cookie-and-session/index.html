@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Yet Another Cookie &amp;amp; Session Explanation?Currently I am working on a website with user account written with Node. I did have some backend experien">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Andrew Yan">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Backend Fundamental - Cookie and Session"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Code Monkey"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Backend Fundamental - Cookie and Session - Code Monkey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Code Monkey</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Backend Fundamental - Cookie and Session</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2015-11-20
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Yet-Another-Cookie-amp-Session-Explanation"><a href="#Yet-Another-Cookie-amp-Session-Explanation" class="headerlink" title="Yet Another Cookie &amp; Session Explanation?"></a>Yet Another Cookie &amp; Session Explanation?</h1><p>Currently I am working on a website with user account written with Node. I did have some backend experience though, but it was around 2 years ago. Grabbing memories back needs some effort.</p>
+<p>To engrave these concepts into my brain more deeper, I have to write it down, and this time, it will go advance rather than simply explaining “Cookie is this and Session is that. Done!”</p>
+<h1 id="Why-Use-Cookie-amp-Session"><a href="#Why-Use-Cookie-amp-Session" class="headerlink" title="Why Use Cookie &amp; Session?"></a>Why Use Cookie &amp; Session?</h1><p>HTTP is a stateless protocol, which means it forgets anything about information it carried last time. In order to maintain a persistent communication between client and server, cookie and session were invented.</p>
+<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie is a traditional way to save <strong>non-sensitive</strong> user informations in browsers. To sum up the feature of Cookie:</p>
+<ul>
+<li>Cookie is a key-value set.</li>
+<li>Cookie is sent via HTTP.</li>
+<li>Cookie is an attribute of HTTP header.</li>
+<li>Every cookie has its own attributes:<ul>
+<li>Domain - tells the browser which domain it belongs to. Usually this should be current resource’s top domain. If you set it to <code>.com</code>, every sub-domain of <code>.com</code> like <code>google.com</code> will be able to access this cookie.</li>
+<li>Path - almost identical to the <code>domain</code> attribute, but only relative to current resource’s top domain. This tells the browser when to send this cookie on what path.</li>
+<li>Expires - tells the browser to delete this cookie on a specified date.</li>
+<li>Max-Age - tells the browser to delete this cookie on a specified time relative to now in second.</li>
+<li>Secure - can only be sent via HTTPS or not. Make it on for more serious security concern.</li>
+<li>HttpOnly - should be allowed to access by JavaScript or not. Normally it’s on to prevent from Cross-Site-Script attack.</li>
+</ul>
+</li>
+<li>Can only support up to 4096 bytes in size.</li>
+</ul>
+<p>When I mention about <strong>non-sensitive</strong> informations I mean:</p>
+<ul>
+<li>Session ID - most websites nowadays no longer store “shopping cart” or anything user-sensitive in the cookie. Instead, They store an unique ID generated by the server for looking up corresponding user at server side database.</li>
+<li>Personal Preferences - the background user like, the font size user preferred…etc.</li>
+<li>Browsing Habits - remember login, the last page user visited, the browsing histories of one user…etc.</li>
+</ul>
+<p>The reason why cookie should never store sensitive data like username, password or credit card number is that cookies are more easily to be intercepted or tampered. Though you can send cookies by <strong>https</strong> or using <strong>signed cookie</strong>(which will be introduced latter) to store hashed data, exposing more informations means lower the cost and difficulty of cracking, and thus the best way is don’t even store sensitive data to the cookie.</p>
+<p>Typical ways to set cookie in Node:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line">app.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> rawCookie = req.get(<span class="string">"cookie"</span>);</div><div class="line">  <span class="keyword">var</span> cookie = &#123;<span class="attr">count</span>: <span class="number">1</span>&#125;;</div><div class="line">  <span class="keyword">if</span>(rawCookie)&#123;</div><div class="line">    cookie.count = <span class="built_in">parseInt</span>(rawCookie.split(<span class="string">"="</span>)[<span class="number">1</span>]);</div><div class="line">    cookie.count++;</div><div class="line">  &#125;</div><div class="line">  res.append(<span class="string">"set-cookie"</span>, <span class="string">"count="</span> + cookie.count + <span class="string">";max-age=5"</span>);</div><div class="line">  res.send(<span class="string">"count: "</span> + cookie.count);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
+<p>This will increase <code>count</code> by one when user visits <code>localhost:3000</code> in 5 seconds. If user doesn’t visit again in 5 seconds, set count to 1.</p>
+<p>Accessing to cookie is such a pain, right? <code>cookie-parse</code> to the rescue!</p>
+<p><code>npm install cookie-parse</code> and then…</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</div><div class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">"cookie-parser"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line">app.use(cookieParser());</div><div class="line"></div><div class="line">app.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> count = <span class="built_in">parseInt</span>(req.cookies.count, <span class="number">10</span>);</div><div class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</div><div class="line">  res.cookie(<span class="string">"count"</span>, count.toString(), &#123;<span class="attr">maxAge</span>: <span class="number">5000</span>&#125;);</div><div class="line">  res.send(<span class="string">"count: "</span> + count);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
+<p>Tada! I am sure there are something like <code>cookie-parser</code> which exists in other languages.</p>
+<h1 id="Common-Variation-Of-Cookies"><a href="#Common-Variation-Of-Cookies" class="headerlink" title="Common Variation Of Cookies"></a>Common Variation Of Cookies</h1><h4 id="Session-Cookie"><a href="#Session-Cookie" class="headerlink" title="Session Cookie"></a>Session Cookie</h4><p>Session cookie is contrary to persistent cookie(or just called it cookie) and only lives when user is still browsing the website. When user closes the browser, the session cookie is deleted by the browser as well.</p>
+<p>A common usage of session cookie is storing session ID. Session ID is an unique ID generated by the server and was stored when connection is established. Session ID is used for letting the server know who the current user is in order to look up relative informations in the database.</p>
+<p>Setting a session cookie is simple - just leave <code>expires</code> and <code>maxAge</code> attributes empty.</p>
+<p>Use <code>npm install express-session</code> for saving time of building another wheel.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line">app.use(<span class="built_in">require</span>(<span class="string">"express-session"</span>)(&#123;</div><div class="line">  <span class="attr">secret</span>: <span class="string">"i am a secret"</span>,</div><div class="line">  <span class="attr">resave</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">saveUninitialized</span>: <span class="literal">true</span></div><div class="line">&#125;));</div><div class="line"></div><div class="line">app.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> count = req.session.count;</div><div class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</div><div class="line">  req.session.count = count;</div><div class="line">  res.send(<span class="string">"count: "</span> + req.session.count);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
+<p>By using <code>express-session</code>, a cookie named <code>connect.sid</code> will be stored with a <strong>hashed value plus a signature aside</strong> in the browser.</p>
+<p>As for session ID security topic I’d recommend <a href="http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly" target="_blank" rel="external">here</a> for further reading.</p>
+<h4 id="Signed-Cookie"><a href="#Signed-Cookie" class="headerlink" title="Signed Cookie"></a>Signed Cookie</h4><p>In web development world, you will accidentally bump into a word - <strong>Signed Cookie</strong>. What is it? Basically, a signed cookie stores a value by appending a signature after it. According to frameworks, they claimed that by singing values, server can determine if this value is tampered, however there are some debates on this topic:</p>
+<ul>
+<li><a href="http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly" target="_blank" rel="external">Why is it insecure to store the session ID in a cookie directly?</a></li>
+<li><a href="https://github.com/expressjs/session/issues/68" target="_blank" rel="external">Why sign the cookie?</a></li>
+<li><a href="https://github.com/expressjs/session/issues/176" target="_blank" rel="external">Why doesn’t this module store the raw session ID in the cookie directly?</a></li>
+<li><a href="http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea" target="_blank" rel="external">Signed session cookies. A good idea?</a></li>
+</ul>
+<p>I am not an expert at security so can’t do any assertion. I will just leave it here.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</div><div class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">"cookie-parser"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line">app.use(cookieParser(<span class="string">"write down your secret here"</span>));</div><div class="line"></div><div class="line">app.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> count = <span class="built_in">parseInt</span>(req.signedCookies.count, <span class="number">10</span>);</div><div class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</div><div class="line">  res.cookie(<span class="string">"count"</span>, count, &#123;<span class="attr">signed</span>: <span class="literal">true</span>&#125;);</div><div class="line">  res.send(<span class="string">"count: "</span> + count);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
+<p>This is a showcase of how to use signed cookie in Node with express’ extension module. Signature changes whenever <code>count</code> changes.</p>
+<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>We have dealt with storing informations on the client side, so what exactly session is? Well, session is just an description of state that when the connection between client and server is alive, session lives, when connection closes, session ends.</p>
+<p>The main task that session runs is telling the server which one is the current client by giving each client an unique id, it’s called session ID. There are several possible places to store the session ID:</p>
+<h4 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h4><p>Fast, but not practical. Let’s assume you have prepared a database for storing the actual data of users, and only store session ID in memory, and use session ID to look up corresponding user informations in database, but in most cases, we expect hundreds of clients to maintain its’ session between server, which means these session data will eat up some part of memory, which it’s not a smart move, and plus, you will have to deal with data sharing problem like race condition in concurrent environments.</p>
+<h4 id="Cookie-1"><a href="#Cookie-1" class="headerlink" title="Cookie"></a>Cookie</h4><p>A common place to store session ID. Usually used with database where actual user information lays.</p>
+<h4 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h4><p>We also generate something corresponding to the session ID for indexing the actual place where user information belongs to and still have to combine forces of memory and cookie to store our session ID, why? Because indexing in database is way more time costly than indexing in memory.</p>
+<p>Here I use <a href="http://redis.io/" target="_blank" rel="external">Redis</a> to give a quick database showcase. Install package file from Redis to benefit full support.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</div><div class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">"express-session"</span>);</div><div class="line"><span class="keyword">var</span> db = <span class="built_in">require</span>(<span class="string">"redis"</span>).createClient();</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line">db.on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, reply</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(err);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">db.on(<span class="string">"connect"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, reply</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"connected to database..."</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.use(session(&#123;</div><div class="line">    <span class="attr">secret</span>: <span class="string">"such secret much safe wow"</span>,</div><div class="line">    <span class="attr">resave</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">saveUninitialized</span>: <span class="literal">true</span>,</div><div class="line">  &#125;));</div><div class="line"></div><div class="line">app.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> count = <span class="number">1</span>;</div><div class="line">  db.hget([req.session.id, <span class="string">"count"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">err, reply</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err)&#123;<span class="built_in">console</span>.log(err); <span class="keyword">return</span>;&#125;</div><div class="line">    <span class="keyword">if</span>(reply)&#123;</div><div class="line">      count = ++reply;</div><div class="line">      db.hset([req.session.id, <span class="string">"count"</span>, count], logErr);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123; db.hset([req.session.id, <span class="string">"count"</span>, count], logErr); &#125;</div><div class="line">    res.send(<span class="string">"count: "</span> + count);</div><div class="line">  &#125;)</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logErr</span>(<span class="params">err, reply</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(err)&#123; <span class="built_in">console</span>.log(err); &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Web development is all about security. When developers want to take advantages of cookie and session, some principles should be concerned:</p>
+<ul>
+<li>Cookie should not store sensitive data.</li>
+<li>Set cookie’s <code>secure</code> attribute on if HTTPS is available.</li>
+<li>Set cookie’s <code>HttpOnly</code> attribute on if possible to prevent man-in-the-middle from tampering.</li>
+<li>Use Signed Cookie technique to have signed values.</li>
+<li>If you still consider Signed Cookies are not secure enough, deal it like you deal with passwords.</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank" rel="external">Wikipedia - HTTP Cookie</a></li>
+<li><a href="http://stackoverflow.com/questions/706858/what-information-is-ok-to-store-in-cookies" target="_blank" rel="external">What information is OK to store in cookies?</a></li>
+<li><a href="http://stackoverflow.com/questions/11897965/what-are-signed-cookies-in-connect-expressjs" target="_blank" rel="external">What are “signed” cookies in connect/expressjs?</a></li>
+<li><a href="http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea" target="_blank" rel="external">Signed session cookies. A good idea?</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/node-lessons/cookie-session.html" target="_blank" rel="external">cookie 和 session</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/zushen.yan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/zushenyan?tab=repositories" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://tw.linkedin.com/in/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
