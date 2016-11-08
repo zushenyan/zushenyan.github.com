@@ -1,20 +1,369 @@
-extends partial/layout
+<!DOCTYPE html>
+<html lang="en">
 
-block site_title
-    != page.title + " · " + config.title
+<!-- Head tag -->
+<head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-block container
-    include mixins/post
-    +post(page)
+    <!--Description-->
+    
+        <meta name="description" content="PurposeA study note for myself.
+Tools I Use
+Nodejs
+I will use Nodejs as server side foundation. No expressjs or some other fancy libraries here. Only ">
+    
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+    <!--Author-->
+    
+        <meta name="author" content="Andrew Yan">
+    
 
-block copyright
-    include partial/copyright
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Frontend Fundamental - HTTP 1.1"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Code Monkey"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Frontend Fundamental - HTTP 1.1 - Code Monkey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Code Monkey</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Frontend Fundamental - HTTP 1.1</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2015-10-10
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h1><p>A study note for myself.</p>
+<h1 id="Tools-I-Use"><a href="#Tools-I-Use" class="headerlink" title="Tools I Use"></a>Tools I Use</h1><ul>
+<li>Nodejs<ul>
+<li>I will use Nodejs as server side foundation. No expressjs or some other fancy libraries here. Only vanilla Nodejs you need to know.</li>
+</ul>
+</li>
+<li>Curl<ul>
+<li>A powerful command line tool to transfer data from or to server. It’s builtin if users are using Mac or Linux OS.</li>
+</ul>
+</li>
+<li>Chrome<ul>
+<li>A happy browser.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>HTTP protocol is a fundamental when it comes to nowadays web. No matter you are an frontend or backend guy, knowing it is surely an important thing.<br>In this article, I will cover topics from basic features, headers to useful practices.</p>
+<h1 id="HTTP-Architecture"><a href="#HTTP-Architecture" class="headerlink" title="HTTP Architecture"></a>HTTP Architecture</h1><p>In version 1.0, it was <strong>multiple connection</strong>, which means it opens a new connection per request/response. To solve the overhead of establishing connection for each request/response, version 1.1 comes with <strong>persistent connection</strong>, which means only uses a single connection for subsequent request/response to solve the establishing overhead.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/HTTP_persistent_connection.svg" alt="from wikipedia"></p>
+<p>Image from <a href="http-persistent-connection">wikipedia</a>.</p>
+<h1 id="HTTP-Basic-Features"><a href="#HTTP-Basic-Features" class="headerlink" title="HTTP Basic Features"></a>HTTP Basic Features</h1><ul>
+<li>Media independent - Any types can be exchanged between client and server as long as they know what types each other are sending to.</li>
+<li>Stateless - Server won’t record anything about each other, like how long the connection last and blah blah blah… However you can write extra codes to record things.</li>
+</ul>
+<h1 id="HTTP-Status-Codes"><a href="#HTTP-Status-Codes" class="headerlink" title="HTTP Status Codes"></a>HTTP Status Codes</h1><p>When server responses, it returns a 3-digit number back which tells client some kind of informations. Here I only listed partial content. For full list of status code check <a href="http-status-code">here</a>.</p>
+<ul>
+<li>1xx - Pure information to inform client.<ul>
+<li>100 - Continue.</li>
+<li>101 - Switch protocol.</li>
+</ul>
+</li>
+<li>2xx - Success.<ul>
+<li>200 - Ok.</li>
+<li>201 - Resource is created or request is completed.</li>
+</ul>
+</li>
+<li>3xx - Redirection.<ul>
+<li>301 - Moved permanently. Request URI has moved to an new URL.</li>
+<li>307 - Moved temporary.Request URI has temporary moved to an new URL.</li>
+</ul>
+</li>
+<li>4xx - Client error.<ul>
+<li>403 - Forbidden. Requested page was forbidden to access.</li>
+<li>404 - Not found.</li>
+</ul>
+</li>
+<li>5xx - Server error.<ul>
+<li>500 - Internal error. Server met unexpected problem.</li>
+<li>503 - Service unavailable. Server temporary down.</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTTP-Methods"><a href="#HTTP-Methods" class="headerlink" title="HTTP Methods"></a>HTTP Methods</h1><p>HTTP defines methods to indicate what action should be performed on server side.</p>
+<ul>
+<li>GET      - Retrieves data from server with given URI.</li>
+<li>POST    - Sends data to server. For example, sending forms, upload files.</li>
+<li>PUT      - Creates(if doesn’t exist) or updates target resource with new uploaded one.</li>
+<li>DELETE  - Removes target resource with given URI.</li>
+<li>HEAD    - Identical to GET, but only interested in head content.</li>
+<li>CONNECT - Converts request into a TCP/IP tunnel.</li>
+<li>OPTIONS - Describes communication options with server.</li>
+<li>TRACE    - Echoes received request so that client can see if there are any modification from intermediate servers.</li>
+<li>PATCH    - Updates partial modification to a resource.</li>
+</ul>
+<p>Here are some examples:</p>
+<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>Our server looks like:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</div><div class="line">  response.writeHeader(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</div><div class="line">  response.end(<span class="string">"Hello World!"</span>);</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure></p>
+<p>With <code>curl -v http://localhost:3000</code>, you will get:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">* Rebuilt URL to: http://localhost:3000/</div><div class="line">*   Trying ::1...</div><div class="line">* Connected to localhost (::1) port 3000 (#0)</div><div class="line">&gt; GET / HTTP/1.1</div><div class="line">&gt; Host: localhost:3000</div><div class="line">&gt; User-Agent: curl/7.43.0</div><div class="line">&gt; Accept: */*</div><div class="line">&gt;</div><div class="line">&lt; HTTP/1.1 200 OK</div><div class="line">&lt; Content-Type: text/plain</div><div class="line">&lt; Date: Sat, 10 Oct 2015 07:44:31 GMT</div><div class="line">&lt; Connection: keep-alive</div><div class="line">&lt; Transfer-Encoding: chunked</div><div class="line">&lt;</div><div class="line">* Connection #0 to host localhost left intact</div><div class="line">Hello World!%</div></pre></td></tr></table></figure></p>
+<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><p>Server:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</div><div class="line">  request.on(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunks</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(chunks.toString());</div><div class="line">    response.end();</div><div class="line">  &#125;);</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure></p>
+<p>With <code>curl -X POST -d @style.css -v http://localhost:3000</code>, server side console prints:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">server is running...</div><div class="line">div &#123;  color: red;&#125;</div></pre></td></tr></table></figure></p>
+<p>Our style.css on disk looks like:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="HTTP-Headers"><a href="#HTTP-Headers" class="headerlink" title="HTTP Headers"></a>HTTP Headers</h1><p>There are tons of headers http protocol has. Here only list some popular headers. For full list checkout <a href="header-list">here</a>:</p>
+<p>In general, there are three types of header:</p>
+<ul>
+<li>General header - Works with both request and response.<ul>
+<li>Connection        - Indicates what type of method should be used for communication.</li>
+<li>Date              - The time this message was sent.</li>
+<li>Cache-Control     - Indicates the conditions to cache or not, which I will cover in practice later.</li>
+<li>Upgrade           - Tells what additional protocols it supports and would like to switch if client/server available these protocols.</li>
+</ul>
+</li>
+<li>Request header - only works with request.<ul>
+<li>Accept            - What Content-Type it accepts.</li>
+<li>Accept-Encoding    - What Content-Encoding it accepts.</li>
+<li>Cookie            - By using cookie header field, client can send cookie to server.</li>
+<li>User-Agent        - Client’s identity. For example, Mozilla/4.0, IE/10.0…</li>
+</ul>
+</li>
+<li>Response header - only works with response.<ul>
+<li>Content-Encoding  - Tells what type of encoding has been applied to the entity body(<a href="entity-message-1">explanation</a>).</li>
+<li>Etag              - Used to tag version or identity for a file.</li>
+<li>Expires            - Gives a date after which the response is considered stale.</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTTP-Headers-in-Practice"><a href="#HTTP-Headers-in-Practice" class="headerlink" title="HTTP Headers in Practice"></a>HTTP Headers in Practice</h1><h4 id="Content-Encoding"><a href="#Content-Encoding" class="headerlink" title="Content-Encoding"></a>Content-Encoding</h4><p>Content-Encoding is often used in sending files with minimal size as possible. Imagine a scenario you have minified all of your files - your html, css and js. All things look great, right? But actually, you can take it further by enabling Content-Encoding with gzip.</p>
+<p>Server:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">var</span> zlib = <span class="built_in">require</span>(<span class="string">"zlib"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> page = <span class="literal">null</span>;</div><div class="line"></div><div class="line">fs.readFile(<span class="string">"./index.html"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(err)&#123;</div><div class="line">    <span class="keyword">throw</span> err;</div><div class="line">  &#125;</div><div class="line">  page = file.toString();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> header = &#123;</div><div class="line">  <span class="string">"Content-Type"</span>: <span class="string">"text/html"</span>,</div><div class="line">  <span class="string">"Content-Encoding"</span>: <span class="string">"gzip"</span>,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</div><div class="line">  zlib.gzip(page, <span class="function"><span class="keyword">function</span>(<span class="params">err, buff</span>)</span>&#123;</div><div class="line">    response.writeHeader(<span class="number">200</span>, header);</div><div class="line">    response.end(buff);</div><div class="line">  &#125;);</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure></p>
+<p>Send request by using Chrome</p>
+<p><img src="/images/content-encoding.png" alt="content-encoding"></p>
+<p>As you can see, the file size has reduced from 3.7kb to 2.0kb, which is roughly 50% size reduction.</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>Server:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> html = <span class="literal">null</span>;</div><div class="line"><span class="keyword">var</span> css = <span class="literal">null</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> htmlHeader = &#123;</div><div class="line">  <span class="string">"Content-Type"</span>: <span class="string">"text/html"</span>,</div><div class="line">  <span class="string">"Cache-Control"</span>: <span class="string">"private, max-age=8"</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cssHeader = <span class="built_in">Object</span>.assign(&#123;&#125;, htmlHeader);</div><div class="line">cssHeader[<span class="string">"Content-Type"</span>] = <span class="string">"text/css"</span>;</div><div class="line"></div><div class="line">fs.readFile(<span class="string">"./index.html"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(err)&#123;</div><div class="line">    <span class="keyword">throw</span> err;</div><div class="line">  &#125;</div><div class="line">  html = file.toString();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">fs.readFile(<span class="string">"./style.css"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(err)&#123;</div><div class="line">    <span class="keyword">throw</span> err;</div><div class="line">  &#125;</div><div class="line">  css = file.toString();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(request.url === <span class="string">"/"</span>)&#123;</div><div class="line">    response.writeHeader(<span class="number">200</span>, htmlHeader);</div><div class="line">    response.end(html);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(request.url === <span class="string">"/style.css"</span>)&#123;</div><div class="line">    response.writeHeader(<span class="number">200</span>, cssHeader);</div><div class="line">    response.end(css);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    response.writeHeader(<span class="number">404</span>);</div><div class="line">    response.end();</div><div class="line">  &#125;</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure></p>
+<p>Header field <code>Cache-Control: private, max-age=8</code> means only cacheable on client machine and cache it for 8 seconds.</p>
+<p><img src="/images/cache-control.png" alt="cache-control"></p>
+<p>Our css file is cached thanks to <code>Cache-Control</code>.</p>
+<p>Note: By clicking refresh icon, Chrome will send a request with header <code>Cache-Control: max-age=0</code> which will force Chrome itself to refetch files it requests. If you want to see cache behaviors, press enter in the URL search bar instead.</p>
+<h1 id="http-equiv"><a href="#http-equiv" class="headerlink" title="http-equiv"></a>http-equiv</h1><p>Not everyone is able to reach server configuration. In order to access request header, a typical usage in frontend is via <code>http-equiv</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"2"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>With <code>http-equiv</code>, you can do almost what you can do as on the server side.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Status_codes" target="_blank" rel="external">Wikipedia</a></li>
+<li><a href="http://www.tutorialspoint.com/http/index.htm" target="_blank" rel="external">TutorialPoint</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="external">MDN Http protocol</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/" target="_blank" rel="external">html5rocks content security policy</a></li>
+<li><a href="entity-message-1">Entity body and message body question 1</a></li>
+<li><a href="entity-message-2">Entity body and message body question 2</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/zushen.yan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/zushenyan?tab=repositories" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://tw.linkedin.com/in/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

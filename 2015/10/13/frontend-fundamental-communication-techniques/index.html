@@ -1,20 +1,309 @@
-extends partial/layout
+<!DOCTYPE html>
+<html lang="en">
 
-block site_title
-    != page.title + " · " + config.title
+<!-- Head tag -->
+<head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-block container
-    include mixins/post
-    +post(page)
+    <!--Description-->
+    
+        <meta name="description" content="Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engi">
+    
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+    <!--Author-->
+    
+        <meta name="author" content="Andrew Yan">
+    
 
-block copyright
-    include partial/copyright
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Frontend Fundamental - Communication Techniques"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Code Monkey"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Frontend Fundamental - Communication Techniques - Code Monkey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Code Monkey</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Frontend Fundamental - Communication Techniques</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2015-10-13
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can’t even explain to someone else what the heck are they clearly, and that’s why I come up and write it down.</p>
+<p>I will use Nodejs as backend with below demonstrations.</p>
+<h1 id="Polling"><a href="#Polling" class="headerlink" title="Polling"></a>Polling</h1><p>The most common technique when a client wants to fetch data from server.</p>
+<p>Client establishes a connection between server, sends request, server responds and closes this connection.</p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> index = <span class="literal">null</span>;</div><div class="line"></div><div class="line">fs.readFile(<span class="string">"./index.html"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(err)&#123;</div><div class="line">    <span class="keyword">throw</span> err;</div><div class="line">  &#125;</div><div class="line">  index = file.toString();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(req.url === <span class="string">"/"</span>)&#123;</div><div class="line">    res.writeHeader(<span class="number">200</span>, &#123;</div><div class="line">      <span class="string">"content-type"</span>: <span class="string">"text/html"</span></div><div class="line">    &#125;);</div><div class="line">    res.end(index);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(req.url === <span class="string">"/polling"</span>)&#123;</div><div class="line">    res.writeHeader(<span class="number">200</span>, &#123;</div><div class="line">      <span class="string">"content-type"</span>: <span class="string">"text/plain"</span></div><div class="line">    &#125;);</div><div class="line">    res.end(<span class="string">"polling~"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">      <span class="keyword">var</span> text = <span class="built_in">document</span>.getElementById(<span class="string">"text"</span>);</div><div class="line">      <span class="keyword">var</span> ajax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">      ajax.addEventListener(<span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(ajax.readyState === <span class="number">4</span>)&#123;</div><div class="line">          <span class="keyword">if</span>(ajax.status === <span class="number">200</span>)&#123;</div><div class="line">            text.appendChild(<span class="built_in">document</span>.createTextNode(ajax.responseText));</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">      ajax.open(<span class="string">"GET"</span>, <span class="string">"http://localhost:3000/polling"</span>);</div><div class="line">      ajax.send();</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/ct/polling.png" alt="polling"></p>
+<h1 id="Long-Polling"><a href="#Long-Polling" class="headerlink" title="Long-Polling"></a>Long-Polling</h1><p>In some applications like stock market, online games and friends status, you need to get <strong>realtime</strong> data from server. Before Websocket was born, web programmers usually use long-polling ajax technique to simulate realtime data exchange.</p>
+<p>The difference between traditional polling and long-polling is that long-polling sends a request, and <strong>waits</strong> until server responds and closes connection and finally, opens another one. When repeatedly doing this, we call it <strong>keep-alive</strong> connection.</p>
+<p>The Pros are:</p>
+<ul>
+<li>Server side code remains unmodified in most case. Only need to change client side code.</li>
+<li>Our data updates in a fancy manner, which leads our customers happy, profit!</li>
+</ul>
+<p>The Cons are:</p>
+<ul>
+<li>Opening and closing connections repeatedly means unnecessary bandwidth cost.</li>
+<li>Client sometimes gets unexpected results because long-polling fires requests regularly on a fixed time, however server might respond in longer or shorter time than what client expected.</li>
+</ul>
+<p>Let’s add following codes to simulate time of processing.<br><figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">else <span class="keyword">if</span>(req.url === <span class="string">"/polling"</span>)&#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    res.writeHeader(<span class="number">200</span>, &#123;</div><div class="line">      <span class="string">"content-type"</span>: <span class="string">"text/plain"</span></div><div class="line">    &#125;);</div><div class="line">    res.end(<span class="string">"polling~"</span>);</div><div class="line">  &#125;, <span class="number">2500</span>);</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">      <span class="keyword">var</span> text = <span class="built_in">document</span>.getElementById(<span class="string">"text"</span>);</div><div class="line"></div><div class="line">      (<span class="function"><span class="keyword">function</span> <span class="title">longPolling</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">          <span class="keyword">var</span> ajax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">          ajax.addEventListener(<span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(ajax.readyState === <span class="number">4</span>)&#123;</div><div class="line">              <span class="keyword">if</span>(ajax.status === <span class="number">200</span>)&#123;</div><div class="line">                text.appendChild(<span class="built_in">document</span>.createTextNode(ajax.responseText));</div><div class="line">                longPolling();</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">          &#125;);</div><div class="line">          ajax.open(<span class="string">"GET"</span>, <span class="string">"http://localhost:3000/polling"</span>);</div><div class="line">          ajax.send();</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">      &#125;)();</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/ct/long-polling.png" alt="long-polling"></p>
+<h1 id="Websocket"><a href="#Websocket" class="headerlink" title="Websocket"></a>Websocket</h1><p>Luckily, we don’t need to simulate realtime anymore (unless you need to support old browsers) because now we get the <strong>real realtime</strong> technique with Websocket!</p>
+<p>Websocket lets client and server to communicate with each other asynchronously, which means, client and server can send and get data at the same time without waiting for each other (non-blocking).</p>
+<p>Modern browsers (not you IE8 and IE9!) this day all support native Websocket, but for the cross platform compatibility, many people use 3rd party libraries to get rid of handling compatibility themselves.</p>
+<p>In this example I use <code>socket.io</code> as our Websocket helper: <code>npm install socket.io</code></p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">"http"</span>).createServer(handler);</div><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">"socket.io"</span>)(app);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  fs.readFile(__dirname + <span class="string">"/index.html"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err)&#123;</div><div class="line">      res.writeHeader(<span class="number">500</span>, &#123;</div><div class="line">        <span class="string">"content-type"</span>: <span class="string">"text/plain"</span></div><div class="line">      &#125;);</div><div class="line">      res.end(filename + <span class="string">" : not found"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    res.writeHeader(<span class="number">200</span>, &#123;</div><div class="line">      <span class="string">"content-type"</span>: <span class="string">"text.html"</span></div><div class="line">    &#125;);</div><div class="line">    res.end(file);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">io.on(<span class="string">"connection"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>)</span>&#123;</div><div class="line">  socket.emit(<span class="string">"server_says"</span>, <span class="string">"Hello Client"</span>);</div><div class="line">  socket.on(<span class="string">"client_says"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.socket.io/socket.io-1.3.7.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button"</span>&gt;</span>Hello Server!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">      <span class="keyword">var</span> text = <span class="built_in">document</span>.getElementById(<span class="string">"text"</span>);</div><div class="line">      <span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"button"</span>);</div><div class="line">      <span class="keyword">var</span> socket = io(<span class="string">"http://localhost:3000"</span>);</div><div class="line">      socket.on(<span class="string">"server_says"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        text.appendChild(<span class="built_in">document</span>.createTextNode(data));</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">      button.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">        socket.emit(<span class="string">"client_says"</span>, <span class="string">"Hello Server!"</span>);</div><div class="line">      &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>As you can see in Chrome developer’s network tool, websocket helps us maintain a persistent connection.<br><img src="/images/ct/websocket-client.png" alt="websocket client"></p>
+<p><img src="/images/ct/websocket-server.png" alt="websocket server"></p>
+<h1 id="WebRTC"><a href="#WebRTC" class="headerlink" title="WebRTC"></a>WebRTC</h1><p>Unlike Websocket’s client-to-server structure, Web Real-Time Communication is peer-to-peer structure which allows browsers to exchange data like video, audio with each other directly. Browser-to-browser, in this fashion, data exchange is more efficient.</p>
+<p>So, regarding the tag of “browser-to-browser”, that means we don’t need a server, right? Sadly, you do, but server here merely acts as a connector, not a proxy, as a result, data won’t be passed through server.</p>
+<p>WebRTC currently is not being widely supported by all browsers. See <a href="http://caniuse.com/#feat=rtcpeerconnection" target="_blank" rel="external">here</a>.</p>
+<p>Here I use <a href="http://peerjs.com/" target="_blank" rel="external">peerjs</a> as 3rd party helper to overcome cross browser compatibility.</p>
+<p><code>npm install peer</code> for our server.</p>
+<p><code>npm install peerjs</code> for client side, but here I use direct link instead:</p>
+<p><code>&lt;script src=&quot;http://cdn.rawgit.com/peers/peerjs/master/dist/peer.js&quot;&gt;&lt;/script&gt;</code></p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> PeerServer = <span class="built_in">require</span>(<span class="string">'peer'</span>).PeerServer;</div><div class="line"><span class="keyword">var</span> server = PeerServer(&#123;<span class="attr">port</span>: <span class="number">3000</span>, <span class="attr">path</span>: <span class="string">"/"</span>&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.rawgit.com/peers/peerjs/master/dist/peer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"output"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">      <span class="keyword">var</span> output = <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>);</div><div class="line">      <span class="keyword">var</span> peer1 = <span class="keyword">new</span> Peer(<span class="string">"Mike"</span>, &#123;<span class="attr">host</span>: <span class="string">"localhost"</span>, <span class="attr">port</span>: <span class="number">3000</span>, <span class="attr">path</span>: <span class="string">"/"</span>&#125;);</div><div class="line">      <span class="keyword">var</span> peer2 = <span class="keyword">new</span> Peer(<span class="string">"Bob"</span>, &#123;<span class="attr">host</span>: <span class="string">"localhost"</span>, <span class="attr">port</span>: <span class="number">3000</span>, <span class="attr">path</span>: <span class="string">"/"</span>&#125;);</div><div class="line"></div><div class="line">      peer1.on(<span class="string">"open"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        appendMessage(peer1.id + <span class="string">" is ready to connect with others."</span>);</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">      peer1.on(<span class="string">"connection"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</div><div class="line">        c.on(<span class="string">"open"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">          c.send(<span class="string">"Hello "</span> + c.peer);</div><div class="line">        &#125;);</div><div class="line">        c.on(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">          appendMessage(data);</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">      <span class="keyword">var</span> c = peer2.connect(peer1.id);</div><div class="line">      c.on(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        appendMessage(data);</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        c.send(<span class="string">"Hello "</span> + c.peer);</div><div class="line">      &#125;, <span class="number">1000</span>);</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">function</span> <span class="title">appendMessage</span>(<span class="params">message</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</div><div class="line">        p.appendChild(<span class="built_in">document</span>.createTextNode(message));</div><div class="line">        output.appendChild(p);</div><div class="line">      &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/ct/webrtc-result.png" alt="webRTC result"></p>
+<h1 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h1><p>Unlike Websocket which opens a duplex connection for client and server, server push (aka server sent) only opens a unidirectional connection for client and server. Server, as an message sender, only push message to client. Client, as a message receiver, only accepts message from server.</p>
+<p>Since there is a Websocket for duplex connection, why would someone only want one-way connection? In come scenarios like news feeds or friends notifications, client requests only once for page, and waits for following responses from server.</p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(req.headers.accept === <span class="string">"text/event-stream"</span>)&#123;</div><div class="line">    <span class="keyword">if</span>(req.url === <span class="string">"/events"</span>)&#123;</div><div class="line">      res.writeHeader(<span class="number">200</span>, &#123;</div><div class="line">        <span class="string">"content-type"</span>: <span class="string">"text/event-stream"</span></div><div class="line">      &#125;);</div><div class="line">      setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        res.write(<span class="string">"data: Hello Server Push!\n\n"</span>);</div><div class="line">      &#125;, <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    res.writeHeader(<span class="number">200</span>, &#123; <span class="string">"content-type"</span>: <span class="string">"text/html"</span>&#125;);</div><div class="line">    res.write(fs.readFileSync(__dirname + <span class="string">"/index.html"</span>));</div><div class="line">    res.end();</div><div class="line">  &#125;</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"server is running..."</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"output"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">      <span class="keyword">var</span> output = <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>);</div><div class="line">      <span class="keyword">var</span> es = <span class="keyword">new</span> EventSource(<span class="string">"/events"</span>);</div><div class="line"></div><div class="line">      es.addEventListener(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">        appendMessage(e.data);</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">function</span> <span class="title">appendMessage</span>(<span class="params">message</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</div><div class="line">        p.appendChild(<span class="built_in">document</span>.createTextNode(message));</div><div class="line">        output.appendChild(p);</div><div class="line">      &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/ct/server-push.png" alt="server push"></p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="http://stackoverflow.com/questions/10028770/html5-websocket-vs-long-polling-vs-ajax-vs-webrtc-vs-server-sent-events" target="_blank" rel="external">stackoverflow: websocket vs long-polling vs webrtc vs server sent events</a></li>
+<li><a href="http://techoctave.com/c7/posts/60-simple-long-polling-example-with-javascript-and-jquery/" target="_blank" rel="external">simple long-polling with javascript and jquery</a></li>
+<li><a href="http://stackoverflow.com/questions/11077857/what-are-long-polling-websockets-server-sent-events-sse-and-comet?lq=1" target="_blank" rel="external">stackoverflow: what are websockets, sse and comet?</a></li>
+<li><a href="https://medium.com/@denizozger/finding-the-right-node-js-websocket-implementation-b63bfca0539" target="_blank" rel="external">finding the right nodejs websocket implementation</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications" target="_blank" rel="external">MDN: writing websocket client applications</a></li>
+<li><a href="https://en.wikipedia.org/wiki/WebRTC" target="_blank" rel="external">webRTC on wikipedia</a></li>
+<li><a href="http://www.innoarchitech.com/what-is-webrtc-and-how-does-it-work/" target="_blank" rel="external">what is webrtc and how does it work</a></li>
+<li><a href="http://peerjs.com/" target="_blank" rel="external">peejs.com</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/eventsource/basics/?redirect_from_locale=tw" target="_blank" rel="external">Stream Updates with SSE</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/zushen.yan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/zushenyan?tab=repositories" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://tw.linkedin.com/in/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

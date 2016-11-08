@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Code Monkey</title>
-  
+  <subtitle>Notes for me!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -84,7 +84,7 @@
 <ul>
 <li>Progressive Enhancement - Provide a feature, upgrade it only when current environment supports advanced functionality.</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Please print this page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">	(function()&#123;</div><div class="line">		// append a button under text above.</div><div class="line">		// invoke print() when button is pressed.</div><div class="line">	&#125;)();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Please print this page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// append a button under text above.</span></div><div class="line">		<span class="comment">// invoke print() when button is pressed.</span></div><div class="line">	&#125;)();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>Assume client disabled JavaScript, show button if JavaScript is allowed.</p>
 <p><a href="https://www.w3.org/wiki/Graceful_degradation_versus_progressive_enhancement" target="_blank" rel="external">Reference</a></p>
 <blockquote>
@@ -721,8 +721,8 @@
   
   <entry>
     <title>Backend Fundamental - Cookie and Session</title>
-    <link href="http://yoursite.com/2015/11/20/2015-11-20-backend-fundamental-cookie-and-session/"/>
-    <id>http://yoursite.com/2015/11/20/2015-11-20-backend-fundamental-cookie-and-session/</id>
+    <link href="http://yoursite.com/2015/11/20/backend-fundamental-cookie-and-session/"/>
+    <id>http://yoursite.com/2015/11/20/backend-fundamental-cookie-and-session/</id>
     <published>2015-11-20T06:35:27.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -811,8 +811,8 @@
   
   <entry>
     <title>Asynchronous Programming in JavaScript</title>
-    <link href="http://yoursite.com/2015/10/26/2015-10-26-asynchronous-programming-in-javascript/"/>
-    <id>http://yoursite.com/2015/10/26/2015-10-26-asynchronous-programming-in-javascript/</id>
+    <link href="http://yoursite.com/2015/10/26/asynchronous-programming-in-javascript/"/>
+    <id>http://yoursite.com/2015/10/26/asynchronous-programming-in-javascript/</id>
     <published>2015-10-26T06:24:59.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -882,8 +882,8 @@
   
   <entry>
     <title>Frontend Fundamental - Communication Techniques</title>
-    <link href="http://yoursite.com/2015/10/13/2015-10-13-frontend-fundamental-communication-techniques/"/>
-    <id>http://yoursite.com/2015/10/13/2015-10-13-frontend-fundamental-communication-techniques/</id>
+    <link href="http://yoursite.com/2015/10/13/frontend-fundamental-communication-techniques/"/>
+    <id>http://yoursite.com/2015/10/13/frontend-fundamental-communication-techniques/</id>
     <published>2015-10-13T02:38:11.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -956,8 +956,8 @@
   
   <entry>
     <title>Frontend Fundamental - AJAX, JSONP and CORS</title>
-    <link href="http://yoursite.com/2015/10/12/2015-10-12-frontend-fundamental-ajax-jsonp-and-cors/"/>
-    <id>http://yoursite.com/2015/10/12/2015-10-12-frontend-fundamental-ajax-jsonp-and-cors/</id>
+    <link href="http://yoursite.com/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/"/>
+    <id>http://yoursite.com/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/</id>
     <published>2015-10-12T07:42:01.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1010,8 +1010,8 @@
   
   <entry>
     <title>Frontend Fundamental - HTTPS</title>
-    <link href="http://yoursite.com/2015/10/11/2015-10-11-frontend-fundamental-https/"/>
-    <id>http://yoursite.com/2015/10/11/2015-10-11-frontend-fundamental-https/</id>
+    <link href="http://yoursite.com/2015/10/11/frontend-fundamental-https/"/>
+    <id>http://yoursite.com/2015/10/11/frontend-fundamental-https/</id>
     <published>2015-10-10T23:30:50.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1136,8 +1136,8 @@
   
   <entry>
     <title>Frontend Fundamental - HTTP 2.0</title>
-    <link href="http://yoursite.com/2015/10/11/2015-10-11-frontend-fundamental-http-2-0/"/>
-    <id>http://yoursite.com/2015/10/11/2015-10-11-frontend-fundamental-http-2-0/</id>
+    <link href="http://yoursite.com/2015/10/11/frontend-fundamental-http-2-0/"/>
+    <id>http://yoursite.com/2015/10/11/frontend-fundamental-http-2-0/</id>
     <published>2015-10-10T18:48:37.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1205,8 +1205,8 @@
   
   <entry>
     <title>Frontend Fundamental - HTTP 1.1</title>
-    <link href="http://yoursite.com/2015/10/10/2015-10-10-frontend-fundamental-http-1-1/"/>
-    <id>http://yoursite.com/2015/10/10/2015-10-10-frontend-fundamental-http-1-1/</id>
+    <link href="http://yoursite.com/2015/10/10/frontend-fundamental-http-1-1/"/>
+    <id>http://yoursite.com/2015/10/10/frontend-fundamental-http-1-1/</id>
     <published>2015-10-09T20:37:59.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1337,8 +1337,8 @@
   
   <entry>
     <title>Realtime Syntax Highlight Editor on Web, How Is That Possible?</title>
-    <link href="http://yoursite.com/2013/10/16/2013-10-16-realtime-syntax-highlight-editor-on-web-how-is-that-possible/"/>
-    <id>http://yoursite.com/2013/10/16/2013-10-16-realtime-syntax-highlight-editor-on-web-how-is-that-possible/</id>
+    <link href="http://yoursite.com/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/"/>
+    <id>http://yoursite.com/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/</id>
     <published>2013-10-16T05:29:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1380,8 +1380,8 @@
   
   <entry>
     <title>Debug Pages On Phones With Weinre</title>
-    <link href="http://yoursite.com/2013/09/09/2013-09-09-debug-pages-on-phones-with-weinre/"/>
-    <id>http://yoursite.com/2013/09/09/2013-09-09-debug-pages-on-phones-with-weinre/</id>
+    <link href="http://yoursite.com/2013/09/09/debug-pages-on-phones-with-weinre/"/>
+    <id>http://yoursite.com/2013/09/09/debug-pages-on-phones-with-weinre/</id>
     <published>2013-09-09T05:29:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1444,8 +1444,8 @@
   
   <entry>
     <title>Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven</title>
-    <link href="http://yoursite.com/2013/09/07/2013-09-07-differences-between-syncasync/"/>
-    <id>http://yoursite.com/2013/09/07/2013-09-07-differences-between-syncasync/</id>
+    <link href="http://yoursite.com/2013/09/07/differences-between-syncasync/"/>
+    <id>http://yoursite.com/2013/09/07/differences-between-syncasync/</id>
     <published>2013-09-07T14:34:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1518,8 +1518,8 @@
   
   <entry>
     <title>JavaScript Module Pattern</title>
-    <link href="http://yoursite.com/2013/09/02/2013-09-02-javascript-module-pattern/"/>
-    <id>http://yoursite.com/2013/09/02/2013-09-02-javascript-module-pattern/</id>
+    <link href="http://yoursite.com/2013/09/02/javascript-module-pattern/"/>
+    <id>http://yoursite.com/2013/09/02/javascript-module-pattern/</id>
     <published>2013-09-02T15:57:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1540,8 +1540,8 @@
   
   <entry>
     <title>How To Call Parent Function in Child Class</title>
-    <link href="http://yoursite.com/2013/09/02/2013-09-02-how-to-call-paret-function-in-child-class/"/>
-    <id>http://yoursite.com/2013/09/02/2013-09-02-how-to-call-paret-function-in-child-class/</id>
+    <link href="http://yoursite.com/2013/09/02/how-to-call-paret-function-in-child-class/"/>
+    <id>http://yoursite.com/2013/09/02/how-to-call-paret-function-in-child-class/</id>
     <published>2013-09-02T15:39:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1565,8 +1565,8 @@
   
   <entry>
     <title>How to pass &quot;this&quot; into anonymous function</title>
-    <link href="http://yoursite.com/2013/08/29/2013-08-29-pass-this-into-anonymous-function/"/>
-    <id>http://yoursite.com/2013/08/29/2013-08-29-pass-this-into-anonymous-function/</id>
+    <link href="http://yoursite.com/2013/08/29/pass-this-into-anonymous-function/"/>
+    <id>http://yoursite.com/2013/08/29/pass-this-into-anonymous-function/</id>
     <published>2013-08-29T14:28:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1586,8 +1586,8 @@
   
   <entry>
     <title>Basic Things About Octopress...</title>
-    <link href="http://yoursite.com/2013/08/29/2013-08-29-basic-things-about-octopress-dot-dot-dot/"/>
-    <id>http://yoursite.com/2013/08/29/2013-08-29-basic-things-about-octopress-dot-dot-dot/</id>
+    <link href="http://yoursite.com/2013/08/29/basic-things-about-octopress-dot-dot-dot/"/>
+    <id>http://yoursite.com/2013/08/29/basic-things-about-octopress-dot-dot-dot/</id>
     <published>2013-08-29T13:35:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     
@@ -1616,8 +1616,8 @@
   
   <entry>
     <title>new post</title>
-    <link href="http://yoursite.com/2013/06/26/2013-06-26-new-post/"/>
-    <id>http://yoursite.com/2013/06/26/2013-06-26-new-post/</id>
+    <link href="http://yoursite.com/2013/06/26/new-post/"/>
+    <id>http://yoursite.com/2013/06/26/new-post/</id>
     <published>2013-06-26T09:41:00.000Z</published>
     <updated>2016-11-08T13:30:53.000Z</updated>
     

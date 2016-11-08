@@ -1,20 +1,304 @@
-extends partial/layout
+<!DOCTYPE html>
+<html lang="en">
 
-block site_title
-    != page.title + " · " + config.title
+<!-- Head tag -->
+<head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-block container
-    include mixins/post
-    +post(page)
+    <!--Description-->
+    
+        <meta name="description" content="What is HTTP 2.0?Since HTTP protocol was released, Web world has developed rapidly, and compared to the time in which HTTP was born, today’s Web conte">
+    
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+    <!--Author-->
+    
+        <meta name="author" content="Andrew Yan">
+    
 
-block copyright
-    include partial/copyright
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Frontend Fundamental - HTTP 2.0"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Code Monkey"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Frontend Fundamental - HTTP 2.0 - Code Monkey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Code Monkey</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Frontend Fundamental - HTTP 2.0</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2015-10-11
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="What-is-HTTP-2-0"><a href="#What-is-HTTP-2-0" class="headerlink" title="What is HTTP 2.0?"></a>What is HTTP 2.0?</h1><p>Since HTTP protocol was released, Web world has developed rapidly, and compared to the time in which HTTP was born, today’s Web content is way more richer, and due to the heavy request loading Web has evolved, HTTP 1.1 is not capable sooner or later. In order to handle the job, HTTP have to be updated.</p>
+<p>HTTP 2.0 is based on SPDY(pronounced speedy) which is an experiment networking protocol developed by Google. SPDY aims to improve performance and security. In Feb. 2015, Google announced that SPDY will soon be deprecated since there is already a standard - HTTP 2.0.</p>
+<h1 id="HTTP-2-0-Features-differences-to-HTTP-1-1"><a href="#HTTP-2-0-Features-differences-to-HTTP-1-1" class="headerlink" title="HTTP 2.0 Features (differences to HTTP 1.1)"></a>HTTP 2.0 Features (differences to HTTP 1.1)</h1><ul>
+<li>Communicate in binary, not textual.</li>
+<li>Multiplex</li>
+<li>Header compression</li>
+<li>Server push</li>
+</ul>
+<h4 id="Binary-Communication"><a href="#Binary-Communication" class="headerlink" title="Binary Communication"></a>Binary Communication</h4><p>In HTTP 1.1 textual way, there are <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.4" target="_blank" rel="external">4 ways to parse message</a> when in HTTP 2 there is only one way to parse, and hence its more efficient.</p>
+<h4 id="Multiplex"><a href="#Multiplex" class="headerlink" title="Multiplex"></a>Multiplex</h4><p>With HTTP 1.1, Most browsers create 6 to 8 connections to download resources from server in parallel; In HTTP 2.0, only one connection is needed. Not like HTTP 1.1, HTTP 2.0 is non-blocking. Client can send requests at once and get responses out of order, while HTTP 1.1 can only send request by request in a connection. It’s like a car driving through a tunnel, but only one at a time.</p>
+<h4 id="Header-compression"><a href="#Header-compression" class="headerlink" title="Header compression"></a>Header compression</h4><p>Even though there are already performance optimizations to compress our content, say <strong>image sprite, in-lining, resource bundle</strong>, headers still take space(say cookies, referer…), and for environment like mobile with limited bandwidth, it’s more crucial. That’s why we need header compression.</p>
+<h4 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h4><p>Server can send response without any request from client.</p>
+<p>Traditional scenario:</p>
+<blockquote>
+<p>Client: Hey server, I want index.html!</p>
+<p>Server: (Gives index.html)</p>
+<p>Client: Hey server, I want style.css!</p>
+<p>Server: (Gives style.css)</p>
+<p>Client: Thanks!</p>
+</blockquote>
+<p>With server push:</p>
+<blockquote>
+<p>Client: Hey server, I want index.html!</p>
+<p>Server: (Gives index.html, style.css and lots of resources client didn’t ask for but do need.)</p>
+<p>Client: Err…these are what I want! thanks!</p>
+</blockquote>
+<h1 id="Platforms-Support"><a href="#Platforms-Support" class="headerlink" title="Platforms Support"></a>Platforms Support</h1><p><a href="http://caniuse.com/#search=http2" target="_blank" rel="external">Can I use http2?</a></p>
+<p>Currently, except for some mobile browsers and old IE, most modern browsers support HTTP 2.0.</p>
+<h1 id="HTTP-2-0-In-Practice"><a href="#HTTP-2-0-In-Practice" class="headerlink" title="HTTP 2.0 In Practice"></a>HTTP 2.0 In Practice</h1><p>First install <code>node-http2</code> for Nodejs.</p>
+<p><code>npm install node-http2</code></p>
+<p>And from the <a href="HTTP/2 Frequently Asked Questions">HTTP/2 FAQ</a>, it says:</p>
+<blockquote>
+<h1 id="Does-HTTP-2-require-encryption"><a href="#Does-HTTP-2-require-encryption" class="headerlink" title="Does HTTP/2 require encryption?"></a>Does HTTP/2 require encryption?</h1><p>No. After extensive discussion, the Working Group did not have consensus to require the use of encryption (e.g., TLS) for the new protocol.</p>
+<p>However, some implementations have stated that they will only support HTTP/2 when it is used over an encrypted connection, and currently no browser supports HTTP/2 unencrypted.</p>
+</blockquote>
+<p>So prepare your certificate and private key, we still need them.</p>
+<p>Server:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http2 = <span class="built_in">require</span>(<span class="string">"http2"</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> options = &#123;</div><div class="line">  <span class="attr">key</span>: fs.readFileSync(<span class="string">"./server.key"</span>),</div><div class="line">  <span class="attr">cert</span>: fs.readFileSync(<span class="string">"./server.cert"</span>)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">http2.createServer(options, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  res.writeHead(<span class="number">200</span>, <span class="literal">null</span>, &#123;</div><div class="line">    <span class="string">"content-type"</span>: <span class="string">"text/plain"</span></div><div class="line">  &#125;);</div><div class="line">  res.end(<span class="string">"we are using http2 weeeeeeeee"</span>);</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"Server is running..."</span>);</div></pre></td></tr></table></figure></p>
+<p>Run it in <code>https</code> protocol with Chrome</p>
+<p><img src="/images/http2.png" alt="http2"></p>
+<p>In the protocol field, “h2” means we are using HTTP2 protocol.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="wikipedia-spdy">wikipedia-spdy</a></li>
+<li><a href="HTTP/2 Frequently Asked Questions">HTTP/2 Frequently Asked Questions</a></li>
+<li><a href="http2.akamai.com/">http2.akamai.com/</a></li>
+<li><a href="http2-demo">http2-demo</a></li>
+<li><a href="max-parallel-http-connections-in-a-browser">max-parallel-http-connections-in-a-browser</a></li>
+<li><a href="http2-and-java-current-status">http2-and-java-current-status</a></li>
+<li><a href="innovating-with-http-2.0-server-push">innovating-with-http-2.0-server-push</a></li>
+<li><a href="http://stackoverflow.com/questions/28630108/http2-is-minifying-js-concatenate-js-css-and-using-sprites-no-longer-needed" target="_blank" rel="external">http2-is-minifying-js-concatenate-js-css-and-using-spritewith-spdys(with-spdy)-no-longer-needed</a></li>
+<li><a href="difference-between-http-pipeling-and-http-multiplexing-with-spdy">difference-between-http-pipeling-and-http-multiplexing-with-spdy</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/zushen.yan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/zushenyan?tab=repositories" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://tw.linkedin.com/in/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
