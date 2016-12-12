@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-08T15:01:44.000Z</updated>
+  <updated>2016-12-12T15:02:58.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Merge Branch From Another Repo</title>
+    <link href="http://yoursite.com/2016/12/12/Merge-Branch-From-Another-Repo/"/>
+    <id>http://yoursite.com/2016/12/12/Merge-Branch-From-Another-Repo/</id>
+    <published>2016-12-12T14:38:26.000Z</published>
+    <updated>2016-12-12T15:02:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Just a quick TIL note here.</p>
+<p>If you have ever encountered a similar scenario:</p>
+<blockquote>
+<p>You have repo A and repo B.<br>Repo B is derived from repo A.<br>You are currently on repo B, and want to merge branch (or pick commit) from repo A.<br>How to achieve that?</p>
+</blockquote>
+<p>Here is what git command <code>remote</code> magically does:</p>
+<ol>
+<li><code>git remote add repoA addressOfRepoA</code></li>
+<li>Assume you are on <code>master</code> branch of repo B, and want to merge <code>master</code> branch from repo A.</li>
+<li><code>git pull repoA master</code></li>
+<li>Done.</li>
+</ol>
+<p>Actually an repo doesn’t have limitation on how many <code>remote repo</code> it can have, so if you run into similar case like me, hope this post help.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes" target="_blank" rel="external">Git Basics - Working with Remotes</a></li>
+<li><a href="http://stackoverflow.com/questions/2949738/git-merge-different-repositories" target="_blank" rel="external">StackOverflow - git merge different repositories</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Just a quick TIL note here.&lt;/p&gt;
+&lt;p&gt;If you have ever encountered a similar scenario:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You have repo A and repo B.&lt;br&gt;Re
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Front-end Job Interview Questions</title>
