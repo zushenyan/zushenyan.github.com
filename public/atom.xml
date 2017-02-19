@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-08T16:36:59.000Z</updated>
+  <updated>2017-02-19T04:07:50.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Introduction to Progressive Web App (PWA)</title>
+    <link href="http://yoursite.com/2017/02/13/Introduction-to-Progressive-Web-App-PWA/"/>
+    <id>http://yoursite.com/2017/02/13/Introduction-to-Progressive-Web-App-PWA/</id>
+    <published>2017-02-13T14:37:45.000Z</published>
+    <updated>2017-02-19T04:07:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="What-is-that"><a href="#What-is-that" class="headerlink" title="What is that?"></a>What is that?</h1><p>Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes 3 important features:</p>
+<ul>
+<li>Responsive - available on many devices: desktop, phone and tablet.</li>
+<li>Reliable - accessible even if the network is down.</li>
+<li>Fresh - always up-to-date, updating without getting through app store.</li>
+<li>Safe - can only be accessed via HTTPS.</li>
+<li>Discoverable - unlike native app, since it’s an web app, content should be discoverable by the search engines.</li>
+<li>Engaging - PWA can be access like an native app. You can access them by adding them to home screen, and provide them an seamless full screen experience.</li>
+</ul>
+<p>but that sounds very…unclear. We want to know how it was made right. Here is the <em>heart of Progressive Web App</em>:</p>
+<ul>
+<li><a href="https://w3c.github.io/ServiceWorker/" target="_blank" rel="external">Service Worker</a> - the first pillar of PWA. It’s an API that hijacks networking request, and responds browser with additional messages.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage" target="_blank" rel="external">Cache Storage</a> - the second pillar of PWA. A member of Web Storage. An API developer often use with Service Worker. It caches request as key and responds with cached value if corresponding key is found.</li>
+<li><a href="https://w3c.github.io/manifest/" target="_blank" rel="external">Web App Manifest</a> - a JSON-based manifest file provides ability to set things like app icon name or display mode and many other things.</li>
+</ul>
+<h1 id="Platform-support"><a href="#Platform-support" class="headerlink" title="Platform support"></a>Platform support</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/serviceworker" target="_blank" rel="external">service worker API on MDN</a></p>
+<p>In the current status, service worker is not available on iOS, which says your app still can’t benefit from PWA, but the good news is even if the working environment hasn’t support yet, your app will fallback to the traditional caching strategy. Your app still works without modifying codes!</p>
+<h1 id="PWA-vs-Native"><a href="#PWA-vs-Native" class="headerlink" title="PWA vs Native"></a>PWA vs Native</h1><p>PWA is an improvement to the web and user experience, making it more like an native app, but that doesn’t mean it’s going to replace native app or against native app on par.</p>
+<p>PWA is just a collection of features and it’s not a platform like native. A fair fight should be “browser vs native”.</p>
+<p>If you take a look at <a href="https://whatwebcando.today/" target="_blank" rel="external">what web can do</a>, you might think “cool I can finally develop something like native does on mobile!” However the current compatibility on iOS still has long way to go, if you take a look on those API closely, you will find out most of them only available on Chrome on Android.</p>
+<h1 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h1><p>Please check <a href="https://github.com/zushenyan/pwa-test" target="_blank" rel="external">pwa-test</a> written by me. It’s a simplified version of <a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0" target="_blank" rel="external">Your Frist Progressive Web App</a>.</p>
+<p>I don’t want to write every step down here, because, first, I am lazy, and more important, I think <a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0" target="_blank" rel="external">Your Frist Progressive Web App</a> has done a great job on tutoring. I believe it already provides all the details you need.</p>
+<p>However there are still some pitfalls when developing with service worker, in order to save your time, <a href="https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9" target="_blank" rel="external">here</a> you go.</p>
+<h1 id="Higher-level-API"><a href="#Higher-level-API" class="headerlink" title="Higher level API"></a>Higher level API</h1><p>After read all the tutorials, you found you have to write many codes to achieve PWA, but… you are a lazy programmer like me, and wondering “where’s the higher level API candy?” Well, people heard you. Here comes some candies!</p>
+<ul>
+<li><a href="https://github.com/GoogleChrome/sw-toolbox" target="_blank" rel="external">sw-toolbox</a> - a collection of service worker tools to help developing offline web app.</li>
+<li><a href="https://github.com/GoogleChrome/application-shell" target="_blank" rel="external">application-shell</a> - a helper for integrating service worker with building chain like gulp.</li>
+<li><a href="https://github.com/NekR/offline-plugin" target="_blank" rel="external">webpack-offline-plugin</a> - a webpack plugin for building offline web app.</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="http://blog.ionic.io/what-is-a-progressive-web-app/" target="_blank" rel="external">What is a progressive web app</a></li>
+<li><a href="https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/" target="_blank" rel="external">A Beginner’s Guide To Progressive Web Apps</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0" target="_blank" rel="external">Your Frist Progressive Web App</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/push-notifications/index.html?index=..%2F..%2Findex#6" target="_blank" rel="external">Push notifications</a></li>
+<li><a href="https://www.google.com.tw/search?safe=off&amp;q=pwa+vs+native&amp;oq=pwa+vs+&amp;gs_l=serp.3.1.0l7j0i10k1j0l2.44121.47105.0.48621.15.11.4.0.0.0.144.882.10j1.11.0....0...1c.1.64.serp..0.13.779.0..0i22i30k1.fl5zTNkR8kI" target="_blank" rel="external">Why “Progressive Web Apps vs. native” is the wrong question to ask</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;What-is-that&quot;&gt;&lt;a href=&quot;#What-is-that&quot; class=&quot;headerlink&quot; title=&quot;What is that?&quot;&gt;&lt;/a&gt;What is that?&lt;/h1&gt;&lt;p&gt;Buzz word time! Progressive 
+    
+    </summary>
+    
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+    
+      <category term="pwa" scheme="http://yoursite.com/tags/pwa/"/>
+    
+      <category term="mobile" scheme="http://yoursite.com/tags/mobile/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Choose a Lib/Framework</title>

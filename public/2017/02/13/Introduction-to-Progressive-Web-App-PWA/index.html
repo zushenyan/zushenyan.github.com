@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="What is that?Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user a">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Andrew Yan">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Introduction to Progressive Web App (PWA)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Code Monkey"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Introduction to Progressive Web App (PWA) - Code Monkey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Code Monkey</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Introduction to Progressive Web App (PWA)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2017-02-13
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/frontend/">#frontend</a> <a href="/tags/pwa/">#pwa</a> <a href="/tags/mobile/">#mobile</a> <a href="/tags/javascript/">#javascript</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="What-is-that"><a href="#What-is-that" class="headerlink" title="What is that?"></a>What is that?</h1><p>Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes 3 important features:</p>
+<ul>
+<li>Responsive - available on many devices: desktop, phone and tablet.</li>
+<li>Reliable - accessible even if the network is down.</li>
+<li>Fresh - always up-to-date, updating without getting through app store.</li>
+<li>Safe - can only be accessed via HTTPS.</li>
+<li>Discoverable - unlike native app, since it’s an web app, content should be discoverable by the search engines.</li>
+<li>Engaging - PWA can be access like an native app. You can access them by adding them to home screen, and provide them an seamless full screen experience.</li>
+</ul>
+<p>but that sounds very…unclear. We want to know how it was made right. Here is the <em>heart of Progressive Web App</em>:</p>
+<ul>
+<li><a href="https://w3c.github.io/ServiceWorker/" target="_blank" rel="external">Service Worker</a> - the first pillar of PWA. It’s an API that hijacks networking request, and responds browser with additional messages.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage" target="_blank" rel="external">Cache Storage</a> - the second pillar of PWA. A member of Web Storage. An API developer often use with Service Worker. It caches request as key and responds with cached value if corresponding key is found.</li>
+<li><a href="https://w3c.github.io/manifest/" target="_blank" rel="external">Web App Manifest</a> - a JSON-based manifest file provides ability to set things like app icon name or display mode and many other things.</li>
+</ul>
+<h1 id="Platform-support"><a href="#Platform-support" class="headerlink" title="Platform support"></a>Platform support</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/serviceworker" target="_blank" rel="external">service worker API on MDN</a></p>
+<p>In the current status, service worker is not available on iOS, which says your app still can’t benefit from PWA, but the good news is even if the working environment hasn’t support yet, your app will fallback to the traditional caching strategy. Your app still works without modifying codes!</p>
+<h1 id="PWA-vs-Native"><a href="#PWA-vs-Native" class="headerlink" title="PWA vs Native"></a>PWA vs Native</h1><p>PWA is an improvement to the web and user experience, making it more like an native app, but that doesn’t mean it’s going to replace native app or against native app on par.</p>
+<p>PWA is just a collection of features and it’s not a platform like native. A fair fight should be “browser vs native”.</p>
+<p>If you take a look at <a href="https://whatwebcando.today/" target="_blank" rel="external">what web can do</a>, you might think “cool I can finally develop something like native does on mobile!” However the current compatibility on iOS still has long way to go, if you take a look on those API closely, you will find out most of them only available on Chrome on Android.</p>
+<h1 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h1><p>Please check <a href="https://github.com/zushenyan/pwa-test" target="_blank" rel="external">pwa-test</a> written by me. It’s a simplified version of <a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0" target="_blank" rel="external">Your Frist Progressive Web App</a>.</p>
+<p>I don’t want to write every step down here, because, first, I am lazy, and more important, I think <a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0" target="_blank" rel="external">Your Frist Progressive Web App</a> has done a great job on tutoring. I believe it already provides all the details you need.</p>
+<p>However there are still some pitfalls when developing with service worker, in order to save your time, <a href="https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9" target="_blank" rel="external">here</a> you go.</p>
+<h1 id="Higher-level-API"><a href="#Higher-level-API" class="headerlink" title="Higher level API"></a>Higher level API</h1><p>After read all the tutorials, you found you have to write many codes to achieve PWA, but… you are a lazy programmer like me, and wondering “where’s the higher level API candy?” Well, people heard you. Here comes some candies!</p>
+<ul>
+<li><a href="https://github.com/GoogleChrome/sw-toolbox" target="_blank" rel="external">sw-toolbox</a> - a collection of service worker tools to help developing offline web app.</li>
+<li><a href="https://github.com/GoogleChrome/application-shell" target="_blank" rel="external">application-shell</a> - a helper for integrating service worker with building chain like gulp.</li>
+<li><a href="https://github.com/NekR/offline-plugin" target="_blank" rel="external">webpack-offline-plugin</a> - a webpack plugin for building offline web app.</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="http://blog.ionic.io/what-is-a-progressive-web-app/" target="_blank" rel="external">What is a progressive web app</a></li>
+<li><a href="https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/" target="_blank" rel="external">A Beginner’s Guide To Progressive Web Apps</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0" target="_blank" rel="external">Your Frist Progressive Web App</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/push-notifications/index.html?index=..%2F..%2Findex#6" target="_blank" rel="external">Push notifications</a></li>
+<li><a href="https://www.google.com.tw/search?safe=off&amp;q=pwa+vs+native&amp;oq=pwa+vs+&amp;gs_l=serp.3.1.0l7j0i10k1j0l2.44121.47105.0.48621.15.11.4.0.0.0.144.882.10j1.11.0....0...1c.1.64.serp..0.13.779.0..0i22i30k1.fl5zTNkR8kI" target="_blank" rel="external">Why “Progressive Web Apps vs. native” is the wrong question to ask</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/zushen.yan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://tw.linkedin.com/in/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
