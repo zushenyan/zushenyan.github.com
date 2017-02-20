@@ -5,7 +5,7 @@ tags: [frontend, pwa, mobile, javascript]
 ---
 
 # What is that?
-Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes 3 important features:
+Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes the following features:
 
 - Responsive - available on many devices: desktop, phone and tablet.
 - Reliable - accessible even if the network is down.
@@ -43,7 +43,7 @@ However there are still some pitfalls when developing with service worker, in or
 After read all the tutorials, you found you have to write many codes to achieve PWA, but... you are a lazy programmer like me, and wondering "where's the higher level API candy?" Well, people heard you. Here comes some candies!
 
 - [sw-toolbox](https://github.com/GoogleChrome/sw-toolbox) - a collection of service worker tools to help developing offline web app.
-- [application-shell](https://github.com/GoogleChrome/application-shell) - a helper for integrating service worker with building chain like gulp.
+- [sw-precache](https://github.com/GoogleChrome/sw-precache) - a helper for integrating service worker with building chain like gulp.
 - [webpack-offline-plugin](https://github.com/NekR/offline-plugin) - a webpack plugin for building offline web app.
 
 # References
