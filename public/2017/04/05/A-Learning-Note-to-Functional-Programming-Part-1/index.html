@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="What makes FP great?Functional Programming (FP) has been a trendy word for a while, but I wonder what makes people think FP is good? Here is my conclu">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Andrew Yan">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="A Learning Note to Functional Programming - Part 1"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Code Monkey"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>A Learning Note to Functional Programming - Part 1 - Code Monkey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Code Monkey</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>A Learning Note to Functional Programming - Part 1</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2017-04-05
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/meta/">#meta</a> <a href="/tags/js/">#js</a> <a href="/tags/functional-programming/">#functional programming</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="What-makes-FP-great"><a href="#What-makes-FP-great" class="headerlink" title="What makes FP great?"></a>What makes FP great?</h1><p>Functional Programming (FP) has been a trendy word for a while, but I wonder what makes people think FP is good? Here is my conclusion:</p>
+<h2 id="The-need-for-concurrent-parallelism"><a href="#The-need-for-concurrent-parallelism" class="headerlink" title="The need for concurrent/parallelism"></a>The need for concurrent/parallelism</h2><p>Since we got more than one core on CPU, we started thinking on how to process tasks more efficiently.</p>
+<p>To achieve that we have to adapt the power of concurrent/parallelism, however the biggest problem of multithreading is <strong>how do we make sure data shared between threads is safe</strong>.</p>
+<p>In imperative programming (or languages that are not encourage immutable), things are <strong>mutable</strong>, a variable can be modified by reference without creating a new one, but when it comes to multithreading, with mutable variables, developers will have to use <code>locks</code> to manage access permission between threads, but this technique doesn’t solve this problem nicely, because the natural of variables are still mutable, once it causes bugs, it will cost developers lots of time to spot and solve issues.</p>
+<p>Another point that makes FP shining is <strong>declarative</strong>. Declarative means telling computer what to do, and imperative, on the contrary, means arranging every command manually, step by step. The benefit of declarative is yielding the rights to rearrange commands for the compiler. This approach saves a lot of line of code, making your code more cleaner and easier to read.</p>
+<h1 id="Features-of-FP"><a href="#Features-of-FP" class="headerlink" title="Features of FP"></a>Features of FP</h1><h2 id="First-class-Function"><a href="#First-class-Function" class="headerlink" title="First-class Function"></a>First-class Function</h2><p>It means you can pass functions as parameters or return functions as an result.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// take function as a parameter</span></div><div class="line"><span class="keyword">const</span> foo = <span class="function">(<span class="params">cb</span>) =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"hello world"</span>);</div><div class="line">  cb();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// return function as an result</span></div><div class="line"><span class="keyword">const</span> bar = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>);</div><div class="line">  &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Pure-Functions"><a href="#Pure-Functions" class="headerlink" title="Pure Functions"></a>Pure Functions</h2><p>Pure function means - every time you pass the same argument, you should get the same result. If a function violates the rule, then the function is <strong>impure</strong>. Things that can lead to impure are like depending on external result or IO.</p>
+<h4 id="depending-on-external-result"><a href="#depending-on-external-result" class="headerlink" title="depending on external result"></a>depending on external result</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> add5 = <span class="function">(<span class="params">num</span>) =&gt;</span> num + a;</div><div class="line"></div><div class="line">a = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<h4 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// promise will return either result or failure.</span></div><div class="line"><span class="keyword">const</span> fetchData = <span class="function"><span class="params">()</span> =&gt;</span> fetch(<span class="string">"http://some-awesome-service/api"</span>);</div><div class="line"></div><div class="line">fetchData()</div><div class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> <span class="built_in">console</span>.log(result))</div><div class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err));</div></pre></td></tr></table></figure>
+<h2 id="Referential-Transparency"><a href="#Referential-Transparency" class="headerlink" title="Referential Transparency"></a>Referential Transparency</h2><p>You can replace an expression with it’s result without changing the meaning of program.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> add5 = <span class="function">(<span class="params">num</span>) =&gt;</span> num + <span class="number">5</span>;</div><div class="line"><span class="keyword">const</span> add10 = <span class="function">(<span class="params">num</span>) =&gt;</span> add5(add5(num));</div><div class="line"></div><div class="line"><span class="comment">// or replace with</span></div><div class="line"><span class="keyword">const</span> add10 = <span class="function">(<span class="params">num</span>) =&gt;</span> num + <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<h2 id="Lazy-Evaluation"><a href="#Lazy-Evaluation" class="headerlink" title="Lazy Evaluation"></a>Lazy Evaluation</h2><p>There is another term called <strong>strict(eager) vs non-strict(lazy) evaluation</strong>. Lazy evaluation means computing the result only when it’s needed. Let’s take <code>filter</code> for example, if we want to filter out the first 3 of the even numbers from a list of numbers, strict evaluation traverses all the elements in the list and return first 3 even numbers, but lazy evaluation will traverse until it meets the third odd number.</p>
+<p>This approach might greatly improve performance because it doesn’t traverse all the elements, but the down side is making evaluation on time complexity harder.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// because JavaScript doesn't have lazy evaluation built-in, here I use lodash to help demonstration.</span></div><div class="line"></div><div class="line"><span class="comment">// lodash will only perform lazy evaluation when elements length is larger than 200.</span></div><div class="line"><span class="keyword">const</span> arr = _.range(<span class="number">200</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> counter1 = <span class="number">0</span>;</div><div class="line"><span class="keyword">let</span> counter2 = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">// strict evaluation</span></div><div class="line">arr.filter(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</div><div class="line">    counter1++;</div><div class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</div><div class="line">  &#125;)</div><div class="line">  .slice(<span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="comment">// lazy evaluation</span></div><div class="line">_(arr).filter(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</div><div class="line">    counter2++;</div><div class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</div><div class="line">  &#125;)</div><div class="line">  .take(<span class="number">3</span>)</div><div class="line">  .value();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(counter1); <span class="comment">// 200</span></div><div class="line"><span class="built_in">console</span>.log(counter2); <span class="comment">// 5</span></div></pre></td></tr></table></figure>
+<h2 id="Declarative-vs-Imperative"><a href="#Declarative-vs-Imperative" class="headerlink" title="Declarative vs Imperative"></a>Declarative vs Imperative</h2><p>Declarative tells compiler what to do instead of telling commands step by step. By using declarative we hide the working details, which gives compiler the ability to rearrange the execution steps of commands.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"></div><div class="line"><span class="comment">// declarative</span></div><div class="line">arr.map(<span class="function"><span class="params">ele</span> =&gt;</span> ele + <span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="comment">// imperative (and mutable)</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</div><div class="line">  arr[i] += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="external">Functional Programming on Wikipedia</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0" target="_blank" rel="external">Master the JavaScript Interview: What is Functional Programming?</a></li>
+<li><a href="https://www.amazon.com/Seven-Concurrency-Models-Weeks-Programmers/dp/1937785653" target="_blank" rel="external">Seven Concurrency Models Weeks Programmers</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/zushen.yan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://tw.linkedin.com/in/zushenyan" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

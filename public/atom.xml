@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-20T12:37:09.000Z</updated>
+  <updated>2017-04-05T16:08:46.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>A Learning Note to Functional Programming - Part 1</title>
+    <link href="http://yoursite.com/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/"/>
+    <id>http://yoursite.com/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/</id>
+    <published>2017-04-05T14:08:57.000Z</published>
+    <updated>2017-04-05T16:08:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="What-makes-FP-great"><a href="#What-makes-FP-great" class="headerlink" title="What makes FP great?"></a>What makes FP great?</h1><p>Functional Programming (FP) has been a trendy word for a while, but I wonder what makes people think FP is good? Here is my conclusion:</p>
+<h2 id="The-need-for-concurrent-parallelism"><a href="#The-need-for-concurrent-parallelism" class="headerlink" title="The need for concurrent/parallelism"></a>The need for concurrent/parallelism</h2><p>Since we got more than one core on CPU, we started thinking on how to process tasks more efficiently.</p>
+<p>To achieve that we have to adapt the power of concurrent/parallelism, however the biggest problem of multithreading is <strong>how do we make sure data shared between threads is safe</strong>.</p>
+<p>In imperative programming (or languages that are not encourage immutable), things are <strong>mutable</strong>, a variable can be modified by reference without creating a new one, but when it comes to multithreading, with mutable variables, developers will have to use <code>locks</code> to manage access permission between threads, but this technique doesn’t solve this problem nicely, because the natural of variables are still mutable, once it causes bugs, it will cost developers lots of time to spot and solve issues.</p>
+<p>Another point that makes FP shining is <strong>declarative</strong>. Declarative means telling computer what to do, and imperative, on the contrary, means arranging every command manually, step by step. The benefit of declarative is yielding the rights to rearrange commands for the compiler. This approach saves a lot of line of code, making your code more cleaner and easier to read.</p>
+<h1 id="Features-of-FP"><a href="#Features-of-FP" class="headerlink" title="Features of FP"></a>Features of FP</h1><h2 id="First-class-Function"><a href="#First-class-Function" class="headerlink" title="First-class Function"></a>First-class Function</h2><p>It means you can pass functions as parameters or return functions as an result.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// take function as a parameter</span></div><div class="line"><span class="keyword">const</span> foo = <span class="function">(<span class="params">cb</span>) =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"hello world"</span>);</div><div class="line">  cb();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// return function as an result</span></div><div class="line"><span class="keyword">const</span> bar = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>);</div><div class="line">  &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Pure-Functions"><a href="#Pure-Functions" class="headerlink" title="Pure Functions"></a>Pure Functions</h2><p>Pure function means - every time you pass the same argument, you should get the same result. If a function violates the rule, then the function is <strong>impure</strong>. Things that can lead to impure are like depending on external result or IO.</p>
+<h4 id="depending-on-external-result"><a href="#depending-on-external-result" class="headerlink" title="depending on external result"></a>depending on external result</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> add5 = <span class="function">(<span class="params">num</span>) =&gt;</span> num + a;</div><div class="line"></div><div class="line">a = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<h4 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// promise will return either result or failure.</span></div><div class="line"><span class="keyword">const</span> fetchData = <span class="function"><span class="params">()</span> =&gt;</span> fetch(<span class="string">"http://some-awesome-service/api"</span>);</div><div class="line"></div><div class="line">fetchData()</div><div class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> <span class="built_in">console</span>.log(result))</div><div class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err));</div></pre></td></tr></table></figure>
+<h2 id="Referential-Transparency"><a href="#Referential-Transparency" class="headerlink" title="Referential Transparency"></a>Referential Transparency</h2><p>You can replace an expression with it’s result without changing the meaning of program.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> add5 = <span class="function">(<span class="params">num</span>) =&gt;</span> num + <span class="number">5</span>;</div><div class="line"><span class="keyword">const</span> add10 = <span class="function">(<span class="params">num</span>) =&gt;</span> add5(add5(num));</div><div class="line"></div><div class="line"><span class="comment">// or replace with</span></div><div class="line"><span class="keyword">const</span> add10 = <span class="function">(<span class="params">num</span>) =&gt;</span> num + <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<h2 id="Lazy-Evaluation"><a href="#Lazy-Evaluation" class="headerlink" title="Lazy Evaluation"></a>Lazy Evaluation</h2><p>There is another term called <strong>strict(eager) vs non-strict(lazy) evaluation</strong>. Lazy evaluation means computing the result only when it’s needed. Let’s take <code>filter</code> for example, if we want to filter out the first 3 of the even numbers from a list of numbers, strict evaluation traverses all the elements in the list and return first 3 even numbers, but lazy evaluation will traverse until it meets the third odd number.</p>
+<p>This approach might greatly improve performance because it doesn’t traverse all the elements, but the down side is making evaluation on time complexity harder.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// because JavaScript doesn't have lazy evaluation built-in, here I use lodash to help demonstration.</span></div><div class="line"></div><div class="line"><span class="comment">// lodash will only perform lazy evaluation when elements length is larger than 200.</span></div><div class="line"><span class="keyword">const</span> arr = _.range(<span class="number">200</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> counter1 = <span class="number">0</span>;</div><div class="line"><span class="keyword">let</span> counter2 = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">// strict evaluation</span></div><div class="line">arr.filter(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</div><div class="line">    counter1++;</div><div class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</div><div class="line">  &#125;)</div><div class="line">  .slice(<span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="comment">// lazy evaluation</span></div><div class="line">_(arr).filter(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</div><div class="line">    counter2++;</div><div class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</div><div class="line">  &#125;)</div><div class="line">  .take(<span class="number">3</span>)</div><div class="line">  .value();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(counter1); <span class="comment">// 200</span></div><div class="line"><span class="built_in">console</span>.log(counter2); <span class="comment">// 5</span></div></pre></td></tr></table></figure>
+<h2 id="Declarative-vs-Imperative"><a href="#Declarative-vs-Imperative" class="headerlink" title="Declarative vs Imperative"></a>Declarative vs Imperative</h2><p>Declarative tells compiler what to do instead of telling commands step by step. By using declarative we hide the working details, which gives compiler the ability to rearrange the execution steps of commands.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"></div><div class="line"><span class="comment">// declarative</span></div><div class="line">arr.map(<span class="function"><span class="params">ele</span> =&gt;</span> ele + <span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="comment">// imperative (and mutable)</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</div><div class="line">  arr[i] += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="external">Functional Programming on Wikipedia</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0" target="_blank" rel="external">Master the JavaScript Interview: What is Functional Programming?</a></li>
+<li><a href="https://www.amazon.com/Seven-Concurrency-Models-Weeks-Programmers/dp/1937785653" target="_blank" rel="external">Seven Concurrency Models Weeks Programmers</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;What-makes-FP-great&quot;&gt;&lt;a href=&quot;#What-makes-FP-great&quot; class=&quot;headerlink&quot; title=&quot;What makes FP great?&quot;&gt;&lt;/a&gt;What makes FP great?&lt;/h1&gt;&lt;p&gt;
+    
+    </summary>
+    
+    
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="functional programming" scheme="http://yoursite.com/tags/functional-programming/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>I love the concept of &#39;anything can be log&#39;</title>
+    <link href="http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/"/>
+    <id>http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/</id>
+    <published>2017-03-06T00:56:03.000Z</published>
+    <updated>2017-03-07T15:05:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>A while ago I read <a href="https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E4%B9%9F%E4%BE%86%E9%BB%9E%E7%A7%91%E6%99%AE-caf3029359f8#.t37drl8hz" target="_blank" rel="external">this</a> (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am really longing with. A insight for better software architecture.</p>
+<p>The article mentions that log is used in almost everywhere, because log has the following features:</p>
+<p><strong>Timestamp</strong> - a log has timestamp describing when happens what.</p>
+<p><strong>Sequence</strong> - since every log has a timestamp, we can line it up, make it an array. In that way you can see a timeline of events describing what happens in a system.</p>
+<p><strong>Describing Actions</strong> - instead of really executing something, log just describes what is going to do.</p>
+<p>Log has been used in many domains like version control, database, replication, event stream and many other aspects for solving complicated problems.</p>
+<p>Imagine we have a database, and it is writing something into disk, and suddenly computer crashed. Here comes the problem - how do we restore database to the point before crash and let it continue its job?</p>
+<p>The answer is log, it writes log first, and then, really executing the action. Since we have a <strong>log that describing the system state</strong>, we can resume the state and make it continue its job.</p>
+<p>Log can even be used in replication as well. Syncing data among all machines/process is not an easy thing. How do you keep data on all machines identical while sharing? Move physical data? That would be inefficient because physical data is large and plus network bandwidth issue. How about sending log instead? Log is relatively small and actually its just an <strong>history of state</strong>, instead of sending physical data, we send a series actions that should be carried out, and by following the same trial, state should be the same in the end.</p>
+<p>And what’s the point when it comes to front-end? Today’s front-end is way more interactive than 15 years ago. Lots of actions and events come and go in our application. Trendy developers probably have heard <code>Redux</code> - a central event management implementation for resolving complicated events.</p>
+<p>One of a reason that really makes <code>Redux</code> great is, yes, log. In <code>Redux</code> we deliver log first, and delay the <strong>action (side effect / mutation)</strong> afterward.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetchDataLoadingAction = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="attr">type</span>: <span class="string">"FETCH_DATA_LOADING"</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> fetchDataDonesAction = <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</div><div class="line">  <span class="attr">type</span>: <span class="string">"FETCH_DATA_DONE"</span>,</div><div class="line">  <span class="attr">payload</span>: data</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> fetchDataFailAction = <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</div><div class="line">  <span class="attr">type</span>: <span class="string">"FETCH_DATA_FAIL"</span>,</div><div class="line">  <span class="attr">payload</span>: err</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>Despite there are <strong>Action</strong> in those names (a common naming convention for redux), those are actually logs describing an action, and if we want to execute an action, we can wrap it in a function</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// here we use redux-thunk for handling simple async or combining serious of actions together.</span></div><div class="line"><span class="keyword">const</span> fetchData = <span class="function"><span class="params">()</span> =&gt;</span> (dispatch) =&gt; &#123;</div><div class="line">  dispatch(fetchDataLoadingAction());</div><div class="line">  fetchDataAjax()</div><div class="line">    .then(<span class="function"><span class="params">data</span> =&gt;</span> dispatch(fetchDataDoneAction(data)))</div><div class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> dispatch(fetchDataFailAction(err)));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// keeping new state in our reducer</span></div><div class="line"><span class="keyword">const</span> INIT_STATE = &#123;</div><div class="line">  <span class="attr">fetchState</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">data</span>:       &#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state = INIT_STATE, action</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">switch</span>(action.type)&#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"FETCH_DATA_LOADING"</span>: &#123;</div><div class="line">      <span class="keyword">return</span> &#123;...state, <span class="attr">fetchState</span>: <span class="string">"loading"</span>&#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">case</span> <span class="string">"FETCH_DATA_DONE"</span>: &#123;</div><div class="line">      <span class="keyword">return</span> &#123;<span class="attr">fetchState</span>: <span class="string">"success"</span>, <span class="attr">data</span>: action.payload&#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">case</span> <span class="string">"FETCH_DATA_FAIL"</span>: &#123;</div><div class="line">      <span class="keyword">return</span> &#123;<span class="attr">fetchState</span>: <span class="string">"fail"</span>, <span class="attr">data</span>: action.payload&#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">default</span>: <span class="keyword">return</span> state;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// later...</span></div><div class="line">store.dispatch(fetchData());</div><div class="line"></div><div class="line"><span class="comment">// if you have installed redux-logger you will see something similar to this</span></div><div class="line"><span class="comment">// action: &#123; type: "FETCH_DATA_LOADING" &#125;</span></div><div class="line"><span class="comment">// state: &#123; fetchState: "loading", data: &#123;&#125; &#125;</span></div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="comment">// action: &#123; type: "FETCH_DATA_DONE", payload: "foobar" &#125;</span></div><div class="line"><span class="comment">// state: &#123; fetchState: "success", data: "foobar" &#125;</span></div></pre></td></tr></table></figure>
+<p>By using log, developers can manipulate the timeline of an application, performing actions like undo and redo or jump to a specific time of state for debugging. This is the beauty of log.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A while ago I read &lt;a href=&quot;https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B
+    
+    </summary>
+    
+    
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="redux" scheme="http://yoursite.com/tags/redux/"/>
+    
+      <category term="architecture" scheme="http://yoursite.com/tags/architecture/"/>
+    
+  </entry>
   
   <entry>
     <title>Introduction to Progressive Web App (PWA)</title>
@@ -1737,32 +1824,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;Deploy-relative&quot;&gt;&lt;a href=&quot;#Deploy-relative&quot; class=&quot;headerlink&quot; title=&quot;Deploy relative&quot;&gt;&lt;/a&gt;Deploy relative&lt;/h1&gt;&lt;h2 id=&quot;Make-a-new-po
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>new post</title>
-    <link href="http://yoursite.com/2013/06/26/new-post/"/>
-    <id>http://yoursite.com/2013/06/26/new-post/</id>
-    <published>2013-06-26T09:41:00.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>WoW</strong></p>
-<p>Here is a sentance.</p>
-<p>Here is another!</p>
-<p>wow why here are so many sentance and this one it’s toooooooooooooooooooooooooooooo long!</p>
-<figure class="highlight js"><figcaption><span>code snippet!</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(arrayLength);</div><div class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementN);</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;WoW&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Here is a sentance.&lt;/p&gt;
-&lt;p&gt;Here is another!&lt;/p&gt;
-&lt;p&gt;wow why here are so many sentance and this one it’s tooooo
     
     </summary>
     
