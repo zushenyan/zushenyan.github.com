@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="PrologueI heard there is a hype train of GraphQL. In order to find out how good it is, I decided to give GraphQL a try in my recently made side projec">
+    
 
     <!--Author-->
     
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Code Monkey"/>
+        <meta property="og:title" content="GraphQL vs REST - My Review"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives - Code Monkey</title>
+    <title>GraphQL vs REST - My Review - Code Monkey</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -115,106 +117,73 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Archives</h1>
+                <div class="post-heading">
+                    <h1>GraphQL vs REST - My Review</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2017-08-10
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2017/02/08/How-to-Choose-a-lib-framework/">
-        <h1 class="post-title archive">
-            How to Choose a Lib/Framework
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-02-08
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2016/12/12/Merge-Branch-From-Another-Repo/">
-        <h1 class="post-title archive">
-            Merge Branch From Another Repo
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2016-12-12
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2015/12/13/front-end-job-interview-questions/">
-        <h1 class="post-title archive">
-            Front-end Job Interview Questions
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2015-12-13
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2015/11/20/backend-fundamental-cookie-and-session/">
-        <h1 class="post-title archive">
-            Backend Fundamental - Cookie and Session
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2015-11-20
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2015/10/26/asynchronous-programming-in-javascript/">
-        <h1 class="post-title archive">
-            Asynchronous Programming in JavaScript
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2015-10-26
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/">&larr;  Newer Posts</a></li>
-    
-    
-        <li class="next"><a href="/archives/page/3/">Older Posts  &rarr;</a></li>
-    
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Prologue"><a href="#Prologue" class="headerlink" title="Prologue"></a>Prologue</h1><p>I heard there is a hype train of GraphQL. In order to find out how good it is, I decided to give GraphQL a try in my recently made side project - <a href="https://github.com/zushenyan/graphql-sso-example" target="_blank" rel="external">graphql-sso-example</a>.</p>
+<p>And yep, it’s a practice of GraphQL and SSO(Single Sign On). You can view the demo <a href="https://graphql-sso.herokuapp.com/#/" target="_blank" rel="external">here</a>.</p>
+<p>So there are already tons of articles talking about the comparison between REST and GraphQL, and combine with public article and my review. Here is the short version:</p>
+<h1 id="GraphQL-vs-REST-General-Comparison"><a href="#GraphQL-vs-REST-General-Comparison" class="headerlink" title="GraphQL vs REST - General Comparison"></a>GraphQL vs REST - General Comparison</h1><h3 id="No-Custom-Status-Code"><a href="#No-Custom-Status-Code" class="headerlink" title="No Custom Status Code"></a>No Custom Status Code</h3><p>Since GraphQL doesn’t care about transport layer error, You can’t customize status code like REST.</p>
+<p>The only way for clients to get them is putting them in the resolver (e.g. JSON response).</p>
+<h3 id="Increase-Development-Time"><a href="#Increase-Development-Time" class="headerlink" title="Increase Development Time"></a>Increase Development Time</h3><p>GraphQL is a whole standalone tool for solving how APIs should present. You have to define schemes for a simple API response, which is an overkill sometimes.</p>
+<h3 id="REST-Can-Be-Query-Language-Too"><a href="#REST-Can-Be-Query-Language-Too" class="headerlink" title="REST Can Be Query Language Too"></a>REST Can Be Query Language Too</h3><p>GraphQL is an query language, and actually, you can make REST doing so by adding query to URL like <code>[GET] /api/user?include=email,name,age</code>.</p>
+<h3 id="Cache-Missing"><a href="#Cache-Missing" class="headerlink" title="Cache Missing"></a>Cache Missing</h3><p>Since all the GraphQL requests are sent in <code>POST</code> method, you can’t use <code>browser caching</code> (with HTTP headers <code>etag</code> or <code>cache-control</code>) and <code>network caching</code>(reverse proxy like <a href="https://www.varnish-cache.org/" target="_blank" rel="external">varnish</a>).</p>
+<p>The only way to cache it is by using <code>application caching</code>, for example Facebook’s <a href="https://github.com/facebook/dataloader" target="_blank" rel="external">dataloader</a>.</p>
+<p>However if you use REST in query <code>include</code> style, it also shares the similar issue.</p>
+<h1 id="TL-DR-Conclusion"><a href="#TL-DR-Conclusion" class="headerlink" title="TL;DR Conclusion"></a>TL;DR Conclusion</h1><p>GraphQL is not an replacement for REST. There is no winner. Both of them have its strength and weakness.</p>
+<p>If you don’t have data with highly relations dependency or the need for supporting various platforms (e.g. mobile, desktop, TV…), you probably don’t need GraphQL.</p>
+<p>Since there is no exclusion between two, try using both of them if you really need to.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://philsturgeon.uk/api/2017/01/24/graphql-vs-rest-overview/" target="_blank" rel="external">GraphQL vs REST: Overview</a></li>
+<li><a href="https://philsturgeon.uk/api/2017/01/26/graphql-vs-rest-caching/" target="_blank" rel="external">GraphQL vs REST: Caching</a></li>
 </ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr />
