@@ -381,13 +381,19 @@ code {
 }
 .header-inner #logo {
   display: inline-block;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .header-inner #logo .logo {
   margin-right: 5px;
   display: inline-block;
 }
 .header-inner #logo .site-title {
-  font-size: 16px;
+  font-size: 25px;
   display: inline-block;
   vertical-align: top;
   font-weight: 600;
@@ -656,6 +662,7 @@ code {
   background: #fff;
 }
 #profile .inner .base-info #avatar {
+  border-radius: 50%;
   display: block;
   margin: 10px auto 20px;
   width: 128px;

@@ -1816,7 +1816,7 @@
 <p>Though it’s not hard, I still want to find an easy way to achieve my goal because what I want to do is making a simple realtime syntax highlight editor, not another fully functional editor.</p>
 <p>While I was struggling on approach 2 way, suddenly an idea came to my mind - “Hey, why don’t I just overlay a transparent textarea on the visual view? Using the default textarea can save a lot of works!”</p>
 <p>So I started my overlay textarea journey.</p>
-<h1 id="Approach-3-–-Overlay-Textarea"><a href="#Approach-3-–-Overlay-Textarea" class="headerlink" title="Approach 3 – Overlay Textarea"></a>Approach 3 – Overlay Textarea</h1><p><a href="http://zushenyan.github.io/SRSHME/" target="_blank" rel="external">Here is my final work.</a></p>
+<h1 id="Approach-3-–-Overlay-Textarea"><a href="#Approach-3-–-Overlay-Textarea" class="headerlink" title="Approach 3 – Overlay Textarea"></a>Approach 3 – Overlay Textarea</h1><p><a href="http://zushenyan.github.io/SRSHME/">Here is my final work.</a></p>
 <p>Basic functions:</p>
 <ul>
 <li>Support part of Markdown syntaxes.</li>
