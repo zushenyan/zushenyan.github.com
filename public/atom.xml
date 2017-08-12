@@ -4,9 +4,9 @@
   <subtitle>Notes for me!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://zushenyan.github.io/"/>
   <updated>2017-08-12T16:49:29.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://zushenyan.github.io/</id>
   
   <author>
     <name>Andrew Yan</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>GraphQL vs REST - My Review</title>
-    <link href="http://yoursite.com/2017/08/10/GraphQL-vs-REST-My-Review/"/>
-    <id>http://yoursite.com/2017/08/10/GraphQL-vs-REST-My-Review/</id>
+    <link href="http://zushenyan.github.io/2017/08/10/GraphQL-vs-REST-My-Review/"/>
+    <id>http://zushenyan.github.io/2017/08/10/GraphQL-vs-REST-My-Review/</id>
     <published>2017-08-10T14:31:47.000Z</published>
     <updated>2017-08-12T16:49:29.000Z</updated>
     
@@ -50,24 +50,24 @@
     </summary>
     
     
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+      <category term="HTTP/HTTPS" scheme="http://zushenyan.github.io/tags/HTTP-HTTPS/"/>
     
-      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+      <category term="network" scheme="http://zushenyan.github.io/tags/network/"/>
     
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+      <category term="web" scheme="http://zushenyan.github.io/tags/web/"/>
     
-      <category term="backend" scheme="http://yoursite.com/tags/backend/"/>
+      <category term="backend" scheme="http://zushenyan.github.io/tags/backend/"/>
     
-      <category term="GraphQL" scheme="http://yoursite.com/tags/GraphQL/"/>
+      <category term="GraphQL" scheme="http://zushenyan.github.io/tags/GraphQL/"/>
     
-      <category term="REST" scheme="http://yoursite.com/tags/REST/"/>
+      <category term="REST" scheme="http://zushenyan.github.io/tags/REST/"/>
     
   </entry>
   
   <entry>
     <title>A Learning Note of Functional Programming Part 2 - Some Common Terminology</title>
-    <link href="http://yoursite.com/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/"/>
-    <id>http://yoursite.com/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/</id>
+    <link href="http://zushenyan.github.io/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/"/>
+    <id>http://zushenyan.github.io/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/</id>
     <published>2017-04-17T15:28:59.000Z</published>
     <updated>2017-08-12T17:12:58.000Z</updated>
     
@@ -157,20 +157,20 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+      <category term="meta" scheme="http://zushenyan.github.io/tags/meta/"/>
     
-      <category term="programming" scheme="http://yoursite.com/tags/programming/"/>
+      <category term="programming" scheme="http://zushenyan.github.io/tags/programming/"/>
     
-      <category term="FP" scheme="http://yoursite.com/tags/FP/"/>
+      <category term="FP" scheme="http://zushenyan.github.io/tags/FP/"/>
     
   </entry>
   
   <entry>
     <title>A Learning Note of Functional Programming Part 1 - Some Basic Concepts</title>
-    <link href="http://yoursite.com/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/"/>
-    <id>http://yoursite.com/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/</id>
+    <link href="http://zushenyan.github.io/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/"/>
+    <id>http://zushenyan.github.io/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/</id>
     <published>2017-04-05T14:08:57.000Z</published>
     <updated>2017-08-12T17:12:54.000Z</updated>
     
@@ -206,20 +206,20 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+      <category term="meta" scheme="http://zushenyan.github.io/tags/meta/"/>
     
-      <category term="programming" scheme="http://yoursite.com/tags/programming/"/>
+      <category term="programming" scheme="http://zushenyan.github.io/tags/programming/"/>
     
-      <category term="FP" scheme="http://yoursite.com/tags/FP/"/>
+      <category term="FP" scheme="http://zushenyan.github.io/tags/FP/"/>
     
   </entry>
   
   <entry>
     <title>I love the concept of &#39;anything can be log&#39;</title>
-    <link href="http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/"/>
-    <id>http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/</id>
+    <link href="http://zushenyan.github.io/2017/03/06/I-love-the-concept-of-anything-can-be-log/"/>
+    <id>http://zushenyan.github.io/2017/03/06/I-love-the-concept-of-anything-can-be-log/</id>
     <published>2017-03-06T00:56:03.000Z</published>
     <updated>2017-08-12T16:47:43.000Z</updated>
     
@@ -250,20 +250,20 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+      <category term="meta" scheme="http://zushenyan.github.io/tags/meta/"/>
     
-      <category term="redux" scheme="http://yoursite.com/tags/redux/"/>
+      <category term="redux" scheme="http://zushenyan.github.io/tags/redux/"/>
     
-      <category term="architecture" scheme="http://yoursite.com/tags/architecture/"/>
+      <category term="architecture" scheme="http://zushenyan.github.io/tags/architecture/"/>
     
   </entry>
   
   <entry>
     <title>Introduction to Progressive Web App (PWA)</title>
-    <link href="http://yoursite.com/2017/02/13/Introduction-to-Progressive-Web-App-PWA/"/>
-    <id>http://yoursite.com/2017/02/13/Introduction-to-Progressive-Web-App-PWA/</id>
+    <link href="http://zushenyan.github.io/2017/02/13/Introduction-to-Progressive-Web-App-PWA/"/>
+    <id>http://zushenyan.github.io/2017/02/13/Introduction-to-Progressive-Web-App-PWA/</id>
     <published>2017-02-13T14:37:45.000Z</published>
     <updated>2017-08-12T16:47:33.000Z</updated>
     
@@ -321,20 +321,20 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
-      <category term="mobile" scheme="http://yoursite.com/tags/mobile/"/>
+      <category term="mobile" scheme="http://zushenyan.github.io/tags/mobile/"/>
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="frontend" scheme="http://zushenyan.github.io/tags/frontend/"/>
     
-      <category term="PWA" scheme="http://yoursite.com/tags/PWA/"/>
+      <category term="PWA" scheme="http://zushenyan.github.io/tags/PWA/"/>
     
   </entry>
   
   <entry>
     <title>How to Choose a Lib/Framework</title>
-    <link href="http://yoursite.com/2017/02/08/How-to-Choose-a-lib-framework/"/>
-    <id>http://yoursite.com/2017/02/08/How-to-Choose-a-lib-framework/</id>
+    <link href="http://zushenyan.github.io/2017/02/08/How-to-Choose-a-lib-framework/"/>
+    <id>http://zushenyan.github.io/2017/02/08/How-to-Choose-a-lib-framework/</id>
     <published>2017-02-08T10:57:05.000Z</published>
     <updated>2017-08-12T16:47:24.000Z</updated>
     
@@ -385,16 +385,16 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="meta" scheme="http://zushenyan.github.io/tags/meta/"/>
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+      <category term="frontend" scheme="http://zushenyan.github.io/tags/frontend/"/>
     
   </entry>
   
   <entry>
     <title>Merge Branch From Another Repo</title>
-    <link href="http://yoursite.com/2016/12/12/Merge-Branch-From-Another-Repo/"/>
-    <id>http://yoursite.com/2016/12/12/Merge-Branch-From-Another-Repo/</id>
+    <link href="http://zushenyan.github.io/2016/12/12/Merge-Branch-From-Another-Repo/"/>
+    <id>http://zushenyan.github.io/2016/12/12/Merge-Branch-From-Another-Repo/</id>
     <published>2016-12-12T14:38:26.000Z</published>
     <updated>2017-08-12T16:47:06.000Z</updated>
     
@@ -430,14 +430,14 @@
     </summary>
     
     
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+      <category term="git" scheme="http://zushenyan.github.io/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Front-end Job Interview Questions</title>
-    <link href="http://yoursite.com/2015/12/13/front-end-job-interview-questions/"/>
-    <id>http://yoursite.com/2015/12/13/front-end-job-interview-questions/</id>
+    <link href="http://zushenyan.github.io/2015/12/13/front-end-job-interview-questions/"/>
+    <id>http://zushenyan.github.io/2015/12/13/front-end-job-interview-questions/</id>
     <published>2015-12-13T01:14:51.000Z</published>
     <updated>2017-08-12T16:46:57.000Z</updated>
     
@@ -1111,18 +1111,18 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="frontend" scheme="http://zushenyan.github.io/tags/frontend/"/>
     
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+      <category term="web" scheme="http://zushenyan.github.io/tags/web/"/>
     
-      <category term="interview" scheme="http://yoursite.com/tags/interview/"/>
+      <category term="interview" scheme="http://zushenyan.github.io/tags/interview/"/>
     
   </entry>
   
   <entry>
     <title>Backend Fundamental - Cookie and Session</title>
-    <link href="http://yoursite.com/2015/11/20/backend-fundamental-cookie-and-session/"/>
-    <id>http://yoursite.com/2015/11/20/backend-fundamental-cookie-and-session/</id>
+    <link href="http://zushenyan.github.io/2015/11/20/backend-fundamental-cookie-and-session/"/>
+    <id>http://zushenyan.github.io/2015/11/20/backend-fundamental-cookie-and-session/</id>
     <published>2015-11-20T06:35:27.000Z</published>
     <updated>2017-08-12T16:46:37.000Z</updated>
     
@@ -1209,16 +1209,16 @@
     </summary>
     
     
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+      <category term="web" scheme="http://zushenyan.github.io/tags/web/"/>
     
-      <category term="backend" scheme="http://yoursite.com/tags/backend/"/>
+      <category term="backend" scheme="http://zushenyan.github.io/tags/backend/"/>
     
   </entry>
   
   <entry>
     <title>Asynchronous Programming in JavaScript</title>
-    <link href="http://yoursite.com/2015/10/26/asynchronous-programming-in-javascript/"/>
-    <id>http://yoursite.com/2015/10/26/asynchronous-programming-in-javascript/</id>
+    <link href="http://zushenyan.github.io/2015/10/26/asynchronous-programming-in-javascript/"/>
+    <id>http://zushenyan.github.io/2015/10/26/asynchronous-programming-in-javascript/</id>
     <published>2015-10-26T06:24:59.000Z</published>
     <updated>2017-08-12T16:46:10.000Z</updated>
     
@@ -1285,18 +1285,18 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+      <category term="concurrent" scheme="http://zushenyan.github.io/tags/concurrent/"/>
     
-      <category term="concurrent" scheme="http://yoursite.com/tags/concurrent/"/>
+      <category term="meta" scheme="http://zushenyan.github.io/tags/meta/"/>
     
   </entry>
   
   <entry>
     <title>Frontend Fundamental - Communication Techniques</title>
-    <link href="http://yoursite.com/2015/10/13/frontend-fundamental-communication-techniques/"/>
-    <id>http://yoursite.com/2015/10/13/frontend-fundamental-communication-techniques/</id>
+    <link href="http://zushenyan.github.io/2015/10/13/frontend-fundamental-communication-techniques/"/>
+    <id>http://zushenyan.github.io/2015/10/13/frontend-fundamental-communication-techniques/</id>
     <published>2015-10-13T02:38:11.000Z</published>
     <updated>2017-08-12T16:46:47.000Z</updated>
     
@@ -1367,18 +1367,18 @@
     </summary>
     
     
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+      <category term="network" scheme="http://zushenyan.github.io/tags/network/"/>
     
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+      <category term="web" scheme="http://zushenyan.github.io/tags/web/"/>
     
-      <category term="websocket" scheme="http://yoursite.com/tags/websocket/"/>
+      <category term="websocket" scheme="http://zushenyan.github.io/tags/websocket/"/>
     
   </entry>
   
   <entry>
     <title>Frontend Fundamental - AJAX, JSONP and CORS</title>
-    <link href="http://yoursite.com/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/"/>
-    <id>http://yoursite.com/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/</id>
+    <link href="http://zushenyan.github.io/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/"/>
+    <id>http://zushenyan.github.io/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/</id>
     <published>2015-10-12T07:42:01.000Z</published>
     <updated>2017-08-12T17:14:13.000Z</updated>
     
@@ -1429,20 +1429,20 @@
     </summary>
     
     
-      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+      <category term="HTTP/HTTPS" scheme="http://zushenyan.github.io/tags/HTTP-HTTPS/"/>
     
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+      <category term="web" scheme="http://zushenyan.github.io/tags/web/"/>
     
-      <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
+      <category term="AJAX" scheme="http://zushenyan.github.io/tags/AJAX/"/>
     
-      <category term="CORS" scheme="http://yoursite.com/tags/CORS/"/>
+      <category term="CORS" scheme="http://zushenyan.github.io/tags/CORS/"/>
     
   </entry>
   
   <entry>
     <title>Frontend Fundamental - HTTPS</title>
-    <link href="http://yoursite.com/2015/10/11/frontend-fundamental-https/"/>
-    <id>http://yoursite.com/2015/10/11/frontend-fundamental-https/</id>
+    <link href="http://zushenyan.github.io/2015/10/11/frontend-fundamental-https/"/>
+    <id>http://zushenyan.github.io/2015/10/11/frontend-fundamental-https/</id>
     <published>2015-10-10T23:30:50.000Z</published>
     <updated>2017-08-12T16:44:28.000Z</updated>
     
@@ -1568,14 +1568,14 @@
     </summary>
     
     
-      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+      <category term="HTTP/HTTPS" scheme="http://zushenyan.github.io/tags/HTTP-HTTPS/"/>
     
   </entry>
   
   <entry>
     <title>Frontend Fundamental - HTTP 2.0</title>
-    <link href="http://yoursite.com/2015/10/11/frontend-fundamental-http-2-0/"/>
-    <id>http://yoursite.com/2015/10/11/frontend-fundamental-http-2-0/</id>
+    <link href="http://zushenyan.github.io/2015/10/11/frontend-fundamental-http-2-0/"/>
+    <id>http://zushenyan.github.io/2015/10/11/frontend-fundamental-http-2-0/</id>
     <published>2015-10-10T18:48:37.000Z</published>
     <updated>2017-08-12T16:44:18.000Z</updated>
     
@@ -1641,14 +1641,14 @@
     </summary>
     
     
-      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+      <category term="HTTP/HTTPS" scheme="http://zushenyan.github.io/tags/HTTP-HTTPS/"/>
     
   </entry>
   
   <entry>
     <title>Frontend Fundamental - HTTP 1.1</title>
-    <link href="http://yoursite.com/2015/10/10/frontend-fundamental-http-1-1/"/>
-    <id>http://yoursite.com/2015/10/10/frontend-fundamental-http-1-1/</id>
+    <link href="http://zushenyan.github.io/2015/10/10/frontend-fundamental-http-1-1/"/>
+    <id>http://zushenyan.github.io/2015/10/10/frontend-fundamental-http-1-1/</id>
     <published>2015-10-09T20:37:59.000Z</published>
     <updated>2017-08-12T16:43:58.000Z</updated>
     
@@ -1788,18 +1788,18 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="frontend" scheme="http://zushenyan.github.io/tags/frontend/"/>
     
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+      <category term="HTTP/HTTPS" scheme="http://zushenyan.github.io/tags/HTTP-HTTPS/"/>
     
-      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+      <category term="network" scheme="http://zushenyan.github.io/tags/network/"/>
     
   </entry>
   
   <entry>
     <title>Realtime Syntax Highlight Editor on Web, How Is That Possible?</title>
-    <link href="http://yoursite.com/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/"/>
-    <id>http://yoursite.com/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/</id>
+    <link href="http://zushenyan.github.io/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/"/>
+    <id>http://zushenyan.github.io/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/</id>
     <published>2013-10-16T05:29:00.000Z</published>
     <updated>2017-08-12T17:13:33.000Z</updated>
     
@@ -1816,7 +1816,7 @@
 <p>Though it’s not hard, I still want to find an easy way to achieve my goal because what I want to do is making a simple realtime syntax highlight editor, not another fully functional editor.</p>
 <p>While I was struggling on approach 2 way, suddenly an idea came to my mind - “Hey, why don’t I just overlay a transparent textarea on the visual view? Using the default textarea can save a lot of works!”</p>
 <p>So I started my overlay textarea journey.</p>
-<h1 id="Approach-3-–-Overlay-Textarea"><a href="#Approach-3-–-Overlay-Textarea" class="headerlink" title="Approach 3 – Overlay Textarea"></a>Approach 3 – Overlay Textarea</h1><p><a href="http://zushenyan.github.io/SRSHME/" target="_blank" rel="external">Here is my final work.</a></p>
+<h1 id="Approach-3-–-Overlay-Textarea"><a href="#Approach-3-–-Overlay-Textarea" class="headerlink" title="Approach 3 – Overlay Textarea"></a>Approach 3 – Overlay Textarea</h1><p><a href="http://zushenyan.github.io/SRSHME/">Here is my final work.</a></p>
 <p>Basic functions:</p>
 <ul>
 <li>Support part of Markdown syntaxes.</li>
@@ -1838,18 +1838,18 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="frontend" scheme="http://zushenyan.github.io/tags/frontend/"/>
     
-      <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
+      <category term="HTML" scheme="http://zushenyan.github.io/tags/HTML/"/>
     
   </entry>
   
   <entry>
     <title>Debug Pages On Phones With Weinre</title>
-    <link href="http://yoursite.com/2013/09/09/debug-pages-on-phones-with-weinre/"/>
-    <id>http://yoursite.com/2013/09/09/debug-pages-on-phones-with-weinre/</id>
+    <link href="http://zushenyan.github.io/2013/09/09/debug-pages-on-phones-with-weinre/"/>
+    <id>http://zushenyan.github.io/2013/09/09/debug-pages-on-phones-with-weinre/</id>
     <published>2013-09-09T05:29:00.000Z</published>
     <updated>2017-08-12T16:42:42.000Z</updated>
     
@@ -1910,18 +1910,18 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="mobile" scheme="http://zushenyan.github.io/tags/mobile/"/>
     
-      <category term="mobile" scheme="http://yoursite.com/tags/mobile/"/>
+      <category term="frontend" scheme="http://zushenyan.github.io/tags/frontend/"/>
     
-      <category term="testing" scheme="http://yoursite.com/tags/testing/"/>
+      <category term="testing" scheme="http://zushenyan.github.io/tags/testing/"/>
     
   </entry>
   
   <entry>
     <title>Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven</title>
-    <link href="http://yoursite.com/2013/09/07/differences-between-syncasync/"/>
-    <id>http://yoursite.com/2013/09/07/differences-between-syncasync/</id>
+    <link href="http://zushenyan.github.io/2013/09/07/differences-between-syncasync/"/>
+    <id>http://zushenyan.github.io/2013/09/07/differences-between-syncasync/</id>
     <published>2013-09-07T14:34:00.000Z</published>
     <updated>2017-08-12T16:42:31.000Z</updated>
     
@@ -1993,16 +1993,16 @@
     </summary>
     
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+      <category term="concurrent" scheme="http://zushenyan.github.io/tags/concurrent/"/>
     
-      <category term="concurrent" scheme="http://yoursite.com/tags/concurrent/"/>
+      <category term="meta" scheme="http://zushenyan.github.io/tags/meta/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript Module Pattern</title>
-    <link href="http://yoursite.com/2013/09/02/javascript-module-pattern/"/>
-    <id>http://yoursite.com/2013/09/02/javascript-module-pattern/</id>
+    <link href="http://zushenyan.github.io/2013/09/02/javascript-module-pattern/"/>
+    <id>http://zushenyan.github.io/2013/09/02/javascript-module-pattern/</id>
     <published>2013-09-02T15:57:00.000Z</published>
     <updated>2017-08-12T16:38:32.000Z</updated>
     
@@ -2021,14 +2021,14 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>How To Call Parent Function in Child Class</title>
-    <link href="http://yoursite.com/2013/09/02/how-to-call-paret-function-in-child-class/"/>
-    <id>http://yoursite.com/2013/09/02/how-to-call-paret-function-in-child-class/</id>
+    <link href="http://zushenyan.github.io/2013/09/02/how-to-call-paret-function-in-child-class/"/>
+    <id>http://zushenyan.github.io/2013/09/02/how-to-call-paret-function-in-child-class/</id>
     <published>2013-09-02T15:39:00.000Z</published>
     <updated>2017-08-12T16:38:22.000Z</updated>
     
@@ -2051,7 +2051,7 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://zushenyan.github.io/tags/javascript/"/>
     
   </entry>
   
