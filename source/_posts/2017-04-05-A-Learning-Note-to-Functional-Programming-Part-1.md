@@ -1,7 +1,7 @@
 ---
 title: A Learning Note of Functional Programming Part 1 - Some Basic Concepts
 date: 2017-04-05 22:08:57
-tags: [meta, functional programming, js]
+tags: [meta, programming, javascript, FP]
 ---
 
 # What makes FP great?

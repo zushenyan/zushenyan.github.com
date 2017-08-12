@@ -2,6 +2,7 @@
 layout: post
 title: "Frontend Fundamental - HTTPS"
 date: 2015-10-11T15:30:50+08:00
+tags: [HTTP/HTTPS]
 ---
 
 # What is HTTPS?

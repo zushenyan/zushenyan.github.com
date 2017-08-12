@@ -2,6 +2,7 @@
 layout: post
 title: "Backend Fundamental - Cookie and Session"
 date: 2015-11-20T22:35:27+08:00
+tags: [backend, web]
 ---
 
 # Yet Another Cookie & Session Explanation?

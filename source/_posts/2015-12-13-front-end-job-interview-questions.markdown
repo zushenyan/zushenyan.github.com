@@ -2,6 +2,7 @@
 layout: post
 title: "Front-end Job Interview Questions"
 date: 2015-12-13T17:14:51+08:00
+tags: [frontend, web, interview]
 ---
 
 Source

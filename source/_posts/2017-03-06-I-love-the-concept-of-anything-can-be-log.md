@@ -1,7 +1,7 @@
 ---
 title: I love the concept of 'anything can be log'
 date: 2017-03-06 08:56:03
-tags: [meta, js, redux, architecture]
+tags: [meta, javascript, redux, architecture]
 ---
 
 A while ago I read [this](https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E4%B9%9F%E4%BE%86%E9%BB%9E%E7%A7%91%E6%99%AE-caf3029359f8#.t37drl8hz) (chinese) article talking about how people build complicated architecture with log approach, back to then I didn't quite get it, but it did scratched something - something I am really longing with. A insight for better software architecture.

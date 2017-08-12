@@ -1,7 +1,7 @@
 ---
 title: Introduction to Progressive Web App (PWA)
 date: 2017-02-13 22:37:45
-tags: [frontend, pwa, mobile, javascript]
+tags: [frontend, PWA, mobile, javascript]
 ---
 
 # What is that?

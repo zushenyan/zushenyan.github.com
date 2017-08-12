@@ -2,6 +2,7 @@
 layout: post
 title: "Frontend Fundamental - HTTP 1.1"
 date: 2015-10-10T12:37:59+08:00
+tags: [frontend, HTTP/HTTPS, network]
 ---
 
 # Purpose

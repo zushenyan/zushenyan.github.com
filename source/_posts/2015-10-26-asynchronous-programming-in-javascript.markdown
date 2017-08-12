@@ -2,6 +2,7 @@
 layout: post
 title: "Asynchronous Programming in JavaScript"
 date: 2015-10-26T22:24:59+08:00
+tags: [javascript, concurrent, meta]
 ---
 
 # Purpose

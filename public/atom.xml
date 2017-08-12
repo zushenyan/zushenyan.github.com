@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Code Monkey</title>
+  <title>andrew.dev.note</title>
   <subtitle>Notes for me!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-10T16:08:49.000Z</updated>
+  <updated>2017-08-12T16:49:29.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/10/GraphQL-vs-REST-My-Review/"/>
     <id>http://yoursite.com/2017/08/10/GraphQL-vs-REST-My-Review/</id>
     <published>2017-08-10T14:31:47.000Z</published>
-    <updated>2017-08-10T16:08:49.000Z</updated>
+    <updated>2017-08-12T16:49:29.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Prologue"><a href="#Prologue" class="headerlink" title="Prologue"></a>Prologue</h1><p>I heard there is a hype train of GraphQL. In order to find out how good it is, I decided to give GraphQL a try in my recently made side project - <a href="https://github.com/zushenyan/graphql-sso-example" target="_blank" rel="external">graphql-sso-example</a>.</p>
 <p>And yep, it’s a practice of GraphQL and SSO(Single Sign On). You can view the demo <a href="https://graphql-sso.herokuapp.com/#/" target="_blank" rel="external">here</a>.</p>
@@ -43,10 +43,24 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Prologue&quot;&gt;&lt;a href=&quot;#Prologue&quot; class=&quot;headerlink&quot; title=&quot;Prologue&quot;&gt;&lt;/a&gt;Prologue&lt;/h1&gt;&lt;p&gt;I heard there is a hype train of GraphQL. In o
+      &lt;h1 id=&quot;Prologue&quot;&gt;&lt;a href=&quot;#Prologue&quot; class=&quot;headerlink&quot; title=&quot;Prologue&quot;&gt;&lt;/a&gt;Prologue&lt;/h1&gt;&lt;p&gt;I heard there is a hype train of GraphQL. In order to find out how good it is, I decided to give GraphQL a try in my recently made side project - &lt;a href=&quot;https://github.com/zushenyan/graphql-sso-example&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;graphql-sso-example&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And yep, it’s a practice of GraphQL and SSO(Single Sign On). You can view the demo &lt;a href=&quot;https://graphql-sso.herokuapp.com/#/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So there are already tons of articles talking about the comparison between REST and GraphQL, and combine with public article and my review. Here is the short version:&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+    
+      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+      <category term="backend" scheme="http://yoursite.com/tags/backend/"/>
+    
+      <category term="GraphQL" scheme="http://yoursite.com/tags/GraphQL/"/>
+    
+      <category term="REST" scheme="http://yoursite.com/tags/REST/"/>
     
   </entry>
   
@@ -55,7 +69,7 @@
     <link href="http://yoursite.com/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/"/>
     <id>http://yoursite.com/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/</id>
     <published>2017-04-17T15:28:59.000Z</published>
-    <updated>2017-04-28T11:04:34.000Z</updated>
+    <updated>2017-08-12T17:12:58.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>This is another note for introducing some common terms or words that you may see in functional programming world.</p>
 <p>Examples here will be implemented in either vanilla JS or <a href="http://ramdajs.com/" target="_blank" rel="external">Ramda</a> - a functional library that focuses on functional programming than other general-purpose same purpose libraries.</p>
@@ -136,16 +150,20 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;p&gt;This is another note for introducing some common t
+      &lt;h1 id=&quot;Preface&quot;&gt;&lt;a href=&quot;#Preface&quot; class=&quot;headerlink&quot; title=&quot;Preface&quot;&gt;&lt;/a&gt;Preface&lt;/h1&gt;&lt;p&gt;This is another note for introducing some common terms or words that you may see in functional programming world.&lt;/p&gt;
+&lt;p&gt;Examples here will be implemented in either vanilla JS or &lt;a href=&quot;http://ramdajs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ramda&lt;/a&gt; - a functional library that focuses on functional programming than other general-purpose same purpose libraries.&lt;/p&gt;
+&lt;h1 id=&quot;Map&quot;&gt;&lt;a href=&quot;#Map&quot; class=&quot;headerlink&quot; title=&quot;Map&quot;&gt;&lt;/a&gt;Map&lt;/h1&gt;
     
     </summary>
     
     
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
       <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
     
-      <category term="functional programming" scheme="http://yoursite.com/tags/functional-programming/"/>
+      <category term="programming" scheme="http://yoursite.com/tags/programming/"/>
     
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+      <category term="FP" scheme="http://yoursite.com/tags/FP/"/>
     
   </entry>
   
@@ -154,7 +172,7 @@
     <link href="http://yoursite.com/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/"/>
     <id>http://yoursite.com/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/</id>
     <published>2017-04-05T14:08:57.000Z</published>
-    <updated>2017-04-17T15:28:05.000Z</updated>
+    <updated>2017-08-12T17:12:54.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="What-makes-FP-great"><a href="#What-makes-FP-great" class="headerlink" title="What makes FP great?"></a>What makes FP great?</h1><p>Functional Programming (FP) has been a trendy word for a while, but I wonder what makes people think FP is good? Here is my conclusion:</p>
 <h2 id="The-need-for-concurrent-parallelism"><a href="#The-need-for-concurrent-parallelism" class="headerlink" title="The need for concurrent/parallelism"></a>The need for concurrent/parallelism</h2><p>Since we got more than one core on CPU, we started thinking on how to process tasks more efficiently.</p>
@@ -182,16 +200,19 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;What-makes-FP-great&quot;&gt;&lt;a href=&quot;#What-makes-FP-great&quot; class=&quot;headerlink&quot; title=&quot;What makes FP great?&quot;&gt;&lt;/a&gt;What makes FP great?&lt;/h1&gt;&lt;p&gt;
+      &lt;h1 id=&quot;What-makes-FP-great&quot;&gt;&lt;a href=&quot;#What-makes-FP-great&quot; class=&quot;headerlink&quot; title=&quot;What makes FP great?&quot;&gt;&lt;/a&gt;What makes FP great?&lt;/h1&gt;&lt;p&gt;Functional Programming (FP) has been a trendy word for a while, but I wonder what makes people think FP is good? Here is my conclusion:&lt;/p&gt;
+&lt;h2 id=&quot;The-need-for-concurrent-parallelism&quot;&gt;&lt;a href=&quot;#The-need-for-concurrent-parallelism&quot; class=&quot;headerlink&quot; title=&quot;The need for concurrent/parallelism&quot;&gt;&lt;/a&gt;The need for concurrent/parallelism&lt;/h2&gt;&lt;p&gt;Since we got more than one core on CPU, we started thinking on how to process tasks more efficiently.&lt;/p&gt;
     
     </summary>
     
     
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
       <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
     
-      <category term="functional programming" scheme="http://yoursite.com/tags/functional-programming/"/>
+      <category term="programming" scheme="http://yoursite.com/tags/programming/"/>
     
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+      <category term="FP" scheme="http://yoursite.com/tags/FP/"/>
     
   </entry>
   
@@ -200,7 +221,7 @@
     <link href="http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/"/>
     <id>http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/</id>
     <published>2017-03-06T00:56:03.000Z</published>
-    <updated>2017-03-07T15:05:59.000Z</updated>
+    <updated>2017-08-12T16:47:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>A while ago I read <a href="https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E4%B9%9F%E4%BE%86%E9%BB%9E%E7%A7%91%E6%99%AE-caf3029359f8#.t37drl8hz" target="_blank" rel="external">this</a> (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am really longing with. A insight for better software architecture.</p>
 <p>The article mentions that log is used in almost everywhere, because log has the following features:</p>
@@ -221,14 +242,17 @@
     
     <summary type="html">
     
-      &lt;p&gt;A while ago I read &lt;a href=&quot;https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B
+      &lt;p&gt;A while ago I read &lt;a href=&quot;https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E4%B9%9F%E4%BE%86%E9%BB%9E%E7%A7%91%E6%99%AE-caf3029359f8#.t37drl8hz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this&lt;/a&gt; (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am really longing with. A insight for better software architecture.&lt;/p&gt;
+&lt;p&gt;The article mentions that log is used in almost everywhere, because log has the following features:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Timestamp&lt;/strong&gt; - a log has timestamp describing when happens what.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sequence&lt;/strong&gt; - since every log has a timestamp, we can line it up, make it an array. In that way you can see a timeline of events describing what happens in a system.&lt;/p&gt;
     
     </summary>
     
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
     
       <category term="redux" scheme="http://yoursite.com/tags/redux/"/>
     
@@ -241,7 +265,7 @@
     <link href="http://yoursite.com/2017/02/13/Introduction-to-Progressive-Web-App-PWA/"/>
     <id>http://yoursite.com/2017/02/13/Introduction-to-Progressive-Web-App-PWA/</id>
     <published>2017-02-13T14:37:45.000Z</published>
-    <updated>2017-02-20T12:37:09.000Z</updated>
+    <updated>2017-08-12T16:47:33.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="What-is-that"><a href="#What-is-that" class="headerlink" title="What is that?"></a>What is that?</h1><p>Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes the following features:</p>
 <ul>
@@ -283,18 +307,27 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;What-is-that&quot;&gt;&lt;a href=&quot;#What-is-that&quot; class=&quot;headerlink&quot; title=&quot;What is that?&quot;&gt;&lt;/a&gt;What is that?&lt;/h1&gt;&lt;p&gt;Buzz word time! Progressive 
+      &lt;h1 id=&quot;What-is-that&quot;&gt;&lt;a href=&quot;#What-is-that&quot; class=&quot;headerlink&quot; title=&quot;What is that?&quot;&gt;&lt;/a&gt;What is that?&lt;/h1&gt;&lt;p&gt;Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes the following features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Responsive - available on many devices: desktop, phone and tablet.&lt;/li&gt;
+&lt;li&gt;Reliable - accessible even if the network is down.&lt;/li&gt;
+&lt;li&gt;Fresh - always up-to-date, updating without getting through app store.&lt;/li&gt;
+&lt;li&gt;Safe - can only be accessed via HTTPS.&lt;/li&gt;
+&lt;li&gt;Discoverable - unlike native app, since it’s an web app, content should be discoverable by the search engines.&lt;/li&gt;
+&lt;li&gt;Engaging - PWA can be access like an native app. You can access them by adding them to home screen, and provide them an seamless full screen experience.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;but that sounds very…unclear. We want to know how it was made right. Here is the &lt;em&gt;heart of Progressive Web App&lt;/em&gt;:&lt;/p&gt;
     
     </summary>
     
     
       <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
     
-      <category term="pwa" scheme="http://yoursite.com/tags/pwa/"/>
-    
       <category term="mobile" scheme="http://yoursite.com/tags/mobile/"/>
     
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="PWA" scheme="http://yoursite.com/tags/PWA/"/>
     
   </entry>
   
@@ -303,7 +336,7 @@
     <link href="http://yoursite.com/2017/02/08/How-to-Choose-a-lib-framework/"/>
     <id>http://yoursite.com/2017/02/08/How-to-Choose-a-lib-framework/</id>
     <published>2017-02-08T10:57:05.000Z</published>
-    <updated>2017-02-08T16:36:59.000Z</updated>
+    <updated>2017-08-12T16:47:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>Choosing a tool is not an easy thing, especially in today’s front-end domain, the cycle of tools is like light speed. Developers never catch up.</p>
 <blockquote>
@@ -340,14 +373,21 @@
     
     <summary type="html">
     
-      &lt;p&gt;Choosing a tool is not an easy thing, especially in today’s front-end domain, the cycle of tools is like light speed. Developers never ca
+      &lt;p&gt;Choosing a tool is not an easy thing, especially in today’s front-end domain, the cycle of tools is like light speed. Developers never catch up.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Learn as many tools(frameworks, libraries) as you can.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;They said. I like the spirit, but in reality, your time is limited, you have to workout, wash clothes, pay debt and blah blah, so I think the appropriate quote should be&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Learn things you really need.&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
     
-      <category term="general" scheme="http://yoursite.com/tags/general/"/>
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
     
-      <category term="front-end" scheme="http://yoursite.com/tags/front-end/"/>
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
     
   </entry>
   
@@ -356,7 +396,7 @@
     <link href="http://yoursite.com/2016/12/12/Merge-Branch-From-Another-Repo/"/>
     <id>http://yoursite.com/2016/12/12/Merge-Branch-From-Another-Repo/</id>
     <published>2016-12-12T14:38:26.000Z</published>
-    <updated>2016-12-12T15:02:58.000Z</updated>
+    <updated>2017-08-12T16:47:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>Just a quick TIL note here.</p>
 <p>If you have ever encountered a similar scenario:</p>
@@ -383,7 +423,9 @@
       &lt;p&gt;Just a quick TIL note here.&lt;/p&gt;
 &lt;p&gt;If you have ever encountered a similar scenario:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;You have repo A and repo B.&lt;br&gt;Re
+&lt;p&gt;You have repo A and repo B.&lt;br&gt;Repo B is derived from repo A.&lt;br&gt;You are currently on repo B, and want to merge branch (or pick commit) from repo A.&lt;br&gt;How to achieve that?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here is what git command &lt;code&gt;remote&lt;/code&gt; magically does:&lt;/p&gt;
     
     </summary>
     
@@ -397,7 +439,7 @@
     <link href="http://yoursite.com/2015/12/13/front-end-job-interview-questions/"/>
     <id>http://yoursite.com/2015/12/13/front-end-job-interview-questions/</id>
     <published>2015-12-13T01:14:51.000Z</published>
-    <updated>2016-11-08T15:01:44.000Z</updated>
+    <updated>2017-08-12T16:46:57.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h2><p><a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions" target="_blank" rel="external">Front-end Job Interview Questions</a></p>
 <p>Won’t answer every question. I don’t know everything and some of them cover large enough to make standalone articles.</p>
@@ -1062,10 +1104,18 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Source&quot;&gt;&lt;a href=&quot;#Source&quot; class=&quot;headerlink&quot; title=&quot;Source&quot;&gt;&lt;/a&gt;Source&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/h5bp/Front-end-Developer-I
+      &lt;h2 id=&quot;Source&quot;&gt;&lt;a href=&quot;#Source&quot; class=&quot;headerlink&quot; title=&quot;Source&quot;&gt;&lt;/a&gt;Source&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/h5bp/Front-end-Developer-Interview-Questions&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Front-end Job Interview Questions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Won’t answer every question. I don’t know everything and some of them cover large enough to make standalone articles.&lt;/p&gt;
+&lt;h2 id=&quot;General-Questions&quot;&gt;&lt;a href=&quot;#General-Questions&quot; class=&quot;headerlink&quot; title=&quot;General Questions&quot;&gt;&lt;/a&gt;General Questions&lt;/h2&gt;
     
     </summary>
     
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+      <category term="interview" scheme="http://yoursite.com/tags/interview/"/>
     
   </entry>
   
@@ -1074,7 +1124,7 @@
     <link href="http://yoursite.com/2015/11/20/backend-fundamental-cookie-and-session/"/>
     <id>http://yoursite.com/2015/11/20/backend-fundamental-cookie-and-session/</id>
     <published>2015-11-20T06:35:27.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:46:37.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Yet-Another-Cookie-amp-Session-Explanation"><a href="#Yet-Another-Cookie-amp-Session-Explanation" class="headerlink" title="Yet Another Cookie &amp; Session Explanation?"></a>Yet Another Cookie &amp; Session Explanation?</h1><p>Currently I am working on a website with user account written with Node. I did have some backend experience though, but it was around 2 years ago. Grabbing memories back needs some effort.</p>
 <p>To engrave these concepts into my brain more deeper, I have to write it down, and this time, it will go advance rather than simply explaining “Cookie is this and Session is that. Done!”</p>
@@ -1152,10 +1202,16 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Yet-Another-Cookie-amp-Session-Explanation&quot;&gt;&lt;a href=&quot;#Yet-Another-Cookie-amp-Session-Explanation&quot; class=&quot;headerlink&quot; title=&quot;Yet Anot
+      &lt;h1 id=&quot;Yet-Another-Cookie-amp-Session-Explanation&quot;&gt;&lt;a href=&quot;#Yet-Another-Cookie-amp-Session-Explanation&quot; class=&quot;headerlink&quot; title=&quot;Yet Another Cookie &amp;amp; Session Explanation?&quot;&gt;&lt;/a&gt;Yet Another Cookie &amp;amp; Session Explanation?&lt;/h1&gt;&lt;p&gt;Currently I am working on a website with user account written with Node. I did have some backend experience though, but it was around 2 years ago. Grabbing memories back needs some effort.&lt;/p&gt;
+&lt;p&gt;To engrave these concepts into my brain more deeper, I have to write it down, and this time, it will go advance rather than simply explaining “Cookie is this and Session is that. Done!”&lt;/p&gt;
+&lt;h1 id=&quot;Why-Use-Cookie-amp-Session&quot;&gt;&lt;a href=&quot;#Why-Use-Cookie-amp-Session&quot; class=&quot;headerlink&quot; title=&quot;Why Use Cookie &amp;amp; Session?&quot;&gt;&lt;/a&gt;Why Use Cookie &amp;amp; Session?&lt;/h1&gt;
     
     </summary>
     
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+      <category term="backend" scheme="http://yoursite.com/tags/backend/"/>
     
   </entry>
   
@@ -1164,7 +1220,7 @@
     <link href="http://yoursite.com/2015/10/26/asynchronous-programming-in-javascript/"/>
     <id>http://yoursite.com/2015/10/26/asynchronous-programming-in-javascript/</id>
     <published>2015-10-26T06:24:59.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:46:10.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h1><p>Just a learning note here. There are already tons of glorious posts talking about this topic, so don’t expect to see something super edge, extreme frontier technology here.</p>
 <h1 id="What-is-asynchronous"><a href="#What-is-asynchronous" class="headerlink" title="What is asynchronous?"></a>What is asynchronous?</h1><p>Before moving on, knowing what exactly is Asynchronous is essential.</p>
@@ -1223,10 +1279,17 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Purpose&quot;&gt;&lt;a href=&quot;#Purpose&quot; class=&quot;headerlink&quot; title=&quot;Purpose&quot;&gt;&lt;/a&gt;Purpose&lt;/h1&gt;&lt;p&gt;Just a learning note here. There are already tons 
+      &lt;h1 id=&quot;Purpose&quot;&gt;&lt;a href=&quot;#Purpose&quot; class=&quot;headerlink&quot; title=&quot;Purpose&quot;&gt;&lt;/a&gt;Purpose&lt;/h1&gt;&lt;p&gt;Just a learning note here. There are already tons of glorious posts talking about this topic, so don’t expect to see something super edge, extreme frontier technology here.&lt;/p&gt;
+&lt;h1 id=&quot;What-is-asynchronous&quot;&gt;&lt;a href=&quot;#What-is-asynchronous&quot; class=&quot;headerlink&quot; title=&quot;What is asynchronous?&quot;&gt;&lt;/a&gt;What is asynchronous?&lt;/h1&gt;&lt;p&gt;Before moving on, knowing what exactly is Asynchronous is essential.&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+    
+      <category term="concurrent" scheme="http://yoursite.com/tags/concurrent/"/>
     
   </entry>
   
@@ -1235,7 +1298,7 @@
     <link href="http://yoursite.com/2015/10/13/frontend-fundamental-communication-techniques/"/>
     <id>http://yoursite.com/2015/10/13/frontend-fundamental-communication-techniques/</id>
     <published>2015-10-13T02:38:11.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:46:47.000Z</updated>
     
     <content type="html"><![CDATA[<p>Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can’t even explain to someone else what the heck are they clearly, and that’s why I come up and write it down.</p>
 <p>I will use Nodejs as backend with below demonstrations.</p>
@@ -1297,10 +1360,18 @@
     
     <summary type="html">
     
-      &lt;p&gt;Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an 
+      &lt;p&gt;Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can’t even explain to someone else what the heck are they clearly, and that’s why I come up and write it down.&lt;/p&gt;
+&lt;p&gt;I will use Nodejs as backend with below demonstrations.&lt;/p&gt;
+&lt;h1 id=&quot;Polling&quot;&gt;&lt;a href=&quot;#Polling&quot; class=&quot;headerlink&quot; title=&quot;Polling&quot;&gt;&lt;/a&gt;Polling&lt;/h1&gt;&lt;p&gt;The most common technique when a client wants to fetch data from server.&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+      <category term="websocket" scheme="http://yoursite.com/tags/websocket/"/>
     
   </entry>
   
@@ -1309,7 +1380,7 @@
     <link href="http://yoursite.com/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/"/>
     <id>http://yoursite.com/2015/10/12/frontend-fundamental-ajax-jsonp-and-cors/</id>
     <published>2015-10-12T07:42:01.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T17:14:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>Sometimes front-end noob like me will run into Same-Origin-Policy when dealing with ajax things. This article is a note for myself to get clear of what is it and how to deal with it when encounter.</p>
 <h1 id="Same-Origin-Policy"><a href="#Same-Origin-Policy" class="headerlink" title="Same-Origin-Policy"></a>Same-Origin-Policy</h1><p>Same-Origin-Policy is a concept of preventing malicious script from getting sensitive data through <a href="Cross-site request forgery">CCRF</a> and <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="external">XSS</a>. Under this policy, browser can access resources only if current document and target server are under the same domain.</p>
@@ -1351,10 +1422,20 @@
     
     <summary type="html">
     
-      &lt;p&gt;Sometimes front-end noob like me will run into Same-Origin-Policy when dealing with ajax things. This article is a note for myself to get
+      &lt;p&gt;Sometimes front-end noob like me will run into Same-Origin-Policy when dealing with ajax things. This article is a note for myself to get clear of what is it and how to deal with it when encounter.&lt;/p&gt;
+&lt;h1 id=&quot;Same-Origin-Policy&quot;&gt;&lt;a href=&quot;#Same-Origin-Policy&quot; class=&quot;headerlink&quot; title=&quot;Same-Origin-Policy&quot;&gt;&lt;/a&gt;Same-Origin-Policy&lt;/h1&gt;&lt;p&gt;Same-Origin-Policy is a concept of preventing malicious script from getting sensitive data through &lt;a href=&quot;Cross-site request forgery&quot;&gt;CCRF&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Cross-site_scripting&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;XSS&lt;/a&gt;. Under this policy, browser can access resources only if current document and target server are under the same domain.&lt;/p&gt;
+&lt;p&gt;The question is, why do we need to access data from other domain? The reason is that in web development, sometimes we store resources like html, css and js on different server/domain in order to reduce the burden of server. Another reason is that today’s web is RESTful, which means client sends request to server to get operation on resources.&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+      <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
+    
+      <category term="CORS" scheme="http://yoursite.com/tags/CORS/"/>
     
   </entry>
   
@@ -1363,7 +1444,7 @@
     <link href="http://yoursite.com/2015/10/11/frontend-fundamental-https/"/>
     <id>http://yoursite.com/2015/10/11/frontend-fundamental-https/</id>
     <published>2015-10-10T23:30:50.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:44:28.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="What-is-HTTPS"><a href="#What-is-HTTPS" class="headerlink" title="What is HTTPS?"></a>What is HTTPS?</h1><p>HTTPS stands for HTTP Secure(or HTTP over TLS, SSL). The purpose is to establish a encrypted connection which provides more protection as opposed to HTTP that only creates transparent connections that are under the risk of being eavesdropping or intercepted by man-in-the-middle.</p>
 <p>HTTPS differs from HTTP at some points -</p>
@@ -1477,10 +1558,17 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;What-is-HTTPS&quot;&gt;&lt;a href=&quot;#What-is-HTTPS&quot; class=&quot;headerlink&quot; title=&quot;What is HTTPS?&quot;&gt;&lt;/a&gt;What is HTTPS?&lt;/h1&gt;&lt;p&gt;HTTPS stands for HTTP Se
+      &lt;h1 id=&quot;What-is-HTTPS&quot;&gt;&lt;a href=&quot;#What-is-HTTPS&quot; class=&quot;headerlink&quot; title=&quot;What is HTTPS?&quot;&gt;&lt;/a&gt;What is HTTPS?&lt;/h1&gt;&lt;p&gt;HTTPS stands for HTTP Secure(or HTTP over TLS, SSL). The purpose is to establish a encrypted connection which provides more protection as opposed to HTTP that only creates transparent connections that are under the risk of being eavesdropping or intercepted by man-in-the-middle.&lt;/p&gt;
+&lt;p&gt;HTTPS differs from HTTP at some points -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTPS uses port 443 as default, while HTTP uses port 80.&lt;/li&gt;
+&lt;li&gt;HTTPS still uses HTTP as its essential communication method. You can take SSL/TLS as an “upgraded connection” as opposed to “normal connection” which HTTP uses with.&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
+    
+      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
     
   </entry>
   
@@ -1489,7 +1577,7 @@
     <link href="http://yoursite.com/2015/10/11/frontend-fundamental-http-2-0/"/>
     <id>http://yoursite.com/2015/10/11/frontend-fundamental-http-2-0/</id>
     <published>2015-10-10T18:48:37.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:44:18.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="What-is-HTTP-2-0"><a href="#What-is-HTTP-2-0" class="headerlink" title="What is HTTP 2.0?"></a>What is HTTP 2.0?</h1><p>Since HTTP protocol was released, Web world has developed rapidly, and compared to the time in which HTTP was born, today’s Web content is way more richer, and due to the heavy request loading Web has evolved, HTTP 1.1 is not capable sooner or later. In order to handle the job, HTTP have to be updated.</p>
 <p>HTTP 2.0 is based on SPDY(pronounced speedy) which is an experiment networking protocol developed by Google. SPDY aims to improve performance and security. In Feb. 2015, Google announced that SPDY will soon be deprecated since there is already a standard - HTTP 2.0.</p>
@@ -1546,10 +1634,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;What-is-HTTP-2-0&quot;&gt;&lt;a href=&quot;#What-is-HTTP-2-0&quot; class=&quot;headerlink&quot; title=&quot;What is HTTP 2.0?&quot;&gt;&lt;/a&gt;What is HTTP 2.0?&lt;/h1&gt;&lt;p&gt;Since HTTP p
+      &lt;h1 id=&quot;What-is-HTTP-2-0&quot;&gt;&lt;a href=&quot;#What-is-HTTP-2-0&quot; class=&quot;headerlink&quot; title=&quot;What is HTTP 2.0?&quot;&gt;&lt;/a&gt;What is HTTP 2.0?&lt;/h1&gt;&lt;p&gt;Since HTTP protocol was released, Web world has developed rapidly, and compared to the time in which HTTP was born, today’s Web content is way more richer, and due to the heavy request loading Web has evolved, HTTP 1.1 is not capable sooner or later. In order to handle the job, HTTP have to be updated.&lt;/p&gt;
+&lt;p&gt;HTTP 2.0 is based on SPDY(pronounced speedy) which is an experiment networking protocol developed by Google. SPDY aims to improve performance and security. In Feb. 2015, Google announced that SPDY will soon be deprecated since there is already a standard - HTTP 2.0.&lt;/p&gt;
+&lt;h1 id=&quot;HTTP-2-0-Features-differences-to-HTTP-1-1&quot;&gt;&lt;a href=&quot;#HTTP-2-0-Features-differences-to-HTTP-1-1&quot; class=&quot;headerlink&quot; title=&quot;HTTP 2.0 Features (differences to HTTP 1.1)&quot;&gt;&lt;/a&gt;HTTP 2.0 Features (differences to HTTP 1.1)&lt;/h1&gt;
     
     </summary>
     
+    
+      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
     
   </entry>
   
@@ -1558,7 +1650,7 @@
     <link href="http://yoursite.com/2015/10/10/frontend-fundamental-http-1-1/"/>
     <id>http://yoursite.com/2015/10/10/frontend-fundamental-http-1-1/</id>
     <published>2015-10-09T20:37:59.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:43:58.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h1><p>A study note for myself.</p>
 <h1 id="Tools-I-Use"><a href="#Tools-I-Use" class="headerlink" title="Tools I Use"></a>Tools I Use</h1><ul>
@@ -1678,10 +1770,29 @@
     <summary type="html">
     
       &lt;h1 id=&quot;Purpose&quot;&gt;&lt;a href=&quot;#Purpose&quot; class=&quot;headerlink&quot; title=&quot;Purpose&quot;&gt;&lt;/a&gt;Purpose&lt;/h1&gt;&lt;p&gt;A study note for myself.&lt;/p&gt;
-&lt;h1 id=&quot;Tools-I-Use&quot;&gt;
+&lt;h1 id=&quot;Tools-I-Use&quot;&gt;&lt;a href=&quot;#Tools-I-Use&quot; class=&quot;headerlink&quot; title=&quot;Tools I Use&quot;&gt;&lt;/a&gt;Tools I Use&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Nodejs&lt;ul&gt;
+&lt;li&gt;I will use Nodejs as server side foundation. No expressjs or some other fancy libraries here. Only vanilla Nodejs you need to know.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Curl&lt;ul&gt;
+&lt;li&gt;A powerful command line tool to transfer data from or to server. It’s builtin if users are using Mac or Linux OS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Chrome&lt;ul&gt;
+&lt;li&gt;A happy browser.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+    
+      <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
     
   </entry>
   
@@ -1690,7 +1801,7 @@
     <link href="http://yoursite.com/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/"/>
     <id>http://yoursite.com/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/</id>
     <published>2013-10-16T05:29:00.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T17:13:33.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Story"><a href="#Story" class="headerlink" title="Story"></a>Story</h1><p>Although I have already played around some front-end techniques, I still think my webdev-fu is noob as hell, so maybe I should start it from scratch. How about basic DOM structure? Hmm, good. There are many realtime syntax highlight editor, I alway wonder how they work, and building one myself won’t be hard, right? Challenge accepted!</p>
 <h1 id="Google-Hard"><a href="#Google-Hard" class="headerlink" title="Google Hard"></a>Google Hard</h1><p>The quickest way to know how one thing works is to find one similar thing and study it. As far as I know, there are two editors with active communities — <a href="http://codemirror.net/" target="_blank" rel="external">Code Mirror</a> and <a href="http://ace.c9.io/#nav=about" target="_blank" rel="external">Ace Edtior</a>, but I am lazy as fuck, and reading other people’s code without any guides is really hard, so I decide to do some google about how it works.</p>
@@ -1721,10 +1832,17 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Story&quot;&gt;&lt;a href=&quot;#Story&quot; class=&quot;headerlink&quot; title=&quot;Story&quot;&gt;&lt;/a&gt;Story&lt;/h1&gt;&lt;p&gt;Although I have already played around some front-end techn
+      &lt;h1 id=&quot;Story&quot;&gt;&lt;a href=&quot;#Story&quot; class=&quot;headerlink&quot; title=&quot;Story&quot;&gt;&lt;/a&gt;Story&lt;/h1&gt;&lt;p&gt;Although I have already played around some front-end techniques, I still think my webdev-fu is noob as hell, so maybe I should start it from scratch. How about basic DOM structure? Hmm, good. There are many realtime syntax highlight editor, I alway wonder how they work, and building one myself won’t be hard, right? Challenge accepted!&lt;/p&gt;
+&lt;h1 id=&quot;Google-Hard&quot;&gt;&lt;a href=&quot;#Google-Hard&quot; class=&quot;headerlink&quot; title=&quot;Google Hard&quot;&gt;&lt;/a&gt;Google Hard&lt;/h1&gt;&lt;p&gt;The quickest way to know how one thing works is to find one similar thing and study it. As far as I know, there are two editors with active communities — &lt;a href=&quot;http://codemirror.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Code Mirror&lt;/a&gt; and &lt;a href=&quot;http://ace.c9.io/#nav=about&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ace Edtior&lt;/a&gt;, but I am lazy as fuck, and reading other people’s code without any guides is really hard, so I decide to do some google about how it works.&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
     
   </entry>
   
@@ -1733,7 +1851,7 @@
     <link href="http://yoursite.com/2013/09/09/debug-pages-on-phones-with-weinre/"/>
     <id>http://yoursite.com/2013/09/09/debug-pages-on-phones-with-weinre/</id>
     <published>2013-09-09T05:29:00.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:42:42.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="http://people.apache.org/~pmuellr/weinre/docs/latest/" target="_blank" rel="external">Weinre</a> stands for WEb INspector REmote. There are already numerous tutorials about this tool on the internet, but I still want to note it for myself or everyone else just want to get it work without getting details.</p>
 <h3 id="1-Install-Node-js"><a href="#1-Install-Node-js" class="headerlink" title="1 Install Node.js"></a>1 Install Node.js</h3><p>Weinre depends on node.js, so we need to install node.js first.</p>
@@ -1785,10 +1903,18 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://people.apache.org/~pmuellr/weinre/docs/latest/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Weinre&lt;/a&gt; stands for WEb INspector REmote
+      &lt;p&gt;&lt;a href=&quot;http://people.apache.org/~pmuellr/weinre/docs/latest/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Weinre&lt;/a&gt; stands for WEb INspector REmote. There are already numerous tutorials about this tool on the internet, but I still want to note it for myself or everyone else just want to get it work without getting details.&lt;/p&gt;
+&lt;h3 id=&quot;1-Install-Node-js&quot;&gt;&lt;a href=&quot;#1-Install-Node-js&quot; class=&quot;headerlink&quot; title=&quot;1 Install Node.js&quot;&gt;&lt;/a&gt;1 Install Node.js&lt;/h3&gt;&lt;p&gt;Weinre depends on node.js, so we need to install node.js first.&lt;/p&gt;
+&lt;p&gt;There are two ways to install nodes.js. One is using homebrew or other CLI package management tools to install. On Mac is like this:&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+    
+      <category term="mobile" scheme="http://yoursite.com/tags/mobile/"/>
+    
+      <category term="testing" scheme="http://yoursite.com/tags/testing/"/>
     
   </entry>
   
@@ -1797,7 +1923,7 @@
     <link href="http://yoursite.com/2013/09/07/differences-between-syncasync/"/>
     <id>http://yoursite.com/2013/09/07/differences-between-syncasync/</id>
     <published>2013-09-07T14:34:00.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:42:31.000Z</updated>
     
     <content type="html"><![CDATA[<p>I always thought I understood the concept between blocking &amp; non-blocking, synchronous &amp; asynchronous and could tell the differences, but after I found this <a href="http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing" target="_blank" rel="external">post</a>, a chaotic storm exploded in my brain! These were totally different two things in my mind!</p>
 <p>Terminologies can have different meanings with things, even though they have the same skin. The definition of terminologies differ from context.</p>
@@ -1859,10 +1985,17 @@
     
     <summary type="html">
     
-      &lt;p&gt;I always thought I understood the concept between blocking &amp;amp; non-blocking, synchronous &amp;amp; asynchronous and could tell the differen
+      &lt;p&gt;I always thought I understood the concept between blocking &amp;amp; non-blocking, synchronous &amp;amp; asynchronous and could tell the differences, but after I found this &lt;a href=&quot;http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;post&lt;/a&gt;, a chaotic storm exploded in my brain! These were totally different two things in my mind!&lt;/p&gt;
+&lt;p&gt;Terminologies can have different meanings with things, even though they have the same skin. The definition of terminologies differ from context.&lt;/p&gt;
+&lt;p&gt;Originally I thought blocking &amp;amp; non-blocking, synchronous &amp;amp; asynchronous were only talking about relationships between client and server structure, but when it comes to server, or computer, and disk &amp;amp; memory in itself, it has other meanings.&lt;/p&gt;
+&lt;p&gt;So what’s the difference between these two fields? Before that, I need to define three objects:&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+    
+      <category term="concurrent" scheme="http://yoursite.com/tags/concurrent/"/>
     
   </entry>
   
@@ -1871,7 +2004,7 @@
     <link href="http://yoursite.com/2013/09/02/javascript-module-pattern/"/>
     <id>http://yoursite.com/2013/09/02/javascript-module-pattern/</id>
     <published>2013-09-02T15:57:00.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:38:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>Just a simple code and note here.</p>
 <p>For more info about module pattern refer <a href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html" target="_blank" rel="external">here</a>.</p>
@@ -1881,10 +2014,14 @@
     <summary type="html">
     
       &lt;p&gt;Just a simple code and note here.&lt;/p&gt;
-&lt;p&gt;For more info about module pattern refer &lt;a href=&quot;http://www.adequatelygood.com/JavaScript-Modul
+&lt;p&gt;For more info about module pattern refer &lt;a href=&quot;http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = (&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;//constructor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	obj.prototype.foobar = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// do things here&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; obj;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;)();&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
     
     </summary>
     
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
@@ -1893,7 +2030,7 @@
     <link href="http://yoursite.com/2013/09/02/how-to-call-paret-function-in-child-class/"/>
     <id>http://yoursite.com/2013/09/02/how-to-call-paret-function-in-child-class/</id>
     <published>2013-09-02T15:39:00.000Z</published>
-    <updated>2016-11-08T13:30:53.000Z</updated>
+    <updated>2017-08-12T16:38:22.000Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SubClass.prototype.foobar = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">	BaseClass.prototype.foobar.call(<span class="keyword">this</span>, str);</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"bbb"</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>yea, as simple as that.</p>
@@ -1906,10 +2043,15 @@
     
     <summary type="html">
     
-      &lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;
+      &lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;SubClass.prototype.foobar = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;str&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	BaseClass.prototype.foobar.call(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, str);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&quot;bbb&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;yea, as simple as that.&lt;/p&gt;
+&lt;p&gt;Don’t forget sub-class is made of this&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;SubClass.prototype = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BaseClass();&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   

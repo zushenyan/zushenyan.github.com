@@ -1,7 +1,7 @@
 ---
 title: How to Choose a Lib/Framework
 date: 2017-02-08 18:57:05
-tags: [general, front-end]
+tags: [meta, frontend]
 ---
 
 Choosing a tool is not an easy thing, especially in today's front-end domain, the cycle of tools is like light speed. Developers never catch up.

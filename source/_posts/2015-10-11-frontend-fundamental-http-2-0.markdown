@@ -2,6 +2,7 @@
 layout: post
 title: "Frontend Fundamental - HTTP 2.0"
 date: 2015-10-11T10:48:37+08:00
+tags: HTTP/HTTPS
 ---
 
 # What is HTTP 2.0?

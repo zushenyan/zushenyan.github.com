@@ -3,6 +3,7 @@ layout: post
 title: "Differences Between sync & async, blocking & non-blocing and event-driven"
 date: 2013-09-07 22:34
 comments: true
+tags: [concurrent, meta]
 ---
 
 I always thought I understood the concept between blocking & non-blocking, synchronous & asynchronous and could tell the differences, but after I found this [post](http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing), a chaotic storm exploded in my brain! These were totally different two things in my mind!

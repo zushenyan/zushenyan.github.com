@@ -3,6 +3,7 @@ layout: post
 title: "How To Call Parent Function in Child Class"
 date: 2013-09-02 23:39
 comments: true
+tags: javascript
 ---
 
 {% codeblock lang:js %}

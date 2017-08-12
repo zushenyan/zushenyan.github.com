@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Code Monkey
+title: andrew.dev.note
 subtitle: Notes for me!
 description:
 author: Andrew Yan
@@ -62,8 +62,9 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+excerpt_depth: 4
 ## Themes: https://hexo.io/themes/
-theme: clean-blog
+theme: icarus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

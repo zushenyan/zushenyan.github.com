@@ -1,171 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html lang=en>
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
     
-        <meta name="description" content="A while ago I read this (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get i">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="Andrew Yan">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="I love the concept of &#39;anything can be log&#39;"/>
+    <title>I love the concept of &#39;anything can be log&#39; | andrew.dev.note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="A while ago I read this (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I love the concept of 'anything can be log'">
+<meta property="og:url" content="http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/index.html">
+<meta property="og:site_name" content="andrew.dev.note">
+<meta property="og:description" content="A while ago I read this (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am">
+<meta property="og:updated_time" content="2017-08-12T16:47:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="I love the concept of 'anything can be log'">
+<meta name="twitter:description" content="A while ago I read this (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am">
     
 
-    <!--Open Graph Description-->
     
 
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Code Monkey"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article" />
     
 
-    <!--Page Cover-->
-    
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
-        <meta name="twitter:card" content="summary" />
-    
-
-    <!-- Title -->
-    
-    <title>I love the concept of &#39;anything can be log&#39; - Code Monkey</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
     
 
 
 </head>
 
-
 <body>
-
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Code Monkey</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
                 
-                    <li>
-                        <a href="/">
-                            
-                                Home
-                            
+                <span class="site-title">andrew.dev.note</span>
+            </a>
+            <nav id="main-nav">
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/11891179_10207520922489618_6751088857900600098_n.jpg?oh=ba20b2445bfbefabdecc6701ce3e2453&amp;oe=5A30C979" />
+                            <i class="fa fa-caret-down"></i>
                         </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-            </ul>
+                    </div>
+                </nav>
+            
+            <!-- <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <!-- /.navbar-collapse -->
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-    <!-- /.container -->
-</nav>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
 
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>I love the concept of 'anything can be log'</h1>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        2017-03-06
-                    </span>
-                </div>
-            </div>
+</div> -->
         </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                <!-- <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td> -->
+            </tr>
+        </table>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
+        <div class="outer">
+            
+                
 
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/11891179_10207520922489618_6751088857900600098_n.jpg?oh=ba20b2445bfbefabdecc6701ce3e2453&amp;oe=5A30C979" />
+            <h2 id="name">Andrew Yan</h2>
+            <h3 id="title">Web Developer, Frontend Engineer, Software Engineer</h3>
+            <!-- <span id="location"><i class="fa fa-map-marker"></i>Taipei, Taiwan</span> -->
+            <!-- <a id="follow" target="_blank" href="https://github.com/ppoffice/">FOLLOW</a> -->
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                23
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                24
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
                     
+                    
+                    <td>
+                        <a href="https://github.com/zushenyan" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/zushenyan" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/zushen.yan" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/zushenyan" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-I-love-the-concept-of-anything-can-be-log" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            I love the concept of &#39;anything can be log&#39;
+        </h1>
+    
+
+                
+                    <div class="article-meta">
                         
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/06/I-love-the-concept-of-anything-can-be-log/">
+            <time datetime="2017-03-06T00:56:03.000Z" itemprop="datePublished">2017-03-06</time>
+        </a>
+    </div>
 
 
-<a href="/tags/meta/">#meta</a> <a href="/tags/js/">#js</a> <a href="/tags/redux/">#redux</a> <a href="/tags/architecture/">#architecture</a>
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/architecture/">architecture</a>, <a class="tag-link" href="/tags/javascript/">javascript</a>, <a class="tag-link" href="/tags/meta/">meta</a>, <a class="tag-link" href="/tags/redux/">redux</a>
+    </div>
 
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
             
-
-            <!-- Gallery -->
-            
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>A while ago I read <a href="https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E4%B9%9F%E4%BE%86%E9%BB%9E%E7%A7%91%E6%99%AE-caf3029359f8#.t37drl8hz" target="_blank" rel="external">this</a> (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am really longing with. A insight for better software architecture.</p>
+            <p>A while ago I read <a href="https://medium.com/poga/%E8%90%AC%E4%BA%8B%E8%90%AC%E7%89%A9%E7%9A%86%E6%98%AF-log-%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E4%B9%9F%E4%BE%86%E9%BB%9E%E7%A7%91%E6%99%AE-caf3029359f8#.t37drl8hz" target="_blank" rel="external">this</a> (chinese) article talking about how people build complicated architecture with log approach, back to then I didn’t quite get it, but it did scratched something - something I am really longing with. A insight for better software architecture.</p>
 <p>The article mentions that log is used in almost everywhere, because log has the following features:</p>
 <p><strong>Timestamp</strong> - a log has timestamp describing when happens what.</p>
 <p><strong>Sequence</strong> - since every log has a timestamp, we can line it up, make it an array. In that way you can see a timeline of events describing what happens in a system.</p>
@@ -181,102 +235,180 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// here we use redux-thunk for handling simple async or combining serious of actions together.</span></div><div class="line"><span class="keyword">const</span> fetchData = <span class="function"><span class="params">()</span> =&gt;</span> (dispatch) =&gt; &#123;</div><div class="line">  dispatch(fetchDataLoadingAction());</div><div class="line">  fetchDataAjax()</div><div class="line">    .then(<span class="function"><span class="params">data</span> =&gt;</span> dispatch(fetchDataDoneAction(data)))</div><div class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> dispatch(fetchDataFailAction(err)));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// keeping new state in our reducer</span></div><div class="line"><span class="keyword">const</span> INIT_STATE = &#123;</div><div class="line">  <span class="attr">fetchState</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">data</span>:       &#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state = INIT_STATE, action</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">switch</span>(action.type)&#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"FETCH_DATA_LOADING"</span>: &#123;</div><div class="line">      <span class="keyword">return</span> &#123;...state, <span class="attr">fetchState</span>: <span class="string">"loading"</span>&#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">case</span> <span class="string">"FETCH_DATA_DONE"</span>: &#123;</div><div class="line">      <span class="keyword">return</span> &#123;<span class="attr">fetchState</span>: <span class="string">"success"</span>, <span class="attr">data</span>: action.payload&#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">case</span> <span class="string">"FETCH_DATA_FAIL"</span>: &#123;</div><div class="line">      <span class="keyword">return</span> &#123;<span class="attr">fetchState</span>: <span class="string">"fail"</span>, <span class="attr">data</span>: action.payload&#125;;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">default</span>: <span class="keyword">return</span> state;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// later...</span></div><div class="line">store.dispatch(fetchData());</div><div class="line"></div><div class="line"><span class="comment">// if you have installed redux-logger you will see something similar to this</span></div><div class="line"><span class="comment">// action: &#123; type: "FETCH_DATA_LOADING" &#125;</span></div><div class="line"><span class="comment">// state: &#123; fetchState: "loading", data: &#123;&#125; &#125;</span></div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="comment">// action: &#123; type: "FETCH_DATA_DONE", payload: "foobar" &#125;</span></div><div class="line"><span class="comment">// state: &#123; fetchState: "success", data: "foobar" &#125;</span></div></pre></td></tr></table></figure>
 <p>By using log, developers can manipulate the timeline of an application, performing actions like undo and redo or jump to a specific time of state for debugging. This is the beauty of log.</p>
 
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/03/06/I-love-the-concept-of-anything-can-be-log/" data-id="cj69c3tue000kq3f05l4bjm4b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    A Learning Note of Functional Programming Part 1 - Some Basic Concepts
                 
             </div>
+        </a>
+    
+    
+        <a href="/2017/02/13/Introduction-to-Progressive-Web-App-PWA/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Introduction to Progressive Web App (PWA)</div>
+        </a>
+    
+</nav>
 
-            <!-- Comments -->
-            
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
 
-
-                </div>
-            
-        </div>
-    </div>
+    
 </article>
 
-    <!-- Footer -->
-    <hr />
+<!-- 
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                        <li>
-                            <a href="https://twitter.com/" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
+ -->
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
 
-                    
-                        <li>
-                            <a href="https://www.facebook.com/zushen.yan" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/FP/" style="font-size: 12px;">FP</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP-HTTPS/" style="font-size: 16px;">HTTP/HTTPS</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/architecture/" style="font-size: 10px;">architecture</a> <a href="/tags/backend/" style="font-size: 12px;">backend</a> <a href="/tags/concurrent/" style="font-size: 12px;">concurrent</a> <a href="/tags/frontend/" style="font-size: 18px;">frontend</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 18px;">meta</a> <a href="/tags/mobile/" style="font-size: 12px;">mobile</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/programming/" style="font-size: 12px;">programming</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/testing/" style="font-size: 10px;">testing</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a>
+        </div>
+    </div>
 
-                    
-                        <li>
-                            <a href="https://github.com/zushenyan" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
 
-                    
-                        <li>
-                            <a href="https://tw.linkedin.com/in/zushenyan" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-
-                    
-                </ul>
-                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Andrew Yan<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
 </footer>
+        
 
 
-    <!-- After footer scripts -->
     
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
 
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
 
 
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
 
+    </div>
 </body>
-
 </html>

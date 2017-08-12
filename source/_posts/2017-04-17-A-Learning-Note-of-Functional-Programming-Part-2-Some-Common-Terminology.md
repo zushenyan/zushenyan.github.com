@@ -1,7 +1,7 @@
 ---
 title: A Learning Note of Functional Programming Part 2 - Some Common Terminology
 date: 2017-04-17 23:28:59
-tags: [meta, functional programming, js]
+tags: [meta, programming, javascript, FP]
 ---
 
 # Preface

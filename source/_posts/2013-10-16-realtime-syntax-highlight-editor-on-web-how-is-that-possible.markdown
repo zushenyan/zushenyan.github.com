@@ -3,6 +3,7 @@ layout: post
 title: "Realtime Syntax Highlight Editor on Web, How Is That Possible?"
 date: 2013-10-16 13:29
 comments: true
+tags: [frontend, HTML, javascript]
 ---
 
 # Story

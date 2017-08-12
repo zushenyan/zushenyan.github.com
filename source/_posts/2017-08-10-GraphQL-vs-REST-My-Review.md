@@ -1,7 +1,7 @@
 ---
 title: GraphQL vs REST - My Review
 date: 2017-08-10 22:31:47
-tags:
+tags: [GraphQL, REST, web, network, HTTP/HTTPS, backend]
 ---
 
 # Prologue

@@ -2,6 +2,7 @@
 layout: post
 title: "Frontend Fundamental - AJAX, JSONP and CORS"
 date: 2015-10-12T23:42:01+08:00
+tags: [web, HTTP/HTTPS, AJAX, CORS]
 ---
 
 Sometimes front-end noob like me will run into Same-Origin-Policy when dealing with ajax things. This article is a note for myself to get clear of what is it and how to deal with it when encounter.

@@ -1,7 +1,7 @@
 ---
 title: Merge Branch From Another Repo
 date: 2016-12-12 22:38:26
-tags: git
+tags: [git]
 ---
 
 Just a quick TIL note here.
