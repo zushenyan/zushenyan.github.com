@@ -50,9 +50,9 @@
     </summary>
     
     
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
-    
       <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
       <category term="web" scheme="http://yoursite.com/tags/web/"/>
     
@@ -321,11 +321,11 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
       <category term="mobile" scheme="http://yoursite.com/tags/mobile/"/>
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
     
       <category term="PWA" scheme="http://yoursite.com/tags/PWA/"/>
     
@@ -385,9 +385,9 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
-    
       <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
     
   </entry>
   
@@ -1287,9 +1287,9 @@
     
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
-    
       <category term="concurrent" scheme="http://yoursite.com/tags/concurrent/"/>
+    
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
     
   </entry>
   
@@ -1790,9 +1790,9 @@
     
       <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
     
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
-    
       <category term="HTTP/HTTPS" scheme="http://yoursite.com/tags/HTTP-HTTPS/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
@@ -1838,9 +1838,9 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
     
       <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
     
@@ -1910,9 +1910,9 @@
     </summary>
     
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
-    
       <category term="mobile" scheme="http://yoursite.com/tags/mobile/"/>
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
     
       <category term="testing" scheme="http://yoursite.com/tags/testing/"/>
     
@@ -1993,9 +1993,9 @@
     </summary>
     
     
-      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
-    
       <category term="concurrent" scheme="http://yoursite.com/tags/concurrent/"/>
+    
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
     
   </entry>
   
