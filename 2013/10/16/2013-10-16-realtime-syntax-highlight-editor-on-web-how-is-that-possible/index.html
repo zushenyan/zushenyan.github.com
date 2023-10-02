@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Realtime Syntax Highlight Editor on Web, How Is That Possible? | Andrew.dev.blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="StoryAlthough I have already played around some front-end techniques, I still think my webdev-fu is noob as hell, so maybe I should start it from scratch. How about basic DOM structure? Hmm, good. The">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Realtime Syntax Highlight Editor on Web, How Is That Possible?">
+<meta property="og:url" content="http://zushenyan.github.io/2013/10/16/2013-10-16-realtime-syntax-highlight-editor-on-web-how-is-that-possible/index.html">
+<meta property="og:site_name" content="Andrew.dev.blog">
+<meta property="og:description" content="StoryAlthough I have already played around some front-end techniques, I still think my webdev-fu is noob as hell, so maybe I should start it from scratch. How about basic DOM structure? Hmm, good. The">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-10-16T13:29:00.000Z">
+<meta property="article:modified_time" content="2023-10-02T19:48:27.134Z">
+<meta property="article:author" content="Andrew Yan">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Andrew.dev.blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Andrew.dev.blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Notes for me!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zushenyan.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2013-10-16-realtime-syntax-highlight-editor-on-web-how-is-that-possible" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/10/16/2013-10-16-realtime-syntax-highlight-editor-on-web-how-is-that-possible/" class="article-date">
+  <time class="dt-published" datetime="2013-10-16T13:29:00.000Z" itemprop="datePublished">2013-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Realtime Syntax Highlight Editor on Web, How Is That Possible?
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Story"><a href="#Story" class="headerlink" title="Story"></a>Story</h1><p>Although I have already played around some front-end techniques, I still think my webdev-fu is noob as hell, so maybe I should start it from scratch. How about basic DOM structure? Hmm, good. There are many realtime syntax highlight editor, I alway wonder how they work, and building one myself won’t be hard, right? Challenge accepted!</p>
+<h1 id="Google-Hard"><a href="#Google-Hard" class="headerlink" title="Google Hard"></a>Google Hard</h1><p>The quickest way to know how one thing works is to find one similar thing and study it. As far as I know, there are two editors with active communities — <a target="_blank" rel="noopener" href="http://codemirror.net/">Code Mirror</a> and <a target="_blank" rel="noopener" href="http://ace.c9.io/#nav=about">Ace Edtior</a>, but I am lazy as fuck, and reading other people’s code without any guides is really hard, so I decide to do some google about how it works.</p>
+<h1 id="Approach-1-–-ContentEditable"><a href="#Approach-1-–-ContentEditable" class="headerlink" title="Approach 1 – ContentEditable"></a>Approach 1 – ContentEditable</h1><p>Ace Editor is too modularized to make a quick understand. What I need is a one-filed, code-short example to make a quick structure overview. Code Mirror has some additional libraries, but the main program still remains in one file, so I think maybe it’s good for a starter.</p>
+<p>While I was googling guides about Code Mirror, I happened to find <a target="_blank" rel="noopener" href="http://codemirror.net/1/story.html">this article</a> about how Code Mirror 1 was made. This inspired me. Without knowing there was already an new version - Code Mirror 2, I started coding in this way.</p>
+<p>The basic idea of this way is to get raw data string from parsing contentEditable div’s inner HTML, and trying to attach span tag with syntax. Basically, contentEditable way is possible, and Code Mirror 1 did it in this way, but to me, it’s a hard way. The main problem is, the behavior of key inputs differ from browser to browser, which means if you hope to get the same data from all platforms, you will be disappointed. In actually, you will get all different versions of data.</p>
+<p>Sure you will say “Why don’t you change those behaviors to one? Problem solved!” Well, you won’t like this idea in the end, because you need to <strong>FUCKING REMAP ALL THE CONTROL KEY BEHAVIORS</strong> to act like the same, which is being said, you need to integrate all enter key versions into one, all shift-enter key versions into one, all cmd-enter key versions into one… and it’s only for enter keys, not to mention other keys’ combination, and… there are 5 mainstream browsers. Ouch, it hurts.</p>
+<p>After one-week hard coding, it exhausted me. This is not a good idea. I need a better solution.</p>
+<h1 id="Approach-2-–-Hidden-Textarea"><a href="#Approach-2-–-Hidden-Textarea" class="headerlink" title="Approach 2 – Hidden Textarea"></a>Approach 2 – Hidden Textarea</h1><p>This is the way how Code Mioor 2 and Ace Editor were made. You can read <a target="_blank" rel="noopener" href="http://codemirror.net/doc/internals.html">this article</a> if you already feel the pain from approach 1.</p>
+<p>The key concept is that it hides a textarea from users’ eyes, and makes them believe they are typing into textarea. What they see, actually, is <strong>many divs</strong> pretending like a textarea.</p>
+<p>The main challenge from this approach is that since you are not using default elements, you need to mimic your own textarea element — everything inside the textarea, including scrollbar, caret, selection and mouse events.</p>
+<p>Though it’s not hard, I still want to find an easy way to achieve my goal because what I want to do is making a simple realtime syntax highlight editor, not another fully functional editor.</p>
+<p>While I was struggling on approach 2 way, suddenly an idea came to my mind - “Hey, why don’t I just overlay a transparent textarea on the visual view? Using the default textarea can save a lot of works!”</p>
+<p>So I started my overlay textarea journey.</p>
+<h1 id="Approach-3-–-Overlay-Textarea"><a href="#Approach-3-–-Overlay-Textarea" class="headerlink" title="Approach 3 – Overlay Textarea"></a>Approach 3 – Overlay Textarea</h1><p><a href="http://zushenyan.github.io/SRSHME/">Here is my final work.</a></p>
+<p>Basic functions:</p>
+<ul>
+<li>Support part of Markdown syntaxes.</li>
+<li>Browser default key mapping.</li>
+<li>Browser default mouse behaviors.</li>
+</ul>
+<p>Tested on the latest version of Chrome, Firefox, Safari, Opera and IE 10, and be aware that this code is not optimized. If you paste a lot of text into textarea, I am sure it will be laggy as fuck.</p>
+<p>On IE 10, user may experience the late response of caret because IE’s caret visual is not controllable in textarea. In order to show only one caret, I choose to hide my own caret to prevent from showing two carets at once.</p>
+<p>What I do here is simply overlay a transparent textarea over a visual div. Basically, the concept is similar to approach 2 but sacrifices the possibility of further customizations due to lazy code. I don’t need to write mimic scrollbars and mouse event anymore.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>To make a fully functional online text editor, programmer are bound to write <strong>a lot of codes</strong> to solve problems like right-to-left characters, line &amp; word wrap, wide characters and blah blah blah tons of things.</p>
+<p>If you are curious about how those realtime syntax highlight editors are possible, I hope this post can help.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2013/10/16/2013-10-16-realtime-syntax-highlight-editor-on-web-how-is-that-possible/" data-id="cln9b08xr000ak7ow91wm39zy" data-title="Realtime Syntax Highlight Editor on Web, How Is That Possible?" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/10/2015-10-10-frontend-fundamental-http-1-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Frontend Fundamental - HTTP 1.1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/09/09/2013-09-09-debug-pages-on-phones-with-weinre/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Debug Pages On Phones With Weinre</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AJAX/" rel="tag">AJAX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraphQL/" rel="tag">GraphQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/" rel="tag">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/" rel="tag">architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/concurrent/" rel="tag">concurrent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/octopress/" rel="tag">octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/" rel="tag">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/FP/" style="font-size: 12px;">FP</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP-HTTPS/" style="font-size: 16px;">HTTP/HTTPS</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/architecture/" style="font-size: 10px;">architecture</a> <a href="/tags/backend/" style="font-size: 12px;">backend</a> <a href="/tags/concurrent/" style="font-size: 12px;">concurrent</a> <a href="/tags/frontend/" style="font-size: 18px;">frontend</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 18px;">meta</a> <a href="/tags/mobile/" style="font-size: 12px;">mobile</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/programming/" style="font-size: 12px;">programming</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/testing/" style="font-size: 10px;">testing</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/10/2017-08-10-GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/2017-04-17-A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/2017-04-05-A-Learning-Note-to-Functional-Programming-Part-1/">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/2017-03-06-I-love-the-concept-of-anything-can-be-log/">I love the concept of &#39;anything can be log&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/13/2017-02-13-Introduction-to-Progressive-Web-App-PWA/">Introduction to Progressive Web App (PWA)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Andrew Yan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Frontend Fundamental - Communication Techniques | Andrew.dev.blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can’t even explain">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frontend Fundamental - Communication Techniques">
+<meta property="og:url" content="http://zushenyan.github.io/2015/10/13/2015-10-13-frontend-fundamental-communication-techniques/index.html">
+<meta property="og:site_name" content="Andrew.dev.blog">
+<meta property="og:description" content="Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can’t even explain">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://zushenyan.github.io/images/ct/polling.png">
+<meta property="og:image" content="http://zushenyan.github.io/images/ct/long-polling.png">
+<meta property="og:image" content="http://zushenyan.github.io/images/ct/websocket-client.png">
+<meta property="og:image" content="http://zushenyan.github.io/images/ct/websocket-server.png">
+<meta property="og:image" content="http://zushenyan.github.io/images/ct/webrtc-result.png">
+<meta property="og:image" content="http://zushenyan.github.io/images/ct/server-push.png">
+<meta property="article:published_time" content="2015-10-13T10:38:11.000Z">
+<meta property="article:modified_time" content="2023-10-02T19:48:27.134Z">
+<meta property="article:author" content="Andrew Yan">
+<meta property="article:tag" content="network">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="websocket">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zushenyan.github.io/images/ct/polling.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Andrew.dev.blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Andrew.dev.blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Notes for me!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zushenyan.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2015-10-13-frontend-fundamental-communication-techniques" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/10/13/2015-10-13-frontend-fundamental-communication-techniques/" class="article-date">
+  <time class="dt-published" datetime="2015-10-13T10:38:11.000Z" itemprop="datePublished">2015-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Frontend Fundamental - Communication Techniques
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Polling, long-polling, websocket and blah blah blah, these tech buzz words have existed for many years, and the shameful thing is, as an frontend engineer(at least I think I am), I can’t even explain to someone else what the heck are they clearly, and that’s why I come up and write it down.</p>
+<p>I will use Nodejs as backend with below demonstrations.</p>
+<h1 id="Polling"><a href="#Polling" class="headerlink" title="Polling"></a>Polling</h1><p>The most common technique when a client wants to fetch data from server.</p>
+<p>Client establishes a connection between server, sends request, server responds and closes this connection.</p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> index = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;./index.html&quot;</span>, <span class="keyword">function</span>(<span class="params">err, file</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">  index = file.<span class="title function_">toString</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(req.<span class="property">url</span> === <span class="string">&quot;/&quot;</span>)&#123;</span><br><span class="line">    res.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/html&quot;</span></span><br><span class="line">    &#125;);</span><br><span class="line">    res.<span class="title function_">end</span>(index);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(req.<span class="property">url</span> === <span class="string">&quot;/polling&quot;</span>)&#123;</span><br><span class="line">    res.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span></span><br><span class="line">    &#125;);</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&quot;polling~&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;text&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> text = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;text&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> ajax = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span></span><br><span class="line"><span class="language-javascript">      ajax.<span class="title function_">addEventListener</span>(<span class="string">&quot;readystatechange&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>(ajax.<span class="property">readyState</span> === <span class="number">4</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">if</span>(ajax.<span class="property">status</span> === <span class="number">200</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">            text.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(ajax.<span class="property">responseText</span>));</span></span><br><span class="line"><span class="language-javascript">          &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">      ajax.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;http://localhost:3000/polling&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      ajax.<span class="title function_">send</span>();</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ct/polling.png" alt="polling"></p>
+<h1 id="Long-Polling"><a href="#Long-Polling" class="headerlink" title="Long-Polling"></a>Long-Polling</h1><p>In some applications like stock market, online games and friends status, you need to get <strong>realtime</strong> data from server. Before Websocket was born, web programmers usually use long-polling ajax technique to simulate realtime data exchange.</p>
+<p>The difference between traditional polling and long-polling is that long-polling sends a request, and <strong>waits</strong> until server responds and closes connection and finally, opens another one. When repeatedly doing this, we call it <strong>keep-alive</strong> connection.</p>
+<p>The Pros are:</p>
+<ul>
+<li>Server side code remains unmodified in most case. Only need to change client side code.</li>
+<li>Our data updates in a fancy manner, which leads our customers happy, profit!</li>
+</ul>
+<p>The Cons are:</p>
+<ul>
+<li>Opening and closing connections repeatedly means unnecessary bandwidth cost.</li>
+<li>Client sometimes gets unexpected results because long-polling fires requests regularly on a fixed time, however server might respond in longer or shorter time than what client expected.</li>
+</ul>
+<p>Let’s add following codes to simulate time of processing.</p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(req.<span class="property">url</span> === <span class="string">&quot;/polling&quot;</span>)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    res.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span></span><br><span class="line">    &#125;);</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&quot;polling~&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">2500</span>);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;text&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> text = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;text&quot;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      (<span class="keyword">function</span> <span class="title function_">longPolling</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">var</span> ajax = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span></span><br><span class="line"><span class="language-javascript">          ajax.<span class="title function_">addEventListener</span>(<span class="string">&quot;readystatechange&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">if</span>(ajax.<span class="property">readyState</span> === <span class="number">4</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="keyword">if</span>(ajax.<span class="property">status</span> === <span class="number">200</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                text.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(ajax.<span class="property">responseText</span>));</span></span><br><span class="line"><span class="language-javascript">                <span class="title function_">longPolling</span>();</span></span><br><span class="line"><span class="language-javascript">              &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">          &#125;);</span></span><br><span class="line"><span class="language-javascript">          ajax.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;http://localhost:3000/polling&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">          ajax.<span class="title function_">send</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;, <span class="number">3000</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;)();</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ct/long-polling.png" alt="long-polling"></p>
+<h1 id="Websocket"><a href="#Websocket" class="headerlink" title="Websocket"></a>Websocket</h1><p>Luckily, we don’t need to simulate realtime anymore (unless you need to support old browsers) because now we get the <strong>real realtime</strong> technique with Websocket!</p>
+<p>Websocket lets client and server to communicate with each other asynchronously, which means, client and server can send and get data at the same time without waiting for each other (non-blocking).</p>
+<p>Modern browsers (not you IE8 and IE9!) this day all support native Websocket, but for the cross platform compatibility, many people use 3rd party libraries to get rid of handling compatibility themselves.</p>
+<p>In this example I use <code>socket.io</code> as our Websocket helper: <code>npm install socket.io</code></p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>).<span class="title function_">createServer</span>(handler);</span><br><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>)(app);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handler</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">  fs.<span class="title function_">readFile</span>(__dirname + <span class="string">&quot;/index.html&quot;</span>, <span class="keyword">function</span>(<span class="params">err, file</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">      res.<span class="title function_">writeHeader</span>(<span class="number">500</span>, &#123;</span><br><span class="line">        <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span></span><br><span class="line">      &#125;);</span><br><span class="line">      res.<span class="title function_">end</span>(filename + <span class="string">&quot; : not found&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text.html&quot;</span></span><br><span class="line">    &#125;);</span><br><span class="line">    res.<span class="title function_">end</span>(file);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">io.<span class="title function_">on</span>(<span class="string">&quot;connection&quot;</span>, <span class="keyword">function</span>(<span class="params">socket</span>)&#123;</span><br><span class="line">  socket.<span class="title function_">emit</span>(<span class="string">&quot;server_says&quot;</span>, <span class="string">&quot;Hello Client&quot;</span>);</span><br><span class="line">  socket.<span class="title function_">on</span>(<span class="string">&quot;client_says&quot;</span>, <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.socket.io/socket.io-1.3.7.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;text&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Hello Server!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> text = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;text&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> button = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;button&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> socket = <span class="title function_">io</span>(<span class="string">&quot;http://localhost:3000&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      socket.<span class="title function_">on</span>(<span class="string">&quot;server_says&quot;</span>, <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        text.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(data));</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        socket.<span class="title function_">emit</span>(<span class="string">&quot;client_says&quot;</span>, <span class="string">&quot;Hello Server!&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>As you can see in Chrome developer’s network tool, websocket helps us maintain a persistent connection.<br><img src="/images/ct/websocket-client.png" alt="websocket client"></p>
+<p><img src="/images/ct/websocket-server.png" alt="websocket server"></p>
+<h1 id="WebRTC"><a href="#WebRTC" class="headerlink" title="WebRTC"></a>WebRTC</h1><p>Unlike Websocket’s client-to-server structure, Web Real-Time Communication is peer-to-peer structure which allows browsers to exchange data like video, audio with each other directly. Browser-to-browser, in this fashion, data exchange is more efficient.</p>
+<p>So, regarding the tag of “browser-to-browser”, that means we don’t need a server, right? Sadly, you do, but server here merely acts as a connector, not a proxy, as a result, data won’t be passed through server.</p>
+<p>WebRTC currently is not being widely supported by all browsers. See <a target="_blank" rel="noopener" href="http://caniuse.com/#feat=rtcpeerconnection">here</a>.</p>
+<p>Here I use <a target="_blank" rel="noopener" href="http://peerjs.com/">peerjs</a> as 3rd party helper to overcome cross browser compatibility.</p>
+<p><code>npm install peer</code> for our server.</p>
+<p><code>npm install peerjs</code> for client side, but here I use direct link instead:</p>
+<p><code>&lt;script src=&quot;http://cdn.rawgit.com/peers/peerjs/master/dist/peer.js&quot;&gt;&lt;/script&gt;</code></p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">PeerServer</span> = <span class="built_in">require</span>(<span class="string">&#x27;peer&#x27;</span>).<span class="property">PeerServer</span>;</span><br><span class="line"><span class="keyword">var</span> server = <span class="title class_">PeerServer</span>(&#123;<span class="attr">port</span>: <span class="number">3000</span>, <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://cdn.rawgit.com/peers/peerjs/master/dist/peer.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;output&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> output = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;output&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> peer1 = <span class="keyword">new</span> <span class="title class_">Peer</span>(<span class="string">&quot;Mike&quot;</span>, &#123;<span class="attr">host</span>: <span class="string">&quot;localhost&quot;</span>, <span class="attr">port</span>: <span class="number">3000</span>, <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>&#125;);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> peer2 = <span class="keyword">new</span> <span class="title class_">Peer</span>(<span class="string">&quot;Bob&quot;</span>, &#123;<span class="attr">host</span>: <span class="string">&quot;localhost&quot;</span>, <span class="attr">port</span>: <span class="number">3000</span>, <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>&#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      peer1.<span class="title function_">on</span>(<span class="string">&quot;open&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">appendMessage</span>(peer1.<span class="property">id</span> + <span class="string">&quot; is ready to connect with others.&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      peer1.<span class="title function_">on</span>(<span class="string">&quot;connection&quot;</span>, <span class="keyword">function</span>(<span class="params">c</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        c.<span class="title function_">on</span>(<span class="string">&quot;open&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">          c.<span class="title function_">send</span>(<span class="string">&quot;Hello &quot;</span> + c.<span class="property">peer</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript">        c.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="title function_">appendMessage</span>(data);</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> c = peer2.<span class="title function_">connect</span>(peer1.<span class="property">id</span>);</span></span><br><span class="line"><span class="language-javascript">      c.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">appendMessage</span>(data);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        c.<span class="title function_">send</span>(<span class="string">&quot;Hello &quot;</span> + c.<span class="property">peer</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">function</span> <span class="title function_">appendMessage</span>(<span class="params">message</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> p = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;p&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        p.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(message));</span></span><br><span class="line"><span class="language-javascript">        output.<span class="title function_">appendChild</span>(p);</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ct/webrtc-result.png" alt="webRTC result"></p>
+<h1 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h1><p>Unlike Websocket which opens a duplex connection for client and server, server push (aka server sent) only opens a unidirectional connection for client and server. Server, as an message sender, only push message to client. Client, as a message receiver, only accepts message from server.</p>
+<p>Since there is a Websocket for duplex connection, why would someone only want one-way connection? In come scenarios like news feeds or friends notifications, client requests only once for page, and waits for following responses from server.</p>
+<figure class="highlight js"><figcaption><span>title:"server.js"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(req.<span class="property">headers</span>.<span class="property">accept</span> === <span class="string">&quot;text/event-stream&quot;</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(req.<span class="property">url</span> === <span class="string">&quot;/events&quot;</span>)&#123;</span><br><span class="line">      res.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123;</span><br><span class="line">        <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/event-stream&quot;</span></span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        res.<span class="title function_">write</span>(<span class="string">&quot;data: Hello Server Push!\n\n&quot;</span>);</span><br><span class="line">      &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    res.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123; <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/html&quot;</span>&#125;);</span><br><span class="line">    res.<span class="title function_">write</span>(fs.<span class="title function_">readFileSync</span>(__dirname + <span class="string">&quot;/index.html&quot;</span>));</span><br><span class="line">    res.<span class="title function_">end</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><figcaption><span>title:"index.html"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;output&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> output = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;output&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> es = <span class="keyword">new</span> <span class="title class_">EventSource</span>(<span class="string">&quot;/events&quot;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      es.<span class="title function_">addEventListener</span>(<span class="string">&quot;message&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">appendMessage</span>(e.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">function</span> <span class="title function_">appendMessage</span>(<span class="params">message</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> p = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;p&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        p.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(message));</span></span><br><span class="line"><span class="language-javascript">        output.<span class="title function_">appendChild</span>(p);</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ct/server-push.png" alt="server push"></p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/10028770/html5-websocket-vs-long-polling-vs-ajax-vs-webrtc-vs-server-sent-events">stackoverflow: websocket vs long-polling vs webrtc vs server sent events</a></li>
+<li><a target="_blank" rel="noopener" href="http://techoctave.com/c7/posts/60-simple-long-polling-example-with-javascript-and-jquery/">simple long-polling with javascript and jquery</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/11077857/what-are-long-polling-websockets-server-sent-events-sse-and-comet?lq=1">stackoverflow: what are websockets, sse and comet?</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@denizozger/finding-the-right-node-js-websocket-implementation-b63bfca0539">finding the right nodejs websocket implementation</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">MDN: writing websocket client applications</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/WebRTC">webRTC on wikipedia</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.innoarchitech.com/what-is-webrtc-and-how-does-it-work/">what is webrtc and how does it work</a></li>
+<li><a target="_blank" rel="noopener" href="http://peerjs.com/">peejs.com</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.html5rocks.com/en/tutorials/eventsource/basics/?redirect_from_locale=tw">Stream Updates with SSE</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2015/10/13/2015-10-13-frontend-fundamental-communication-techniques/" data-id="cln9b08y5000kk7ow6dx93zpk" data-title="Frontend Fundamental - Communication Techniques" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/" rel="tag">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/26/2015-10-26-asynchronous-programming-in-javascript/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Asynchronous Programming in JavaScript
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/12/2015-10-12-frontend-fundamental-ajax-jsonp-and-cors/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Frontend Fundamental - AJAX, JSONP and CORS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AJAX/" rel="tag">AJAX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraphQL/" rel="tag">GraphQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/" rel="tag">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/" rel="tag">architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/concurrent/" rel="tag">concurrent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/octopress/" rel="tag">octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/" rel="tag">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/FP/" style="font-size: 12px;">FP</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP-HTTPS/" style="font-size: 16px;">HTTP/HTTPS</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/architecture/" style="font-size: 10px;">architecture</a> <a href="/tags/backend/" style="font-size: 12px;">backend</a> <a href="/tags/concurrent/" style="font-size: 12px;">concurrent</a> <a href="/tags/frontend/" style="font-size: 18px;">frontend</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 18px;">meta</a> <a href="/tags/mobile/" style="font-size: 12px;">mobile</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/programming/" style="font-size: 12px;">programming</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/testing/" style="font-size: 10px;">testing</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/10/2017-08-10-GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/2017-04-17-A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/2017-04-05-A-Learning-Note-to-Functional-Programming-Part-1/">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/2017-03-06-I-love-the-concept-of-anything-can-be-log/">I love the concept of &#39;anything can be log&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/13/2017-02-13-Introduction-to-Progressive-Web-App-PWA/">Introduction to Progressive Web App (PWA)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Andrew Yan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
