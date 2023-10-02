@@ -1,7 +1,7 @@
 ---
 title: "Assignments Design Guide - Candidate Perspective"
 date: 2020-12-18 00:00:00
-tags:
+tags: [interview]
 ---
 
 I've been writing assignments lately due to interviews. I am happy to see the software industry turning assessment approach from doing Leetcode (or whiteboarding) to a way that is more closely to how most engineers handle day-to-day works. However, the recent experience with take-home assignments is painful to me, mostly because of how the take-home assignment process is designed. I often got rejected replies like `not fulfilling requirements correctly` or `we don't like your architecture`... etc. Got rejected without solid clues makes people really confused and frustrated.
