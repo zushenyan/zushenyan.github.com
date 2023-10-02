@@ -77,6 +77,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2013-09-02-how-to-call-paret-function-in-child-class" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/09/02/2013-09-02-how-to-call-paret-function-in-child-class/" class="article-date">
+  <time class="dt-published" datetime="2013-09-02T23:39:00.000Z" itemprop="datePublished">2013-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/09/02/2013-09-02-how-to-call-paret-function-in-child-class/">How To Call Parent Function in Child Class</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, str);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>yea, as simple as that.</p>
+<p>Don’t forget sub-class is made of this</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">BaseClass</span>();</span><br></pre></td></tr></table></figure>
+
+<p>This makes all legit.</p>
+<p>Full source view</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">BaseClass</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">SubClass</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">BaseClass</span>();</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">SubClass</span>;</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, str);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2013/09/02/2013-09-02-how-to-call-paret-function-in-child-class/" data-id="cln9bxqbq0004jxn5dy7l4u0w" data-title="How To Call Parent Function in Child Class" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2013-08-29-pass-this-into-anonymous-function" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/08/29/2013-08-29-pass-this-into-anonymous-function/" class="article-date">
@@ -105,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/08/29/2013-08-29-pass-this-into-anonymous-function/" data-id="cln9bdxfe0002ipn539p9ad70" data-title="How to pass &#34;this&#34; into anonymous function" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2013/08/29/2013-08-29-pass-this-into-anonymous-function/" data-id="cln9bxqbo0002jxn5d4amhrcv" data-title="How to pass &#34;this&#34; into anonymous function" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -163,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/08/29/2013-08-29-basic-things-about-octopress-dot-dot-dot/" data-id="cln9bdxfc0001ipn50niph6b9" data-title="Basic Things About Octopress..." class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2013/08/29/2013-08-29-basic-things-about-octopress-dot-dot-dot/" data-id="cln9bxqbm0001jxn5bedc5l9k" data-title="Basic Things About Octopress..." class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -208,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/06/26/2013-06-26-new-post/" data-id="cln9bdxf70000ipn5cygp81kb" data-title="new post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2013/06/26/2013-06-26-new-post/" data-id="cln9bxqbh0000jxn52m989pvi" data-title="new post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -257,7 +306,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
     </div>
   </div>
 
@@ -268,6 +317,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
+          </li>
         
           <li>
             <a href="/2017/08/10/2017-08-10-GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
@@ -283,10 +336,6 @@
         
           <li>
             <a href="/2017/03/06/2017-03-06-I-love-the-concept-of-anything-can-be-log/">I love the concept of &#39;anything can be log&#39;</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/13/2017-02-13-Introduction-to-Progressive-Web-App-PWA/">Introduction to Progressive Web App (PWA)</a>
           </li>
         
       </ul>
