@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Introduction to Progressive Web App (PWA) | Andrew.dev.blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="What is that?Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes the following fea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to Progressive Web App (PWA)">
+<meta property="og:url" content="http://zushenyan.github.io/2017/02/13/Introduction-to-Progressive-Web-App-PWA/index.html">
+<meta property="og:site_name" content="Andrew.dev.blog">
+<meta property="og:description" content="What is that?Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes the following fea">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-02-13T22:37:45.000Z">
+<meta property="article:modified_time" content="2023-10-02T20:18:07.262Z">
+<meta property="article:author" content="Andrew Yan">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="mobile">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="PWA">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Andrew.dev.blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Andrew.dev.blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Notes for me!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zushenyan.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Introduction-to-Progressive-Web-App-PWA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/02/13/Introduction-to-Progressive-Web-App-PWA/" class="article-date">
+  <time class="dt-published" datetime="2017-02-13T22:37:45.000Z" itemprop="datePublished">2017-02-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Introduction to Progressive Web App (PWA)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="What-is-that"><a href="#What-is-that" class="headerlink" title="What is that?"></a>What is that?</h1><p>Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes the following features:</p>
+<ul>
+<li>Responsive - available on many devices: desktop, phone and tablet.</li>
+<li>Reliable - accessible even if the network is down.</li>
+<li>Fresh - always up-to-date, updating without getting through app store.</li>
+<li>Safe - can only be accessed via HTTPS.</li>
+<li>Discoverable - unlike native app, since it’s an web app, content should be discoverable by the search engines.</li>
+<li>Engaging - PWA can be access like an native app. You can access them by adding them to home screen, and provide them an seamless full screen experience.</li>
+</ul>
+<p>but that sounds very…unclear. We want to know how it was made right. Here is the <em>heart of Progressive Web App</em>:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://w3c.github.io/ServiceWorker/">Service Worker</a> - the first pillar of PWA. It’s an API that hijacks networking request, and responds browser with additional messages.</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage">Cache Storage</a> - the second pillar of PWA. A member of Web Storage. An API developer often use with Service Worker. It caches request as key and responds with cached value if corresponding key is found.</li>
+<li><a target="_blank" rel="noopener" href="https://w3c.github.io/manifest/">Web App Manifest</a> - a JSON-based manifest file provides ability to set things like app icon name or display mode and many other things.</li>
+</ul>
+<h1 id="Platform-support"><a href="#Platform-support" class="headerlink" title="Platform support"></a>Platform support</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/serviceworker">service worker API on MDN</a></p>
+<p>In the current status, service worker is not available on iOS, which says your app still can’t benefit from PWA, but the good news is even if the working environment hasn’t support yet, your app will fallback to the traditional caching strategy. Your app still works without modifying codes!</p>
+<h1 id="PWA-vs-Native"><a href="#PWA-vs-Native" class="headerlink" title="PWA vs Native"></a>PWA vs Native</h1><p>PWA is an improvement to the web and user experience, making it more like an native app, but that doesn’t mean it’s going to replace native app or against native app on par.</p>
+<p>PWA is just a collection of features and it’s not a platform like native. A fair fight should be “browser vs native”.</p>
+<p>If you take a look at <a target="_blank" rel="noopener" href="https://whatwebcando.today/">what web can do</a>, you might think “cool I can finally develop something like native does on mobile!” However the current compatibility on iOS still has long way to go, if you take a look on those API closely, you will find out most of them only available on Chrome on Android.</p>
+<h1 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h1><p>Please check <a target="_blank" rel="noopener" href="https://github.com/zushenyan/pwa-test">pwa-test</a> written by me. It’s a simplified version of <a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0">Your Frist Progressive Web App</a>.</p>
+<p>I don’t want to write every step down here, because, first, I am lazy, and more important, I think <a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0">Your Frist Progressive Web App</a> has done a great job on tutoring. I believe it already provides all the details you need.</p>
+<p>However there are still some pitfalls when developing with service worker, in order to save your time, <a target="_blank" rel="noopener" href="https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9">here</a> you go.</p>
+<h1 id="Higher-level-API"><a href="#Higher-level-API" class="headerlink" title="Higher level API"></a>Higher level API</h1><p>After read all the tutorials, you found you have to write many codes to achieve PWA, but… you are a lazy programmer like me, and wondering “where’s the higher level API candy?” Well, people heard you. Here comes some candies!</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/sw-toolbox">sw-toolbox</a> - a collection of service worker tools to help developing offline web app.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/sw-precache">sw-precache</a> - a helper for integrating service worker with building chain like gulp.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/NekR/offline-plugin">webpack-offline-plugin</a> - a webpack plugin for building offline web app.</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://blog.ionic.io/what-is-a-progressive-web-app/">What is a progressive web app</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/">A Beginner’s Guide To Progressive Web Apps</a></li>
+<li><a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0">Your Frist Progressive Web App</a></li>
+<li><a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/push-notifications/index.html?index=../../index#6">Push notifications</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.google.com.tw/search?safe=off&q=pwa+vs+native&oq=pwa+vs+&gs_l=serp.3.1.0l7j0i10k1j0l2.44121.47105.0.48621.15.11.4.0.0.0.144.882.10j1.11.0....0...1c.1.64.serp..0.13.779.0..0i22i30k1.fl5zTNkR8kI">Why “Progressive Web Apps vs. native” is the wrong question to ask</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2017/02/13/Introduction-to-Progressive-Web-App-PWA/" data-id="cln9c29mh001yljou1crk66pk" data-title="Introduction to Progressive Web App (PWA)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWA/" rel="tag">PWA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/06/I-love-the-concept-of-anything-can-be-log/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          I love the concept of &#39;anything can be log&#39;
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/08/How-to-Choose-a-lib-framework/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How to Choose a Lib/Framework</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AJAX/" rel="tag">AJAX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraphQL/" rel="tag">GraphQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/" rel="tag">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/" rel="tag">architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/concurrent/" rel="tag">concurrent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/octopress/" rel="tag">octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/" rel="tag">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/FP/" style="font-size: 12px;">FP</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP-HTTPS/" style="font-size: 16px;">HTTP/HTTPS</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/architecture/" style="font-size: 10px;">architecture</a> <a href="/tags/backend/" style="font-size: 12px;">backend</a> <a href="/tags/concurrent/" style="font-size: 12px;">concurrent</a> <a href="/tags/frontend/" style="font-size: 18px;">frontend</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 12px;">interview</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 18px;">meta</a> <a href="/tags/mobile/" style="font-size: 12px;">mobile</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/programming/" style="font-size: 12px;">programming</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/testing/" style="font-size: 10px;">testing</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/I-love-the-concept-of-anything-can-be-log/">I love the concept of &#39;anything can be log&#39;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Andrew Yan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

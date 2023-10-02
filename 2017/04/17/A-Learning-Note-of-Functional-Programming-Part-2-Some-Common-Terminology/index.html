@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>A Learning Note of Functional Programming Part 2 - Some Common Terminology | Andrew.dev.blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="PrefaceThis is another note for introducing some common terms or words that you may see in functional programming world. Examples here will be implemented in either vanilla JS or Ramda - a functional">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Learning Note of Functional Programming Part 2 - Some Common Terminology">
+<meta property="og:url" content="http://zushenyan.github.io/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/index.html">
+<meta property="og:site_name" content="Andrew.dev.blog">
+<meta property="og:description" content="PrefaceThis is another note for introducing some common terms or words that you may see in functional programming world. Examples here will be implemented in either vanilla JS or Ramda - a functional">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-04-17T23:28:59.000Z">
+<meta property="article:modified_time" content="2023-10-02T20:18:07.262Z">
+<meta property="article:author" content="Andrew Yan">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="meta">
+<meta property="article:tag" content="programming">
+<meta property="article:tag" content="FP">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Andrew.dev.blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Andrew.dev.blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Notes for me!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zushenyan.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/" class="article-date">
+  <time class="dt-published" datetime="2017-04-17T23:28:59.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      A Learning Note of Functional Programming Part 2 - Some Common Terminology
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>This is another note for introducing some common terms or words that you may see in functional programming world.</p>
+<p>Examples here will be implemented in either vanilla JS or <a target="_blank" rel="noopener" href="http://ramdajs.com/">Ramda</a> - a functional library that focuses on functional programming than other general-purpose same purpose libraries.</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p><code>Map</code> is a function which transforms data from one to any type (including itself):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array of number to array of number (transform to itself)</span></span><br><span class="line"><span class="comment">// [2,3,4]</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// array of number to array of obj (transform to other types)</span></span><br><span class="line"><span class="comment">// [</span></span><br><span class="line"><span class="comment">//   &#123; num: 1 &#125;,</span></span><br><span class="line"><span class="comment">//   &#123; num: 2 &#125;,</span></span><br><span class="line"><span class="comment">//   &#123; num: 3 &#125;</span></span><br><span class="line"><span class="comment">// ]</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> (&#123; <span class="attr">num</span>: x &#125;));</span><br></pre></td></tr></table></figure>
+
+<h1 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h1><p><code>Filter</code> is a function which takes a <strong>predicate</strong> (a function takes an argument and return a boolean) and an list and finally returns an list:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array of number to array of number</span></span><br><span class="line"><span class="comment">// [2,4]</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].<span class="title function_">filter</span>(<span class="function"><span class="params">x</span> =&gt;</span> x % <span class="number">2</span> === <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h1><p><code>Reduce</code> takes a function, an initial value and transforms data to any type (including itself):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array of number to nunber</span></span><br><span class="line"><span class="comment">// 10</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].<span class="title function_">reduce</span>(</span><br><span class="line">  <span class="function">(<span class="params">acc, value</span>) =&gt;</span> &#123;</span><br><span class="line">    acc += value;</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;, <span class="number">0</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Transduce"><a href="#Transduce" class="headerlink" title="Transduce"></a>Transduce</h1><p>You might find that you can implement <code>map</code> and <code>filter</code> in <code>reduce</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">map</span> = (<span class="params">f, arr</span>) =&gt; &#123;</span><br><span class="line">  arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, value</span>) =&gt;</span> &#123;</span><br><span class="line">    acc.<span class="title function_">push</span>(<span class="title function_">f</span>(value));</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;, []);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">filter</span> = (<span class="params">predicate, arr</span>) =&gt; &#123;</span><br><span class="line">  arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">f</span>(value) &amp;&amp; acc.<span class="title function_">push</span>(value);</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;, []);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Basically, <code>reduce</code> does two things at same time - <strong>transform</strong> and <strong>accumulation</strong>, but in FP, a good function only does one thing at a time.</p>
+<p>Separating helps function composition and code reusability. We can achieve that by using <code>transduce</code> - a function takes <code>transducer</code>, <code>accumulator</code> functions and an initial value as arguments.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Ramds&#x27;s transduce.</span></span><br><span class="line"><span class="keyword">const</span> data       = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">double</span>     = (<span class="params">x</span>) =&gt; x * <span class="number">2</span>; <span class="comment">// transformer</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span>        = (<span class="params">x, y</span>) =&gt; x + y; <span class="comment">// accumulator</span></span><br><span class="line"><span class="keyword">const</span> transducer = R.<span class="title function_">map</span>(double); <span class="comment">// transformer&#x27;s collection</span></span><br><span class="line">R.<span class="title function_">transduce</span>(transducer, add, <span class="number">0</span>, data); <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Curry"><a href="#Curry" class="headerlink" title="Curry"></a>Curry</h1><p>Outside the world of FP, functions can only be carried out when all arguments have been passed in.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">x, y</span>) =&gt; x + y;</span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>In FP world, functions will be executed only when the last argument has been passed in. A curried function with partially arguments being passed in is called <strong>partially applied</strong> function.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Here I use Ramda&#x27;s curry to make a function curried</span></span><br><span class="line"><span class="keyword">const</span> add = R.<span class="title function_">curry</span>(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y);</span><br><span class="line"><span class="keyword">const</span> add1 = <span class="title function_">add</span>(<span class="number">1</span>); <span class="comment">// when the last argument hasn&#x27;t been fulfilled, returns a function instead;</span></span><br><span class="line"><span class="title function_">add1</span>(<span class="number">2</span>); <span class="comment">// 3</span></span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">2</span>); <span class="comment">// or you can do this</span></span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// all of them result the same</span></span><br></pre></td></tr></table></figure>
+
+<p>And here is a simple <code>curry</code> implementation taking up to 2 arguments only:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">curry</span>      = (<span class="params">fn</span>) =&gt; <span class="function">(<span class="params">x</span>) =&gt;</span> <span class="function">(<span class="params">y</span>) =&gt;</span> <span class="title function_">fn</span>(x, y);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span>        = (<span class="params">x, y</span>) =&gt; x + y;</span><br><span class="line"><span class="keyword">const</span> curriedAdd = <span class="title function_">curry</span>(add);</span><br><span class="line"><span class="title function_">curriedAdd</span>(<span class="number">1</span>)(<span class="number">2</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>Curry is good for function composition, I will introduce them in next section.</p>
+<h1 id="Compose"><a href="#Compose" class="headerlink" title="Compose"></a>Compose</h1><p><code>compose</code> is a function that takes many <strong>transformers</strong> and compresses them into a function. This is also called <code>pipe</code> or <code>sequence</code> in other languages or libraries.</p>
+<p>For the sake of simplicity I only make <code>compose</code> take two functions. In practical world <code>compose</code> can actually take as many functions as you want, not limit to two.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> compose            = R.<span class="title function_">curry</span>(<span class="function">(<span class="params">f, g</span>) =&gt;</span> <span class="function">(<span class="params">val</span>) =&gt;</span> <span class="title function_">f</span>(<span class="title function_">g</span>(val)));</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">trim</span>               = (<span class="params">x</span>) =&gt; x.<span class="title function_">trim</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">toUpperCase</span>        = (<span class="params">x</span>) =&gt; x.<span class="title function_">toUpperCase</span>();</span><br><span class="line"><span class="keyword">const</span> trimAndToUpperCase = <span class="title function_">compose</span>(trim, toUpperCase);</span><br><span class="line"><span class="title function_">trimAndToUpperCase</span>(<span class="string">&quot;  Hello World  &quot;</span>); <span class="comment">// &quot;HELLO WORLD&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Beware of its evaluation order - <code>f(g(val))</code>, functions will be evaluated in upside down. If you think it is not human friendly, in Ramda you can use <a target="_blank" rel="noopener" href="http://ramdajs.com/docs/#pipe">pipe</a> to get it evaluated from top to down.</p>
+<p>Here it’s why <code>curry</code> shines. The benefit of <code>curry</code> is when using with <code>compose</code>, we don’t have to mention data when building our transformer. Processing data without mentioning <strong>at initial</strong> is called <strong>point-of-free</strong> or <strong>pointfree</strong>. In other words we only care about our data’s name when we start transforming.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add1</span>          = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">double</span>        = (<span class="params">x</span>) =&gt; x * <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// not pointfree</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add1AndDouble</span> = (<span class="params">data</span>) =&gt; <span class="title function_">double</span>(<span class="title function_">add1</span>(data));</span><br><span class="line"></span><br><span class="line"><span class="comment">// pointfree</span></span><br><span class="line"><span class="keyword">const</span> betterAdd1AndDouble = R.<span class="title function_">compose</span>(add1, double);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Functor"><a href="#Functor" class="headerlink" title="Functor"></a>Functor</h1><p><code>Functor</code> in short explanation is:</p>
+<ul>
+<li>a container traps values inside.</li>
+<li>container can trap anything, like function or even <code>Functor</code> itself.</li>
+<li><code>Functor</code> is an <strong>mappable</strong> object. Something implements <code>map</code> function.</li>
+</ul>
+<p>Here is a <code>Functor</code> implemented in OOP.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Functor</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_val</span> = val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Functor</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; _val: 6 &#125;</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>There is a very common example of <code>Functor</code> that every JS developer is familiar with - array.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>There are two common advanced types of <code>Functor</code> - one is <code>Maybe</code> and the other is <code>Either</code>.</p>
+<h3 id="Maybe"><a href="#Maybe" class="headerlink" title="Maybe"></a>Maybe</h3><p>In other languages like Scala or OCaml, <code>Maybe</code> is also called <code>Option</code>. <code>Maybe</code> is a type which represents <strong>something</strong> or <strong>nothing</strong>.</p>
+<p>This is especially good when dealing with <code>Functors</code> containing a <strong>null</strong> value, because when you try to apply function to <strong>null</strong> value, it fails softly.</p>
+<p>You won’t confuse your user with an wild error or stuck them in plain white screen.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Maybe</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Functor</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Maybe</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="variable language_">this</span>.<span class="property">_val</span> &amp;&amp; <span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add1</span> = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(add1); <span class="comment">// 6</span></span><br><span class="line"><span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="literal">null</span>).<span class="title function_">map</span>(add1); <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Either"><a href="#Either" class="headerlink" title="Either"></a>Either</h1><p>Most programming languages have <code>throw/catch</code> mechanics for error handling,<br>however <code>throw/catch</code> isn’t nice in FP because of two reasons:</p>
+<ul>
+<li>it breaks the composition of functions.</li>
+<li><code>throw/catch</code> hard fails program if errors were not caught. This is not a pure action.</li>
+</ul>
+<p><code>Either</code> is the right candidate for this scenario. Basically it’s like <strong>ternary operator</strong> <code>condition ? exp1 : exp2</code>,<br>except it’s a function:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">either</span>(left, right, val)</span><br></pre></td></tr></table></figure>
+
+<p>It execute&#x2F;return <code>right</code> only when the condition of <code>right</code> has been fulfilled, otherwise <code>left</code> instead.</p>
+<p>Here it’s a simple implementation of <code>Either</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Either</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">left, right</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">left</span> = left;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">right</span> = right;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">left, right</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Either</span>(left, right);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">right</span> ? <span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="variable language_">this</span>.<span class="property">left</span>, <span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">right</span>)) : <span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">left</span>), <span class="variable language_">this</span>.<span class="property">right</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="number">123</span>, <span class="number">456</span>).<span class="title function_">map</span>(add); <span class="comment">// Either(123, 457)</span></span><br><span class="line"><span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="number">123</span>, <span class="literal">null</span>).<span class="title function_">map</span>(add); <span class="comment">// Either(124, null)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Applicative-Functor"><a href="#Applicative-Functor" class="headerlink" title="Applicative Functor"></a>Applicative Functor</h1><p><code>Applicative Functor (AP)</code> is an advanced type of <code>Functor</code>. I just mentioned <code>Functor</code> can contain anything including functions, and one of the definition of <code>Functor</code> is it’s <strong>mappable</strong>. Now here comes a question - how do you <code>map</code> a function?</p>
+<p>The answer is we use <code>ap</code> to apply arguments to functions:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Functor</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_val</span> = val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Functor</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// F means functor not function</span></span><br><span class="line">  <span class="title function_">ap</span>(<span class="params">F</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="variable language_">this</span>.<span class="title function_">_val</span>(F.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> add = <span class="title function_">curry</span>(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y); <span class="comment">// a curried version of add</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(add).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>)).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>)); <span class="comment">// Functor(11)</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">add</span>(<span class="number">5</span>)).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>)); <span class="comment">// Functor(11)</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(add).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>)) <span class="comment">// Functor(11)</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(<span class="title function_">add</span>(<span class="number">6</span>)); <span class="comment">// Functor(11)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="lift"><a href="#lift" class="headerlink" title="lift"></a>lift</h3><p>Let’s take a look at this example more closely:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(add).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>)).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
+
+<p>This syntax is not quite elegant and functional enough. What if I already have <code>add</code> function and I want to make it able to automatically process it’s argument in <code>Functor</code> level?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// As we know `Array` is a common kind of Functor.</span></span><br><span class="line"><span class="comment">// expect [3]</span></span><br><span class="line"><span class="title function_">add</span>([<span class="number">1</span>], [<span class="number">2</span>]); <span class="comment">// &quot;12&quot; Oops</span></span><br></pre></td></tr></table></figure>
+
+<p>let’s use <code>lift</code> to <strong>lift its arguments to functor</strong> without using <code>Functor.of(x)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Use Ramda&#x27;s add because it&#x27;s already curried.</span></span><br><span class="line"><span class="comment">// Use Ramda&#x27;s lift to do lifting.</span></span><br><span class="line"><span class="keyword">const</span> addA2 = <span class="title function_">lift</span>(add);</span><br><span class="line"><span class="title function_">addA2</span>([<span class="number">1</span>,<span class="number">2</span>], [<span class="number">3</span>,<span class="number">4</span>]); <span class="comment">// [4,7,5,8] remember functor is mappable.</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h1><p>There is another scenario - anything can be a value of <code>Functor</code>, including <code>Functor</code> itself.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(</span><br><span class="line">  <span class="title class_">Functor</span>.<span class="title function_">of</span>(</span><br><span class="line">    <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">42</span>)</span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>With <code>Functor</code> in this status, our <code>map</code> magic doesn’t work. In order to apply function to our value, we have to <strong>flatten</strong> it first.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Functor</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_val</span> = val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Functor</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">join</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_val</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">flatMap</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">join</span>().<span class="title function_">map</span>(f);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add1</span> = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> num = <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">42</span>)).<span class="title function_">flatMap</span>(add1); <span class="comment">// Functor(43)</span></span><br></pre></td></tr></table></figure>
+
+<p>The <code>flatten</code> and <code>map</code> approach is called <code>flatMap</code>. <code>flatMap</code> is also called <code>chain</code> in JS or other languages.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/hemanth/functional-programming-jargon">functional programming jargon</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/02/fp-tutorial.html">函数式编程入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/03/reduce_transduce.html">Reduce 和 Transduce 的含义</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@roman01la/understanding-transducers-in-javascript-3500d3bd9624">Understanding Transducers in JavaScript</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.russbishop.net/monoids-monads-and-functors">Functors, Applicatives, and Monads in Plain English</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.slideshare.net/kenbot/category-theory-for-beginners">category theory for beginner</a></li>
+<li><a target="_blank" rel="noopener" href="https://drboolean.gitbooks.io/mostly-adequate-guide/content/">mostly adequate guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@tzehsiang/javascript-functor-applicative-monads-in-pictures-b567c6415221">Javascript Functor, Applicative, Monads in pictures</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/36558598/cant-wrap-my-head-around-lift-in-ramda-js">Can’t wrap my head around “lift” in Ramda.js</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/" data-id="cln9c29mm0026ljou7ce532gf" data-title="A Learning Note of Functional Programming Part 2 - Some Common Terminology" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/" rel="tag">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/10/GraphQL-vs-REST-My-Review/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          GraphQL vs REST - My Review
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AJAX/" rel="tag">AJAX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraphQL/" rel="tag">GraphQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/" rel="tag">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/" rel="tag">architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/concurrent/" rel="tag">concurrent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/octopress/" rel="tag">octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/" rel="tag">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/" rel="tag">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/FP/" style="font-size: 12px;">FP</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP-HTTPS/" style="font-size: 16px;">HTTP/HTTPS</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/architecture/" style="font-size: 10px;">architecture</a> <a href="/tags/backend/" style="font-size: 12px;">backend</a> <a href="/tags/concurrent/" style="font-size: 12px;">concurrent</a> <a href="/tags/frontend/" style="font-size: 18px;">frontend</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 12px;">interview</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 18px;">meta</a> <a href="/tags/mobile/" style="font-size: 12px;">mobile</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/programming/" style="font-size: 12px;">programming</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/testing/" style="font-size: 10px;">testing</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/I-love-the-concept-of-anything-can-be-log/">I love the concept of &#39;anything can be log&#39;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Andrew Yan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
