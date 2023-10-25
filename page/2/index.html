@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Andrew.dev.blog</title>
+  <title>Andrew&#39;s Cache</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Andrew.dev.blog">
+<meta property="og:title" content="Andrew&#39;s Cache">
 <meta property="og:url" content="http://zushenyan.github.io/page/2/index.html">
-<meta property="og:site_name" content="Andrew.dev.blog">
+<meta property="og:site_name" content="Andrew&#39;s Cache">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Andrew Yan">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Andrew.dev.blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Andrew's Cache" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -43,12 +43,8 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Andrew.dev.blog</a>
+        <a href="/" id="logo">Andrew&#39;s Cache</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Notes for me!</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -77,10 +73,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Introduction-to-Progressive-Web-App-PWA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2017/02/13/Introduction-to-Progressive-Web-App-PWA/" class="article-date">
-  <time class="dt-published" datetime="2017-02-13T22:37:45.000Z" itemprop="datePublished">2017-02-13</time>
+    <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/" class="article-date">
+  <time class="dt-published" datetime="2017-04-17T23:28:59.000Z" itemprop="datePublished">2017-04-17</time>
 </a>
     
   </div>
@@ -91,7 +87,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2017/02/13/Introduction-to-Progressive-Web-App-PWA/">Introduction to Progressive Web App (PWA)</a>
+      <a class="p-name article-title" href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
     </h1>
   
 
@@ -99,51 +95,112 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="What-is-that"><a href="#What-is-that" class="headerlink" title="What is that?"></a>What is that?</h1><p>Buzz word time! Progressive Web App (will be written as PWA in the following post), promoted by Google, basically means delivering user an app-like web app. It concludes the following features:</p>
+        <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>This is another note for introducing some common terms or words that you may see in functional programming world.</p>
+<p>Examples here will be implemented in either vanilla JS or <a target="_blank" rel="noopener" href="http://ramdajs.com/">Ramda</a> - a functional library that focuses on functional programming than other general-purpose same purpose libraries.</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p><code>Map</code> is a function which transforms data from one to any type (including itself):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array of number to array of number (transform to itself)</span></span><br><span class="line"><span class="comment">// [2,3,4]</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// array of number to array of obj (transform to other types)</span></span><br><span class="line"><span class="comment">// [</span></span><br><span class="line"><span class="comment">//   &#123; num: 1 &#125;,</span></span><br><span class="line"><span class="comment">//   &#123; num: 2 &#125;,</span></span><br><span class="line"><span class="comment">//   &#123; num: 3 &#125;</span></span><br><span class="line"><span class="comment">// ]</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> (&#123; <span class="attr">num</span>: x &#125;));</span><br></pre></td></tr></table></figure>
+
+<h1 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h1><p><code>Filter</code> is a function which takes a <strong>predicate</strong> (a function takes an argument and return a boolean) and an list and finally returns an list:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array of number to array of number</span></span><br><span class="line"><span class="comment">// [2,4]</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].<span class="title function_">filter</span>(<span class="function"><span class="params">x</span> =&gt;</span> x % <span class="number">2</span> === <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h1><p><code>Reduce</code> takes a function, an initial value and transforms data to any type (including itself):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array of number to nunber</span></span><br><span class="line"><span class="comment">// 10</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].<span class="title function_">reduce</span>(</span><br><span class="line">  <span class="function">(<span class="params">acc, value</span>) =&gt;</span> &#123;</span><br><span class="line">    acc += value;</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;, <span class="number">0</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Transduce"><a href="#Transduce" class="headerlink" title="Transduce"></a>Transduce</h1><p>You might find that you can implement <code>map</code> and <code>filter</code> in <code>reduce</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">map</span> = (<span class="params">f, arr</span>) =&gt; &#123;</span><br><span class="line">  arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, value</span>) =&gt;</span> &#123;</span><br><span class="line">    acc.<span class="title function_">push</span>(<span class="title function_">f</span>(value));</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;, []);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">filter</span> = (<span class="params">predicate, arr</span>) =&gt; &#123;</span><br><span class="line">  arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">f</span>(value) &amp;&amp; acc.<span class="title function_">push</span>(value);</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;, []);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Basically, <code>reduce</code> does two things at same time - <strong>transform</strong> and <strong>accumulation</strong>, but in FP, a good function only does one thing at a time.</p>
+<p>Separating helps function composition and code reusability. We can achieve that by using <code>transduce</code> - a function takes <code>transducer</code>, <code>accumulator</code> functions and an initial value as arguments.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Ramds&#x27;s transduce.</span></span><br><span class="line"><span class="keyword">const</span> data       = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">double</span>     = (<span class="params">x</span>) =&gt; x * <span class="number">2</span>; <span class="comment">// transformer</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span>        = (<span class="params">x, y</span>) =&gt; x + y; <span class="comment">// accumulator</span></span><br><span class="line"><span class="keyword">const</span> transducer = R.<span class="title function_">map</span>(double); <span class="comment">// transformer&#x27;s collection</span></span><br><span class="line">R.<span class="title function_">transduce</span>(transducer, add, <span class="number">0</span>, data); <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Curry"><a href="#Curry" class="headerlink" title="Curry"></a>Curry</h1><p>Outside the world of FP, functions can only be carried out when all arguments have been passed in.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">x, y</span>) =&gt; x + y;</span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>In FP world, functions will be executed only when the last argument has been passed in. A curried function with partially arguments being passed in is called <strong>partially applied</strong> function.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Here I use Ramda&#x27;s curry to make a function curried</span></span><br><span class="line"><span class="keyword">const</span> add = R.<span class="title function_">curry</span>(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y);</span><br><span class="line"><span class="keyword">const</span> add1 = <span class="title function_">add</span>(<span class="number">1</span>); <span class="comment">// when the last argument hasn&#x27;t been fulfilled, returns a function instead;</span></span><br><span class="line"><span class="title function_">add1</span>(<span class="number">2</span>); <span class="comment">// 3</span></span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">2</span>); <span class="comment">// or you can do this</span></span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// all of them result the same</span></span><br></pre></td></tr></table></figure>
+
+<p>And here is a simple <code>curry</code> implementation taking up to 2 arguments only:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">curry</span>      = (<span class="params">fn</span>) =&gt; <span class="function">(<span class="params">x</span>) =&gt;</span> <span class="function">(<span class="params">y</span>) =&gt;</span> <span class="title function_">fn</span>(x, y);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span>        = (<span class="params">x, y</span>) =&gt; x + y;</span><br><span class="line"><span class="keyword">const</span> curriedAdd = <span class="title function_">curry</span>(add);</span><br><span class="line"><span class="title function_">curriedAdd</span>(<span class="number">1</span>)(<span class="number">2</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>Curry is good for function composition, I will introduce them in next section.</p>
+<h1 id="Compose"><a href="#Compose" class="headerlink" title="Compose"></a>Compose</h1><p><code>compose</code> is a function that takes many <strong>transformers</strong> and compresses them into a function. This is also called <code>pipe</code> or <code>sequence</code> in other languages or libraries.</p>
+<p>For the sake of simplicity I only make <code>compose</code> take two functions. In practical world <code>compose</code> can actually take as many functions as you want, not limit to two.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> compose            = R.<span class="title function_">curry</span>(<span class="function">(<span class="params">f, g</span>) =&gt;</span> <span class="function">(<span class="params">val</span>) =&gt;</span> <span class="title function_">f</span>(<span class="title function_">g</span>(val)));</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">trim</span>               = (<span class="params">x</span>) =&gt; x.<span class="title function_">trim</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">toUpperCase</span>        = (<span class="params">x</span>) =&gt; x.<span class="title function_">toUpperCase</span>();</span><br><span class="line"><span class="keyword">const</span> trimAndToUpperCase = <span class="title function_">compose</span>(trim, toUpperCase);</span><br><span class="line"><span class="title function_">trimAndToUpperCase</span>(<span class="string">&quot;  Hello World  &quot;</span>); <span class="comment">// &quot;HELLO WORLD&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Beware of its evaluation order - <code>f(g(val))</code>, functions will be evaluated in upside down. If you think it is not human friendly, in Ramda you can use <a target="_blank" rel="noopener" href="http://ramdajs.com/docs/#pipe">pipe</a> to get it evaluated from top to down.</p>
+<p>Here it’s why <code>curry</code> shines. The benefit of <code>curry</code> is when using with <code>compose</code>, we don’t have to mention data when building our transformer. Processing data without mentioning <strong>at initial</strong> is called <strong>point-of-free</strong> or <strong>pointfree</strong>. In other words we only care about our data’s name when we start transforming.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add1</span>          = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">double</span>        = (<span class="params">x</span>) =&gt; x * <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// not pointfree</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add1AndDouble</span> = (<span class="params">data</span>) =&gt; <span class="title function_">double</span>(<span class="title function_">add1</span>(data));</span><br><span class="line"></span><br><span class="line"><span class="comment">// pointfree</span></span><br><span class="line"><span class="keyword">const</span> betterAdd1AndDouble = R.<span class="title function_">compose</span>(add1, double);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Functor"><a href="#Functor" class="headerlink" title="Functor"></a>Functor</h1><p><code>Functor</code> in short explanation is:</p>
 <ul>
-<li>Responsive - available on many devices: desktop, phone and tablet.</li>
-<li>Reliable - accessible even if the network is down.</li>
-<li>Fresh - always up-to-date, updating without getting through app store.</li>
-<li>Safe - can only be accessed via HTTPS.</li>
-<li>Discoverable - unlike native app, since it’s an web app, content should be discoverable by the search engines.</li>
-<li>Engaging - PWA can be access like an native app. You can access them by adding them to home screen, and provide them an seamless full screen experience.</li>
+<li>a container traps values inside.</li>
+<li>container can trap anything, like function or even <code>Functor</code> itself.</li>
+<li><code>Functor</code> is an <strong>mappable</strong> object. Something implements <code>map</code> function.</li>
 </ul>
-<p>but that sounds very…unclear. We want to know how it was made right. Here is the <em>heart of Progressive Web App</em>:</p>
+<p>Here is a <code>Functor</code> implemented in OOP.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Functor</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_val</span> = val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Functor</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; _val: 6 &#125;</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>There is a very common example of <code>Functor</code> that every JS developer is familiar with - array.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>There are two common advanced types of <code>Functor</code> - one is <code>Maybe</code> and the other is <code>Either</code>.</p>
+<h3 id="Maybe"><a href="#Maybe" class="headerlink" title="Maybe"></a>Maybe</h3><p>In other languages like Scala or OCaml, <code>Maybe</code> is also called <code>Option</code>. <code>Maybe</code> is a type which represents <strong>something</strong> or <strong>nothing</strong>.</p>
+<p>This is especially good when dealing with <code>Functors</code> containing a <strong>null</strong> value, because when you try to apply function to <strong>null</strong> value, it fails softly.</p>
+<p>You won’t confuse your user with an wild error or stuck them in plain white screen.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Maybe</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Functor</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Maybe</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="variable language_">this</span>.<span class="property">_val</span> &amp;&amp; <span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add1</span> = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(add1); <span class="comment">// 6</span></span><br><span class="line"><span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="literal">null</span>).<span class="title function_">map</span>(add1); <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Either"><a href="#Either" class="headerlink" title="Either"></a>Either</h1><p>Most programming languages have <code>throw/catch</code> mechanics for error handling,<br>however <code>throw/catch</code> isn’t nice in FP because of two reasons:</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://w3c.github.io/ServiceWorker/">Service Worker</a> - the first pillar of PWA. It’s an API that hijacks networking request, and responds browser with additional messages.</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage">Cache Storage</a> - the second pillar of PWA. A member of Web Storage. An API developer often use with Service Worker. It caches request as key and responds with cached value if corresponding key is found.</li>
-<li><a target="_blank" rel="noopener" href="https://w3c.github.io/manifest/">Web App Manifest</a> - a JSON-based manifest file provides ability to set things like app icon name or display mode and many other things.</li>
+<li>it breaks the composition of functions.</li>
+<li><code>throw/catch</code> hard fails program if errors were not caught. This is not a pure action.</li>
 </ul>
-<h1 id="Platform-support"><a href="#Platform-support" class="headerlink" title="Platform support"></a>Platform support</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/serviceworker">service worker API on MDN</a></p>
-<p>In the current status, service worker is not available on iOS, which says your app still can’t benefit from PWA, but the good news is even if the working environment hasn’t support yet, your app will fallback to the traditional caching strategy. Your app still works without modifying codes!</p>
-<h1 id="PWA-vs-Native"><a href="#PWA-vs-Native" class="headerlink" title="PWA vs Native"></a>PWA vs Native</h1><p>PWA is an improvement to the web and user experience, making it more like an native app, but that doesn’t mean it’s going to replace native app or against native app on par.</p>
-<p>PWA is just a collection of features and it’s not a platform like native. A fair fight should be “browser vs native”.</p>
-<p>If you take a look at <a target="_blank" rel="noopener" href="https://whatwebcando.today/">what web can do</a>, you might think “cool I can finally develop something like native does on mobile!” However the current compatibility on iOS still has long way to go, if you take a look on those API closely, you will find out most of them only available on Chrome on Android.</p>
-<h1 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h1><p>Please check <a target="_blank" rel="noopener" href="https://github.com/zushenyan/pwa-test">pwa-test</a> written by me. It’s a simplified version of <a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0">Your Frist Progressive Web App</a>.</p>
-<p>I don’t want to write every step down here, because, first, I am lazy, and more important, I think <a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0">Your Frist Progressive Web App</a> has done a great job on tutoring. I believe it already provides all the details you need.</p>
-<p>However there are still some pitfalls when developing with service worker, in order to save your time, <a target="_blank" rel="noopener" href="https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9">here</a> you go.</p>
-<h1 id="Higher-level-API"><a href="#Higher-level-API" class="headerlink" title="Higher level API"></a>Higher level API</h1><p>After read all the tutorials, you found you have to write many codes to achieve PWA, but… you are a lazy programmer like me, and wondering “where’s the higher level API candy?” Well, people heard you. Here comes some candies!</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/sw-toolbox">sw-toolbox</a> - a collection of service worker tools to help developing offline web app.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/sw-precache">sw-precache</a> - a helper for integrating service worker with building chain like gulp.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/NekR/offline-plugin">webpack-offline-plugin</a> - a webpack plugin for building offline web app.</li>
-</ul>
+<p><code>Either</code> is the right candidate for this scenario. Basically it’s like <strong>ternary operator</strong> <code>condition ? exp1 : exp2</code>,<br>except it’s a function:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">either</span>(left, right, val)</span><br></pre></td></tr></table></figure>
+
+<p>It execute&#x2F;return <code>right</code> only when the condition of <code>right</code> has been fulfilled, otherwise <code>left</code> instead.</p>
+<p>Here it’s a simple implementation of <code>Either</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Either</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">left, right</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">left</span> = left;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">right</span> = right;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">left, right</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Either</span>(left, right);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">right</span> ? <span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="variable language_">this</span>.<span class="property">left</span>, <span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">right</span>)) : <span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">left</span>), <span class="variable language_">this</span>.<span class="property">right</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="number">123</span>, <span class="number">456</span>).<span class="title function_">map</span>(add); <span class="comment">// Either(123, 457)</span></span><br><span class="line"><span class="title class_">Either</span>.<span class="title function_">of</span>(<span class="number">123</span>, <span class="literal">null</span>).<span class="title function_">map</span>(add); <span class="comment">// Either(124, null)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Applicative-Functor"><a href="#Applicative-Functor" class="headerlink" title="Applicative Functor"></a>Applicative Functor</h1><p><code>Applicative Functor (AP)</code> is an advanced type of <code>Functor</code>. I just mentioned <code>Functor</code> can contain anything including functions, and one of the definition of <code>Functor</code> is it’s <strong>mappable</strong>. Now here comes a question - how do you <code>map</code> a function?</p>
+<p>The answer is we use <code>ap</code> to apply arguments to functions:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Functor</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_val</span> = val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Functor</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// F means functor not function</span></span><br><span class="line">  <span class="title function_">ap</span>(<span class="params">F</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="variable language_">this</span>.<span class="title function_">_val</span>(F.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> add = <span class="title function_">curry</span>(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y); <span class="comment">// a curried version of add</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(add).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>)).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>)); <span class="comment">// Functor(11)</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">add</span>(<span class="number">5</span>)).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>)); <span class="comment">// Functor(11)</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(add).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>)) <span class="comment">// Functor(11)</span></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(<span class="title function_">add</span>(<span class="number">6</span>)); <span class="comment">// Functor(11)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="lift"><a href="#lift" class="headerlink" title="lift"></a>lift</h3><p>Let’s take a look at this example more closely:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(add).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>)).<span class="title function_">ap</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
+
+<p>This syntax is not quite elegant and functional enough. What if I already have <code>add</code> function and I want to make it able to automatically process it’s argument in <code>Functor</code> level?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// As we know `Array` is a common kind of Functor.</span></span><br><span class="line"><span class="comment">// expect [3]</span></span><br><span class="line"><span class="title function_">add</span>([<span class="number">1</span>], [<span class="number">2</span>]); <span class="comment">// &quot;12&quot; Oops</span></span><br></pre></td></tr></table></figure>
+
+<p>let’s use <code>lift</code> to <strong>lift its arguments to functor</strong> without using <code>Functor.of(x)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Use Ramda&#x27;s add because it&#x27;s already curried.</span></span><br><span class="line"><span class="comment">// Use Ramda&#x27;s lift to do lifting.</span></span><br><span class="line"><span class="keyword">const</span> addA2 = <span class="title function_">lift</span>(add);</span><br><span class="line"><span class="title function_">addA2</span>([<span class="number">1</span>,<span class="number">2</span>], [<span class="number">3</span>,<span class="number">4</span>]); <span class="comment">// [4,7,5,8] remember functor is mappable.</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h1><p>There is another scenario - anything can be a value of <code>Functor</code>, including <code>Functor</code> itself.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(</span><br><span class="line">  <span class="title class_">Functor</span>.<span class="title function_">of</span>(</span><br><span class="line">    <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">42</span>)</span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>With <code>Functor</code> in this status, our <code>map</code> magic doesn’t work. In order to apply function to our value, we have to <strong>flatten</strong> it first.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Functor</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_val</span> = val;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Functor</span>(val);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_val</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">join</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_val</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">flatMap</span>(<span class="params">f</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">join</span>().<span class="title function_">map</span>(f);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add1</span> = (<span class="params">x</span>) =&gt; x + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> num = <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">42</span>)).<span class="title function_">flatMap</span>(add1); <span class="comment">// Functor(43)</span></span><br></pre></td></tr></table></figure>
+
+<p>The <code>flatten</code> and <code>map</code> approach is called <code>flatMap</code>. <code>flatMap</code> is also called <code>chain</code> in JS or other languages.</p>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><a target="_blank" rel="noopener" href="http://blog.ionic.io/what-is-a-progressive-web-app/">What is a progressive web app</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/">A Beginner’s Guide To Progressive Web Apps</a></li>
-<li><a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0">Your Frist Progressive Web App</a></li>
-<li><a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/push-notifications/index.html?index=../../index#6">Push notifications</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.google.com.tw/search?safe=off&q=pwa+vs+native&oq=pwa+vs+&gs_l=serp.3.1.0l7j0i10k1j0l2.44121.47105.0.48621.15.11.4.0.0.0.144.882.10j1.11.0....0...1c.1.64.serp..0.13.779.0..0i22i30k1.fl5zTNkR8kI">Why “Progressive Web Apps vs. native” is the wrong question to ask</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hemanth/functional-programming-jargon">functional programming jargon</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/02/fp-tutorial.html">函数式编程入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/03/reduce_transduce.html">Reduce 和 Transduce 的含义</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@roman01la/understanding-transducers-in-javascript-3500d3bd9624">Understanding Transducers in JavaScript</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.russbishop.net/monoids-monads-and-functors">Functors, Applicatives, and Monads in Plain English</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.slideshare.net/kenbot/category-theory-for-beginners">category theory for beginner</a></li>
+<li><a target="_blank" rel="noopener" href="https://drboolean.gitbooks.io/mostly-adequate-guide/content/">mostly adequate guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@tzehsiang/javascript-functor-applicative-monads-in-pictures-b567c6415221">Javascript Functor, Applicative, Monads in pictures</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/36558598/cant-wrap-my-head-around-lift-in-ramda-js">Can’t wrap my head around “lift” in Ramda.js</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2017/02/13/Introduction-to-Progressive-Web-App-PWA/" data-id="cln9coh34001rj0okeakv51yi" data-title="Introduction to Progressive Web App (PWA)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/" data-id="clo6cl4xd0023mpp2g4ocgdun" data-title="A Learning Note of Functional Programming Part 2 - Some Common Terminology" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWA/" rel="tag">PWA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/" rel="tag">programming</a></li></ul>
 
     </footer>
   </div>
@@ -153,10 +210,10 @@
 
 
   
-    <article id="post-How-to-Choose-a-lib-framework" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-A-Learning-Note-to-Functional-Programming-Part-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2017/02/08/How-to-Choose-a-lib-framework/" class="article-date">
-  <time class="dt-published" datetime="2017-02-08T18:57:05.000Z" itemprop="datePublished">2017-02-08</time>
+    <a href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/" class="article-date">
+  <time class="dt-published" datetime="2017-04-05T22:08:57.000Z" itemprop="datePublished">2017-04-05</time>
 </a>
     
   </div>
@@ -167,7 +224,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2017/02/08/How-to-Choose-a-lib-framework/">How to Choose a Lib/Framework</a>
+      <a class="p-name article-title" href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</a>
     </h1>
   
 
@@ -175,952 +232,43 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Choosing a tool is not an easy thing, especially in today’s front-end domain, the cycle of tools is like light speed. Developers never catch up.</p>
-<blockquote>
-<p>Learn as many tools(frameworks, libraries) as you can.</p>
-</blockquote>
-<p>They said. I like the spirit, but in reality, your time is limited, you have to workout, wash clothes, pay debt and blah blah, so I think the appropriate quote should be</p>
-<blockquote>
-<p>Learn things you really need.</p>
-</blockquote>
-<p>Just learn something that is really worth you put time in, spot things that aren’t.</p>
-<p>I am absolutely not a pro in picking tools, but I still want to share some ideas when evaluating them.</p>
-<h3 id="Does-the-tool-you-currently-use-solve-the-problem-Does-it-solve-elegantly"><a href="#Does-the-tool-you-currently-use-solve-the-problem-Does-it-solve-elegantly" class="headerlink" title="Does the tool you currently use solve the problem? Does it solve elegantly?"></a>Does the tool you currently use solve the problem? Does it solve elegantly?</h3><p>By elegantly, I mean easy to maintain.</p>
-<p>Some solutions are really simple and easy to use, but as program grows, it will no longer be easy to maintain.</p>
-<p>In that case, it’s necessary to switch tool.</p>
-<p>The closest example I think it’s <a target="_blank" rel="noopener" href="http://callbackhell.com/">callback hell in JavaScript</a>.</p>
-<h3 id="Innovative-General-Concept"><a href="#Innovative-General-Concept" class="headerlink" title="Innovative &amp; General Concept"></a>Innovative &amp; General Concept</h3><p>Do you think the tool is innovative enough to be a game changer or next rock star? Any criticism on it?</p>
-<p>Do we already have a similar concept before? Or just another old trick with new skin?</p>
-<p>If this is an general concept that exist in textbook, then in my opinion, it is worth learning.</p>
-<p>By general concept, if you want examples, I mean something like Functional Programming(lodash, ramda), or Functional Reactive Programming(Rxjs, Bacon).</p>
-<p>Even if you leave JavaScript for an new journey, they still exist as another implementation or as an abstraction form.</p>
-<p>Something that can be carried around is more worth time investment.</p>
-<h3 id="Is-it-an-lib-or-framework"><a href="#Is-it-an-lib-or-framework" class="headerlink" title="Is it an lib or framework?"></a>Is it an lib or framework?</h3><p>Libraries tend to solve problems in a particular aspect. They don’t solve the whole puzzle, instead, only specializing in a small domain.</p>
-<p>Frameworks tend to provide a set of solutions for problems from many aspects. They are more suitable in particular scenarios and good for develop groups which want to reduce the learning curve for fresh crew.</p>
-<p>Tools considered as library are often more composable with other libraries, which means they are highly independent and have been designed as minimum unit in that language as possible (like class or function).</p>
-<h3 id="Active-Community"><a href="#Active-Community" class="headerlink" title="Active Community"></a>Active Community</h3><p>Active community means more discussion, issue tickets, tutorials.</p>
-<p>If you run into an issue you should find a solution in minimum effort.</p>
-<h3 id="Good-Documents-Examples"><a href="#Good-Documents-Examples" class="headerlink" title="Good Documents &amp; Examples"></a>Good Documents &amp; Examples</h3><p>Everyone loves well structured, up-to-dated documents with rich examples, right?</p>
-<h3 id="Does-it-have-tests"><a href="#Does-it-have-tests" class="headerlink" title="Does it have tests?"></a>Does it have tests?</h3><p>Tests are about quality and stability. I don’t believe lib&#x2F;framework without tests.</p>
-<h3 id="Backed-by-who"><a href="#Backed-by-who" class="headerlink" title="Backed by who?"></a>Backed by who?</h3><p>Tools that are backed by large company should be more likely to continue maintaining since they have more resource, and that means the project is less likely to be abandoned.</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.daftcode.pl/hype-driven-development-3469fc2e9b22#.li3y15euo">Hype Driven Development</a></li>
-</ul>
+        <h1 id="What-makes-FP-great"><a href="#What-makes-FP-great" class="headerlink" title="What makes FP great?"></a>What makes FP great?</h1><p>Functional Programming (FP) has been a trendy word for a while, but I wonder what makes people think FP is good? Here is my conclusion:</p>
+<h2 id="The-need-for-concurrent-parallelism"><a href="#The-need-for-concurrent-parallelism" class="headerlink" title="The need for concurrent&#x2F;parallelism"></a>The need for concurrent&#x2F;parallelism</h2><p>Since we got more than one core on CPU, we started thinking on how to process tasks more efficiently.</p>
+<p>To achieve that we have to adapt the power of concurrent&#x2F;parallelism, however the biggest problem of multithreading is <strong>how do we make sure data shared between threads is safe</strong>.</p>
+<p>In imperative programming (or languages that are not encourage immutable), things are <strong>mutable</strong>, a variable can be modified by reference without creating a new one, but when it comes to multithreading, with mutable variables, developers will have to use <code>locks</code> to manage access permission between threads, but this technique doesn’t solve this problem nicely, because the natural of variables are still mutable, once it causes bugs, it will cost developers lots of time to spot and solve issues.</p>
+<p>Another point that makes FP shining is <strong>declarative</strong>. Declarative means telling computer what to do, and imperative, on the contrary, means arranging every command manually, step by step. The benefit of declarative is yielding the rights to rearrange commands for the compiler. This approach saves a lot of line of code, making your code more cleaner and easier to read.</p>
+<h1 id="Features-of-FP"><a href="#Features-of-FP" class="headerlink" title="Features of FP"></a>Features of FP</h1><h2 id="First-class-Function"><a href="#First-class-Function" class="headerlink" title="First-class Function"></a>First-class Function</h2><p>It means you can pass functions as parameters or return functions as an result.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// take function as a parameter</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">foo</span> = (<span class="params">cb</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">  <span class="title function_">cb</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// return function as an result</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">bar</span> = (<span class="params">name</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2017/02/08/How-to-Choose-a-lib-framework/" data-id="cln9coh33001pj0ok55seajet" data-title="How to Choose a Lib/Framework" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/" rel="tag">meta</a></li></ul>
+<h2 id="Pure-Functions"><a href="#Pure-Functions" class="headerlink" title="Pure Functions"></a>Pure Functions</h2><p>Pure function means - every time you pass the same argument, you should get the same result. If a function violates the rule, then the function is <strong>impure</strong>. Things that can lead to impure are like depending on external result or IO.</p>
+<h4 id="depending-on-external-result"><a href="#depending-on-external-result" class="headerlink" title="depending on external result"></a>depending on external result</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add5</span> = (<span class="params">num</span>) =&gt; num + a;</span><br><span class="line"></span><br><span class="line">a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
-    </footer>
-  </div>
-  
-</article>
+<h4 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// promise will return either result or failure.</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fetchData</span> = (<span class="params"></span>) =&gt; <span class="title function_">fetch</span>(<span class="string">&quot;http://some-awesome-service/api&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetchData</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">result</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(result))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err));</span><br></pre></td></tr></table></figure>
 
+<h2 id="Referential-Transparency"><a href="#Referential-Transparency" class="headerlink" title="Referential Transparency"></a>Referential Transparency</h2><p>You can replace an expression with it’s result without changing the meaning of program.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add5</span> = (<span class="params">num</span>) =&gt; num + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add10</span> = (<span class="params">num</span>) =&gt; <span class="title function_">add5</span>(<span class="title function_">add5</span>(num));</span><br><span class="line"></span><br><span class="line"><span class="comment">// or replace with</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add10</span> = (<span class="params">num</span>) =&gt; num + <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
+<h2 id="Lazy-Evaluation"><a href="#Lazy-Evaluation" class="headerlink" title="Lazy Evaluation"></a>Lazy Evaluation</h2><p>There is another term called <strong>strict(eager) vs non-strict(lazy) evaluation</strong>. Lazy evaluation means computing the result only when it’s needed. Let’s take <code>filter</code> for example, if we want to filter out the first 3 of the even numbers from a list of numbers, strict evaluation traverses all the elements in the list and return first 3 even numbers, but lazy evaluation will traverse until it meets the third odd number.</p>
+<p>This approach might greatly improve performance because it doesn’t traverse all the elements, but the down side is making evaluation on time complexity harder.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// because JavaScript doesn&#x27;t have lazy evaluation built-in, here I use lodash to help demonstration.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// lodash will only perform lazy evaluation when elements length is larger than 200.</span></span><br><span class="line"><span class="keyword">const</span> arr = _.<span class="title function_">range</span>(<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> counter1 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> counter2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// strict evaluation</span></span><br><span class="line">arr.<span class="title function_">filter</span>(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</span><br><span class="line">    counter1++;</span><br><span class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">slice</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// lazy evaluation</span></span><br><span class="line"><span class="title function_">_</span>(arr).<span class="title function_">filter</span>(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</span><br><span class="line">    counter2++;</span><br><span class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">take</span>(<span class="number">3</span>)</span><br><span class="line">  .<span class="title function_">value</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter1); <span class="comment">// 200</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter2); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
 
-  
-    <article id="post-Merge-Branch-From-Another-Repo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/12/12/Merge-Branch-From-Another-Repo/" class="article-date">
-  <time class="dt-published" datetime="2016-12-12T22:38:26.000Z" itemprop="datePublished">2016-12-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2016/12/12/Merge-Branch-From-Another-Repo/">Merge Branch From Another Repo</a>
-    </h1>
-  
+<h2 id="Declarative-vs-Imperative"><a href="#Declarative-vs-Imperative" class="headerlink" title="Declarative vs Imperative"></a>Declarative vs Imperative</h2><p>Declarative tells compiler what to do instead of telling commands step by step. By using declarative we hide the working details, which gives compiler the ability to rearrange the execution steps of commands.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// declarative</span></span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function"><span class="params">ele</span> =&gt;</span> ele + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// imperative (and mutable)</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++)&#123;</span><br><span class="line">  arr[i] += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Just a quick TIL note here.</p>
-<p>If you have ever encountered a similar scenario:</p>
-<blockquote>
-<p>You have repo A and repo B.<br>Repo B is derived from repo A.<br>You are currently on repo B, and want to merge branch (or pick commit) from repo A.<br>How to achieve that?</p>
-</blockquote>
-<p>Here is what git command <code>remote</code> magically does:</p>
-<ol>
-<li><code>git remote add repoA addressOfRepoA</code></li>
-<li>Assume you are on <code>master</code> branch of repo B, and want to merge <code>master</code> branch from repo A.</li>
-<li><code>git pull repoA master</code></li>
-<li>Done.</li>
-</ol>
-<p>Actually an repo doesn’t have limitation on how many <code>remote repo</code> it can have, so if you run into similar case like me, hope this post help.</p>
-<p>References:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Git Basics - Working with Remotes</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/2949738/git-merge-different-repositories">StackOverflow - git merge different repositories</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2016/12/12/Merge-Branch-From-Another-Repo/" data-id="cln9coh3h0025j0okaavve106" data-title="Merge Branch From Another Repo" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-front-end-job-interview-questions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/12/13/front-end-job-interview-questions/" class="article-date">
-  <time class="dt-published" datetime="2015-12-13T09:14:51.000Z" itemprop="datePublished">2015-12-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/12/13/front-end-job-interview-questions/">Front-end Job Interview Questions</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h2><p><a target="_blank" rel="noopener" href="https://github.com/h5bp/Front-end-Developer-Interview-Questions">Front-end Job Interview Questions</a></p>
-<p>Won’t answer every question. I don’t know everything and some of them cover large enough to make standalone articles.</p>
-<h2 id="General-Questions"><a href="#General-Questions" class="headerlink" title="General Questions"></a>General Questions</h2><blockquote>
-<p>Talk about your preferred development environment.</p>
-</blockquote>
-<p>Mac + Atom + Gulp + Webpack&#x2F;Broserify + CLI.</p>
-<blockquote>
-<p>Which version control systems are you familiar with?</p>
-</blockquote>
-<p>Git.</p>
-<blockquote>
-<p>Can you describe your workflow when you create a web page?</p>
-</blockquote>
-<ol>
-<li>Build up working environment. e.g. create directories, set up webpack, initialize git…</li>
-<li>Outline what features the site should have.</li>
-<li>Outline the UI of the site.</li>
-<li>Start working on it. (Write tests if possible)</li>
-</ol>
-<blockquote>
-<p>If you have 5 different stylesheets, how would you best integrate them into the site?</p>
-</blockquote>
-<p>Assume each stylesheet is a file, and works for different parts of the website. The first I would do is adding “namespace” for each stylesheet to prevent class name conflict. The second thing I would do is concatenating these files into 1 to improve website download speed and browser response time.</p>
-<blockquote>
-<p>Can you describe the difference between progressive enhancement and graceful degradation?</p>
-</blockquote>
-<p>Let’s take <code>print this page</code> for example.</p>
-<ul>
-<li>Graceful Degradation - Provide a feature, but if the feature doesn’t exist in older browsers, provide a lower level feature.</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:print()&quot;</span>&gt;</span>print this page<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>You have to enable JavaScript to use this feature.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Shows no script text only when client disabled JavaScript.</p>
-<ul>
-<li>Progressive Enhancement - Provide a feature, upgrade it only when current environment supports advanced functionality.</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Please print this page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="comment">// append a button under text above.</span></span></span><br><span class="line"><span class="language-javascript">		<span class="comment">// invoke print() when button is pressed.</span></span></span><br><span class="line"><span class="language-javascript">	&#125;)();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Assume client disabled JavaScript, show button if JavaScript is allowed.</p>
-<p><a target="_blank" rel="noopener" href="https://www.w3.org/wiki/Graceful_degradation_versus_progressive_enhancement">Reference</a></p>
-<blockquote>
-<p>How would you optimize a website’s assets&#x2F;resources?</p>
-</blockquote>
-<ul>
-<li>Minifying and bundling JS&#x2F;CSS&#x2F;HTML files - It can be done via some tools like Webpack or Uglify.</li>
-<li>Image sprite - Make many images into one big image file.</li>
-<li>Image inlining - Transform images into base64 string and inline them directly into HTML files.</li>
-<li>Image resizing - If no need to render images in actual resolution, resize it.</li>
-<li>Image compressing - Compress your into a smaller piece.</li>
-<li>Gzip - Enable gzip content compression on server side.</li>
-<li>Cache - Specify Cache-Control attribute for each file header on server side.</li>
-<li>CDN(Content Deliver Network) - Put resources into different domains to break the limitation of maximum connection count.</li>
-</ul>
-<p>Assets&#x2F;resourcess optimization is a way to reduce request times under HTTP&#x2F;1.1 protocol.</p>
-<p>Besides minifying, compressing, gzip and cache, I don’t see any reason to do rest approaches once HTTP&#x2F;2 becomes popular, thanks to multiplex.</p>
-<blockquote>
-<p>How many resources will a browser download from a given domain at a time? What are the exceptions?</p>
-</blockquote>
-<p>Ranges from 6 to 8 connections per domain. It depends on what browser is user using.</p>
-<p>The exceptions are SPDY and HTTP&#x2F;2 protocols. Browsers that support these protocols only have to open one connection to download resources.</p>
-<blockquote>
-<p>Name 3 ways to decrease page load (perceived or actual load time).</p>
-</blockquote>
-<p>Since I have already talked explained about optimization in “How would you optimize a website’s assets&#x2F;resources?” section, here I will only talk about actual load time:</p>
-<ul>
-<li>Put <code>link</code> in <code>head</code> section - This will make browser load stylesheets first.</li>
-<li>Put <code>script</code> at the bottom of document - Do this to prevent browser from render blocking.</li>
-<li>Enable <code>async</code> attribute in HTML5 - Specifying <code>async</code> attribute on <code>script</code> tag to allow browser executing code and parse page at the same time.</li>
-<li>Don’t use complicated css query - <code>#foo ul li .bar</code> nested and complicated query like this. It is time costly for browsers to parse.</li>
-</ul>
-<blockquote>
-<p>Describe how you would create a simple slideshow page.</p>
-</blockquote>
-<p>I think some points are needed to be clarified first:</p>
-<ol>
-<li>What platforms will this application support? Browser? Mobile Browser? Desktop? Mobile Native App?</li>
-<li>What screen size does this application target for?</li>
-<li>What browser version will this application support down to?</li>
-<li>What feature does it really have?</li>
-<li>What is the estimated time schedule?</li>
-</ol>
-<p>Second:</p>
-<ol>
-<li>What tool should I use? Is it well documented? Does it have an active community for asking help?</li>
-<li>What techniques might this application have involved?</li>
-<li>Is there any similar work or tutorial that I can learn with?</li>
-</ol>
-<blockquote>
-<p>What is Flash of Unstyled Content? How do you avoid FOUC?</p>
-</blockquote>
-<p>Browser renders default stylesheet(unstyled) before external stylesheet is received&#x2F;loaded. The transition state between default stylesheet to external stylesheet is called FOUC.</p>
-<p>This is caused by putting <code>link</code> tag to stylesheets after the <code>head</code> tag, or with <code>@import</code> because it loads stylesheet asynchronously.</p>
-<p>Solution is pretty simple - put <code>link</code> in <code>head</code> and don’t use <code>@import</code>.</p>
-<blockquote>
-<p>Explain some of the pros and cons for CSS animations versus JavaScript animations.</p>
-</blockquote>
-<p>CSS Animation</p>
-<ul>
-<li>Pros<ul>
-<li>Natively GPU supported on mobile.<ul>
-<li>Easy to use.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>cons<ul>
-<li>Asynchronous actions, pause, stop… complicated animation control not possible.<ul>
-<li>Not supported by older browsers. Even if it supports, not every browser has the same implementation.</li>
-<li>Hard to organize when animation grows.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>JavaScript Animation</p>
-<ul>
-<li>Pros<ul>
-<li>GPU support.<ul>
-<li>Compared to CSS 3 animation, it is more widely supported.</li>
-<li>Can do complicated flow control.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Cons<ul>
-<li>Steep learning curve compares to CSS 3 animation.</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>What does CORS stand for and what issue does it address?</p>
-</blockquote>
-<p>Cross-Origin-Resource-Sharing, CORS, is a standard mechanism that let you access cross-domain resources with normal ajax request.</p>
-<p>Without CORS, you can only access services from other domain via JSONP or server proxy.</p>
-<p>You can enable this by simply adding an attribute in your file header from server side:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://my-domain-name.com</span><br></pre></td></tr></table></figure>
-
-<h2 id="HTML-Questions"><a href="#HTML-Questions" class="headerlink" title="HTML Questions"></a>HTML Questions</h2><blockquote>
-<p>What does a doctype do?</p>
-</blockquote>
-<p>Also known as Document Type Definition - DTD.</p>
-<p>There are many versions of HTML(e.g. HTML4.1, XHTML…). By defining <code>&lt;!DOCTYPE html&gt;</code> at the top of your HTML file tells the browser what’s the current version of HTML your are using, and it let browser to parse your page in that standard.</p>
-<p>Document with doctype declared will enter standard mode, otherwise or lack of URL will result in quirk mode.</p>
-<blockquote>
-<p>What’s the difference between standards mode and quirks mode?</p>
-</blockquote>
-<p>Quirks mode - also stands for <strong>non-standard</strong> mode or <strong>backward-compability</strong> mode, browsers will parse things a little different from standard mode.</p>
-<p>Standard mode - also known as <strong>strict mode</strong>, browsers will follow mostly part of W3 specification for parsing.</p>
-<p>Without declaring <code>&lt;!DOCTYPE html&gt;</code> may trigger quirks mode in older browsers.</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode">Quirks Mode and Standards Mode</a></p>
-<blockquote>
-<p>What’s the difference between HTML and XHTML?</p>
-</blockquote>
-<p>XHTML stands for eXtensible HTML. You can also think it as HTML in XML or strict syntax HTML.</p>
-<p>By sending <code>application/xhtml-xml</code> MIME type, browsers will treat this document as an XML file.</p>
-<p>There are many minor differences between HTML and XHTML. Here I only name a few:</p>
-<ul>
-<li>All elements should have always be closed.</li>
-<li>Attributes must be lower case.</li>
-<li>Attributes minimization is not allowed.</li>
-</ul>
-<p>For full specification visit <a target="_blank" rel="noopener" href="http://www.w3.org/TR/xhtml1/">w3c</a></p>
-<blockquote>
-<p>Are there any problems with serving pages as application&#x2F;xhtml+xml?</p>
-</blockquote>
-<p>By doing this will let browsers treat this document as an XML file, which turns HTML into XHTML.</p>
-<p>On IE 6,7,8 this will prompt a download dialog instead of rendering document.</p>
-<blockquote>
-<p>What are data- attributes good for?</p>
-</blockquote>
-<p>You can define your own attributes. Saving data or state in an element instead of having another variable for recording in JavaScript.</p>
-<blockquote>
-<p>Describe the difference between a cookie, sessionStorage and localStorage.</p>
-</blockquote>
-<p>Cookie</p>
-<ul>
-<li>Can access via JavaScript, or be disallowed to access via JavaScript via <code>http-only</code> attribute in header.</li>
-<li>Limited counts per domain.</li>
-<li>Only store up to 4 kb.</li>
-<li>Will be transmitted via packet in header.</li>
-<li>Can be sent to or set by server.</li>
-<li>Have various attributes to set via <code>Set-Cookie</code> attribute in header.</li>
-</ul>
-<p>Session and local storage are all HTML5’s API and also called web storage. They do mostly the same, except session storage delete data when session ends while local storage does not.</p>
-<p>Web storage can hold up to 5 to 10 MB for each domain.</p>
-<p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/19867599/what-is-the-difference-between-localstorage-sessionstorage-session-and-cookies">What is the difference between localStorage, sessionStorage, session and cookies?</a></p>
-<blockquote>
-<p>Describe the difference between <code>&lt;script&gt;</code>, <code>&lt;script async&gt;</code> and <code>&lt;script defer&gt;</code>.</p>
-</blockquote>
-<p><code>&lt;script&gt;</code> - load and execute script synchronously. Browser will execute the code if encounter <code>&lt;script&gt;</code>. Will cause blocking.</p>
-<p><code>&lt;script async&gt;</code> - load and execute script asynchronously. Browser will execute the code and load other resource parallel. Will not cause blocking.</p>
-<p><code>&lt;script defer&gt;</code> - load and execute script synchronously. The only different is that it indicates browser should only execute the code only after the document is parsed.</p>
-<blockquote>
-<p>Why is it generally a good idea to position CSS <code>&lt;link&gt;</code>s between <code>&lt;head&gt;&lt;/head&gt;</code> and JS <code>&lt;script&gt;</code>s just before <code>&lt;/body&gt;</code>? Do you know any exceptions?</p>
-</blockquote>
-<p>Put CSS <code>&lt;link&gt;</code> in between <code>&lt;head&gt;</code> to avoid FOUC. Put <code>&lt;script&gt;</code> before <code>&lt;/before&gt;</code> to avoid parse blocking.</p>
-<p>Specifying <code>async</code> or <code>defer</code> in <code>&lt;script&gt;</code> if you really want to put <code>&lt;script&gt;</code> before <code>&lt;link&gt;</code>.</p>
-<blockquote>
-<p>What is progressive rendering?</p>
-</blockquote>
-<p>It’s actually an backend topic.</p>
-<blockquote>
-<p>Have you used different HTML templating languages before?</p>
-</blockquote>
-<p>ejs.</p>
-<h2 id="CSS-Questions"><a href="#CSS-Questions" class="headerlink" title="CSS Questions"></a>CSS Questions</h2><blockquote>
-<p>What is the difference between classes and ID’s in CSS?</p>
-</blockquote>
-<p>Class stands for a collection of attributes under a name. It can be applied on many elements with same name(one to many). However, ID is unique to element and can only be applied on one element with the same ID(one to one).</p>
-<blockquote>
-<p>What’s the difference between “resetting” and “normalizing” CSS? Which would you choose, and why?</p>
-</blockquote>
-<p>Reset - undecorates or sets 0 to all browser default styles. You have to specify all styles yourself.</p>
-<p>Normalize - preserves and ensures that default style on all browsers are the same.</p>
-<p>I prefer normalize because go with reset will have to do extra works.</p>
-<p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/6887336/what-is-the-difference-between-normalize-css-and-reset-css">What is the difference between Normalize.css and Reset CSS?</a></p>
-<blockquote>
-<p>Describe Floats and how they work.</p>
-</blockquote>
-<p>Float is a CSS property that should be taken from the normal flow and placed to the right or left of its container. Text or any inline element will wrap around it.</p>
-<p>If an element has specified a value on float, that element’s <code>display</code> property will be set to <code>block</code>.</p>
-<p>It is always used with <code>clear</code> property to make desired element move down to the floated element. A common technique is <strong>clearfix</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Describe z-index and how stacking context is formed.</p>
-</blockquote>
-<p>When elements overlap, <code>z-index</code> specifies the displaying order of an element. Larger z-index covers element with a lower one.</p>
-<p>New elements in a container always follow parent’s <code>z-index</code> value.</p>
-<p><code>z-index</code> can be negative to have elements displaying below.</p>
-<blockquote>
-<p>What are the various clearing techniques and which is appropriate for what context?</p>
-</blockquote>
-<p>Traditional way:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clear</span> &#123;</span><br><span class="line">	<span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float&quot;</span>&gt;</span>foo<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float&quot;</span>&gt;</span>bar<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span> <span class="attr">class</span>=<span class="string">&quot;clear&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;footer&quot;</span>&gt;</span>This container should be cleared<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Overflow way:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float&quot;</span>&gt;</span>foo<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float&quot;</span>&gt;</span>bar<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;footer&quot;</span>&gt;</span>This container should be cleared<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Clearfix:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container clearfix&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float&quot;</span>&gt;</span>foo<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;float&quot;</span>&gt;</span>bar<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;footer&quot;</span>&gt;</span>This container should be cleared<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>What are your favourite image replacement techniques and which do you use when?</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://css-tricks.com/the-image-replacement-museum/">image replacement</a></p>
-<blockquote>
-<p>How would you approach fixing browser-specific styling issues?</p>
-</blockquote>
-<p>see “What’s the difference between “resetting” and “normalizing” CSS? Which would you choose, and why?”.</p>
-<blockquote>
-<p>What are the different ways to visually hide content (and make it available only for screen readers)?</p>
-</blockquote>
-<p><code>display: none</code> or <code>visibility: hidden</code>.</p>
-<p>Element with <code>display: none</code> will take place in view even it’s invisible.</p>
-<p>Element with <code>display: none</code> will not take place in view.</p>
-<blockquote>
-<p>Have you ever used a grid system, and if so, what do you prefer?</p>
-</blockquote>
-<p>Only experienced grid system in Twitter Bootstrap.</p>
-<blockquote>
-<p>Have you used or implemented media queries or mobile specific layouts&#x2F;CSS?</p>
-</blockquote>
-<p>Hand-made? Sure, but actually, I use Twitter Bootstrap to solve RWD problems.</p>
-<blockquote>
-<p>What are the advantages&#x2F;disadvantages of using CSS preprocessors? Describe what you like and dislike about the CSS preprocessors you have used.</p>
-</blockquote>
-<p>SCSS.</p>
-<p>Advantages:</p>
-<ul>
-<li>More ways like inheritance, variable… for writing modularized CSS.</li>
-<li>Some libraries like Bourbon, Compass provide nice polyfills.</li>
-</ul>
-<p>Disadvantages:</p>
-<ul>
-<li>Extra learning&#x2F;traning required.</li>
-<li>Need to setup up working environment before work begin.</li>
-</ul>
-<blockquote>
-<p>Explain how a browser determines what elements match a CSS selector.</p>
-</blockquote>
-<p>The only thing I know is that browser matches selector from right to left.</p>
-<blockquote>
-<p>Describe pseudo-elements and discuss what they are used for.</p>
-</blockquote>
-<p>Pseudo-elements like <code>element::first-child</code> or <code>element::after</code> are special elements that make styling more easy.</p>
-<p>For example <code>p::first-line</code> will only style the first line of every paragraph.</p>
-<blockquote>
-<p>Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.</p>
-</blockquote>
-<p>Box model indicates element is composed of 4 parts: margin. border, padding, content.</p>
-<ul>
-<li>Margin - an empty area used for separating area with other elements.</li>
-<li>Border - the thickness between padding and margin.</li>
-<li>Padding - extending of content area.</li>
-<li>Content - the space text&#x2F;media occupies.</li>
-</ul>
-<p>You can switch box model with <code>content-box</code> and <code>border-box</code> in <code>box-sizing</code>. Default value is <code>content-box</code>.</p>
-<ul>
-<li><code>content-box</code> - The <code>width</code> and <code>height</code> properties are measured only content size, no padding, border, or margin.</li>
-<li><code>box-sizing</code> - The <code>width</code> and <code>height</code> properties are measured including content, padding, border, no margin.</li>
-</ul>
-<blockquote>
-<p>What does * { box-sizing: border-box; } do? What are its advantages?</p>
-</blockquote>
-<p>Using <code>border-box</code> to calculate elements’ <code>width</code> and <code>height</code> is more intuitive.</p>
-<p>Say, I want to put 4 boxes in a horizontal block. Using <code>content-box</code> I have to calculate each box’s border and content to fit into container, but using <code>border-box</code> I only have to set <code>width:25%</code> on each box and set each box’s border without calculating.</p>
-<blockquote>
-<p>List as many values for the display property that you can remember.</p>
-</blockquote>
-<ul>
-<li>block</li>
-<li>inline-block</li>
-<li>inline</li>
-<li>flex</li>
-<li>inline-flex</li>
-<li>none</li>
-<li>table</li>
-<li>inline-table</li>
-<li>initial</li>
-<li>inherit</li>
-<li>…</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">Display CSS property on MDN</a></p>
-<blockquote>
-<p>What’s the difference between inline and inline-block?</p>
-</blockquote>
-<p>Browser will put elements with <code>display: inline-*</code> property on the same row. The difference between <code>inline</code> and <code>inline-block</code> is that <code>inline</code> elements with content empty won’t effect by <code>width</code> or <code>height</code>.</p>
-<blockquote>
-<p>What’s the difference between a relative, fixed, absolute and statically positioned element?</p>
-</blockquote>
-<ul>
-<li>Fixed - elements will be positioned independently and its’ position is according to the whole view.</li>
-<li>Static - default value. Elements will be positioned depending on each other whose <code>position</code> property is not <code>absolute</code> or <code>fixed</code>.</li>
-<li>Relative - enable <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code> properties, which let you move element relative to where it should be.</li>
-<li>Absolute - enable <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code> properties. Elements with <code>position: absolute</code> will be positioned independently or be positioned according to the nearest container with <code>position: relative</code>.</li>
-</ul>
-<blockquote>
-<p>The ‘C’ in CSS stands for Cascading. How is priority determined in assigning styles (a few examples)? How can you use this system to your advantage?</p>
-</blockquote>
-<p><code>!important &gt; style &gt; id &gt; class &gt; tag</code></p>
-<p>If I really want something should not be changed, I will use <code>!important</code> to keep my style like it should be. Especially where you have other 3rd party, external stylesheets import in, styles may be conflict between each other, you will want to keep your own style untouched.</p>
-<blockquote>
-<p>What existing CSS frameworks have you used locally, or in production? How would you change&#x2F;improve them?</p>
-</blockquote>
-<p>Twitter Bootstrap, Bourbon, SCSS&#x2F;SASS.</p>
-<p>Personally, I use them to help me enhance UI or get rid of some repeat works.</p>
-<blockquote>
-<p>Have you played around with the new CSS Flexbox or Grid specs?</p>
-</blockquote>
-<p>Tried Flexbox before, enough to replace some old trick like <code>float</code> and also works really well in RWD.</p>
-<p>Tried Grid as well. It arranges layout beautifully and works well with media queries in RWD also.</p>
-<blockquote>
-<p>How is responsive design different from adaptive design?</p>
-</blockquote>
-<p>Responsive - adapt different devices with one layout with minimum change.</p>
-<ul>
-<li>pros - easy to maintain.</li>
-<li>cons - screen sizes are many, however in most RWD only have 4 layout - desktop&#x2F;latop&#x2F;tablet&#x2F;mobile, which only provides a basic comfort level, not the best user experience.</li>
-</ul>
-<p>Adaptive - adapt different devices with different layouts.</p>
-<ul>
-<li>pros - provides best experience on different devices.</li>
-<li>cons - maintaining between layouts means extra work.</li>
-</ul>
-<h2 id="JS-Questions"><a href="#JS-Questions" class="headerlink" title="JS Questions:"></a>JS Questions:</h2><blockquote>
-<p>Explain event delegation</p>
-</blockquote>
-<p>Event delegation means using parent container as children’s event delegator. For example, we have a list here:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;list-1&quot;</span>&gt;</span>I am list item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;list-2&quot;</span>&gt;</span>I am list item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;list-3&quot;</span>&gt;</span>I am list item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>We want to get inner text when clicking on one of its child. Of course, we can add event listener to each one, but it will become a little crazy if we have to add more list item.</p>
-<p>By the power of <strong>event bubbling</strong>, there is an more elegant way to deal with this issue.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;list&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>.<span class="property">innerText</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Explain how this works in JavaScript</p>
-</blockquote>
-<p><code>this</code> means the current owner of the scope.</p>
-<p>When an object is created via <code>new</code>, JS binds <code>this</code> to the newly created object.</p>
-<blockquote>
-<p>Explain how prototypal inheritance works</p>
-</blockquote>
-<p>In ES5</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">Person</span> = <span class="keyword">function</span>(<span class="params">name</span>)&#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">John</span> = <span class="keyword">function</span>(<span class="params">name</span>)&#123;</span><br><span class="line">	<span class="title class_">Person</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">John</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>); <span class="comment">// reference prototype to Person&#x27;s prototype</span></span><br><span class="line"><span class="title class_">John</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Person</span>; <span class="comment">// set John&#x27;s constructor to Person&#x27;s constructor</span></span><br></pre></td></tr></table></figure>
-
-<p>In ES6. It’s identical to ES5 prototype inheritance chain.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">name</span>)&#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">John</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span>&#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">name</span>)&#123;</span><br><span class="line">		<span class="title function_">suepr</span>(name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>What do you think of AMD vs CommonJS?</p>
-</blockquote>
-<p>AMD is an JS module standard. Its implementation is RequireJS and only works on browser side. Meanwhile CommonJS works on server side.</p>
-<p>Writing in RequireJS is somewhat cumbersome:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">requirejs([<span class="string">&quot;directory/anotherJsFile&quot;</span>], <span class="keyword">function</span>(<span class="params">anotherJsFile</span>)&#123;</span><br><span class="line">	<span class="comment">// do something</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>CommonJS is more intuitive to programmers coming from other languages:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> anotherJsFile = <span class="built_in">require</span>(<span class="string">&quot;./directory/anotherJsFile&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myObj = myObj;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = myObj;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Explain why the following doesn’t work as an IIFE: function foo(){ }();. What needs to be changed to properly make it an IIFE?</p>
-</blockquote>
-<p><code>function foo()&#123; &#125;()</code> which is equal to <code>undefined()</code>. Executing things undefined is not possible.</p>
-<p>The correct way is:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="title function_">foo</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="comment">// do something.</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>What’s the difference between a variable that is: null, undefined or undeclared? How would you go about checking for any of these states?</p>
-</blockquote>
-<ul>
-<li>undeclared - use variables before declaring interpreter will throw <code>ReferenceError: variable is not defined</code> in your face.</li>
-<li>undefined - use an declared variable without initializing its value will return <code>undefined</code>.</li>
-<li>null - <code>null</code> is a value to represent empty.</li>
-</ul>
-<p>Checking state, assume its in Chrome console:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; a</span><br><span class="line"><span class="title class_">ReferenceError</span>: a is not defined</span><br><span class="line">&gt; <span class="keyword">var</span> a</span><br><span class="line">&gt; a</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; a === <span class="literal">null</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>What is a closure, and how&#x2F;why would you use one?</p>
-</blockquote>
-<p>The most common usage is to return private member’s value without exposing it.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> secret = &#123;<span class="attr">code</span>: <span class="string">&quot;can&#x27;t tell you!&quot;</span>&#125;;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> secret;</span><br><span class="line">	&#125;)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Personally I would try to avoid using it if possible because closure extends variables’ lifespan to its scope. This causes memory leak easily plus it’s quite confusing to people coming from other languages.</p>
-<blockquote>
-<p>What’s a typical use case for anonymous functions?</p>
-</blockquote>
-<p>When I only need to do things one-time only or don’t even invoke it in further.</p>
-<blockquote>
-<p>How do you organize your code? (module pattern, classical inheritance?)</p>
-</blockquote>
-<p>I write ES6 with Babel and organize my module with ES6 <code>import</code> and <code>export</code> features.</p>
-<p>As for <code>inheritance</code>, use <code>extends</code> instead.</p>
-<blockquote>
-<p>What’s the difference between host objects and native objects?</p>
-</blockquote>
-<p>Host objects means browser specific features. For example, DOM objects in Chrome is possibly different from IE.</p>
-<p>Native objects means JavaScript’s core feature like <code>array</code> or <code>Object</code>.</p>
-<blockquote>
-<p>Difference between: function Person(){}, var person &#x3D; Person(), and var person &#x3D; new Person()?</p>
-</blockquote>
-<ul>
-<li><code>function Person()&#123;&#125;</code> - a function.</li>
-<li><code>var person = Person()</code> - returns the result after executing Person function.</li>
-<li><code>var person = new Person()</code> - bind <code>this</code> in <code>person</code> scope to <code>person</code>.</li>
-</ul>
-<blockquote>
-<p>What’s the difference between .call and .apply?</p>
-</blockquote>
-<p>Both of them invokes function they are calling for.</p>
-<p>First argument accepts what <code>this</code> refers to when running that function.</p>
-<p>The only difference is that <code>.call</code> accepts rest of the arguments with <strong>arguments list</strong> while <code>.apply</code> accepts <strong>array of arguments</strong>.</p>
-<blockquote>
-<p>Explain Function.prototype.bind.</p>
-</blockquote>
-<p>Indicates what <code>this</code> refers to when running that function.</p>
-<p><code>Function.prototype.bind</code> only returns function, not executing.</p>
-<blockquote>
-<p>When would you use document.write()?</p>
-</blockquote>
-<p>Testing.</p>
-<blockquote>
-<p>What’s the difference between feature detection, feature inference, and using the UA string?</p>
-</blockquote>
-<p>Feature detection tests the existence of a feature.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">window</span>.<span class="property">XMLHttpRequest</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> ajax = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Feature inference checks if one feature exits, but uses another feature.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">document</span>.<span class="property">getElementByTagName</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> ele = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myEle&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>UA string means identifying browser version with user agent. It should not be used anymore because you will have to maintain various version for different browsers.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(navigator.<span class="property">userAgent</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;MSIE 7&quot;</span>))&#123;</span><br><span class="line">	<span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Explain AJAX in as much detail as possible.</p>
-</blockquote>
-<p>AJAX stands for Asynchronous JavaScript and XML. It’s a technique to retrieve data from server without reloading the whole page.</p>
-<p>This is how it is done in vanilla JS and modern browser.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ajax = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">ajax.<span class="title function_">addEventListener</span>(<span class="string">&quot;load&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(ajax.<span class="property">responseText</span>);</span><br><span class="line">&#125;);</span><br><span class="line">ajax.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;http://mydomain.com&quot;</span>);</span><br><span class="line">ajax.<span class="title function_">send</span>();</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Explain how JSONP works (and how it’s not really AJAX).</p>
-</blockquote>
-<p>JSONP stands for JSON with Padding. JSONP doesn’t involve in AJAX at all and actually. To achieve JSONP, we need the help from the server side. Server side’s code looks like this:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">&quot;url&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">&quot;querystring&quot;</span>);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> queryTemp = url.<span class="title function_">parse</span>(req.<span class="property">url</span>).<span class="property">query</span>;</span><br><span class="line">  <span class="keyword">var</span> query = querystring.<span class="title function_">parse</span>(queryTemp);</span><br><span class="line">  res.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123;</span><br><span class="line">    <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span></span><br><span class="line">  &#125;);</span><br><span class="line">  res.<span class="title function_">end</span>(query.<span class="property">callback</span> + <span class="string">&quot;(&#x27;Hello JSONP!&#x27;)&quot;</span>);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3001</span>);</span><br></pre></td></tr></table></figure>
-
-<p>Client:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>jsonp test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">&quot;jsonp&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;text&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;button&quot;</span>&gt;</span>jsonp!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">var</span> text = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;text&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">var</span> button = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;button&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">var</span> jsonp = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;jsonp&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">function</span> <span class="title function_">contentLoaded</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          jsonp.<span class="property">src</span>= <span class="string">&quot;http://localhost:3001/?callback=changeText&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">function</span> <span class="title function_">changeText</span>(<span class="params">string</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        text.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(string));</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMContentLoaded&quot;</span>, contentLoaded);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>We fetch data by changing <code>&lt;script&gt;</code>‘s <code>src</code> value to our target URL, and append full JavaScript code by gluing with result:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;jsonp&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="title function_">changeText</span>(<span class="string">&#x27;Hello JSONP!&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Have you ever used JavaScript templating? If so, what libraries have you used?</p>
-</blockquote>
-<p>EJS.</p>
-<blockquote>
-<p>Explain “hoisting”.</p>
-</blockquote>
-<p>Hoisting means any variable declaration will be processed before any code is executed in <strong>current scope</strong>. Take code below for example:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> a;</span><br></pre></td></tr></table></figure>
-
-<p>is equal to</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">a = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Describe event bubbling.</p>
-</blockquote>
-<p>When an event is fired, it runs a callback function defined external. The event will keep <strong>bubbling up</strong> to its ancestor container until it hits the root of DOM or <code>event.stopPropagation()</code>.</p>
-<p>See “event delegation” for detail.</p>
-<blockquote>
-<p>What’s the difference between an “attribute” and a “property”?</p>
-</blockquote>
-<p>Property is for DOM object or native JS object and attribute is for HTML tag.</p>
-<blockquote>
-<p>Why is extending built-in JavaScript objects not a good idea?</p>
-</blockquote>
-<p>If you only have your own code in your work, that’s fine, but when libraries are add in, extending native object may cause other’s code broken because of overwriting other’s code.</p>
-<blockquote>
-<p>Difference between document load event and document ready event?</p>
-</blockquote>
-<p>There is no such <code>ready</code> event in DOM, so I assume <code>document ready</code> refers to jQuery’s <code>$(document).ready</code> here.</p>
-<p><code>load</code> event in DOM tells browser to do something after <strong>everthing including frames, images, asynchronous JavaScripts</strong> are fully loaded.</p>
-<p><code>$(document).ready</code> indicates that it should occur as early as possible after the document has loaded.</p>
-<blockquote>
-<p>What is the difference between &#x3D;&#x3D; and &#x3D;&#x3D;&#x3D;?</p>
-</blockquote>
-<p><code>==</code> equals in value, <code>===</code> equals in reference.</p>
-<blockquote>
-<p>Explain the same-origin policy with regards to JavaScript.</p>
-</blockquote>
-<p>Same-Origin-Policy is an idea to prevent malicious script from accessing or intercepting data’s in client browser. Same-Oirigin-Policy allows HTTP action request only if document and server are under the same domain.</p>
-<p>There are two ways to “bypass” SOP, one is JSONP, the other is through CORS(Cross Origin Resource Sharing).</p>
-<p>Read “Explain how JSONP works (and how it’s not really AJAX).” for JSONP details.</p>
-<p>CORS needs cooperation from server setting. You have to set <code>Access-Control-Origin-Allow: yourdomain.com</code> to domains which you want it to be allowed in header in order to access resource via normal AJAX call.</p>
-<blockquote>
-<p>Why is it called a Ternary expression, what does the word “Ternary” indicate?</p>
-</blockquote>
-<p>Because it takes 3 arguments with 2 operators. A common Ternary expression is <code>:?</code>.</p>
-<blockquote>
-<p>What is “use strict”;? what are the advantages and disadvantages to using it?</p>
-</blockquote>
-<p><code>use strict;</code> enables strict mode for JS parser. Strict mode is enabled by adding <code>use strict;</code> at the top of file or function scope.</p>
-<p>Advantages - converts mistakes into errors.</p>
-<ul>
-<li>Using undeclared variable throws error.</li>
-<li>Using reserved keywords throws error.</li>
-<li>Naming arguments, properties with the same name throws error.</li>
-<li>and so on…</li>
-</ul>
-<p>Disadvantages</p>
-<ul>
-<li>If you import script with strict mode on before any other scripts, you will force other scripts to go strict mode.</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict mode on MDN</a></p>
-<blockquote>
-<p>Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?</p>
-</blockquote>
-<p>Because you probably will make a variable with same name as others will. That makes conflict.</p>
-<blockquote>
-<p>Why would you use something like the load event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?</p>
-</blockquote>
-<p><code>load</code> event tells browser to do something only after <strong>everthing including frames, images, asynchronous JavaScripts</strong> are fully loaded.</p>
-<p>If you want event function to execute before fully loaded frames, images, async scripts, use <code>domcontentloaded</code> instead.</p>
-<blockquote>
-<p>Explain what a single page app is and how to make one SEO-friendly.</p>
-</blockquote>
-<blockquote>
-<p>What is the extent of your experience with Promises and&#x2F;or their polyfills?</p>
-</blockquote>
-<p>Only tried it in ES6. Basic usage:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, rejected</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(resolve)&#123;</span><br><span class="line">		<span class="title function_">reslove</span>(<span class="string">&quot;successed&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="title function_">rejected</span>(<span class="string">&quot;failed&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>The biggest advangtage of Promise is that it solves the problem of callback hell.</p>
-<p>Polyfills:</p>
-<ul>
-<li>jQuery - Deferred</li>
-<li>Bluebird</li>
-<li>Q</li>
-<li>When</li>
-</ul>
-<blockquote>
-<p>What are the pros and cons of using Promises instead of callbacks?</p>
-</blockquote>
-<p>pros - solves the problem of callback hell.<br>cons - currently require external library or polyfill to achieve this.</p>
-<blockquote>
-<p>What are some of the advantages&#x2F;disadvantages of writing JavaScript code in a language that compiles to JavaScript?</p>
-</blockquote>
-<p>Pros</p>
-<ul>
-<li>Benefit libraries that only exist in NodeJS world. (Make CommonJS stuff avialable on browser)</li>
-<li>The newest of language features.</li>
-</ul>
-<p>Cons</p>
-<ul>
-<li>Have to setup environment before working.</li>
-<li>Have to orgranize more directories.</li>
-<li>Source map is needed.</li>
-</ul>
-<blockquote>
-<p>What tools and techniques do you use debugging JavaScript code?</p>
-</blockquote>
-<p>Chrome Dev Tools.</p>
-<blockquote>
-<p>What language constructions do you use for iterating over object properties and array items?</p>
-</blockquote>
-<p>Array</p>
-<ul>
-<li>classic <code>for</code></li>
-<li><code>arr.forEach()</code></li>
-</ul>
-<p>Object</p>
-<ul>
-<li><code>for(var key in obj)</code></li>
-<li><code>Object.keys(obj).forEach()</code></li>
-</ul>
-<blockquote>
-<p>Explain the difference between mutable and immutable objects. What is an example of an immutable object in JavaScript? What are the pros and cons of immutability? How can you achieve immutability in your own code?</p>
-</blockquote>
-<p>Mutable object means its state is allowed to be changed over time. Immutable object’s value doesn’t change from the time it was created.</p>
-<p>Immutable examples are primitive types like <code>String</code>, <code>Number</code>. You can’t change the definition of <code>2</code> after executing <code>2 + 5</code>. No matter how you operate strings, the definition of <code>c</code> won’t change.</p>
-<p>Mutable examples are <code>array</code>, <code>object</code> or anything opposite to immutability. You can change the value of an array or object anytime and the result will be what you desired.</p>
-<p>Immutable object won’t be changed after it has been initialized. We can take advantage of this. Making immutable objects into a collection of cache since these objects don’t change at all. Our program is actually accessing the same data. This is a good approach to saving memory by taking advantage of immutable. The downside of immutability is that it actually involving constantly deep clone and assigning. This is an overhead of trading computing speed for memory.</p>
-<p>To achieve immutability on <code>array</code> or <code>object</code> or any type you want, you have to do deep clone, or simply use library like <code>immutable.js</code> developed by Facebook.</p>
-<blockquote>
-<p>Explain the difference between synchronous and asynchronous functions.</p>
-</blockquote>
-<p>The difference is that sync function is <strong>blocking</strong> while async is <strong>non-blocking</strong>.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">blocking</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">nonBlocking</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">	&#125;, <span class="number">1000</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>What is event loop? What is the difference between call stack and task queue?</p>
-</blockquote>
-<p>Event loop is how JavaScript with single-threaded performs tasks without blocking.</p>
-<p>Event loop is a queue of callback functions. When a asynchronous function executes, it is pushed into task queue and JavaScript will only start processing task queue after codes after async function are executed.</p>
-<p>The difference between call stack and task queue is that <strong>task queue</strong> is a place where JavaScrip schedules async function while <strong>call stack</strong> is a place for JavaScript to trace what the current function is.</p>
-<h2 id="Network-Questions"><a href="#Network-Questions" class="headerlink" title="Network Questions"></a>Network Questions</h2><blockquote>
-<p>Traditionally, why has it been better to serve site assets from multiple domains?</p>
-</blockquote>
-<p>Because request is costly, so modern browsers establish 6 to 8 reusable connections to improve the download speed to prevent repeatly requsting, and because there is a limited connection count for each domain, we put resources on multiple domains.</p>
-<blockquote>
-<p>Do your best to describe the process from the time you type in a website’s URL to it finishing loading on your screen.</p>
-</blockquote>
-<p>Assume there is only HTTP request, no proxies:</p>
-<ol>
-<li>Browser look up cache, if document exists in cache and not expires, then renders it.</li>
-<li>OS makes DNS lookup of the IP address of given URL and replies to browser.</li>
-<li>If that URL exists, browser opens a TCP connection to server.</li>
-<li>Browser sends HTTP request to server.</li>
-<li>Server parses HTTP request, sends it and may or may not close TCP connection(depends on <code>keep-alive</code> in header setting).</li>
-<li>Browser parses HTTP status code and depends on what code it is to decide what to render.</li>
-</ol>
-<blockquote>
-<p>What are the differences between Long-Polling, Websockets and Server-Sent Events?</p>
-</blockquote>
-<p>Long-Polling - use <code>setTimeout</code> and <code>AJAX</code> technique to repeatedly send request and wait for server response. Before websockets, web developer used to use this technique to simulate persistent connection.</p>
-<p>Websocket - a real persistent connection via TCP. Unlike long-polling have to setup HTTP connection with constantly requesting, once establishing websocket you don’t have to send another request to maintain the connection.</p>
-<p>Server-sent - also called server push technique. When it comes to data exchange, servers are always passive, but with server push, server can be active too. Server push is like broadcast, whoever connects to the server is a subscriber. Server push can push desired event on specific channel.</p>
-<blockquote>
-<p>Explain the following request and response headers:<br>Diff. between Expires, Date, Age and If-Modified-…<br>Do Not Track<br>Cache-Control<br>Transfer-Encoding<br>ETag<br>X-Frame-Options</p>
-</blockquote>
-<ul>
-<li>Expires - will be labeled stale after specified date.</li>
-<li>Date - The date and time that message was sent.</li>
-<li>Age - The age that object has lived in seconds.</li>
-<li>If-Modified-Since - will return 304 unchanged status code.</li>
-<li>Transfer-encoding - In normal circumstance server will tell client the content length which server sent, but in some circumstance the content’s length remains unknown, and server will send content in chunks. Specifying Transfer-encoding tells client server is sending in this way.</li>
-<li>ETag - an hash which is used to identify files’s version.</li>
-<li>X-Frame-Options - clickjacking protection.</li>
-<li>Cache-Control - an attribute tells browser how</li>
-</ul>
-<blockquote>
-<p>What are HTTP actions? List all HTTP actions that you know, and explain them.</p>
-</blockquote>
-<ul>
-<li>GET - request a resource.</li>
-<li>POST - create or update an resource.</li>
-<li>PUT - update an existing resource.</li>
-<li>DELETE - delete resource.</li>
-<li>PATCH - partially modification to an resource.</li>
-<li>TRACE - echoes the received request so you can see information that is changed by intermediated servers.</li>
-<li>HEAD - request a response header identical to GET method. It’s used to get meta information without sending the whole content.</li>
-<li>OPTIONS - returns what method target server supports for a specified URL.</li>
-<li>CONNECT - converts a request connection to as transparent TCP&#x2F;IP.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2015/12/13/front-end-job-interview-questions/" data-id="cln9coh3i0028j0okeyon0794" data-title="Front-end Job Interview Questions" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/" rel="tag">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-backend-fundamental-cookie-and-session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/11/20/backend-fundamental-cookie-and-session/" class="article-date">
-  <time class="dt-published" datetime="2015-11-20T14:35:27.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/11/20/backend-fundamental-cookie-and-session/">Backend Fundamental - Cookie and Session</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Yet-Another-Cookie-Session-Explanation"><a href="#Yet-Another-Cookie-Session-Explanation" class="headerlink" title="Yet Another Cookie &amp; Session Explanation?"></a>Yet Another Cookie &amp; Session Explanation?</h1><p>Currently I am working on a website with user account written with Node. I did have some backend experience though, but it was around 2 years ago. Grabbing memories back needs some effort.</p>
-<p>To engrave these concepts into my brain more deeper, I have to write it down, and this time, it will go advance rather than simply explaining “Cookie is this and Session is that. Done!”</p>
-<h1 id="Why-Use-Cookie-Session"><a href="#Why-Use-Cookie-Session" class="headerlink" title="Why Use Cookie &amp; Session?"></a>Why Use Cookie &amp; Session?</h1><p>HTTP is a stateless protocol, which means it forgets anything about information it carried last time. In order to maintain a persistent communication between client and server, cookie and session were invented.</p>
-<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie is a traditional way to save <strong>non-sensitive</strong> user informations in browsers. To sum up the feature of Cookie:</p>
-<ul>
-<li>Cookie is a key-value set.</li>
-<li>Cookie is sent via HTTP.</li>
-<li>Cookie is an attribute of HTTP header.</li>
-<li>Every cookie has its own attributes:<ul>
-<li>Domain - tells the browser which domain it belongs to. Usually this should be current resource’s top domain. If you set it to <code>.com</code>, every sub-domain of <code>.com</code> like <code>google.com</code> will be able to access this cookie.</li>
-<li>Path - almost identical to the <code>domain</code> attribute, but only relative to current resource’s top domain. This tells the browser when to send this cookie on what path.</li>
-<li>Expires - tells the browser to delete this cookie on a specified date.</li>
-<li>Max-Age - tells the browser to delete this cookie on a specified time relative to now in second.</li>
-<li>Secure - can only be sent via HTTPS or not. Make it on for more serious security concern.</li>
-<li>HttpOnly - should be allowed to access by JavaScript or not. Normally it’s on to prevent from Cross-Site-Script attack.</li>
-</ul>
-</li>
-<li>Can only support up to 4096 bytes in size.</li>
-</ul>
-<p>When I mention about <strong>non-sensitive</strong> informations I mean:</p>
-<ul>
-<li>Session ID - most websites nowadays no longer store “shopping cart” or anything user-sensitive in the cookie. Instead, They store an unique ID generated by the server for looking up corresponding user at server side database.</li>
-<li>Personal Preferences - the background user like, the font size user preferred…etc.</li>
-<li>Browsing Habits - remember login, the last page user visited, the browsing histories of one user…etc.</li>
-</ul>
-<p>The reason why cookie should never store sensitive data like username, password or credit card number is that cookies are more easily to be intercepted or tampered. Though you can send cookies by <strong>https</strong> or using <strong>signed cookie</strong>(which will be introduced latter) to store hashed data, exposing more informations means lower the cost and difficulty of cracking, and thus the best way is don’t even store sensitive data to the cookie.</p>
-<p>Typical ways to set cookie in Node:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> rawCookie = req.<span class="title function_">get</span>(<span class="string">&quot;cookie&quot;</span>);</span><br><span class="line">  <span class="keyword">var</span> cookie = &#123;<span class="attr">count</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  <span class="keyword">if</span>(rawCookie)&#123;</span><br><span class="line">    cookie.<span class="property">count</span> = <span class="built_in">parseInt</span>(rawCookie.<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">    cookie.<span class="property">count</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  res.<span class="title function_">append</span>(<span class="string">&quot;set-cookie&quot;</span>, <span class="string">&quot;count=&quot;</span> + cookie.<span class="property">count</span> + <span class="string">&quot;;max-age=5&quot;</span>);</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + cookie.<span class="property">count</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>This will increase <code>count</code> by one when user visits <code>localhost:3000</code> in 5 seconds. If user doesn’t visit again in 5 seconds, set count to 1.</p>
-<p>Accessing to cookie is such a pain, right? <code>cookie-parse</code> to the rescue!</p>
-<p><code>npm install cookie-parse</code> and then…</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">&quot;cookie-parser&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cookieParser</span>());</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="built_in">parseInt</span>(req.<span class="property">cookies</span>.<span class="property">count</span>, <span class="number">10</span>);</span><br><span class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  res.<span class="title function_">cookie</span>(<span class="string">&quot;count&quot;</span>, count.<span class="title function_">toString</span>(), &#123;<span class="attr">maxAge</span>: <span class="number">5000</span>&#125;);</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + count);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>Tada! I am sure there are something like <code>cookie-parser</code> which exists in other languages.</p>
-<h1 id="Common-Variation-Of-Cookies"><a href="#Common-Variation-Of-Cookies" class="headerlink" title="Common Variation Of Cookies"></a>Common Variation Of Cookies</h1><h4 id="Session-Cookie"><a href="#Session-Cookie" class="headerlink" title="Session Cookie"></a>Session Cookie</h4><p>Session cookie is contrary to persistent cookie(or just called it cookie) and only lives when user is still browsing the website. When user closes the browser, the session cookie is deleted by the browser as well.</p>
-<p>A common usage of session cookie is storing session ID. Session ID is an unique ID generated by the server and was stored when connection is established. Session ID is used for letting the server know who the current user is in order to look up relative informations in the database.</p>
-<p>Setting a session cookie is simple - just leave <code>expires</code> and <code>maxAge</code> attributes empty.</p>
-<p>Use <code>npm install express-session</code> for saving time of building another wheel.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="built_in">require</span>(<span class="string">&quot;express-session&quot;</span>)(&#123;</span><br><span class="line">  <span class="attr">secret</span>: <span class="string">&quot;i am a secret&quot;</span>,</span><br><span class="line">  <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">saveUninitialized</span>: <span class="literal">true</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = req.<span class="property">session</span>.<span class="property">count</span>;</span><br><span class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  req.<span class="property">session</span>.<span class="property">count</span> = count;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + req.<span class="property">session</span>.<span class="property">count</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>By using <code>express-session</code>, a cookie named <code>connect.sid</code> will be stored with a <strong>hashed value plus a signature aside</strong> in the browser.</p>
-<p>As for session ID security topic I’d recommend <a target="_blank" rel="noopener" href="http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly">here</a> for further reading.</p>
-<h4 id="Signed-Cookie"><a href="#Signed-Cookie" class="headerlink" title="Signed Cookie"></a>Signed Cookie</h4><p>In web development world, you will accidentally bump into a word - <strong>Signed Cookie</strong>. What is it? Basically, a signed cookie stores a value by appending a signature after it. According to frameworks, they claimed that by singing values, server can determine if this value is tampered, however there are some debates on this topic:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly">Why is it insecure to store the session ID in a cookie directly?</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/expressjs/session/issues/68">Why sign the cookie?</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/expressjs/session/issues/176">Why doesn’t this module store the raw session ID in the cookie directly?</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea">Signed session cookies. A good idea?</a></li>
-</ul>
-<p>I am not an expert at security so can’t do any assertion. I will just leave it here.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">&quot;cookie-parser&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cookieParser</span>(<span class="string">&quot;write down your secret here&quot;</span>));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="built_in">parseInt</span>(req.<span class="property">signedCookies</span>.<span class="property">count</span>, <span class="number">10</span>);</span><br><span class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  res.<span class="title function_">cookie</span>(<span class="string">&quot;count&quot;</span>, count, &#123;<span class="attr">signed</span>: <span class="literal">true</span>&#125;);</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + count);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>This is a showcase of how to use signed cookie in Node with express’ extension module. Signature changes whenever <code>count</code> changes.</p>
-<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>We have dealt with storing informations on the client side, so what exactly session is? Well, session is just an description of state that when the connection between client and server is alive, session lives, when connection closes, session ends.</p>
-<p>The main task that session runs is telling the server which one is the current client by giving each client an unique id, it’s called session ID. There are several possible places to store the session ID:</p>
-<h4 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h4><p>Fast, but not practical. Let’s assume you have prepared a database for storing the actual data of users, and only store session ID in memory, and use session ID to look up corresponding user informations in database, but in most cases, we expect hundreds of clients to maintain its’ session between server, which means these session data will eat up some part of memory, which it’s not a smart move, and plus, you will have to deal with data sharing problem like race condition in concurrent environments.</p>
-<h4 id="Cookie-1"><a href="#Cookie-1" class="headerlink" title="Cookie"></a>Cookie</h4><p>A common place to store session ID. Usually used with database where actual user information lays.</p>
-<h4 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h4><p>We also generate something corresponding to the session ID for indexing the actual place where user information belongs to and still have to combine forces of memory and cookie to store our session ID, why? Because indexing in database is way more time costly than indexing in memory.</p>
-<p>Here I use <a target="_blank" rel="noopener" href="http://redis.io/">Redis</a> to give a quick database showcase. Install package file from Redis to benefit full support.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">&quot;express-session&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> db = <span class="built_in">require</span>(<span class="string">&quot;redis&quot;</span>).<span class="title function_">createClient</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">db.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="keyword">function</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.<span class="title function_">on</span>(<span class="string">&quot;connect&quot;</span>, <span class="keyword">function</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;connected to database...&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">session</span>(&#123;</span><br><span class="line">    <span class="attr">secret</span>: <span class="string">&quot;such secret much safe wow&quot;</span>,</span><br><span class="line">    <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">saveUninitialized</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line">  db.<span class="title function_">hget</span>([req.<span class="property">session</span>.<span class="property">id</span>, <span class="string">&quot;count&quot;</span>], <span class="keyword">function</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(err); <span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span>(reply)&#123;</span><br><span class="line">      count = ++reply;</span><br><span class="line">      db.<span class="title function_">hset</span>([req.<span class="property">session</span>.<span class="property">id</span>, <span class="string">&quot;count&quot;</span>, count], logErr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123; db.<span class="title function_">hset</span>([req.<span class="property">session</span>.<span class="property">id</span>, <span class="string">&quot;count&quot;</span>, count], logErr); &#125;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + count);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">logErr</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(err); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Web development is all about security. When developers want to take advantages of cookie and session, some principles should be concerned:</p>
-<ul>
-<li>Cookie should not store sensitive data.</li>
-<li>Set cookie’s <code>secure</code> attribute on if HTTPS is available.</li>
-<li>Set cookie’s <code>HttpOnly</code> attribute on if possible to prevent man-in-the-middle from tampering.</li>
-<li>Use Signed Cookie technique to have signed values.</li>
-<li>If you still consider Signed Cookies are not secure enough, deal it like you deal with passwords.</li>
-</ul>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/HTTP_cookie">Wikipedia - HTTP Cookie</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/706858/what-information-is-ok-to-store-in-cookies">What information is OK to store in cookies?</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/11897965/what-are-signed-cookies-in-connect-expressjs">What are “signed” cookies in connect&#x2F;expressjs?</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea">Signed session cookies. A good idea?</a></li>
-<li><a target="_blank" rel="noopener" href="http://wiki.jikexueyuan.com/project/node-lessons/cookie-session.html">cookie 和 session</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Functional_programming">Functional Programming on Wikipedia</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0">Master the JavaScript Interview: What is Functional Programming?</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amazon.com/Seven-Concurrency-Models-Weeks-Programmers/dp/1937785653">Seven Concurrency Models Weeks Programmers</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2015/11/20/backend-fundamental-cookie-and-session/" data-id="cln9coh3j002aj0oke4c7ayen" data-title="Backend Fundamental - Cookie and Session" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/" data-id="clo6cl4xa0020mpp2bpv5fqbz" data-title="A Learning Note of Functional Programming Part 1 - Some Basic Concepts" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/" rel="tag">programming</a></li></ul>
 
     </footer>
   </div>
@@ -1134,7 +282,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1142,6 +290,13 @@
           <aside id="sidebar">
   
     
+<div class="widget-wrap">
+  <h3 class="widget-title">Archives</h3>
+  <div class="widget">
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+  </div>
+</div>
+
 
   
     
@@ -1152,56 +307,6 @@
     </div>
   </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AJAX/" style="font-size: 10px;">AJAX</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/FP/" style="font-size: 12px;">FP</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP-HTTPS/" style="font-size: 16px;">HTTP/HTTPS</a> <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/architecture/" style="font-size: 10px;">architecture</a> <a href="/tags/backend/" style="font-size: 12px;">backend</a> <a href="/tags/concurrent/" style="font-size: 12px;">concurrent</a> <a href="/tags/frontend/" style="font-size: 18px;">frontend</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 12px;">interview</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 18px;">meta</a> <a href="/tags/mobile/" style="font-size: 12px;">mobile</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/octopress/" style="font-size: 10px;">octopress</a> <a href="/tags/programming/" style="font-size: 12px;">programming</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/testing/" style="font-size: 10px;">testing</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/06/I-love-the-concept-of-anything-can-be-log/">I love the concept of &#39;anything can be log&#39;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
   
 </aside>
