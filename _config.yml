@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Andrew.dev.blog
+title: Andrew's Cache
 subtitle: ""
 description: ""
 keywords:
@@ -62,7 +62,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ""
-  per_page: 5
+  per_page: 2
   order_by: -date
 
 # Category & Tag
