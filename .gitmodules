@@ -1,0 +1,4 @@
+[submodule "themes/landscape"]
+	path = themes/landscape
+	url = https://github.com/zushenyan/hexo-theme-landscape.git
+	branch = andrew
