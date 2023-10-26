@@ -73,6 +73,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-debug-pages-on-phones-with-weinre" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/09/09/debug-pages-on-phones-with-weinre/" class="article-date">
+  <time class="dt-published" datetime="2013-09-09T13:29:00.000Z" itemprop="datePublished">2013-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/09/09/debug-pages-on-phones-with-weinre/">Debug Pages On Phones With Weinre</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://people.apache.org/~pmuellr/weinre/docs/latest/">Weinre</a> stands for WEb INspector REmote. There are already numerous tutorials about this tool on the internet, but I still want to note it for myself or everyone else just want to get it work without getting details.</p>
+<h3 id="1-Install-Node-js"><a href="#1-Install-Node-js" class="headerlink" title="1 Install Node.js"></a>1 Install Node.js</h3><p>Weinre depends on node.js, so we need to install node.js first.</p>
+<p>There are two ways to install nodes.js. One is using homebrew or other CLI package management tools to install. On Mac is like this:</p>
+<p><code>username$ brew install node</code></p>
+<p>Or you can simply download and install package from the <a target="_blank" rel="noopener" href="http://nodejs.org/download/">node.js site</a>.</p>
+<h3 id="2-Install-Weinre"><a href="#2-Install-Weinre" class="headerlink" title="2 Install Weinre"></a>2 Install Weinre</h3><p>After node.js is installed, now you can install weinre through this command:</p>
+<p><code>username$ sudo npm -g install weinre</code></p>
+<h3 id="3-Run-Weinre"><a href="#3-Run-Weinre" class="headerlink" title="3 Run Weinre"></a>3 Run Weinre</h3><p>In weinre, there are 3 terminologies. We will take a quick look:</p>
+<ul>
+<li>Debug Server - just a…server, we will use our browser to connect to it.</li>
+<li>Debug Client - web inspector, we will use in later in browser to inspect our page.</li>
+<li>Debug Target - your web page, also refers to mobile device.</li>
+</ul>
+<p>Time for running weinre. In most case we will only need to run:</p>
+<p><code>username$ weinre --boundHost</code></p>
+<p>Default option is localhost, but we won’t connect to localhost because that won’t do the debug thing for our page.</p>
+<p>We use real ip address here. To lookup our computer’s real ip address:</p>
+<p>On Mac open system preferences -&gt; network</p>
+<img src="/images/ip_address.png" class="center">
+
+<p>On Windows type cmd and run</p>
+<p><code>&gt; nslookup</code></p>
+<p>So we finally run this command instead.</p>
+<p><code>username$ weinre --boundHost [your ip address]</code></p>
+<p>Now type <code>[your ip address]:8080</code> in browser. You should see weinre page, and click link next to <em>debug client user interface</em> in <em>Access Points</em> to bring up our page’s inspector.</p>
+<h3 id="4-Inject-Scripts"><a href="#4-Inject-Scripts" class="headerlink" title="4 Inject Scripts"></a>4 Inject Scripts</h3><p>Before we start debugging we need to let our page response infomations which weinre needs through JavaScript. Weinre provides two ways to do:</p>
+<ol>
+<li>Inject script codes - once the page is ran, it will link to our server automatically, but only for specific pages we assigned to.<br><code>&lt;script src=&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;&gt;&lt;/script&gt;</code></li>
+<li>Bookmarklet - simply make a bookmark on your phone browser device. I named it weinre debug on my iphone.<br><code>javascript:(function(e)&#123;e.setAttribute(&quot;src&quot;,&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;);document.getElementsByTagName(&quot;body&quot;)[0].appendChild(e);&#125;)(document.createElement(&quot;script&quot;));void(0);</code></li>
+</ol>
+<img src="/images/weinre_phone_bookmark.png" class="center" width="300">
+
+<h3 id="5-Debug-Page"><a href="#5-Debug-Page" class="headerlink" title="5 Debug Page"></a>5 Debug Page</h3><p>Our example target.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	// decomment below if you are using method 1</span><br><span class="line">	// <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-color: green&quot;</span>&gt;</span> test <span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;canvas&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		canvas.<span class="title function_">addEventListener</span>(<span class="string">&quot;touchstart&quot;</span>, handleStart, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">function</span> <span class="title function_">handleStart</span>(<span class="params">event</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">			event.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">			<span class="keyword">var</span> touches = event.<span class="property">changedTouches</span>;</span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">console</span>.<span class="title function_">log</span>(touches);</span></span><br><span class="line"><span class="language-javascript">		&#125;</span></span><br><span class="line"><span class="language-javascript">	&#125;)();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Run <code>username$ python -m SimpleHTTPServer</code> in this file’s directory, and use your phone to browse.</p>
+<p>If you are using <strong>method 1 - inject script codes</strong>, you can start your testing immediately.</p>
+<p>If you are using <strong>method 2 - bookmark</strong>, after pages is loaded, bring up bookmark page and run weinre deubg you just added, and finally, start testing.</p>
+<p>Tap some on the little green rectangle will get you some responce.</p>
+<img src="/images/weinre_results.png" class="center">
+
+<h3 id="6-Misc"><a href="#6-Misc" class="headerlink" title="6 Misc."></a>6 Misc.</h3><p>There is an <a target="_blank" rel="noopener" href="http://debug.phonegap.com/">online service</a> will let you run weinre in an extreme simple fashion, but it seems broken at the time my post was written.</p>
+<p>PhoneGap with Weinre can be a nice cooperation.</p>
+<p>Since you can debug easily with weinre, everyhing shuold be able to work beautifully, right?</p>
+<p>Nope.</p>
+<p>Although weinre is convenience, the most common debug technique is not avaliable in weinre’s toolbelt:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	// decomment below if you are using method 1</span><br><span class="line">	// <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;test&quot;</span>); <span class="comment">// this won&#x27;t work</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>It seems weinre loads a bunch of things before console is ready, but you can still use event register way to invoke console.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	// decomment below if you are using method 1</span><br><span class="line">	// <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;button&quot;</span>&gt;</span>test<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> button = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;button&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		button.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;test&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		&#125;;</span></span><br><span class="line"><span class="language-javascript">	&#125;)();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Also weinre doesn’t support remote script debugger.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2013/09/09/debug-pages-on-phones-with-weinre/" data-id="clo7rg5j40009m7orhxsq53f0" data-title="Debug Pages On Phones With Weinre" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/testing/" rel="tag">testing</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-differences-between-syncasync" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/09/07/differences-between-syncasync/" class="article-date">
@@ -155,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/07/differences-between-syncasync/" data-id="clo6cl4ui0006mpp2705u1xne" data-title="Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2013/09/07/differences-between-syncasync/" data-id="clo7rg5j30006m7or6azx1m30" data-title="Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -169,54 +261,11 @@
 
 
   
-    <article id="post-javascript-module-pattern" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/09/02/javascript-module-pattern/" class="article-date">
-  <time class="dt-published" datetime="2013-09-02T23:57:00.000Z" itemprop="datePublished">2013-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/09/02/javascript-module-pattern/">JavaScript Module Pattern</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Just a simple code and note here.</p>
-<p>For more info about module pattern refer <a target="_blank" rel="noopener" href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html">here</a>.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> obj = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="comment">//constructor</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	obj.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">// do things here</span></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> obj;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/02/javascript-module-pattern/" data-id="clo6cl4uh0005mpp2hzb62x7x" data-title="JavaScript Module Pattern" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -227,7 +276,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
   </div>
 </div>
 

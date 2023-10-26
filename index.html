@@ -73,6 +73,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" class="article-date">
+  <time class="dt-published" datetime="2023-10-26T15:21:08.000Z" itemprop="datePublished">2023-10-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/">How to resolve timeout when cloning mega-sized repository with git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; git <span class="built_in">clone</span> url-to-a-repository</span><br><span class="line">error: RPC failed; curl 92 HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)</span><br></pre></td></tr></table></figure>
+
+<p>So, recently I was trying to clone a mega-sized repository while working on a company project. However, whenever I wanted to clone it with <code>git clone</code> it kept popping up the error above. It looks like the root cause is that there is a buffer limit when I need to pull it with HTTPS.</p>
+<p>The solution to this is to </p>
+<ol>
+<li>Use <code>SSH</code> to clone the repository.</li>
+<li>Use <code>HTTPS</code> but pull the content of the repository incrementally.</li>
+</ol>
+<p>Due to being unable to resolve SSH credential in a short time frame, I chose the second approach</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; git <span class="built_in">clone</span> xxx --depth 1</span><br><span class="line">&gt; <span class="built_in">cd</span> xxx</span><br><span class="line">&gt; git fetch --unshallow</span><br></pre></td></tr></table></figure>
+
+<p>With the commands above, the content can be pulled part by part, instead of in one big chunk.</p>
+<p>If it still errors with the same message, instead of <code>git fetch --unshallow</code>, try using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; git fetch --depth=100</span><br><span class="line">&gt; git fetch --depth=200</span><br><span class="line">&gt; git fetch --depth=300</span><br><span class="line"><span class="comment"># until the content has been fully pulled</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" data-id="clo7rg5lx0028m7or95cm8m33" data-title="How to resolve timeout when cloning mega-sized repository with git" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-assignments-design-guide" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020/12/18/assignments-design-guide/" class="article-date">
@@ -117,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2020/12/18/assignments-design-guide/" data-id="clo6cl4xg0028mpp21sq0asf2" data-title="Assignments Design Guide - Candidate Perspective" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2020/12/18/assignments-design-guide/" data-id="clo7rg5lu0026m7or5dheepxl" data-title="Assignments Design Guide - Candidate Perspective" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -131,68 +184,11 @@
 
 
   
-    <article id="post-GraphQL-vs-REST-My-Review" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2017/08/10/GraphQL-vs-REST-My-Review/" class="article-date">
-  <time class="dt-published" datetime="2017-08-10T22:31:47.000Z" itemprop="datePublished">2017-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Prologue"><a href="#Prologue" class="headerlink" title="Prologue"></a>Prologue</h1><p>I heard there is a hype train of GraphQL. In order to find out how good it is, I decided to give GraphQL a try in my recently made side project - <a target="_blank" rel="noopener" href="https://github.com/zushenyan/graphql-sso-example">graphql-sso-example</a>.</p>
-<p>And yep, it’s a practice of GraphQL and SSO(Single Sign On). You can view the demo <a target="_blank" rel="noopener" href="https://graphql-sso.herokuapp.com/#/">here</a>.</p>
-<p>So there are already tons of articles talking about the comparison between REST and GraphQL, and combine with public article and my review. Here is the short version:</p>
-<h1 id="GraphQL-vs-REST-General-Comparison"><a href="#GraphQL-vs-REST-General-Comparison" class="headerlink" title="GraphQL vs REST - General Comparison"></a>GraphQL vs REST - General Comparison</h1><h3 id="No-Custom-Status-Code"><a href="#No-Custom-Status-Code" class="headerlink" title="No Custom Status Code"></a>No Custom Status Code</h3><p>Since GraphQL doesn’t care about transport layer error, You can’t customize status code like REST.</p>
-<p>The only way for clients to get them is putting them in the resolver (e.g. JSON response).</p>
-<h3 id="Increase-Development-Time"><a href="#Increase-Development-Time" class="headerlink" title="Increase Development Time"></a>Increase Development Time</h3><p>GraphQL is a whole standalone tool for solving how APIs should present. You have to define schemes for a simple API response, which is an overkill sometimes.</p>
-<h3 id="REST-Can-Be-Query-Language-Too"><a href="#REST-Can-Be-Query-Language-Too" class="headerlink" title="REST Can Be Query Language Too"></a>REST Can Be Query Language Too</h3><p>GraphQL is an query language, and actually, you can make REST doing so by adding query to URL like <code>[GET] /api/user?include=email,name,age</code>.</p>
-<h3 id="Cache-Missing"><a href="#Cache-Missing" class="headerlink" title="Cache Missing"></a>Cache Missing</h3><p>Since all the GraphQL requests are sent in <code>POST</code> method, you can’t use <code>browser caching</code> (with HTTP headers <code>etag</code> or <code>cache-control</code>) and <code>network caching</code>(reverse proxy like <a target="_blank" rel="noopener" href="https://www.varnish-cache.org/">varnish</a>).</p>
-<p>The only way to cache it is by using <code>application caching</code>, for example Facebook’s <a target="_blank" rel="noopener" href="https://github.com/facebook/dataloader">dataloader</a>.</p>
-<p>However if you use REST in query <code>include</code> style, it also shares the similar issue.</p>
-<h1 id="TL-DR-Conclusion"><a href="#TL-DR-Conclusion" class="headerlink" title="TL;DR Conclusion"></a>TL;DR Conclusion</h1><p>GraphQL is not an replacement for REST. There is no winner. Both of them have its strength and weakness.</p>
-<p>If you don’t have data with highly relations dependency or the need for supporting various platforms (e.g. mobile, desktop, TV…), you probably don’t need GraphQL.</p>
-<p>Since there is no exclusion between two, try using both of them if you really need to.</p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://philsturgeon.uk/api/2017/01/24/graphql-vs-rest-overview/">GraphQL vs REST: Overview</a></li>
-<li><a target="_blank" rel="noopener" href="https://philsturgeon.uk/api/2017/01/26/graphql-vs-rest-caching/">GraphQL vs REST: Caching</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2017/08/10/GraphQL-vs-REST-My-Review/" data-id="clo6cl4xe0025mpp27jwwcxy6" data-title="GraphQL vs REST - My Review" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GraphQL/" rel="tag">GraphQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/" rel="tag">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -203,7 +199,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
   </div>
 </div>
 

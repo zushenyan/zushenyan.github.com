@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: git | Andrew&#39;s Cache</title>
+  <title>How to resolve timeout when cloning mega-sized repository with git | Andrew&#39;s Cache</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Andrew&#39;s Cache">
-<meta property="og:url" content="http://zushenyan.github.io/tags/git/index.html">
+  <meta name="description" content="12&gt; git clone url-to-a-repositoryerror: RPC failed; curl 92 HTTP&#x2F;2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)  So, recently I was trying to clone a mega-sized repository while working">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to resolve timeout when cloning mega-sized repository with git">
+<meta property="og:url" content="http://zushenyan.github.io/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/index.html">
 <meta property="og:site_name" content="Andrew&#39;s Cache">
+<meta property="og:description" content="12&gt; git clone url-to-a-repositoryerror: RPC failed; curl 92 HTTP&#x2F;2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)  So, recently I was trying to clone a mega-sized repository while working">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-26T15:21:08.000Z">
+<meta property="article:modified_time" content="2023-10-26T22:32:55.653Z">
 <meta property="article:author" content="Andrew Yan">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Andrew's Cache" type="application/atom+xml">
@@ -71,68 +76,67 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-10-26T15:21:08.000Z" itemprop="datePublished">Oct 26</time>
+        <section id="main"><article id="post-How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" class="article-date">
+  <time class="dt-published" datetime="2023-10-26T15:21:08.000Z" itemprop="datePublished">2023-10-26</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/">How to resolve timeout when cloning mega-sized repository with git</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      How to resolve timeout when cloning mega-sized repository with git
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/12/Merge-Branch-From-Another-Repo/" class="archive-article-date">
-  <time class="dt-published" datetime="2016-12-12T22:38:26.000Z" itemprop="datePublished">Dec 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/12/Merge-Branch-From-Another-Repo/">Merge Branch From Another Repo</a>
-    </h1>
-  
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; git <span class="built_in">clone</span> url-to-a-repository</span><br><span class="line">error: RPC failed; curl 92 HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)</span><br></pre></td></tr></table></figure>
 
-    </header>
+<p>So, recently I was trying to clone a mega-sized repository while working on a company project. However, whenever I wanted to clone it with <code>git clone</code> it kept popping up the error above. It looks like the root cause is that there is a buffer limit when I need to pull it with HTTPS.</p>
+<p>The solution to this is to </p>
+<ol>
+<li>Use <code>SSH</code> to clone the repository.</li>
+<li>Use <code>HTTPS</code> but pull the content of the repository incrementally.</li>
+</ol>
+<p>Due to being unable to resolve SSH credential in a short time frame, I chose the second approach</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; git <span class="built_in">clone</span> xxx --depth 1</span><br><span class="line">&gt; <span class="built_in">cd</span> xxx</span><br><span class="line">&gt; git fetch --unshallow</span><br></pre></td></tr></table></figure>
+
+<p>With the commands above, the content can be pulled part by part, instead of in one big chunk.</p>
+<p>If it still errors with the same message, instead of <code>git fetch --unshallow</code>, try using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; git fetch --depth=100</span><br><span class="line">&gt; git fetch --depth=200</span><br><span class="line">&gt; git fetch --depth=300</span><br><span class="line"><span class="comment"># until the content has been fully pulled</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" data-id="clo7rg5lx0028m7or95cm8m33" data-title="How to resolve timeout when cloning mega-sized repository with git" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/18/assignments-design-guide/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Assignments Design Guide - Candidate Perspective</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

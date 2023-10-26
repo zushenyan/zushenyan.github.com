@@ -73,6 +73,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-GraphQL-vs-REST-My-Review" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/10/GraphQL-vs-REST-My-Review/" class="article-date">
+  <time class="dt-published" datetime="2017-08-10T22:31:47.000Z" itemprop="datePublished">2017-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Prologue"><a href="#Prologue" class="headerlink" title="Prologue"></a>Prologue</h1><p>I heard there is a hype train of GraphQL. In order to find out how good it is, I decided to give GraphQL a try in my recently made side project - <a target="_blank" rel="noopener" href="https://github.com/zushenyan/graphql-sso-example">graphql-sso-example</a>.</p>
+<p>And yep, it’s a practice of GraphQL and SSO(Single Sign On). You can view the demo <a target="_blank" rel="noopener" href="https://graphql-sso.herokuapp.com/#/">here</a>.</p>
+<p>So there are already tons of articles talking about the comparison between REST and GraphQL, and combine with public article and my review. Here is the short version:</p>
+<h1 id="GraphQL-vs-REST-General-Comparison"><a href="#GraphQL-vs-REST-General-Comparison" class="headerlink" title="GraphQL vs REST - General Comparison"></a>GraphQL vs REST - General Comparison</h1><h3 id="No-Custom-Status-Code"><a href="#No-Custom-Status-Code" class="headerlink" title="No Custom Status Code"></a>No Custom Status Code</h3><p>Since GraphQL doesn’t care about transport layer error, You can’t customize status code like REST.</p>
+<p>The only way for clients to get them is putting them in the resolver (e.g. JSON response).</p>
+<h3 id="Increase-Development-Time"><a href="#Increase-Development-Time" class="headerlink" title="Increase Development Time"></a>Increase Development Time</h3><p>GraphQL is a whole standalone tool for solving how APIs should present. You have to define schemes for a simple API response, which is an overkill sometimes.</p>
+<h3 id="REST-Can-Be-Query-Language-Too"><a href="#REST-Can-Be-Query-Language-Too" class="headerlink" title="REST Can Be Query Language Too"></a>REST Can Be Query Language Too</h3><p>GraphQL is an query language, and actually, you can make REST doing so by adding query to URL like <code>[GET] /api/user?include=email,name,age</code>.</p>
+<h3 id="Cache-Missing"><a href="#Cache-Missing" class="headerlink" title="Cache Missing"></a>Cache Missing</h3><p>Since all the GraphQL requests are sent in <code>POST</code> method, you can’t use <code>browser caching</code> (with HTTP headers <code>etag</code> or <code>cache-control</code>) and <code>network caching</code>(reverse proxy like <a target="_blank" rel="noopener" href="https://www.varnish-cache.org/">varnish</a>).</p>
+<p>The only way to cache it is by using <code>application caching</code>, for example Facebook’s <a target="_blank" rel="noopener" href="https://github.com/facebook/dataloader">dataloader</a>.</p>
+<p>However if you use REST in query <code>include</code> style, it also shares the similar issue.</p>
+<h1 id="TL-DR-Conclusion"><a href="#TL-DR-Conclusion" class="headerlink" title="TL;DR Conclusion"></a>TL;DR Conclusion</h1><p>GraphQL is not an replacement for REST. There is no winner. Both of them have its strength and weakness.</p>
+<p>If you don’t have data with highly relations dependency or the need for supporting various platforms (e.g. mobile, desktop, TV…), you probably don’t need GraphQL.</p>
+<p>Since there is no exclusion between two, try using both of them if you really need to.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://philsturgeon.uk/api/2017/01/24/graphql-vs-rest-overview/">GraphQL vs REST: Overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://philsturgeon.uk/api/2017/01/26/graphql-vs-rest-caching/">GraphQL vs REST: Caching</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2017/08/10/GraphQL-vs-REST-My-Review/" data-id="clo7rg5lr0023m7orb9ir71qh" data-title="GraphQL vs REST - My Review" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GraphQL/" rel="tag">GraphQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/" rel="tag">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/" class="article-date">
@@ -196,75 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/" data-id="clo6cl4xd0023mpp2g4ocgdun" data-title="A Learning Note of Functional Programming Part 2 - Some Common Terminology" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FP/" rel="tag">FP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/" rel="tag">meta</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/" rel="tag">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-A-Learning-Note-to-Functional-Programming-Part-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/" class="article-date">
-  <time class="dt-published" datetime="2017-04-05T22:08:57.000Z" itemprop="datePublished">2017-04-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/">A Learning Note of Functional Programming Part 1 - Some Basic Concepts</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="What-makes-FP-great"><a href="#What-makes-FP-great" class="headerlink" title="What makes FP great?"></a>What makes FP great?</h1><p>Functional Programming (FP) has been a trendy word for a while, but I wonder what makes people think FP is good? Here is my conclusion:</p>
-<h2 id="The-need-for-concurrent-parallelism"><a href="#The-need-for-concurrent-parallelism" class="headerlink" title="The need for concurrent&#x2F;parallelism"></a>The need for concurrent&#x2F;parallelism</h2><p>Since we got more than one core on CPU, we started thinking on how to process tasks more efficiently.</p>
-<p>To achieve that we have to adapt the power of concurrent&#x2F;parallelism, however the biggest problem of multithreading is <strong>how do we make sure data shared between threads is safe</strong>.</p>
-<p>In imperative programming (or languages that are not encourage immutable), things are <strong>mutable</strong>, a variable can be modified by reference without creating a new one, but when it comes to multithreading, with mutable variables, developers will have to use <code>locks</code> to manage access permission between threads, but this technique doesn’t solve this problem nicely, because the natural of variables are still mutable, once it causes bugs, it will cost developers lots of time to spot and solve issues.</p>
-<p>Another point that makes FP shining is <strong>declarative</strong>. Declarative means telling computer what to do, and imperative, on the contrary, means arranging every command manually, step by step. The benefit of declarative is yielding the rights to rearrange commands for the compiler. This approach saves a lot of line of code, making your code more cleaner and easier to read.</p>
-<h1 id="Features-of-FP"><a href="#Features-of-FP" class="headerlink" title="Features of FP"></a>Features of FP</h1><h2 id="First-class-Function"><a href="#First-class-Function" class="headerlink" title="First-class Function"></a>First-class Function</h2><p>It means you can pass functions as parameters or return functions as an result.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// take function as a parameter</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">foo</span> = (<span class="params">cb</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">  <span class="title function_">cb</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// return function as an result</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">bar</span> = (<span class="params">name</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Pure-Functions"><a href="#Pure-Functions" class="headerlink" title="Pure Functions"></a>Pure Functions</h2><p>Pure function means - every time you pass the same argument, you should get the same result. If a function violates the rule, then the function is <strong>impure</strong>. Things that can lead to impure are like depending on external result or IO.</p>
-<h4 id="depending-on-external-result"><a href="#depending-on-external-result" class="headerlink" title="depending on external result"></a>depending on external result</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add5</span> = (<span class="params">num</span>) =&gt; num + a;</span><br><span class="line"></span><br><span class="line">a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// promise will return either result or failure.</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fetchData</span> = (<span class="params"></span>) =&gt; <span class="title function_">fetch</span>(<span class="string">&quot;http://some-awesome-service/api&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetchData</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">result</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(result))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err));</span><br></pre></td></tr></table></figure>
-
-<h2 id="Referential-Transparency"><a href="#Referential-Transparency" class="headerlink" title="Referential Transparency"></a>Referential Transparency</h2><p>You can replace an expression with it’s result without changing the meaning of program.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add5</span> = (<span class="params">num</span>) =&gt; num + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add10</span> = (<span class="params">num</span>) =&gt; <span class="title function_">add5</span>(<span class="title function_">add5</span>(num));</span><br><span class="line"></span><br><span class="line"><span class="comment">// or replace with</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add10</span> = (<span class="params">num</span>) =&gt; num + <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Lazy-Evaluation"><a href="#Lazy-Evaluation" class="headerlink" title="Lazy Evaluation"></a>Lazy Evaluation</h2><p>There is another term called <strong>strict(eager) vs non-strict(lazy) evaluation</strong>. Lazy evaluation means computing the result only when it’s needed. Let’s take <code>filter</code> for example, if we want to filter out the first 3 of the even numbers from a list of numbers, strict evaluation traverses all the elements in the list and return first 3 even numbers, but lazy evaluation will traverse until it meets the third odd number.</p>
-<p>This approach might greatly improve performance because it doesn’t traverse all the elements, but the down side is making evaluation on time complexity harder.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// because JavaScript doesn&#x27;t have lazy evaluation built-in, here I use lodash to help demonstration.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// lodash will only perform lazy evaluation when elements length is larger than 200.</span></span><br><span class="line"><span class="keyword">const</span> arr = _.<span class="title function_">range</span>(<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> counter1 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> counter2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// strict evaluation</span></span><br><span class="line">arr.<span class="title function_">filter</span>(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</span><br><span class="line">    counter1++;</span><br><span class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">slice</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// lazy evaluation</span></span><br><span class="line"><span class="title function_">_</span>(arr).<span class="title function_">filter</span>(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</span><br><span class="line">    counter2++;</span><br><span class="line">    <span class="keyword">return</span> ele % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">take</span>(<span class="number">3</span>)</span><br><span class="line">  .<span class="title function_">value</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter1); <span class="comment">// 200</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter2); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Declarative-vs-Imperative"><a href="#Declarative-vs-Imperative" class="headerlink" title="Declarative vs Imperative"></a>Declarative vs Imperative</h2><p>Declarative tells compiler what to do instead of telling commands step by step. By using declarative we hide the working details, which gives compiler the ability to rearrange the execution steps of commands.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// declarative</span></span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function"><span class="params">ele</span> =&gt;</span> ele + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// imperative (and mutable)</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++)&#123;</span><br><span class="line">  arr[i] += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Functional_programming">Functional Programming on Wikipedia</a></li>
-<li><a target="_blank" rel="noopener" href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0">Master the JavaScript Interview: What is Functional Programming?</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.amazon.com/Seven-Concurrency-Models-Weeks-Programmers/dp/1937785653">Seven Concurrency Models Weeks Programmers</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2017/04/05/A-Learning-Note-to-Functional-Programming-Part-1/" data-id="clo6cl4xa0020mpp2bpv5fqbz" data-title="A Learning Note of Functional Programming Part 1 - Some Basic Concepts" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/" data-id="clo7rg5lr0021m7ordz70eafx" data-title="A Learning Note of Functional Programming Part 2 - Some Common Terminology" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -282,7 +271,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -293,7 +282,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
   </div>
 </div>
 

@@ -73,6 +73,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Merge-Branch-From-Another-Repo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/12/12/Merge-Branch-From-Another-Repo/" class="article-date">
+  <time class="dt-published" datetime="2016-12-12T22:38:26.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/12/12/Merge-Branch-From-Another-Repo/">Merge Branch From Another Repo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Just a quick TIL note here.</p>
+<p>If you have ever encountered a similar scenario:</p>
+<blockquote>
+<p>You have repo A and repo B.<br>Repo B is derived from repo A.<br>You are currently on repo B, and want to merge branch (or pick commit) from repo A.<br>How to achieve that?</p>
+</blockquote>
+<p>Here is what git command <code>remote</code> magically does:</p>
+<ol>
+<li><code>git remote add repoA addressOfRepoA</code></li>
+<li>Assume you are on <code>master</code> branch of repo B, and want to merge <code>master</code> branch from repo A.</li>
+<li><code>git pull repoA master</code></li>
+<li>Done.</li>
+</ol>
+<p>Actually an repo doesn’t have limitation on how many <code>remote repo</code> it can have, so if you run into similar case like me, hope this post help.</p>
+<p>References:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Git Basics - Working with Remotes</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/2949738/git-merge-different-repositories">StackOverflow - git merge different repositories</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2016/12/12/Merge-Branch-From-Another-Repo/" data-id="clo7rg5ll001om7or5tj2aop0" data-title="Merge Branch From Another Repo" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-front-end-job-interview-questions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2015/12/13/front-end-job-interview-questions/" class="article-date">
@@ -790,7 +848,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2015/12/13/front-end-job-interview-questions/" data-id="clo6cl4x6001pmpp2cw4kdeaf" data-title="Front-end Job Interview Questions" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2015/12/13/front-end-job-interview-questions/" data-id="clo7rg5lk001mm7or9q1iak48" data-title="Front-end Job Interview Questions" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -804,128 +862,11 @@
 
 
   
-    <article id="post-backend-fundamental-cookie-and-session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2015/11/20/backend-fundamental-cookie-and-session/" class="article-date">
-  <time class="dt-published" datetime="2015-11-20T14:35:27.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2015/11/20/backend-fundamental-cookie-and-session/">Backend Fundamental - Cookie and Session</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Yet-Another-Cookie-Session-Explanation"><a href="#Yet-Another-Cookie-Session-Explanation" class="headerlink" title="Yet Another Cookie &amp; Session Explanation?"></a>Yet Another Cookie &amp; Session Explanation?</h1><p>Currently I am working on a website with user account written with Node. I did have some backend experience though, but it was around 2 years ago. Grabbing memories back needs some effort.</p>
-<p>To engrave these concepts into my brain more deeper, I have to write it down, and this time, it will go advance rather than simply explaining “Cookie is this and Session is that. Done!”</p>
-<h1 id="Why-Use-Cookie-Session"><a href="#Why-Use-Cookie-Session" class="headerlink" title="Why Use Cookie &amp; Session?"></a>Why Use Cookie &amp; Session?</h1><p>HTTP is a stateless protocol, which means it forgets anything about information it carried last time. In order to maintain a persistent communication between client and server, cookie and session were invented.</p>
-<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie is a traditional way to save <strong>non-sensitive</strong> user informations in browsers. To sum up the feature of Cookie:</p>
-<ul>
-<li>Cookie is a key-value set.</li>
-<li>Cookie is sent via HTTP.</li>
-<li>Cookie is an attribute of HTTP header.</li>
-<li>Every cookie has its own attributes:<ul>
-<li>Domain - tells the browser which domain it belongs to. Usually this should be current resource’s top domain. If you set it to <code>.com</code>, every sub-domain of <code>.com</code> like <code>google.com</code> will be able to access this cookie.</li>
-<li>Path - almost identical to the <code>domain</code> attribute, but only relative to current resource’s top domain. This tells the browser when to send this cookie on what path.</li>
-<li>Expires - tells the browser to delete this cookie on a specified date.</li>
-<li>Max-Age - tells the browser to delete this cookie on a specified time relative to now in second.</li>
-<li>Secure - can only be sent via HTTPS or not. Make it on for more serious security concern.</li>
-<li>HttpOnly - should be allowed to access by JavaScript or not. Normally it’s on to prevent from Cross-Site-Script attack.</li>
-</ul>
-</li>
-<li>Can only support up to 4096 bytes in size.</li>
-</ul>
-<p>When I mention about <strong>non-sensitive</strong> informations I mean:</p>
-<ul>
-<li>Session ID - most websites nowadays no longer store “shopping cart” or anything user-sensitive in the cookie. Instead, They store an unique ID generated by the server for looking up corresponding user at server side database.</li>
-<li>Personal Preferences - the background user like, the font size user preferred…etc.</li>
-<li>Browsing Habits - remember login, the last page user visited, the browsing histories of one user…etc.</li>
-</ul>
-<p>The reason why cookie should never store sensitive data like username, password or credit card number is that cookies are more easily to be intercepted or tampered. Though you can send cookies by <strong>https</strong> or using <strong>signed cookie</strong>(which will be introduced latter) to store hashed data, exposing more informations means lower the cost and difficulty of cracking, and thus the best way is don’t even store sensitive data to the cookie.</p>
-<p>Typical ways to set cookie in Node:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> rawCookie = req.<span class="title function_">get</span>(<span class="string">&quot;cookie&quot;</span>);</span><br><span class="line">  <span class="keyword">var</span> cookie = &#123;<span class="attr">count</span>: <span class="number">1</span>&#125;;</span><br><span class="line">  <span class="keyword">if</span>(rawCookie)&#123;</span><br><span class="line">    cookie.<span class="property">count</span> = <span class="built_in">parseInt</span>(rawCookie.<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">    cookie.<span class="property">count</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  res.<span class="title function_">append</span>(<span class="string">&quot;set-cookie&quot;</span>, <span class="string">&quot;count=&quot;</span> + cookie.<span class="property">count</span> + <span class="string">&quot;;max-age=5&quot;</span>);</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + cookie.<span class="property">count</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>This will increase <code>count</code> by one when user visits <code>localhost:3000</code> in 5 seconds. If user doesn’t visit again in 5 seconds, set count to 1.</p>
-<p>Accessing to cookie is such a pain, right? <code>cookie-parse</code> to the rescue!</p>
-<p><code>npm install cookie-parse</code> and then…</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">&quot;cookie-parser&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cookieParser</span>());</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="built_in">parseInt</span>(req.<span class="property">cookies</span>.<span class="property">count</span>, <span class="number">10</span>);</span><br><span class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  res.<span class="title function_">cookie</span>(<span class="string">&quot;count&quot;</span>, count.<span class="title function_">toString</span>(), &#123;<span class="attr">maxAge</span>: <span class="number">5000</span>&#125;);</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + count);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>Tada! I am sure there are something like <code>cookie-parser</code> which exists in other languages.</p>
-<h1 id="Common-Variation-Of-Cookies"><a href="#Common-Variation-Of-Cookies" class="headerlink" title="Common Variation Of Cookies"></a>Common Variation Of Cookies</h1><h4 id="Session-Cookie"><a href="#Session-Cookie" class="headerlink" title="Session Cookie"></a>Session Cookie</h4><p>Session cookie is contrary to persistent cookie(or just called it cookie) and only lives when user is still browsing the website. When user closes the browser, the session cookie is deleted by the browser as well.</p>
-<p>A common usage of session cookie is storing session ID. Session ID is an unique ID generated by the server and was stored when connection is established. Session ID is used for letting the server know who the current user is in order to look up relative informations in the database.</p>
-<p>Setting a session cookie is simple - just leave <code>expires</code> and <code>maxAge</code> attributes empty.</p>
-<p>Use <code>npm install express-session</code> for saving time of building another wheel.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="built_in">require</span>(<span class="string">&quot;express-session&quot;</span>)(&#123;</span><br><span class="line">  <span class="attr">secret</span>: <span class="string">&quot;i am a secret&quot;</span>,</span><br><span class="line">  <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">saveUninitialized</span>: <span class="literal">true</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = req.<span class="property">session</span>.<span class="property">count</span>;</span><br><span class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  req.<span class="property">session</span>.<span class="property">count</span> = count;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + req.<span class="property">session</span>.<span class="property">count</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>By using <code>express-session</code>, a cookie named <code>connect.sid</code> will be stored with a <strong>hashed value plus a signature aside</strong> in the browser.</p>
-<p>As for session ID security topic I’d recommend <a target="_blank" rel="noopener" href="http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly">here</a> for further reading.</p>
-<h4 id="Signed-Cookie"><a href="#Signed-Cookie" class="headerlink" title="Signed Cookie"></a>Signed Cookie</h4><p>In web development world, you will accidentally bump into a word - <strong>Signed Cookie</strong>. What is it? Basically, a signed cookie stores a value by appending a signature after it. According to frameworks, they claimed that by singing values, server can determine if this value is tampered, however there are some debates on this topic:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://security.stackexchange.com/questions/92122/why-is-it-insecure-to-store-the-session-id-in-a-cookie-directly">Why is it insecure to store the session ID in a cookie directly?</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/expressjs/session/issues/68">Why sign the cookie?</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/expressjs/session/issues/176">Why doesn’t this module store the raw session ID in the cookie directly?</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea">Signed session cookies. A good idea?</a></li>
-</ul>
-<p>I am not an expert at security so can’t do any assertion. I will just leave it here.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">&quot;cookie-parser&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cookieParser</span>(<span class="string">&quot;write down your secret here&quot;</span>));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="built_in">parseInt</span>(req.<span class="property">signedCookies</span>.<span class="property">count</span>, <span class="number">10</span>);</span><br><span class="line">  count = count ? count + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  res.<span class="title function_">cookie</span>(<span class="string">&quot;count&quot;</span>, count, &#123;<span class="attr">signed</span>: <span class="literal">true</span>&#125;);</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + count);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>This is a showcase of how to use signed cookie in Node with express’ extension module. Signature changes whenever <code>count</code> changes.</p>
-<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>We have dealt with storing informations on the client side, so what exactly session is? Well, session is just an description of state that when the connection between client and server is alive, session lives, when connection closes, session ends.</p>
-<p>The main task that session runs is telling the server which one is the current client by giving each client an unique id, it’s called session ID. There are several possible places to store the session ID:</p>
-<h4 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h4><p>Fast, but not practical. Let’s assume you have prepared a database for storing the actual data of users, and only store session ID in memory, and use session ID to look up corresponding user informations in database, but in most cases, we expect hundreds of clients to maintain its’ session between server, which means these session data will eat up some part of memory, which it’s not a smart move, and plus, you will have to deal with data sharing problem like race condition in concurrent environments.</p>
-<h4 id="Cookie-1"><a href="#Cookie-1" class="headerlink" title="Cookie"></a>Cookie</h4><p>A common place to store session ID. Usually used with database where actual user information lays.</p>
-<h4 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h4><p>We also generate something corresponding to the session ID for indexing the actual place where user information belongs to and still have to combine forces of memory and cookie to store our session ID, why? Because indexing in database is way more time costly than indexing in memory.</p>
-<p>Here I use <a target="_blank" rel="noopener" href="http://redis.io/">Redis</a> to give a quick database showcase. Install package file from Redis to benefit full support.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">&quot;express-session&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> db = <span class="built_in">require</span>(<span class="string">&quot;redis&quot;</span>).<span class="title function_">createClient</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">db.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="keyword">function</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.<span class="title function_">on</span>(<span class="string">&quot;connect&quot;</span>, <span class="keyword">function</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;connected to database...&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">session</span>(&#123;</span><br><span class="line">    <span class="attr">secret</span>: <span class="string">&quot;such secret much safe wow&quot;</span>,</span><br><span class="line">    <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">saveUninitialized</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span>(<span class="params">req, res, next</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line">  db.<span class="title function_">hget</span>([req.<span class="property">session</span>.<span class="property">id</span>, <span class="string">&quot;count&quot;</span>], <span class="keyword">function</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(err); <span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span>(reply)&#123;</span><br><span class="line">      count = ++reply;</span><br><span class="line">      db.<span class="title function_">hset</span>([req.<span class="property">session</span>.<span class="property">id</span>, <span class="string">&quot;count&quot;</span>, count], logErr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123; db.<span class="title function_">hset</span>([req.<span class="property">session</span>.<span class="property">id</span>, <span class="string">&quot;count&quot;</span>, count], logErr); &#125;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&quot;count: &quot;</span> + count);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">logErr</span>(<span class="params">err, reply</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(err); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Web development is all about security. When developers want to take advantages of cookie and session, some principles should be concerned:</p>
-<ul>
-<li>Cookie should not store sensitive data.</li>
-<li>Set cookie’s <code>secure</code> attribute on if HTTPS is available.</li>
-<li>Set cookie’s <code>HttpOnly</code> attribute on if possible to prevent man-in-the-middle from tampering.</li>
-<li>Use Signed Cookie technique to have signed values.</li>
-<li>If you still consider Signed Cookies are not secure enough, deal it like you deal with passwords.</li>
-</ul>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/HTTP_cookie">Wikipedia - HTTP Cookie</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/706858/what-information-is-ok-to-store-in-cookies">What information is OK to store in cookies?</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/11897965/what-are-signed-cookies-in-connect-expressjs">What are “signed” cookies in connect&#x2F;expressjs?</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3240246/signed-session-cookies-a-good-idea">Signed session cookies. A good idea?</a></li>
-<li><a target="_blank" rel="noopener" href="http://wiki.jikexueyuan.com/project/node-lessons/cookie-session.html">cookie 和 session</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2015/11/20/backend-fundamental-cookie-and-session/" data-id="clo6cl4x4001nmpp2dn6m3smz" data-title="Backend Fundamental - Cookie and Session" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backend/" rel="tag">backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -936,7 +877,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
   </div>
 </div>
 

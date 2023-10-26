@@ -73,6 +73,169 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-frontend-fundamental-http-1-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/10/10/frontend-fundamental-http-1-1/" class="article-date">
+  <time class="dt-published" datetime="2015-10-10T04:37:59.000Z" itemprop="datePublished">2015-10-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/10/10/frontend-fundamental-http-1-1/">Frontend Fundamental - HTTP 1.1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h1><p>A study note for myself.</p>
+<h1 id="Tools-I-Use"><a href="#Tools-I-Use" class="headerlink" title="Tools I Use"></a>Tools I Use</h1><ul>
+<li>Nodejs<ul>
+<li>I will use Nodejs as server side foundation. No expressjs or some other fancy libraries here. Only vanilla Nodejs you need to know.</li>
+</ul>
+</li>
+<li>Curl<ul>
+<li>A powerful command line tool to transfer data from or to server. It’s builtin if users are using Mac or Linux OS.</li>
+</ul>
+</li>
+<li>Chrome<ul>
+<li>A happy browser.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>HTTP protocol is a fundamental when it comes to nowadays web. No matter you are an frontend or backend guy, knowing it is surely an important thing.<br>In this article, I will cover topics from basic features, headers to useful practices.</p>
+<h1 id="HTTP-Architecture"><a href="#HTTP-Architecture" class="headerlink" title="HTTP Architecture"></a>HTTP Architecture</h1><p>In version 1.0, it was <strong>multiple connection</strong>, which means it opens a new connection per request&#x2F;response. To solve the overhead of establishing connection for each request&#x2F;response, version 1.1 comes with <strong>persistent connection</strong>, which means only uses a single connection for subsequent request&#x2F;response to solve the establishing overhead.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/HTTP_persistent_connection.svg" alt="from wikipedia"></p>
+<p>Image from <a href="http-persistent-connection">wikipedia</a>.</p>
+<h1 id="HTTP-Basic-Features"><a href="#HTTP-Basic-Features" class="headerlink" title="HTTP Basic Features"></a>HTTP Basic Features</h1><ul>
+<li>Media independent - Any types can be exchanged between client and server as long as they know what types each other are sending to.</li>
+<li>Stateless - Server won’t record anything about each other, like how long the connection last and blah blah blah… However you can write extra codes to record things.</li>
+</ul>
+<h1 id="HTTP-Status-Codes"><a href="#HTTP-Status-Codes" class="headerlink" title="HTTP Status Codes"></a>HTTP Status Codes</h1><p>When server responses, it returns a 3-digit number back which tells client some kind of informations. Here I only listed partial content. For full list of status code check <a href="http-status-code">here</a>.</p>
+<ul>
+<li>1xx - Pure information to inform client.<ul>
+<li>100 - Continue.</li>
+<li>101 - Switch protocol.</li>
+</ul>
+</li>
+<li>2xx - Success.<ul>
+<li>200 - Ok.</li>
+<li>201 - Resource is created or request is completed.</li>
+</ul>
+</li>
+<li>3xx - Redirection.<ul>
+<li>301 - Moved permanently. Request URI has moved to an new URL.</li>
+<li>307 - Moved temporary.Request URI has temporary moved to an new URL.</li>
+</ul>
+</li>
+<li>4xx - Client error.<ul>
+<li>403 - Forbidden. Requested page was forbidden to access.</li>
+<li>404 - Not found.</li>
+</ul>
+</li>
+<li>5xx - Server error.<ul>
+<li>500 - Internal error. Server met unexpected problem.</li>
+<li>503 - Service unavailable. Server temporary down.</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTTP-Methods"><a href="#HTTP-Methods" class="headerlink" title="HTTP Methods"></a>HTTP Methods</h1><p>HTTP defines methods to indicate what action should be performed on server side.</p>
+<ul>
+<li>GET      - Retrieves data from server with given URI.</li>
+<li>POST    - Sends data to server. For example, sending forms, upload files.</li>
+<li>PUT      - Creates(if doesn’t exist) or updates target resource with new uploaded one.</li>
+<li>DELETE  - Removes target resource with given URI.</li>
+<li>HEAD    - Identical to GET, but only interested in head content.</li>
+<li>CONNECT - Converts request into a TCP&#x2F;IP tunnel.</li>
+<li>OPTIONS - Describes communication options with server.</li>
+<li>TRACE    - Echoes received request so that client can see if there are any modification from intermediate servers.</li>
+<li>PATCH    - Updates partial modification to a resource.</li>
+</ul>
+<p>Here are some examples:</p>
+<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>Our server looks like:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">request, response</span>)&#123;</span><br><span class="line">  response.<span class="title function_">writeHeader</span>(<span class="number">200</span>, &#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/plain&quot;</span>&#125;);</span><br><span class="line">  response.<span class="title function_">end</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>With <code>curl -v http://localhost:3000</code>, you will get:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">* Rebuilt URL to: http://localhost:3000/</span><br><span class="line">*   Trying ::1...</span><br><span class="line">* Connected to localhost (::1) port 3000 (#0)</span><br><span class="line">&gt; GET / HTTP/1.1</span><br><span class="line">&gt; Host: localhost:3000</span><br><span class="line">&gt; User-Agent: curl/7.43.0</span><br><span class="line">&gt; Accept: */*</span><br><span class="line">&gt;</span><br><span class="line">&lt; HTTP/1.1 200 OK</span><br><span class="line">&lt; Content-Type: text/plain</span><br><span class="line">&lt; Date: Sat, 10 Oct 2015 07:44:31 GMT</span><br><span class="line">&lt; Connection: keep-alive</span><br><span class="line">&lt; Transfer-Encoding: chunked</span><br><span class="line">&lt;</span><br><span class="line">* Connection #0 to host localhost left intact</span><br><span class="line">Hello World!%</span><br></pre></td></tr></table></figure>
+
+<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><p>Server:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">request, response</span>)&#123;</span><br><span class="line">  request.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="keyword">function</span>(<span class="params">chunks</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chunks.<span class="title function_">toString</span>());</span><br><span class="line">    response.<span class="title function_">end</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>With <code>curl -X POST -d @style.css -v http://localhost:3000</code>, server side console prints:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server is running...</span><br><span class="line">div &#123;  color: red;&#125;</span><br></pre></td></tr></table></figure>
+<p>Our style.css on disk looks like:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="HTTP-Headers"><a href="#HTTP-Headers" class="headerlink" title="HTTP Headers"></a>HTTP Headers</h1><p>There are tons of headers http protocol has. Here only list some popular headers. For full list checkout <a href="header-list">here</a>:</p>
+<p>In general, there are three types of header:</p>
+<ul>
+<li>General header - Works with both request and response.<ul>
+<li>Connection        - Indicates what type of method should be used for communication.</li>
+<li>Date              - The time this message was sent.</li>
+<li>Cache-Control     - Indicates the conditions to cache or not, which I will cover in practice later.</li>
+<li>Upgrade           - Tells what additional protocols it supports and would like to switch if client&#x2F;server available these protocols.</li>
+</ul>
+</li>
+<li>Request header - only works with request.<ul>
+<li>Accept            - What Content-Type it accepts.</li>
+<li>Accept-Encoding    - What Content-Encoding it accepts.</li>
+<li>Cookie            - By using cookie header field, client can send cookie to server.</li>
+<li>User-Agent        - Client’s identity. For example, Mozilla&#x2F;4.0, IE&#x2F;10.0…</li>
+</ul>
+</li>
+<li>Response header - only works with response.<ul>
+<li>Content-Encoding  - Tells what type of encoding has been applied to the entity body(<a href="entity-message-1">explanation</a>).</li>
+<li>Etag              - Used to tag version or identity for a file.</li>
+<li>Expires            - Gives a date after which the response is considered stale.</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTTP-Headers-in-Practice"><a href="#HTTP-Headers-in-Practice" class="headerlink" title="HTTP Headers in Practice"></a>HTTP Headers in Practice</h1><h4 id="Content-Encoding"><a href="#Content-Encoding" class="headerlink" title="Content-Encoding"></a>Content-Encoding</h4><p>Content-Encoding is often used in sending files with minimal size as possible. Imagine a scenario you have minified all of your files - your html, css and js. All things look great, right? But actually, you can take it further by enabling Content-Encoding with gzip.</p>
+<p>Server:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> zlib = <span class="built_in">require</span>(<span class="string">&quot;zlib&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> page = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;./index.html&quot;</span>, <span class="keyword">function</span>(<span class="params">err, file</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">  page = file.<span class="title function_">toString</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> header = &#123;</span><br><span class="line">  <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/html&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Content-Encoding&quot;</span>: <span class="string">&quot;gzip&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">request, response</span>)&#123;</span><br><span class="line">  zlib.<span class="title function_">gzip</span>(page, <span class="keyword">function</span>(<span class="params">err, buff</span>)&#123;</span><br><span class="line">    response.<span class="title function_">writeHeader</span>(<span class="number">200</span>, header);</span><br><span class="line">    response.<span class="title function_">end</span>(buff);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>Send request by using Chrome</p>
+<p><img src="/images/content-encoding.png" alt="content-encoding"></p>
+<p>As you can see, the file size has reduced from 3.7kb to 2.0kb, which is roughly 50% size reduction.</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>Server:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> html = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> css = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> htmlHeader = &#123;</span><br><span class="line">  <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/html&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Cache-Control&quot;</span>: <span class="string">&quot;private, max-age=8&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cssHeader = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, htmlHeader);</span><br><span class="line">cssHeader[<span class="string">&quot;Content-Type&quot;</span>] = <span class="string">&quot;text/css&quot;</span>;</span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;./index.html&quot;</span>, <span class="keyword">function</span>(<span class="params">err, file</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">  html = file.<span class="title function_">toString</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;./style.css&quot;</span>, <span class="keyword">function</span>(<span class="params">err, file</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">  css = file.<span class="title function_">toString</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">request, response</span>)&#123;</span><br><span class="line">  <span class="keyword">if</span>(request.<span class="property">url</span> === <span class="string">&quot;/&quot;</span>)&#123;</span><br><span class="line">    response.<span class="title function_">writeHeader</span>(<span class="number">200</span>, htmlHeader);</span><br><span class="line">    response.<span class="title function_">end</span>(html);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(request.<span class="property">url</span> === <span class="string">&quot;/style.css&quot;</span>)&#123;</span><br><span class="line">    response.<span class="title function_">writeHeader</span>(<span class="number">200</span>, cssHeader);</span><br><span class="line">    response.<span class="title function_">end</span>(css);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    response.<span class="title function_">writeHeader</span>(<span class="number">404</span>);</span><br><span class="line">    response.<span class="title function_">end</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>Header field <code>Cache-Control: private, max-age=8</code> means only cacheable on client machine and cache it for 8 seconds.</p>
+<p><img src="/images/cache-control.png" alt="cache-control"></p>
+<p>Our css file is cached thanks to <code>Cache-Control</code>.</p>
+<p>Note: By clicking refresh icon, Chrome will send a request with header <code>Cache-Control: max-age=0</code> which will force Chrome itself to refetch files it requests. If you want to see cache behaviors, press enter in the URL search bar instead.</p>
+<h1 id="http-equiv"><a href="#http-equiv" class="headerlink" title="http-equiv"></a>http-equiv</h1><p>Not everyone is able to reach server configuration. In order to access request header, a typical usage in frontend is via <code>http-equiv</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>With <code>http-equiv</code>, you can do almost what you can do as on the server side.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Status_codes">Wikipedia</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.tutorialspoint.com/http/index.htm">TutorialPoint</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP">MDN Http protocol</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/">html5rocks content security policy</a></li>
+<li><a href="entity-message-1">Entity body and message body question 1</a></li>
+<li><a href="entity-message-2">Entity body and message body question 2</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2015/10/10/frontend-fundamental-http-1-1/" data-id="clo7rg5jb000cm7orbmlz6o83" data-title="Frontend Fundamental - HTTP 1.1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/" rel="tag">network</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-realtime-syntax-highlight-editor-on-web-how-is-that-possible" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/" class="article-date">
@@ -124,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/" data-id="clo6cl4ul000ampp25tfs1ck3" data-title="Realtime Syntax Highlight Editor on Web, How Is That Possible?" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/" data-id="clo7rg5j5000am7oraqxpaybd" data-title="Realtime Syntax Highlight Editor on Web, How Is That Possible?" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -138,103 +301,11 @@
 
 
   
-    <article id="post-debug-pages-on-phones-with-weinre" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/09/09/debug-pages-on-phones-with-weinre/" class="article-date">
-  <time class="dt-published" datetime="2013-09-09T13:29:00.000Z" itemprop="datePublished">2013-09-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/09/09/debug-pages-on-phones-with-weinre/">Debug Pages On Phones With Weinre</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="http://people.apache.org/~pmuellr/weinre/docs/latest/">Weinre</a> stands for WEb INspector REmote. There are already numerous tutorials about this tool on the internet, but I still want to note it for myself or everyone else just want to get it work without getting details.</p>
-<h3 id="1-Install-Node-js"><a href="#1-Install-Node-js" class="headerlink" title="1 Install Node.js"></a>1 Install Node.js</h3><p>Weinre depends on node.js, so we need to install node.js first.</p>
-<p>There are two ways to install nodes.js. One is using homebrew or other CLI package management tools to install. On Mac is like this:</p>
-<p><code>username$ brew install node</code></p>
-<p>Or you can simply download and install package from the <a target="_blank" rel="noopener" href="http://nodejs.org/download/">node.js site</a>.</p>
-<h3 id="2-Install-Weinre"><a href="#2-Install-Weinre" class="headerlink" title="2 Install Weinre"></a>2 Install Weinre</h3><p>After node.js is installed, now you can install weinre through this command:</p>
-<p><code>username$ sudo npm -g install weinre</code></p>
-<h3 id="3-Run-Weinre"><a href="#3-Run-Weinre" class="headerlink" title="3 Run Weinre"></a>3 Run Weinre</h3><p>In weinre, there are 3 terminologies. We will take a quick look:</p>
-<ul>
-<li>Debug Server - just a…server, we will use our browser to connect to it.</li>
-<li>Debug Client - web inspector, we will use in later in browser to inspect our page.</li>
-<li>Debug Target - your web page, also refers to mobile device.</li>
-</ul>
-<p>Time for running weinre. In most case we will only need to run:</p>
-<p><code>username$ weinre --boundHost</code></p>
-<p>Default option is localhost, but we won’t connect to localhost because that won’t do the debug thing for our page.</p>
-<p>We use real ip address here. To lookup our computer’s real ip address:</p>
-<p>On Mac open system preferences -&gt; network</p>
-<img src="/images/ip_address.png" class="center">
-
-<p>On Windows type cmd and run</p>
-<p><code>&gt; nslookup</code></p>
-<p>So we finally run this command instead.</p>
-<p><code>username$ weinre --boundHost [your ip address]</code></p>
-<p>Now type <code>[your ip address]:8080</code> in browser. You should see weinre page, and click link next to <em>debug client user interface</em> in <em>Access Points</em> to bring up our page’s inspector.</p>
-<h3 id="4-Inject-Scripts"><a href="#4-Inject-Scripts" class="headerlink" title="4 Inject Scripts"></a>4 Inject Scripts</h3><p>Before we start debugging we need to let our page response infomations which weinre needs through JavaScript. Weinre provides two ways to do:</p>
-<ol>
-<li>Inject script codes - once the page is ran, it will link to our server automatically, but only for specific pages we assigned to.<br><code>&lt;script src=&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;&gt;&lt;/script&gt;</code></li>
-<li>Bookmarklet - simply make a bookmark on your phone browser device. I named it weinre debug on my iphone.<br><code>javascript:(function(e)&#123;e.setAttribute(&quot;src&quot;,&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;);document.getElementsByTagName(&quot;body&quot;)[0].appendChild(e);&#125;)(document.createElement(&quot;script&quot;));void(0);</code></li>
-</ol>
-<img src="/images/weinre_phone_bookmark.png" class="center" width="300">
-
-<h3 id="5-Debug-Page"><a href="#5-Debug-Page" class="headerlink" title="5 Debug Page"></a>5 Debug Page</h3><p>Our example target.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	// decomment below if you are using method 1</span><br><span class="line">	// <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-color: green&quot;</span>&gt;</span> test <span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;canvas&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		canvas.<span class="title function_">addEventListener</span>(<span class="string">&quot;touchstart&quot;</span>, handleStart, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">function</span> <span class="title function_">handleStart</span>(<span class="params">event</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">			event.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">			<span class="keyword">var</span> touches = event.<span class="property">changedTouches</span>;</span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">console</span>.<span class="title function_">log</span>(touches);</span></span><br><span class="line"><span class="language-javascript">		&#125;</span></span><br><span class="line"><span class="language-javascript">	&#125;)();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Run <code>username$ python -m SimpleHTTPServer</code> in this file’s directory, and use your phone to browse.</p>
-<p>If you are using <strong>method 1 - inject script codes</strong>, you can start your testing immediately.</p>
-<p>If you are using <strong>method 2 - bookmark</strong>, after pages is loaded, bring up bookmark page and run weinre deubg you just added, and finally, start testing.</p>
-<p>Tap some on the little green rectangle will get you some responce.</p>
-<img src="/images/weinre_results.png" class="center">
-
-<h3 id="6-Misc"><a href="#6-Misc" class="headerlink" title="6 Misc."></a>6 Misc.</h3><p>There is an <a target="_blank" rel="noopener" href="http://debug.phonegap.com/">online service</a> will let you run weinre in an extreme simple fashion, but it seems broken at the time my post was written.</p>
-<p>PhoneGap with Weinre can be a nice cooperation.</p>
-<p>Since you can debug easily with weinre, everyhing shuold be able to work beautifully, right?</p>
-<p>Nope.</p>
-<p>Although weinre is convenience, the most common debug technique is not avaliable in weinre’s toolbelt:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	// decomment below if you are using method 1</span><br><span class="line">	// <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;test&quot;</span>); <span class="comment">// this won&#x27;t work</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>It seems weinre loads a bunch of things before console is ready, but you can still use event register way to invoke console.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	// decomment below if you are using method 1</span><br><span class="line">	// <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://[your ip address]:8080/target/target-script-min.js#anonymous&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;button&quot;</span>&gt;</span>test<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> button = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;button&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		button.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;test&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		&#125;;</span></span><br><span class="line"><span class="language-javascript">	&#125;)();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Also weinre doesn’t support remote script debugger.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/09/debug-pages-on-phones-with-weinre/" data-id="clo6cl4uk0009mpp2d64k8s03" data-title="Debug Pages On Phones With Weinre" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/testing/" rel="tag">testing</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -245,7 +316,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
   </div>
 </div>
 
