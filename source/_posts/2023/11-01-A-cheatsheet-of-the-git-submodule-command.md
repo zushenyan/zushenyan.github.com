@@ -52,3 +52,4 @@ Open `.gitmodules` and add the `branch` field to the config
 
 - https://git-scm.com/book/en/v2/Git-Tools-Submodules
 - https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule
+- https://www.devroom.io/2020/03/09/the-git-submodule-cheat-sheet/
