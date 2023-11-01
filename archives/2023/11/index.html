@@ -4,19 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>How To Call Parent Function in Child Class | Andrew&#39;s Cache</title>
+  <title>Archives: 2023/11 | Andrew&#39;s Cache</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1234SubClass.prototype.foobar &#x3D; function(str) &amp;#123;	BaseClass.prototype.foobar.call(this, str);	console.log(&quot;bbb&quot;);&amp;#125;;  yea, as simple as that. Don’t forget sub-class is made of this 1S">
-<meta property="og:type" content="article">
-<meta property="og:title" content="How To Call Parent Function in Child Class">
-<meta property="og:url" content="http://zushenyan.github.io/2013/09/02/how-to-call-paret-function-in-child-class/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Andrew&#39;s Cache">
+<meta property="og:url" content="http://zushenyan.github.io/archives/2023/11/index.html">
 <meta property="og:site_name" content="Andrew&#39;s Cache">
-<meta property="og:description" content="1234SubClass.prototype.foobar &#x3D; function(str) &amp;#123;	BaseClass.prototype.foobar.call(this, str);	console.log(&quot;bbb&quot;);&amp;#125;;  yea, as simple as that. Don’t forget sub-class is made of this 1S">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2013-09-02T23:39:00.000Z">
-<meta property="article:modified_time" content="2023-11-01T20:19:32.426Z">
 <meta property="article:author" content="Andrew Yan">
-<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Andrew's Cache" type="application/atom+xml">
@@ -76,72 +71,39 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-how-to-call-paret-function-in-child-class" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/09/02/how-to-call-paret-function-in-child-class/" class="article-date">
-  <time class="dt-published" datetime="2013-09-02T23:39:00.000Z" itemprop="datePublished">2013-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      How To Call Parent Function in Child Class
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/" class="archive-article-date">
+  <time class="dt-published" datetime="2023-11-01T12:12:33.000Z" itemprop="datePublished">Nov 1</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/">A cheatsheet of the git submodule command</a>
     </h1>
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, str);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>yea, as simple as that.</p>
-<p>Don’t forget sub-class is made of this</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">BaseClass</span>();</span><br></pre></td></tr></table></figure>
-
-<p>This makes all legit.</p>
-<p>Full source view</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">BaseClass</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">SubClass</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">BaseClass</span>();</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">SubClass</span>;</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, str);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/02/how-to-call-paret-function-in-child-class/" data-id="clog7bkdt0005ktp47vuzbqcv" data-title="How To Call Parent Function in Child Class" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2013/09/02/javascript-module-pattern/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          JavaScript Module Pattern
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2013/08/29/pass-this-into-anonymous-function/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">How to pass &#34;this&#34; into anonymous function</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 
 </section>

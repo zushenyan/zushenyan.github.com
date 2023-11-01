@@ -73,6 +73,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-differences-between-syncasync" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/09/07/differences-between-syncasync/" class="article-date">
+  <time class="dt-published" datetime="2013-09-07T22:34:00.000Z" itemprop="datePublished">2013-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/09/07/differences-between-syncasync/">Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>I always thought I understood the concept between blocking &amp; non-blocking, synchronous &amp; asynchronous and could tell the differences, but after I found this <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing">post</a>, a chaotic storm exploded in my brain! These were totally different two things in my mind!</p>
+<p>Terminologies can have different meanings with things, even though they have the same skin. The definition of terminologies differ from context.</p>
+<p>Originally I thought blocking &amp; non-blocking, synchronous &amp; asynchronous were only talking about relationships between client and server structure, but when it comes to server, or computer, and disk &amp; memory in itself, it has other meanings.</p>
+<p>So what’s the difference between these two fields? Before that, I need to define three objects:</p>
+<ul>
+<li>client</li>
+<li>server</li>
+<li>disk(socket)</li>
+</ul>
+<p>Definitions in client &amp; server:</p>
+<ul>
+<li><p>Synchronous</p>
+<ul>
+<li><p>Blocking</p>
+<p>  server serve only one client at a time.</p>
+</li>
+<li><p>Non-blocking</p>
+<p>  server can serve many clients at a time, but clients will need to constantly check if their requests are accepted. (I can’t find a better definition of non-blocking in client &amp; server relationship, so I assume it’s similar to the ajax polling technique.)</p>
+</li>
+<li><p>Event-driven</p>
+<p>  server can serve mant clients at at time, and with a single process on a callback.</p>
+</li>
+</ul>
+</li>
+<li><p>Asynchronous - server will create a new thread for each client on connecting.</p>
+</li>
+</ul>
+<p>Definitions in server &amp; disk(socket):</p>
+<ul>
+<li><p>Synchronous</p>
+<ul>
+<li><p>Blocking</p>
+<p>  process will send a recvform system call to kernal, and then kernal will start preparing data process needs, and finally kernal return with result back to process. During the data preparation the process is blocked.</p>
+</li>
+<li><p>Non-blocking</p>
+<p>  process will keep sending recvform to kernal. If is not ready, kernal will send a EWOULDBLOCK back to process, or will start data preparation.</p>
+</li>
+<li><p>Event-driven</p>
+<p>  also named select&#x2F;poll. It’s similar to the blocking IO, but use select &amp; poll system call to achive non-blocking.</p>
+</li>
+</ul>
+</li>
+<li><p>Asynchronous - create a new thread and let it handle all the call sending and receiving. Kernal will deliver a signal when data has been prepared.</p>
+</li>
+</ul>
+<p>A connection is established which means a socket stream has been created for client and server, so, in my opinion, definition in server &amp; disk(socket) also works in client &amp; server relationship.</p>
+<p>refered from readings:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/historyasamirror/article/details/5778378">IO - 同步，异步，阻塞，非阻塞 （亡羊补牢篇）</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing">How does event driven I&#x2F;O allow multiprocessing?</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/2625493/asynchronous-vs-non-blocking">asynchronous vs non-blocking</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/5325342/help-with-event-driven-tcp-server">event-driven structure in client &amp; server</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3981566/what-is-event-driven-web-server">what is event driven web server</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Asynchronous_I/O">Asynchronous I&#x2F;O</a></li>
+</ul>
+<p>Point it out if I have mistaken something!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2013/09/07/differences-between-syncasync/" data-id="clog7bkdw0008ktp41baa9on6" data-title="Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/concurrent/" rel="tag">concurrent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/" rel="tag">meta</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-javascript-module-pattern" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/09/02/javascript-module-pattern/" class="article-date">
@@ -102,56 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/02/javascript-module-pattern/" data-id="clo7rg5j20005m7or3sb1hi1h" data-title="JavaScript Module Pattern" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-how-to-call-paret-function-in-child-class" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/09/02/how-to-call-paret-function-in-child-class/" class="article-date">
-  <time class="dt-published" datetime="2013-09-02T23:39:00.000Z" itemprop="datePublished">2013-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/09/02/how-to-call-paret-function-in-child-class/">How To Call Parent Function in Child Class</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, str);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>yea, as simple as that.</p>
-<p>Don’t forget sub-class is made of this</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">BaseClass</span>();</span><br></pre></td></tr></table></figure>
-
-<p>This makes all legit.</p>
-<p>Full source view</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">BaseClass</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">SubClass</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">BaseClass</span>();</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">SubClass</span>;</span><br><span class="line"><span class="title class_">SubClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">	<span class="title class_">BaseClass</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foobar</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, str);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/02/how-to-call-paret-function-in-child-class/" data-id="clo7rg5j10004m7or1014azge" data-title="How To Call Parent Function in Child Class" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2013/09/02/javascript-module-pattern/" data-id="clog7bkdv0007ktp48ykn6w5u" data-title="JavaScript Module Pattern" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -180,7 +227,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a></li></ul>
   </div>
 </div>
 
@@ -194,6 +241,37 @@
     </div>
   </div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/">A cheatsheet of the git submodule command</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/">How to resolve timeout when cloning mega-sized repository with git</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
 </aside>

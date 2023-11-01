@@ -73,6 +73,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-A-cheatsheet-of-the-git-submodule-command" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/" class="article-date">
+  <time class="dt-published" datetime="2023-11-01T12:12:33.000Z" itemprop="datePublished">2023-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/">A cheatsheet of the git submodule command</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Owning to needing to change the theme of hexo, I need a way to modify them with <code>git submodule</code>. Here is a quick <code>cheatsheet</code> for myself.</p>
+<h1 id="Why-git-submodule"><a href="#Why-git-submodule" class="headerlink" title="Why git submodule"></a>Why git submodule</h1><p>One of the means to maintain a repository in another repository.</p>
+<h1 id="Cheatsheet"><a href="#Cheatsheet" class="headerlink" title="Cheatsheet"></a>Cheatsheet</h1><p>To add a repository:</p>
+<p><code>git submodule add &lt;repository&gt; </code></p>
+<p>To add a repository with a specific directory folder</p>
+<p><code>git submodule add &lt;repository&gt; &lt;direcotry&gt;</code></p>
+<p>To modify the code for a submodule</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> submodule-folder</span><br><span class="line">$ vim file-to-be-modified</span><br><span class="line">$ git commit -am <span class="string">&quot;foo&quot;</span></span><br><span class="line">$ git push origin a-remote-branch</span><br><span class="line">$ <span class="built_in">cd</span> root-folder</span><br><span class="line">$ git commit -am <span class="string">&quot;update&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>To pull the latest commits for a submodule</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule update remote --merge</span><br></pre></td></tr></table></figure>
+
+<p>Specifying which branch to pull for a submodule</p>
+<p>Open <code>.gitmodules</code> and add the <code>branch</code> field to the config</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[submodule &quot;themes/landscape&quot;]</span><br><span class="line">	path = themes/landscape</span><br><span class="line">	url = https://github.com/zushenyan/hexo-theme-landscape.git</span><br><span class="line">	branch = andrew</span><br></pre></td></tr></table></figure>
+
+<h1 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">https://git-scm.com/book/en/v2/Git-Tools-Submodules</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule">https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2023/11/01/A-cheatsheet-of-the-git-submodule-command/" data-id="clog7bkef001cktp46skz75jt" data-title="A cheatsheet of the git submodule command" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" class="article-date">
@@ -112,69 +172,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" data-id="clo7rg5lx0028m7or95cm8m33" data-title="How to resolve timeout when cloning mega-sized repository with git" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/" data-id="clog7bkef001aktp42b92dvvk" data-title="How to resolve timeout when cloning mega-sized repository with git" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-assignments-design-guide" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/12/18/assignments-design-guide/" class="article-date">
-  <time class="dt-published" datetime="2020-12-18T00:00:00.000Z" itemprop="datePublished">2020-12-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>I’ve been writing assignments lately due to interviews. I am happy to see the software industry turning assessment approach from doing Leetcode (or whiteboarding) to a way that is more closely to how most engineers handle day-to-day works. However, the recent experience with take-home assignments is painful to me, mostly because of how the take-home assignment process is designed. I often got rejected replies like <code>not fulfilling requirements correctly</code> or <code>we don&#39;t like your architecture</code>… etc. Got rejected without solid clues makes people really confused and frustrated.</p>
-<p>Here are some thoughts that I think could improve the process:</p>
-<h1 id="Explicitly-Declare-What-Tools-Can-be-Used-and-What-Tools-Cannot"><a href="#Explicitly-Declare-What-Tools-Can-be-Used-and-What-Tools-Cannot" class="headerlink" title="Explicitly Declare What Tools Can be Used and What Tools Cannot"></a>Explicitly Declare What Tools Can be Used and What Tools Cannot</h1><p>Regarding the use of libs&#x2F;frameworks, you might be thinking of using A is enough, but your candidate is thinking of B. The effort is bound to be different, and thus the time&#x2F;effort estimation will not be on the same standard.</p>
-<p>By explicitly saying what lib&#x2F;frameworks can be used and what cannot, will help both sides to narrow down the scope, eliminate the grey zone, and thus clear potential misunderstands.</p>
-<p>If you want to give your candidate the freedom of choosing libs&#x2F;frameworks, please soften the time limitation. Your candidates might spend extra time evaluating tools and learning usage.</p>
-<h1 id="Make-Specification-VERY-Detailed"><a href="#Make-Specification-VERY-Detailed" class="headerlink" title="Make Specification VERY Detailed"></a>Make Specification VERY Detailed</h1><p>Explicitly define requirements like what browsers should be supported and what not be, what platform the assignment should be deployed to, what it is going to do when a user clicks the button…etc. Things like these will help define the boundary of the assignment.</p>
-<p>Ideally, the mock-up design should be provided, but when it is provided, you have to name what will be taken into account in and what will not be.</p>
-<h1 id="No-Bonus-Requirements"><a href="#No-Bonus-Requirements" class="headerlink" title="No Bonus Requirements"></a>No Bonus Requirements</h1><p>The bonus section is a lie. There are only things that you will assess and things you won’t. Yes means yes, no means no. Grey zone are not allowed here.</p>
-<p>If you are going to assess criteria like tests, architecture, coding styles, be specific what you expect to see, otherwise, everyone has their own opinions on these parts and will possibly consume lots of candidates’ time if their standard is beyond your expectation.</p>
-<h1 id="Do-it-Yourself-before-Sending-to-Your-Candidate"><a href="#Do-it-Yourself-before-Sending-to-Your-Candidate" class="headerlink" title="Do it Yourself before Sending to Your Candidate"></a>Do it Yourself before Sending to Your Candidate</h1><p>When you have done designing an assignment, please do it yourself like an interviewee. Ask engineers who match the mentioned experience in the job description to do the assignment. The point is, you have to estimate how much time you will really spend on finishing the assignment.</p>
-<p>If you spend x hours, multiply it by 2 or 3. Your candidate might not have the same skillset as you do, they will require extra time to do some survey in order to finish the assignment.</p>
-<h1 id="Arrange-a-Retrospective-Meeting-after-Done-Submitting-the-Assignment"><a href="#Arrange-a-Retrospective-Meeting-after-Done-Submitting-the-Assignment" class="headerlink" title="Arrange a Retrospective Meeting after Done Submitting the Assignment"></a>Arrange a Retrospective Meeting after Done Submitting the Assignment</h1><p>This stage tries to simulate doing a PR code review. Human errors and have different opinions on things. Give the candidate a chance to justify him&#x2F;herself, asking how to fix an overlooked bug in the assignment, asking why and what’s the reason for a specific approach. It should be a discussion like how you do PR.</p>
-<hr>
-<p>These are all the caveats that I could conclude by now.</p>
-<p>Ideally, the candidate should be provided with a sandbox project, and the candidate will be asked to add a feature to this project. After done adding the feature, the interviewer reviews the PR and gives some feedback.</p>
-<p>The whole thing is aiming to simulate the onboarding life of first 1 ~ 3 months before the engineer could take harder tasks.</p>
-<p>I really hope companies could follow this guide while designing assignments. A crappy defined assignment is like a foot gun. You shoot in yourself, wasting tons of time on reviewing assignments that you think is shabby, complaining why a capable engineer is so hard to find while overlooking the fact you might assess in a wrong way. It’s a no-win situation, both you and the candidate waste tons of time on each other.</p>
-<p>A good assessment should eliminate the grey zone as possible. For the god sake, please stop playing the game of “I have opinions, but I am not going to tell you. Guess what I want.”</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2020/12/18/assignments-design-guide/" data-id="clo7rg5lu0026m7or5dheepxl" data-title="Assignments Design Guide - Candidate Perspective" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/" rel="tag">interview</a></li></ul>
 
     </footer>
   </div>
@@ -199,7 +201,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a></li></ul>
   </div>
 </div>
 
@@ -213,6 +215,37 @@
     </div>
   </div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/">A cheatsheet of the git submodule command</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/">How to resolve timeout when cloning mega-sized repository with git</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
 </aside>

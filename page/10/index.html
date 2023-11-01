@@ -73,6 +73,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-realtime-syntax-highlight-editor-on-web-how-is-that-possible" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/" class="article-date">
+  <time class="dt-published" datetime="2013-10-16T13:29:00.000Z" itemprop="datePublished">2013-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/">Realtime Syntax Highlight Editor on Web, How Is That Possible?</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Story"><a href="#Story" class="headerlink" title="Story"></a>Story</h1><p>Although I have already played around some front-end techniques, I still think my webdev-fu is noob as hell, so maybe I should start it from scratch. How about basic DOM structure? Hmm, good. There are many realtime syntax highlight editor, I alway wonder how they work, and building one myself won’t be hard, right? Challenge accepted!</p>
+<h1 id="Google-Hard"><a href="#Google-Hard" class="headerlink" title="Google Hard"></a>Google Hard</h1><p>The quickest way to know how one thing works is to find one similar thing and study it. As far as I know, there are two editors with active communities — <a target="_blank" rel="noopener" href="http://codemirror.net/">Code Mirror</a> and <a target="_blank" rel="noopener" href="http://ace.c9.io/#nav=about">Ace Edtior</a>, but I am lazy as fuck, and reading other people’s code without any guides is really hard, so I decide to do some google about how it works.</p>
+<h1 id="Approach-1-–-ContentEditable"><a href="#Approach-1-–-ContentEditable" class="headerlink" title="Approach 1 – ContentEditable"></a>Approach 1 – ContentEditable</h1><p>Ace Editor is too modularized to make a quick understand. What I need is a one-filed, code-short example to make a quick structure overview. Code Mirror has some additional libraries, but the main program still remains in one file, so I think maybe it’s good for a starter.</p>
+<p>While I was googling guides about Code Mirror, I happened to find <a target="_blank" rel="noopener" href="http://codemirror.net/1/story.html">this article</a> about how Code Mirror 1 was made. This inspired me. Without knowing there was already an new version - Code Mirror 2, I started coding in this way.</p>
+<p>The basic idea of this way is to get raw data string from parsing contentEditable div’s inner HTML, and trying to attach span tag with syntax. Basically, contentEditable way is possible, and Code Mirror 1 did it in this way, but to me, it’s a hard way. The main problem is, the behavior of key inputs differ from browser to browser, which means if you hope to get the same data from all platforms, you will be disappointed. In actually, you will get all different versions of data.</p>
+<p>Sure you will say “Why don’t you change those behaviors to one? Problem solved!” Well, you won’t like this idea in the end, because you need to <strong>FUCKING REMAP ALL THE CONTROL KEY BEHAVIORS</strong> to act like the same, which is being said, you need to integrate all enter key versions into one, all shift-enter key versions into one, all cmd-enter key versions into one… and it’s only for enter keys, not to mention other keys’ combination, and… there are 5 mainstream browsers. Ouch, it hurts.</p>
+<p>After one-week hard coding, it exhausted me. This is not a good idea. I need a better solution.</p>
+<h1 id="Approach-2-–-Hidden-Textarea"><a href="#Approach-2-–-Hidden-Textarea" class="headerlink" title="Approach 2 – Hidden Textarea"></a>Approach 2 – Hidden Textarea</h1><p>This is the way how Code Mioor 2 and Ace Editor were made. You can read <a target="_blank" rel="noopener" href="http://codemirror.net/doc/internals.html">this article</a> if you already feel the pain from approach 1.</p>
+<p>The key concept is that it hides a textarea from users’ eyes, and makes them believe they are typing into textarea. What they see, actually, is <strong>many divs</strong> pretending like a textarea.</p>
+<p>The main challenge from this approach is that since you are not using default elements, you need to mimic your own textarea element — everything inside the textarea, including scrollbar, caret, selection and mouse events.</p>
+<p>Though it’s not hard, I still want to find an easy way to achieve my goal because what I want to do is making a simple realtime syntax highlight editor, not another fully functional editor.</p>
+<p>While I was struggling on approach 2 way, suddenly an idea came to my mind - “Hey, why don’t I just overlay a transparent textarea on the visual view? Using the default textarea can save a lot of works!”</p>
+<p>So I started my overlay textarea journey.</p>
+<h1 id="Approach-3-–-Overlay-Textarea"><a href="#Approach-3-–-Overlay-Textarea" class="headerlink" title="Approach 3 – Overlay Textarea"></a>Approach 3 – Overlay Textarea</h1><p><a href="http://zushenyan.github.io/SRSHME/">Here is my final work.</a></p>
+<p>Basic functions:</p>
+<ul>
+<li>Support part of Markdown syntaxes.</li>
+<li>Browser default key mapping.</li>
+<li>Browser default mouse behaviors.</li>
+</ul>
+<p>Tested on the latest version of Chrome, Firefox, Safari, Opera and IE 10, and be aware that this code is not optimized. If you paste a lot of text into textarea, I am sure it will be laggy as fuck.</p>
+<p>On IE 10, user may experience the late response of caret because IE’s caret visual is not controllable in textarea. In order to show only one caret, I choose to hide my own caret to prevent from showing two carets at once.</p>
+<p>What I do here is simply overlay a transparent textarea over a visual div. Basically, the concept is similar to approach 2 but sacrifices the possibility of further customizations due to lazy code. I don’t need to write mimic scrollbars and mouse event anymore.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>To make a fully functional online text editor, programmer are bound to write <strong>a lot of codes</strong> to solve problems like right-to-left characters, line &amp; word wrap, wide characters and blah blah blah tons of things.</p>
+<p>If you are curious about how those realtime syntax highlight editors are possible, I hope this post can help.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/" data-id="clog7bkdz000cktp42wqgagv2" data-title="Realtime Syntax Highlight Editor on Web, How Is That Possible?" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-debug-pages-on-phones-with-weinre" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2013/09/09/debug-pages-on-phones-with-weinre/" class="article-date">
@@ -151,107 +216,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/09/debug-pages-on-phones-with-weinre/" data-id="clo7rg5j40009m7orhxsq53f0" data-title="Debug Pages On Phones With Weinre" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2013/09/09/debug-pages-on-phones-with-weinre/" data-id="clog7bkdw0009ktp48ydo98rq" data-title="Debug Pages On Phones With Weinre" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/" rel="tag">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/testing/" rel="tag">testing</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-differences-between-syncasync" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/09/07/differences-between-syncasync/" class="article-date">
-  <time class="dt-published" datetime="2013-09-07T22:34:00.000Z" itemprop="datePublished">2013-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/09/07/differences-between-syncasync/">Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>I always thought I understood the concept between blocking &amp; non-blocking, synchronous &amp; asynchronous and could tell the differences, but after I found this <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing">post</a>, a chaotic storm exploded in my brain! These were totally different two things in my mind!</p>
-<p>Terminologies can have different meanings with things, even though they have the same skin. The definition of terminologies differ from context.</p>
-<p>Originally I thought blocking &amp; non-blocking, synchronous &amp; asynchronous were only talking about relationships between client and server structure, but when it comes to server, or computer, and disk &amp; memory in itself, it has other meanings.</p>
-<p>So what’s the difference between these two fields? Before that, I need to define three objects:</p>
-<ul>
-<li>client</li>
-<li>server</li>
-<li>disk(socket)</li>
-</ul>
-<p>Definitions in client &amp; server:</p>
-<ul>
-<li><p>Synchronous</p>
-<ul>
-<li><p>Blocking</p>
-<p>  server serve only one client at a time.</p>
-</li>
-<li><p>Non-blocking</p>
-<p>  server can serve many clients at a time, but clients will need to constantly check if their requests are accepted. (I can’t find a better definition of non-blocking in client &amp; server relationship, so I assume it’s similar to the ajax polling technique.)</p>
-</li>
-<li><p>Event-driven</p>
-<p>  server can serve mant clients at at time, and with a single process on a callback.</p>
-</li>
-</ul>
-</li>
-<li><p>Asynchronous - server will create a new thread for each client on connecting.</p>
-</li>
-</ul>
-<p>Definitions in server &amp; disk(socket):</p>
-<ul>
-<li><p>Synchronous</p>
-<ul>
-<li><p>Blocking</p>
-<p>  process will send a recvform system call to kernal, and then kernal will start preparing data process needs, and finally kernal return with result back to process. During the data preparation the process is blocked.</p>
-</li>
-<li><p>Non-blocking</p>
-<p>  process will keep sending recvform to kernal. If is not ready, kernal will send a EWOULDBLOCK back to process, or will start data preparation.</p>
-</li>
-<li><p>Event-driven</p>
-<p>  also named select&#x2F;poll. It’s similar to the blocking IO, but use select &amp; poll system call to achive non-blocking.</p>
-</li>
-</ul>
-</li>
-<li><p>Asynchronous - create a new thread and let it handle all the call sending and receiving. Kernal will deliver a signal when data has been prepared.</p>
-</li>
-</ul>
-<p>A connection is established which means a socket stream has been created for client and server, so, in my opinion, definition in server &amp; disk(socket) also works in client &amp; server relationship.</p>
-<p>refered from readings:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/historyasamirror/article/details/5778378">IO - 同步，异步，阻塞，非阻塞 （亡羊补牢篇）</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3231018/how-does-event-driven-i-o-allow-multiprocessing">How does event driven I&#x2F;O allow multiprocessing?</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/2625493/asynchronous-vs-non-blocking">asynchronous vs non-blocking</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/5325342/help-with-event-driven-tcp-server">event-driven structure in client &amp; server</a></li>
-<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/3981566/what-is-event-driven-web-server">what is event driven web server</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Asynchronous_I/O">Asynchronous I&#x2F;O</a></li>
-</ul>
-<p>Point it out if I have mistaken something!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/09/07/differences-between-syncasync/" data-id="clo7rg5j30006m7or6azx1m30" data-title="Differences Between sync &amp; async, blocking &amp; non-blocing and event-driven" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/concurrent/" rel="tag">concurrent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/" rel="tag">meta</a></li></ul>
 
     </footer>
   </div>
@@ -276,7 +245,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a></li></ul>
   </div>
 </div>
 
@@ -290,6 +259,37 @@
     </div>
   </div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/">A cheatsheet of the git submodule command</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/">How to resolve timeout when cloning mega-sized repository with git</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
 </aside>

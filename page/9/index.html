@@ -73,6 +73,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-frontend-fundamental-http-2-0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2015/10/11/frontend-fundamental-http-2-0/" class="article-date">
+  <time class="dt-published" datetime="2015-10-11T02:48:37.000Z" itemprop="datePublished">2015-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2015/10/11/frontend-fundamental-http-2-0/">Frontend Fundamental - HTTP 2.0</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="What-is-HTTP-2-0"><a href="#What-is-HTTP-2-0" class="headerlink" title="What is HTTP 2.0?"></a>What is HTTP 2.0?</h1><p>Since HTTP protocol was released, Web world has developed rapidly, and compared to the time in which HTTP was born, today’s Web content is way more richer, and due to the heavy request loading Web has evolved, HTTP 1.1 is not capable sooner or later. In order to handle the job, HTTP have to be updated.</p>
+<p>HTTP 2.0 is based on SPDY(pronounced speedy) which is an experiment networking protocol developed by Google. SPDY aims to improve performance and security. In Feb. 2015, Google announced that SPDY will soon be deprecated since there is already a standard - HTTP 2.0.</p>
+<h1 id="HTTP-2-0-Features-differences-to-HTTP-1-1"><a href="#HTTP-2-0-Features-differences-to-HTTP-1-1" class="headerlink" title="HTTP 2.0 Features (differences to HTTP 1.1)"></a>HTTP 2.0 Features (differences to HTTP 1.1)</h1><ul>
+<li>Communicate in binary, not textual.</li>
+<li>Multiplex</li>
+<li>Header compression</li>
+<li>Server push</li>
+</ul>
+<h4 id="Binary-Communication"><a href="#Binary-Communication" class="headerlink" title="Binary Communication"></a>Binary Communication</h4><p>In HTTP 1.1 textual way, there are <a target="_blank" rel="noopener" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.4">4 ways to parse message</a> when in HTTP 2 there is only one way to parse, and hence its more efficient.</p>
+<h4 id="Multiplex"><a href="#Multiplex" class="headerlink" title="Multiplex"></a>Multiplex</h4><p>With HTTP 1.1, Most browsers create 6 to 8 connections to download resources from server in parallel; In HTTP 2.0, only one connection is needed. Not like HTTP 1.1, HTTP 2.0 is non-blocking. Client can send requests at once and get responses out of order, while HTTP 1.1 can only send request by request in a connection. It’s like a car driving through a tunnel, but only one at a time.</p>
+<h4 id="Header-compression"><a href="#Header-compression" class="headerlink" title="Header compression"></a>Header compression</h4><p>Even though there are already performance optimizations to compress our content, say <strong>image sprite, in-lining, resource bundle</strong>, headers still take space(say cookies, referer…), and for environment like mobile with limited bandwidth, it’s more crucial. That’s why we need header compression.</p>
+<h4 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h4><p>Server can send response without any request from client.</p>
+<p>Traditional scenario:</p>
+<blockquote>
+<p>Client: Hey server, I want index.html!</p>
+<p>Server: (Gives index.html)</p>
+<p>Client: Hey server, I want style.css!</p>
+<p>Server: (Gives style.css)</p>
+<p>Client: Thanks!</p>
+</blockquote>
+<p>With server push:</p>
+<blockquote>
+<p>Client: Hey server, I want index.html!</p>
+<p>Server: (Gives index.html, style.css and lots of resources client didn’t ask for but do need.)</p>
+<p>Client: Err…these are what I want! thanks!</p>
+</blockquote>
+<h1 id="Platforms-Support"><a href="#Platforms-Support" class="headerlink" title="Platforms Support"></a>Platforms Support</h1><p><a target="_blank" rel="noopener" href="http://caniuse.com/#search=http2">Can I use http2?</a></p>
+<p>Currently, except for some mobile browsers and old IE, most modern browsers support HTTP 2.0.</p>
+<h1 id="HTTP-2-0-In-Practice"><a href="#HTTP-2-0-In-Practice" class="headerlink" title="HTTP 2.0 In Practice"></a>HTTP 2.0 In Practice</h1><p>First install <code>node-http2</code> for Nodejs.</p>
+<p><code>npm install node-http2</code></p>
+<p>And from the [HTTP&#x2F;2 FAQ](HTTP&#x2F;2 Frequently Asked Questions), it says:</p>
+<blockquote>
+<h1 id="Does-HTTP-2-require-encryption"><a href="#Does-HTTP-2-require-encryption" class="headerlink" title="Does HTTP&#x2F;2 require encryption?"></a>Does HTTP&#x2F;2 require encryption?</h1><p>No. After extensive discussion, the Working Group did not have consensus to require the use of encryption (e.g., TLS) for the new protocol.</p>
+<p>However, some implementations have stated that they will only support HTTP&#x2F;2 when it is used over an encrypted connection, and currently no browser supports HTTP&#x2F;2 unencrypted.</p>
+</blockquote>
+<p>So prepare your certificate and private key, we still need them.</p>
+<p>Server:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http2 = <span class="built_in">require</span>(<span class="string">&quot;http2&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="attr">key</span>: fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;./server.key&quot;</span>),</span><br><span class="line">  <span class="attr">cert</span>: fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;./server.cert&quot;</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">http2.<span class="title function_">createServer</span>(options, <span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">  res.<span class="title function_">writeHead</span>(<span class="number">200</span>, <span class="literal">null</span>, &#123;</span><br><span class="line">    <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span></span><br><span class="line">  &#125;);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&quot;we are using http2 weeeeeeeee&quot;</span>);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Server is running...&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>Run it in <code>https</code> protocol with Chrome</p>
+<p><img src="/images/http2.png" alt="http2"></p>
+<p>In the protocol field, “h2” means we are using HTTP2 protocol.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="wikipedia-spdy">wikipedia-spdy</a></li>
+<li><a target="_blank" rel="noopener" href="http://http2.github.io/faq/">HTTP&#x2F;2 Frequently Asked Questions</a>(HTTP&#x2F;2 Frequently Asked Questions)</li>
+<li><a href="http2.akamai.com/">http2.akamai.com&#x2F;</a></li>
+<li><a href="http2-demo">http2-demo</a></li>
+<li><a href="max-parallel-http-connections-in-a-browser">max-parallel-http-connections-in-a-browser</a></li>
+<li><a href="http2-and-java-current-status">http2-and-java-current-status</a></li>
+<li><a href="innovating-with-http-2.0-server-push">innovating-with-http-2.0-server-push</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/28630108/http2-is-minifying-js-concatenate-js-css-and-using-sprites-no-longer-needed">http2-is-minifying-js-concatenate-js-css-and-using-spritewith-spdys(with-spdy)-no-longer-needed</a></li>
+<li><a href="difference-between-http-pipeling-and-http-multiplexing-with-spdy">difference-between-http-pipeling-and-http-multiplexing-with-spdy</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zushenyan.github.io/2015/10/11/frontend-fundamental-http-2-0/" data-id="clog7bke5000gktp43y7h6x8e" data-title="Frontend Fundamental - HTTP 2.0" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-frontend-fundamental-http-1-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2015/10/10/frontend-fundamental-http-1-1/" class="article-date">
@@ -222,76 +314,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2015/10/10/frontend-fundamental-http-1-1/" data-id="clo7rg5jb000cm7orbmlz6o83" data-title="Frontend Fundamental - HTTP 1.1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://zushenyan.github.io/2015/10/10/frontend-fundamental-http-1-1/" data-id="clog7bkdz000dktp4hhqch9qs" data-title="Frontend Fundamental - HTTP 1.1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-HTTPS/" rel="tag">HTTP&#x2F;HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/" rel="tag">network</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-realtime-syntax-highlight-editor-on-web-how-is-that-possible" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/" class="article-date">
-  <time class="dt-published" datetime="2013-10-16T13:29:00.000Z" itemprop="datePublished">2013-10-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/">Realtime Syntax Highlight Editor on Web, How Is That Possible?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Story"><a href="#Story" class="headerlink" title="Story"></a>Story</h1><p>Although I have already played around some front-end techniques, I still think my webdev-fu is noob as hell, so maybe I should start it from scratch. How about basic DOM structure? Hmm, good. There are many realtime syntax highlight editor, I alway wonder how they work, and building one myself won’t be hard, right? Challenge accepted!</p>
-<h1 id="Google-Hard"><a href="#Google-Hard" class="headerlink" title="Google Hard"></a>Google Hard</h1><p>The quickest way to know how one thing works is to find one similar thing and study it. As far as I know, there are two editors with active communities — <a target="_blank" rel="noopener" href="http://codemirror.net/">Code Mirror</a> and <a target="_blank" rel="noopener" href="http://ace.c9.io/#nav=about">Ace Edtior</a>, but I am lazy as fuck, and reading other people’s code without any guides is really hard, so I decide to do some google about how it works.</p>
-<h1 id="Approach-1-–-ContentEditable"><a href="#Approach-1-–-ContentEditable" class="headerlink" title="Approach 1 – ContentEditable"></a>Approach 1 – ContentEditable</h1><p>Ace Editor is too modularized to make a quick understand. What I need is a one-filed, code-short example to make a quick structure overview. Code Mirror has some additional libraries, but the main program still remains in one file, so I think maybe it’s good for a starter.</p>
-<p>While I was googling guides about Code Mirror, I happened to find <a target="_blank" rel="noopener" href="http://codemirror.net/1/story.html">this article</a> about how Code Mirror 1 was made. This inspired me. Without knowing there was already an new version - Code Mirror 2, I started coding in this way.</p>
-<p>The basic idea of this way is to get raw data string from parsing contentEditable div’s inner HTML, and trying to attach span tag with syntax. Basically, contentEditable way is possible, and Code Mirror 1 did it in this way, but to me, it’s a hard way. The main problem is, the behavior of key inputs differ from browser to browser, which means if you hope to get the same data from all platforms, you will be disappointed. In actually, you will get all different versions of data.</p>
-<p>Sure you will say “Why don’t you change those behaviors to one? Problem solved!” Well, you won’t like this idea in the end, because you need to <strong>FUCKING REMAP ALL THE CONTROL KEY BEHAVIORS</strong> to act like the same, which is being said, you need to integrate all enter key versions into one, all shift-enter key versions into one, all cmd-enter key versions into one… and it’s only for enter keys, not to mention other keys’ combination, and… there are 5 mainstream browsers. Ouch, it hurts.</p>
-<p>After one-week hard coding, it exhausted me. This is not a good idea. I need a better solution.</p>
-<h1 id="Approach-2-–-Hidden-Textarea"><a href="#Approach-2-–-Hidden-Textarea" class="headerlink" title="Approach 2 – Hidden Textarea"></a>Approach 2 – Hidden Textarea</h1><p>This is the way how Code Mioor 2 and Ace Editor were made. You can read <a target="_blank" rel="noopener" href="http://codemirror.net/doc/internals.html">this article</a> if you already feel the pain from approach 1.</p>
-<p>The key concept is that it hides a textarea from users’ eyes, and makes them believe they are typing into textarea. What they see, actually, is <strong>many divs</strong> pretending like a textarea.</p>
-<p>The main challenge from this approach is that since you are not using default elements, you need to mimic your own textarea element — everything inside the textarea, including scrollbar, caret, selection and mouse events.</p>
-<p>Though it’s not hard, I still want to find an easy way to achieve my goal because what I want to do is making a simple realtime syntax highlight editor, not another fully functional editor.</p>
-<p>While I was struggling on approach 2 way, suddenly an idea came to my mind - “Hey, why don’t I just overlay a transparent textarea on the visual view? Using the default textarea can save a lot of works!”</p>
-<p>So I started my overlay textarea journey.</p>
-<h1 id="Approach-3-–-Overlay-Textarea"><a href="#Approach-3-–-Overlay-Textarea" class="headerlink" title="Approach 3 – Overlay Textarea"></a>Approach 3 – Overlay Textarea</h1><p><a href="http://zushenyan.github.io/SRSHME/">Here is my final work.</a></p>
-<p>Basic functions:</p>
-<ul>
-<li>Support part of Markdown syntaxes.</li>
-<li>Browser default key mapping.</li>
-<li>Browser default mouse behaviors.</li>
-</ul>
-<p>Tested on the latest version of Chrome, Firefox, Safari, Opera and IE 10, and be aware that this code is not optimized. If you paste a lot of text into textarea, I am sure it will be laggy as fuck.</p>
-<p>On IE 10, user may experience the late response of caret because IE’s caret visual is not controllable in textarea. In order to show only one caret, I choose to hide my own caret to prevent from showing two carets at once.</p>
-<p>What I do here is simply overlay a transparent textarea over a visual div. Basically, the concept is similar to approach 2 but sacrifices the possibility of further customizations due to lazy code. I don’t need to write mimic scrollbars and mouse event anymore.</p>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>To make a fully functional online text editor, programmer are bound to write <strong>a lot of codes</strong> to solve problems like right-to-left characters, line &amp; word wrap, wide characters and blah blah blah tons of things.</p>
-<p>If you are curious about how those realtime syntax highlight editors are possible, I hope this post can help.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zushenyan.github.io/2013/10/16/realtime-syntax-highlight-editor-on-web-how-is-that-possible/" data-id="clo7rg5j5000am7oraqxpaybd" data-title="Realtime Syntax Highlight Editor on Web, How Is That Possible?" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
 
     </footer>
   </div>
@@ -316,7 +343,7 @@
 <div class="widget-wrap">
   <h3 class="widget-title">Archives</h3>
   <div class="widget">
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a></li></ul>
   </div>
 </div>
 
@@ -330,6 +357,37 @@
     </div>
   </div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/01/A-cheatsheet-of-the-git-submodule-command/">A cheatsheet of the git submodule command</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/26/How-to-resolve-timeout-when-cloning-mega-sized-repository-with-git/">How to resolve timeout when cloning mega-sized repository with git</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/18/assignments-design-guide/">Assignments Design Guide - Candidate Perspective</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/GraphQL-vs-REST-My-Review/">GraphQL vs REST - My Review</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/17/A-Learning-Note-of-Functional-Programming-Part-2-Some-Common-Terminology/">A Learning Note of Functional Programming Part 2 - Some Common Terminology</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
 </aside>
